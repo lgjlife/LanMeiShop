@@ -1,0 +1,40 @@
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	
+	<body>
+	    <!-- 创建搜索栏 -->
+	    <div class="container-fluid">
+		<div class="row">
+		   <!-- 左侧空白 -->
+			<div class="col-2">
+			</div>
+			<!--放置蓝莓图标 -->
+			<div class="col-1">
+		    蓝莓
+			</div>
+			<!-- 放置搜索框 -->
+			<div class="col-7">
+				<form class="bs-example bs-example-form" role="form">
+				 <div class="input-group">
+		            <input type="text" class="form-control">
+		            <span class="input-group-addon">搜索</span>
+       			 </div>
+       			</form>
+			</div>
+			
+			 <!-- 右侧空白 -->
+			<div class="col-2">
+			</div>			
+		</div>
+		</div>
+		
+	</body>
+</html>
