@@ -1,0 +1,35 @@
+var indexImgAutoDispay = 0;
+var count = 0;
+$(function(){
+	$("#list-group-img").children(":first").show();
+	setInterval(function(){showPic()},6000);
+});
+
+function showPic(){
+	
+	console.log("showPic"); 
+
+	var liLen = $(".list-li").children().length;
+	console.log(liLen); 
+
+	var index  = 0;
+	$(".list-li").each(function(){
+		
+		
+		console.log("index = " + index);
+	    console.log($(this).css("display"));
+	    console.log($(this).is(':visible'));
+	    if($(this).is(':visible')){
+	    	$(this).hide();
+	    	$(this).next().show();
+	    	$(this).
+	    	console.log($(this).is(':visible'));
+	    	if(index < ($(this).length - 1)){
+	    		
+	    	}
+	    	
+	    }
+	    
+	    index++;
+	});
+}

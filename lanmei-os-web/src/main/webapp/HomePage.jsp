@@ -13,8 +13,14 @@
 	</head>
 	
 	<body>
-	   <%@ include  file="/WEB-INF/layouts/common/header-nav.jsp" %>	   
+	   <%@ include  file="/WEB-INF/layouts/common/header-nav.jsp" %>
+	   <br>
+	   <br>
+	   <br>
+	   <br>
+	   <br>	
 	   <%@ include  file="/WEB-INF/layouts/common/search.jsp" %>
+	   <%@ include  file="/WEB-INF/layouts/HomePage/index.jsp" %> 	   
 	   <%@ include  file="/WEB-INF/layouts/common/footer.jsp" %>
 	</body>
 </html>
