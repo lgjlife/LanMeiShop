@@ -26,7 +26,7 @@
 				</div>
 				<!-- 售后无忧 -->
 				<div class="col-2">
-					<a href="https://help.suning.com/page/id-670.htm"'>
+					<a href="https://help.suning.com/page/id-670.htm">
 						<img alt="text" src="static/img/common/AfterSales.png">
 					</a>					
 				</div>

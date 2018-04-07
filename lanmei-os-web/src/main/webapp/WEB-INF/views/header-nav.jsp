@@ -48,7 +48,7 @@
 				<div class="col-4">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="/">登录</a>
+							<a class="nav-link" href="lanmei-os/login.jsp">登录</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/">注册</a>

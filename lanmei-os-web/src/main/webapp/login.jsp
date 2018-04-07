@@ -2,11 +2,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>帐号登录</title>
 		<meta charset="utf-8">
  	    <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <!--  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	 -->
+	    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		
 	</head>
 	
 	<body>
@@ -48,7 +56,7 @@
 				<div class="col-4">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="login.jsp">登录</a>
+							<a class="nav-link" href="lanmei-os/login.jsp">登录</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/">注册</a>
@@ -63,6 +71,14 @@
 				<div class="col-2">
 				</div>			
 			</div>
-		</div>
+		</div><!--  <div class="container-fluid"> -->
+		
+		<form action="login" method="post">
+			<input name="userName" type="text"/>
+			<input name=passWord type="text"/>
+			<input type="submit" value="登录"/>
+		</form>
+		
+		
 	</body>
 </html>

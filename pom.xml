@@ -16,6 +16,7 @@
    <properties>
 	 <file.encoding>UTF-8</file.encoding>
 	 <spring.version>5.0.4.RELEASE</spring.version>
+	 <jackson-databind.version>2.8.4</jackson-databind.version>
 	 <mysql.version>5.1.29</mysql.version>
 	 <servlet.version>3.0-alpha-1</servlet.version>
 	 <aspectj.version>1.8.13</aspectj.version>
@@ -25,7 +26,7 @@
 	 <jetty.version>8.1.8.v20121106</jetty.version>
 	
 	 <testng.version>6.8.7</testng.version>
-	 <c3p0.version>0.9.5</c3p0.version>
+	 <c3p0.version>0.9.5.2</c3p0.version>
 
 	 <slf4j.version>1.7.5</slf4j.version> 
      <log4j.version>1.2.17</log4j.version>  
@@ -33,6 +34,10 @@
 	 <jstl.version>1.2</jstl.version>
 	 <mybatis-spring.version>1.3.1</mybatis-spring.version>
 	 <mybatis.version>3.3.0</mybatis.version>
+	 <PageHelper.version>5.1.2</PageHelper.version>
+	 <junit.version>4.9</junit.version>
+	 <commons-logging.version>1.1.3</commons-logging.version>
+	 <shiro.version>1.2.2</shiro.version>
    </properties>
    <dependencies>
          <!-- spring beans 依赖-->
@@ -41,17 +46,19 @@
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
-         <!-- spring ccore 依赖-->
+         <!-- spring core 依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Spring  表达式 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Spring 上下文 核心依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -68,17 +75,31 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-         <!-- spring webmvc 依赖-->
+         <!-- spring web 核心-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!-- Spring mvc  -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Spring mvc json 依赖 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <!-- Spring  事物管理 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Spring 单元测试 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -89,21 +110,18 @@
             <artifactId>commons-dbcp</artifactId>
             <version>${commons-dbcp.version}</version>
         </dependency>
+        <!-- Mysql 连接 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
+        <!-- servlet 依赖 -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
         </dependency>
         <!--mybatis 依赖  -->
         <dependency>
@@ -116,16 +134,33 @@
 		    <artifactId>mybatis</artifactId>
 		    <version>${mybatis.version}</version>
 		</dependency>
-		
+		<!-- Mybatis 分页插件 pagehelper -->
+		<dependency>
+  	   		 <groupId>com.github.pagehelper</groupId>
+    		 <artifactId>pagehelper</artifactId>
+             <version>${PageHelper.version}</version>
+        </dependency>
+		<!-- shiro相关依赖  安全管理-->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>${junit.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-core</artifactId>
+		    <version>${shiro.version}</version>
+		</dependency>
 
-
+        
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-             
+        
+        <!-- 切面相关依赖 -->
         <dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -177,17 +212,13 @@
             <artifactId>commons-logging</artifactId>  
             <version>${commons.version}</version>  
         </dependency> 
-    <!--      <dependency>  
-            <groupId>javax.servlet</groupId>  
-            <artifactId>jstl</artifactId>  
-            <version>${jstl.version}</version>  
-        </dependency>  -->
+
         <dependency>
 		<groupId>taglibs</groupId>
 		<artifactId>standard</artifactId>
 		<version>1.1.2</version>
 		</dependency>	
-	<!-- 防止与Tomcat 中的jstl发生冲突 -->
+	<!-- 防止与Tomcat 中的jstl/servlet发生冲突 -->
 	<dependency>
         <groupId>javax.servlet.jsp.jstl</groupId>
         <artifactId>jstl-api</artifactId>
