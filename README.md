@@ -29,3 +29,12 @@
    		<li>CSS/HTML框架：bootstrap</li>
 	</ul>	
 </p>
+
+<h1>目录介绍<h1>
+	<ul>
+		<li>lanmei-os-web</li>--商城web项目
+		<li>lanmei-os-user<li>--用户模块，登录注册相关
+		<li>lanmei-cms-web<li>--后台管理web项目
+		<li>doc</li>--开发日志			
+		<li>mysql</li>--数据库文件，创建数据表相关
+	</ul>
