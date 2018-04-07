@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<description>mybatis Configuration</description>
+	
+    <!-- 事务管理器:基于jdbc,ibatis,mybaits的spring事务管理 -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- 开启注解事务管理器 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	
+	<!-- 配置事务通知属性 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<!-- 定义事务传播属性 -->
+		<tx:attributes>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="count*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="list*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务切面,service包中的类会被代理 -->
+	<aop:config>
+		<aop:pointcut id="txPointcut"
+			expression="execution(* org.pussinboots.morning.*.service.impl.*.*(..))" />
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="txPointcut" />
+	</aop:config> 
+
+	<!-- 数据源配置,使用Druid数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<!-- 数据源驱动类可不写,Druid默认会自动根据URL识别DriverClass -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.pool.init}" />
+		<property name="minIdle" value="${jdbc.pool.minIdle}" />
+		<property name="maxActive" value="${jdbc.pool.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测,检测需要关闭的空闲连接,单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+
+		<!-- 配置一个连接在池中最小生存的时间,单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+		<property name="validationQuery" value="${jdbc.testSql}" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 打开PSCache,并且指定每个连接上PSCache的大小（Oracle使用） 
+		<property name="poolPreparedStatements" value="true" /> 
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" /> -->
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<!-- MyBatis SqlSessionFactoryBean 配置 -->
+	<!-- 注意：这里使用的是MP的MybatisSqlSessionFactoryBean,而不是Mybatis的,因为MP需要进行相应代理 -->
+	<bean id="sqlSessionFactory"
+		class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
+		<description>spring和MyBatis完美整合,不需要mybatis的配置映射文件</description>
+		<!-- 配置数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 配置Mybatis配置文件 -->
+		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
+		<!-- 配置别名包路径 -->
+		<property name="typeAliasesPackage" value="org.pussinboots.morning.*.entity" />
+		<!-- 配置Mapper扫描路径（IDEA系列编辑器需要特别注意,因为IDEA的设置问题,src中的xml文件是不会被编译的,如果放在src中可能会报错,解决办法详见 
+			常用问题-Invalid bound statement (not found) 错误如何解决?） -->
+		<property name="mapperLocations" value="classpath*:/mybatis/**/*Mapper.xml" />
+		<!-- 插件配置项 -->
+		<property name="plugins">
+			<array>
+				<!-- 分页插件配置 -->
+				<bean id="paginationInterceptor"
+					class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+					<property name="dialectType" value="mysql" />
+				</bean>
+			</array>
+		</property>
+		<!-- 全局配置注入 -->
+		<property name="globalConfig" ref="globalConfig" />
+	</bean>
+	
+	<bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
+		<!-- AUTO->`0`("数据库ID自增") INPUT->`1`(用户输入ID") ID_WORKER->`2`("全局唯一ID") 
+			UUID->`3`("全局唯一ID") -->
+		<property name="idType" value="0" />
+		<!-- MYSQL->`mysql` ORACLE->`oracle` DB2->`db2` H2->`h2` HSQL->`hsql` SQLITE->`sqlite` 
+			POSTGRE->`postgresql` SQLSERVER2005->`sqlserver2005` SQLSERVER->`sqlserver` -->
+		<!-- Oracle需要添加该项 -->
+		<!-- <property name="dbType" value="oracle" /> -->
+		<!-- 全局表为下划线命名设置 true -->
+		<!-- <property name="dbColumnUnderline" value="true" /> -->
+	</bean>
+
+	<!-- MyBatis 动态实现:DAO接口所在包名,Spring会自动查找其下的类 -->
+	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 对Dao 接口动态实现,需要知道接口在哪 -->
+		<property name="basePackage" value="org.pussinboots.morning.*.mapper" />
+	</bean>
+
+</beans>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd "
+	default-lazy-init="true">
+	
+	<!-- shiro -Echache -->
+	<description>Shiro Configuration</description>
+
+	<!--安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- 设置自定义Realm -->
+		<property name="realm" ref="shiroDbRealm" />
+		<!-- 将缓存管理器，交给安全管理器:ehcahe缓存shiro自带 -->
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+        <!-- 记住密码管理 -->
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+		<!-- 配置session管理器 -->
+		<!-- <property name="sessionManager" ref="sessionManager" /> -->
+	</bean>
+
+	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroAuthorizingRealm.java -->
+	<bean id="shiroDbRealm" class="org.pussinboots.morning.os.common.security.ShiroAuthorizingRealm" >
+	    <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />  
+	</bean>
+
+    <!-- 记住密码Cookie -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">  
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <!-- 7天,采用spring el计算方便修改[细节决定成败]！ -->
+        <property name="maxAge" value="#{7 * 24 * 60 * 60}"/>
+    </bean>
+
+    <!-- rememberMe管理器,cipherKey生成见{@code Base64Test.java} -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('U3ByaW5nQmxhZGUAAAAAAA==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>  
+    </bean>
+
+	<!-- Shiro Filter：Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 安全管理器：Shiro的核心安全接口,这个属性是必须的 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 要求登录时的链接(可根据项目的URL进行替换),非必须的属性,默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->  
+		<property name="loginUrl" value="/pass/login" />
+		<!-- 登录成功后要跳转的连接(本例中此属性用不到,因为登录成功后的处理逻辑在LoginController里硬编码为main.jsp了) -->  
+		<property name="successUrl" value="/index" />
+		<!-- 没有权限跳转的url： 用户访问未对其授权的资源时,所显示的连接  -->
+        <property name="unauthorizedUrl" value="/unauth"/>
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 
+					anon  不需要认证
+					authc 需要认证
+					user  验证通过或RememberMe登录的都可以
+				-->
+				/static/** = anon
+				/common/** = anon
+				/captcha-image.jpg = anon
+				/uc/** = authc
+				/** = anon
+			</value>
+		</property>
+	</bean>
+
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManager" ref="ehcache"/>
+	</bean>
+
+    <!-- 在方法中 注入  securityManager ，进行代理控制 -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
+	<!-- 启用shrio授权注解拦截方式 -->
+	<!-- <shiro:authenticated> 登录之后 -->
+	<!-- <shiro:notAuthenticated> 不在登录状态时 -->
+	<!-- <shiro:guest> 用户在没有RememberMe时 -->
+	<!-- <shiro:user> 用户在RememberMe时 -->
+	<!-- <shiro:hasAnyRoles name="abc,123" > 在有abc或者123角色时 -->
+	<!-- <shiro:hasRole name="abc"> 拥有角色abc -->
+	<!-- <shiro:lacksRole name="abc"> 没有角色abc -->
+	<!-- <shiro:hasPermission name="abc"> 拥有权限abc -->
+	<!-- <shiro:lacksPermission name="abc"> 没有权限abc -->
+	<!-- <shiro:principal> 显示用户登录名 -->
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager"/>
+	</bean>
+	
+	<!-- credentialsMatcher密码匹配规则 -->
+	<bean id="hashedCredentialsMatcher" class="org.pussinboots.morning.os.common.security.RetryLimitHashedCredentialsMatcher">
+		<constructor-arg ref="shiroEhcacheManager"/>
+		<!-- 算法名称：MD5/Sha1/Sha256 -->
+		<property name="hashAlgorithmName" value="MD5" />
+		<!-- storedCredentialsHexEncoded默认是true,此时用的是密码加密用的是Hex编码;false时用Base64编码 -->
+		<property name="storedCredentialsHexEncoded" value="true" />
+		<!-- 设置hashIterations属性来修改默认加密迭代次数:生成Hash值的迭代次数 -->
+		<property name="hashIterations" value="6" />
+	</bean>
+
+</beans>

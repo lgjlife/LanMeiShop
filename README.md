@@ -2,14 +2,26 @@
 基于Spring + Spring MVC + Mybatis 的商城系统
 
 <h1>技术选型</h1>
+
 <h4>一.开发环境<h4>
 <p>
-   <ul>
-   		<li>IDE： Eclipse 4.7.2 + Maven</li>
-   		<li>数据库：Mysql 5.7.12</li>
-   		<li>版本管理：github</li>
-   </ul>
+	<a href=”https://www.eclipse.org/downloads/eclipse-packages/“>
+	1.IDE： Eclipse 4.7.2
+	</a>
+	</br>
+	<a href="https://maven.apache.org/">
+	2.项目构建工具：Maven
+	</a>
+	</br>
+	<a href="https://www.mysql.com/">
+	3.数据库：Mysql 5.7.12
+	</a>
+	</br>
+	<a href="https://github.com/">
+	4.版本管理：github
+	</a>
 </p>
+
 <h4>二.后端技术<h4>
 <p>
 	<ul>
@@ -31,12 +43,13 @@
 </p>
 
 <h1>目录介绍<h1>
-<p>
+
+<body>
 	<ul>
 		<li>lanmei-os-web</li>--商城web项目
-		<li>lanmei-os-user<li>--用户模块，登录注册相关
-		<li>lanmei-cms-web<li>--后台管理web项目
+		<li>lanmei-os-user</li>--用户模块，登录注册相关
+		<li>lanmei-cms-web</li>--后台管理web项目
 		<li>doc</li>--开发日志			
 		<li>mysql</li>--数据库文件，创建数据表相关
 	</ul>
-<p>
+<body>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+                        
+    <description>Spring MVC Configuration</description>
+
+	<!-- 1.开启spring mvc注解模式 -->
+	<!-- 简化配置：添加注解驱动 ;扩充了注解驱动,可以将请求参数绑定到控制器参数  
+		(1)自动注册DefaulAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+		(2)提供一系列：数据绑定/数字/日期的format @NumberFormat,@DataTimeFormat,
+			xml,json默认读写支持
+	 -->
+	<mvc:annotation-driven enable-matrix-variables="true" />
+     
+   	<!-- 2.静态资源配置
+   		(1)加入对静态资源的处理  js,jpg
+   		(2)允许使用"/"做整体映射
+   	--> 
+	<mvc:default-servlet-handler/>
+
+	<!-- 3.视图名称解析器：配置ViewResolver,定义跳转的文件的前后缀 。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀,变成一个 可用的url地址 -->
+		<property name="prefix" value="/WEB-INF/views" />
+		<property name="suffix" value=".jsp" />
+	</bean>	
+	
+	<!-- DispatcherServlet上下文, 只管理@Controller类型的bean, 忽略其他型的bean, 如@Service（通过spring处理） -->
+	<!-- 检测这些类并注册相应Bean：让Bean定义注解工作起来,也就是上述传统声明方式。 它的base-package属性指定了需要扫描的类包,类包及其递归子包中所有的类都会被处理。
+		该配置项其实也包含了自动注入上述processor的功能,因此当使用<context:component-scan/>后,即可将<context:annotation-config/>省去。
+	 -->
+	<!-- 4.扫描web相关的Bean 使用Annotation自动注册Bean,只扫描@Controller -->
+	<context:component-scan base-package="org.pussinboots.morning.os.controller" use-default-filters="false"><!-- base-package 如果多个,用“,”分隔 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> <!-- 子标签是用来添加扫描注解的 -->
+	</context:component-scan>
+
+	<!-- 5.避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 6.配置文件上传,如果没有使用文件上传可以不用配置,当然如果不配,那么配置文件中也不必引入上传组件包 -->
+	<bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <!-- 默认编码 -->
+        <property name="defaultEncoding" value="utf-8" />  
+        <!-- 文件大小最大值 -->
+        <property name="maxUploadSize" value="10485760000" />  
+        <!-- 内存中的最大值 -->
+        <property name="maxInMemorySize" value="40960" />  
+    </bean> 
+    
+	<!-- 7.支持Shiro对Controller的方法级AOP安全控制 begin-->
+	<!-- AOP式方法级权限检查  -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">common/403</prop>
+				<prop key="java.lang.Throwable">common/500</prop>
+			</props>
+			</property>
+	</bean>
+	<!-- 支持Shiro对Controller的方法级AOP安全控制 end -->    
+	
+	<!-- 8.拦截器的配置 -->
+	<mvc:interceptors>
+		<!-- /**所有文件夹及里面的子文件夹;/*是所有文件夹，不含子文件夹 -->
+		<!-- 网站配置拦截器配置-->
+		<mvc:interceptor>
+		    <mvc:mapping path="/index"/>
+		    <mvc:mapping path="/list"/>
+	        <mvc:mapping path="/search"/>
+	        <mvc:mapping path="/detail/*"/>
+	        <mvc:mapping path="/question/asklist"/>
+	        <mvc:mapping path="/comment/list"/>
+	        <mvc:mapping path="/buy/checkout"/>
+	        <mvc:mapping path="/buy/confirm/*"/>
+	        <mvc:mapping path="/cart/*"/>
+	        <mvc:mapping path="/uc/**"/>
+		    <bean class="org.pussinboots.morning.os.common.intercepter.IntercepterForWebsite"/>
+		</mvc:interceptor> 
+		<!-- 用户登录拦截器配置-->
+		<mvc:interceptor>
+		    <mvc:mapping path="/**"/>
+		    <mvc:exclude-mapping path="/"/>
+		    <mvc:exclude-mapping path="/pass/**"/>
+		    <mvc:exclude-mapping path="/static/**"/>
+		    <mvc:exclude-mapping path="/uploads/**"/>		    
+		    <mvc:exclude-mapping path="/common/**"/>
+		    <bean class="org.pussinboots.morning.os.common.intercepter.IntercepterWebLogin"/>
+		</mvc:interceptor> 		
+	</mvc:interceptors>
+    
+</beans>
