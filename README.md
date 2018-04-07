@@ -3,36 +3,54 @@
 
 <h1>技术选型</h1>
 
-<h4>一.开发环境<h4>
+<h3>一.开发环境<h4>
 <p>
-	<a href=”https://www.eclipse.org/downloads/eclipse-packages/“>
-	1.IDE： Eclipse 4.7.2
+	1.IDE：
+	<a href="https://www.eclipse.org/downloads/eclipse-packages/">
+	 Eclipse 4.7.2
 	</a>
 	</br>
+	2.项目构建工具：
 	<a href="https://maven.apache.org/">
-	2.项目构建工具：Maven
+	Maven
 	</a>
 	</br>
+	3.数据库：
 	<a href="https://www.mysql.com/">
-	3.数据库：Mysql 5.7.12
+	Mysql 5.7.12
 	</a>
 	</br>
+	4.版本管理：
 	<a href="https://github.com/">
-	4.版本管理：github
+	github
 	</a>
 </p>
 
-<h4>二.后端技术<h4>
+<h3>二.后端技术<h4>
 <p>
-	<ul>
-   		<li>核心框架：Spring Framework 5.0.4.RELEASE</li>
-   		<li>持久层框架：Mybatis 3.3.0</li>
-   		<li>视图框架：Spring MVC 5.0.4.RELEASE</li>
-   		<li>Mybatis 代码生成器：mybatis-generator-eclipse-site</li>
-   		<li>日志管理：slf4j 1.7.5 + log4j 1.2.17</li>
-   		<li>数据库连接池：</li>
-   		<li>Mybatis 分页插件: pagehelper 6.1.2</li>	
-   	</ul>
+	1.核心框架：
+	<a href="https://projects.spring.io/spring-framework/">
+	Spring Framework 5.0.4.RELEASE
+	</a></br>
+	2.持久层框架：
+	<a href="http://www.mybatis.org/mybatis-3/">Mybatis 3.3.0
+	</a></br>
+	3.视图框架：
+	<a href="https://projects.spring.io/spring-framework/">
+	Spring MVC 5.0.4.RELEASE
+	</a></br>
+	4.Mybatis 代码生成器:
+	<a href="http://www.mybatis.org/generator/">
+	mybatis-generator 1.3.6
+	</a></br>
+	5.日志管理：
+	<a href="https://www.slf4j.org/">slf4j 1.7.5</a>+
+	<a href="https://logging.apache.org/log4j/2.x/">log4j2
+	</a></br>
+	6.Mybatis 分页插件: 
+	<a href="https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md">
+	pagehelper 6.1.2
+	</a></br>
 </p>
 <h4>三.前端技术<h4>
 <p>
