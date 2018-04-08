@@ -36,7 +36,7 @@
            但有些程序和框架在使用了JavaBeans Introspector之后,没有进行清理工作(如Quartz,Struts),最后导致内存泄漏
      -->
     <listener>
-        <listener-class>、
+        <listener-class>
        		 org.springframework.web.util.IntrospectorCleanupListener
         </listener-class>
 	</listener>
@@ -73,7 +73,7 @@
     	<servlet-name>lanmei</servlet-name>
     	<!-- DispatcherServlet 处理所有的请求 -->
     	<servlet-class>
-    		org.springframework.web.servlet.DispatcherServlet;
+    		org.springframework.web.servlet.DispatcherServlet
     	</servlet-class>
     	<init-param>
     		<param-name>contextConfigLocation</param-name>
@@ -83,9 +83,9 @@
     	<load-on-startup>1</load-on-startup>
     </servlet>
     <!-- 拦截映射请求 -->
+    <!-- 拦截所有 -->
     <servlet-mapping>
-    	<servlet-name>lanmei</servlet-name>
-    	<!-- 拦截所有 -->
+    	<servlet-name>lanmei</servlet-name>    	
     	<url-pattern>/</url-pattern>
     </servlet-mapping>
     

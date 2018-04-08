@@ -13,7 +13,7 @@
 	<description>spring Configuration</description>
 	
 	<!-- 加载配置文件 -->
-	<context:property-placeholder  ignore-resource-not-found="true" location="classpath:properties/*.properties" />
+<!-- 	<context:property-placeholder  ignore-resource-not-found="true" location="classpath:properties/*.properties" /> -->
                                   
 	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。  -->
 	<context:component-scan base-package="org.pussinboots.morning"><!-- base-package 如果多个，用“,”分隔 -->
@@ -24,12 +24,12 @@
 	<!-- <import resource="classpath:spring/applicationContext-kaptcha.xml" /> -->
 	
 	<!-- 持久层框架MYBATIS:配置文件引入 -->
-	<import resource="classpath:spring/applicationContext-mybatis.xml" />
+	<import resource="classpath:spring/applicationContext-mybatis.xml" /> 
 	
 	<!-- 缓存框架EHCACHE:配置文件引入 -->
-<!-- 	<import resource="classpath:spring/applicationContext-ehcache.xml" /> -->
+ 	 <import resource="classpath:spring/applicationContext-ehcache.xml" /> 
 	
 	<!-- 安全框架SHIRO:配置文件引入 -->
-	<import resource="classpath:spring/applicationContext-shiro.xml" />
+	<import resource="classpath:spring/applicationContext-shiro.xml" /> 
 	
 </beans>

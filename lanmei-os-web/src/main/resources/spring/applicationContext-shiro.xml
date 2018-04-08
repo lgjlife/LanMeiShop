@@ -11,7 +11,7 @@
 	<!--安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- 设置自定义Realm -->
-		<property name="realm" ref="shiroDbRealm" />
+		<!-- <property name="realm" ref="shiroDbRealm" /> -->
 		<!-- 将缓存管理器，交给安全管理器:ehcahe缓存shiro自带 -->
 		<property name="cacheManager" ref="shiroEhcacheManager" />
         <!-- 记住密码管理 -->
@@ -21,9 +21,9 @@
 	</bean>
 
 	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroAuthorizingRealm.java -->
-	<bean id="shiroDbRealm" class="org.pussinboots.morning.os.common.security.ShiroAuthorizingRealm" >
+	<!-- <bean id="shiroDbRealm" class="org.pussinboots.morning.os.common.security.ShiroAuthorizingRealm" >
 	    <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />  
-	</bean>
+	</bean> -->
 
     <!-- 记住密码Cookie -->
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">  
@@ -38,6 +38,8 @@
         <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('U3ByaW5nQmxhZGUAAAAAAA==')}"/>
         <property name="cookie" ref="rememberMeCookie"/>  
     </bean>
+
+
 
 	<!-- Shiro Filter：Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -95,14 +97,14 @@
 	</bean>
 	
 	<!-- credentialsMatcher密码匹配规则 -->
-	<bean id="hashedCredentialsMatcher" class="org.pussinboots.morning.os.common.security.RetryLimitHashedCredentialsMatcher">
+	<!-- <bean id="hashedCredentialsMatcher" class="org.pussinboots.morning.os.common.security.RetryLimitHashedCredentialsMatcher">
 		<constructor-arg ref="shiroEhcacheManager"/>
-		<!-- 算法名称：MD5/Sha1/Sha256 -->
+		算法名称：MD5/Sha1/Sha256
 		<property name="hashAlgorithmName" value="MD5" />
-		<!-- storedCredentialsHexEncoded默认是true,此时用的是密码加密用的是Hex编码;false时用Base64编码 -->
+		storedCredentialsHexEncoded默认是true,此时用的是密码加密用的是Hex编码;false时用Base64编码
 		<property name="storedCredentialsHexEncoded" value="true" />
-		<!-- 设置hashIterations属性来修改默认加密迭代次数:生成Hash值的迭代次数 -->
+		设置hashIterations属性来修改默认加密迭代次数:生成Hash值的迭代次数
 		<property name="hashIterations" value="6" />
-	</bean>
+	</bean> -->
 
 </beans>

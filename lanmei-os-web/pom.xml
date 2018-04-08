@@ -12,6 +12,18 @@
   <name>org.lanmei.os.web</name>
   <description>蓝莓商城前端项目</description>
   
+  <dependencies>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.user.dao</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.user.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  </dependencies>
   <build>
   		<finalName>
   			lanmei-os

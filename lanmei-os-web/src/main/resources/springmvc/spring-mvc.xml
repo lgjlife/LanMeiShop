@@ -76,9 +76,9 @@
 	<!-- 支持Shiro对Controller的方法级AOP安全控制 end -->    
 	
 	<!-- 8.拦截器的配置 -->
-	<mvc:interceptors>
-		<!-- /**所有文件夹及里面的子文件夹;/*是所有文件夹，不含子文件夹 -->
-		<!-- 网站配置拦截器配置-->
+ <mvc:interceptors>
+	<!-- 	/**所有文件夹及里面的子文件夹;/*是所有文件夹，不含子文件夹
+		网站配置拦截器配置-->
 		<mvc:interceptor>
 		    <mvc:mapping path="/index"/>
 		    <mvc:mapping path="/list"/>
@@ -102,6 +102,6 @@
 		    <mvc:exclude-mapping path="/common/**"/>
 		    <bean class="org.pussinboots.morning.os.common.intercepter.IntercepterWebLogin"/>
 		</mvc:interceptor> 		
-	</mvc:interceptors>
+	</mvc:interceptors> 
     
 </beans>

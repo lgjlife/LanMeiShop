@@ -9,4 +9,10 @@
   <packaging>pom</packaging>
   <name>org.lanmei.user</name>
   <description>蓝莓商城前台用户模块</description>
+  
+  <modules>
+		<module>org.lanmei.user.service</module>
+		<module>org.lanmei.user.dao</module>
+  </modules>
+  
 </project>

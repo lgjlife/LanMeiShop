@@ -45,7 +45,7 @@
 	</a></br>
 	5.日志管理：
 	<a href="https://www.slf4j.org/">slf4j 1.7.5</a>+
-	<a href="https://logging.apache.org/log4j/2.x/">log4j2
+	<a href="https://logging.apache.org/log4j/2.x/manual/configuration.html/">log4j2
 	</a></br>
 	6.Mybatis 分页插件: 
 	<a href="https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md">
