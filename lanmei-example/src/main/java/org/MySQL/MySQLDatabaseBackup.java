@@ -1,12 +1,18 @@
 package org.MySQL;
 
-import java.io.BufferedReader;  
-import java.io.File;  
-import java.io.FileOutputStream;  
-import java.io.IOException;  
-import java.io.InputStreamReader;  
-import java.io.OutputStreamWriter;  
-import java.io.PrintWriter;  
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.util.Date;
+import java.util.Properties;
+
+import org.apache.ibatis.io.Resources;  
   
 /** 
  * MySQL数据库备份 
@@ -69,8 +75,33 @@ public class MySQLDatabaseBackup {
     }  
       
     public static void main(String[] args){  
+    	
+    	Properties properties = new Properties();
+    	Reader proreader = null;
+    	Date  date = new Date();
+    	/*读取配置文件的配置信息*/
+    	try {
+			InputStream in = Resources.getResourceAsStream("mysqlBackup.properties");
+			proreader = new InputStreamReader(in);
+			properties.load(proreader);
+    	} catch (Exception e) {
+			// TODO: handle exception
+		}
+    	System.out.println(properties.get("hostIP"));
+    	
+		String fileName = String.valueOf(date.getYear() + 1900) 
+    					  + "-" + String.valueOf(date.getMonth()) 
+    			          + "-" +  String.valueOf(date.getDate()) 
+    			          + "-" +  String.valueOf(date.getHours()) 
+    			          + ":" +  String.valueOf(date.getMinutes()) 
+    			          + ".sql";
         try {  
-            if (exportDatabaseTool("localhost", "root", "563739007", "/home/lgj/amysql", "2018-04-09.sql", "test")) {  
+            if (exportDatabaseTool((String)properties.get("hostIP"),
+            						(String)properties.get("userName"),
+            						(String)properties.get("password"),
+            						(String)properties.get("savePath"),
+            		                fileName,
+            		                (String)properties.get("databaseName"))){  
                 System.out.println("数据库成功备份！！！");  
             } else {  
                 System.out.println("数据库备份失败！！！");  
