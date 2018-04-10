@@ -21,6 +21,7 @@
    <context-param>
     	<param-name>contextConfigLocation</param-name>
     	<!-- 配置文件放置在 src/main/resource/spring-->
+    	<!-- classpath: 加载单个文件 classpath*:加载多个文件  -->
     	<param-value>classpath:spring/spring-context.xml</param-value>
     </context-param>
       <!-- 

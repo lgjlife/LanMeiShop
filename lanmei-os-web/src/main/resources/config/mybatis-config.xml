@@ -27,7 +27,7 @@
 		<setting name="useColumnLabel" value="true" />
 		<setting name="defaultExecutorType" value="REUSE" />
 		<setting name="defaultStatementTimeout" value="25000" />
-		<setting name="logImpl" value="LOG4J"/>
+		<setting name="logImpl" value="LOG4J2"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
