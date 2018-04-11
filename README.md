@@ -83,7 +83,7 @@
 	<li>
 		数据库连接池：
 		<a href="http://druid.io/">
-			quartz
+			druid
 		</a>
 	</li>
 	<li>
@@ -103,7 +103,7 @@
 
 
 <h1>目录介绍<h1>
-
+<h3>目录介绍<h3>
 <ol>
 	<li>lanmei-os-web</li>--商城web项目
 	<li>lanmei-os-user</li>--用户模块，登录注册相关
