@@ -51,7 +51,7 @@
  	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<!-- 数据源驱动类可不写,Druid默认会自动根据URL识别DriverClass -->
-		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 
 		<!-- 基本属性 url、user、password -->
 		<property name="url" value="${jdbc.url}" />

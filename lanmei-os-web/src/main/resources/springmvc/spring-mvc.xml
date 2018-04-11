@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
@@ -16,9 +17,20 @@
 		(1)自动注册DefaulAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
 		(2)提供一系列：数据绑定/数字/日期的format @NumberFormat,@DataTimeFormat,
 			xml,json默认读写支持
+			<mvc:annotation-driven enable-matrix-variables="true" />
 	 -->
-	<mvc:annotation-driven enable-matrix-variables="true" />
-     
+	<mvc:annotation-driven/>
+	<!--swagger 配置 -->
+	<!--由于是spring框架，静态资源是被拦截，为了被外界访问到，需要配置如下： -->
+	<!--
+	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+	<bean class="org.lanmei.swagger.SwaggerConfig"/>
+    
+	-->
+	
+	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>
+	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+
    	<!-- 2.静态资源配置
    		(1)加入对静态资源的处理  js,jpg
    		(2)允许使用"/"做整体映射
@@ -37,8 +49,8 @@
 		该配置项其实也包含了自动注入上述processor的功能,因此当使用<context:component-scan/>后,即可将<context:annotation-config/>省去。
 	 -->
 	<!-- 4.扫描web相关的Bean 使用Annotation自动注册Bean,只扫描@Controller -->
-	<context:component-scan base-package="org.pussinboots.morning.os.controller" use-default-filters="false"><!-- base-package 如果多个,用“,”分隔 -->
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> <!-- 子标签是用来添加扫描注解的 -->
+	<context:component-scan base-package="org.lanmei.os.controller"  use-default-filters="false"><!-- base-package 如果多个,用“,”分隔 -->
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> <!-- 子标签是用来添加扫描注解的 -->
 	</context:component-scan>
 
 	<!-- 5.避免IE执行AJAX时,返回JSON出现下载文件 -->
@@ -70,8 +82,8 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.apache.shiro.authz.UnauthorizedException">common/403</prop>
-				<prop key="java.lang.Throwable">common/500</prop>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">errorpage/403</prop>
+				<prop key="java.lang.Throwable">errorpage/500</prop>
 			</props>
 			</property>
 	</bean>

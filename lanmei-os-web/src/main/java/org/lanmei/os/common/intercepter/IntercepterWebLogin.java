@@ -25,6 +25,7 @@ public class IntercepterWebLogin implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("preHandle");
 		return HandlerInterceptor.super.preHandle(request, response, handler);
 	}
 	/**
@@ -35,6 +36,7 @@ public class IntercepterWebLogin implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("postHandle");
 		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
 	}
 	/**
@@ -45,6 +47,7 @@ public class IntercepterWebLogin implements HandlerInterceptor {
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("afterCompletion");
 		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
 	}
 	

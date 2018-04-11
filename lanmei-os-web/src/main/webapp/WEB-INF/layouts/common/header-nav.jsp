@@ -48,10 +48,10 @@
 				<div class="col-4">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="login.jsp">登录</a>
+							<a class="nav-link" href="/pass/login" target="_blank">登录</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/">注册</a>
+							<a class="nav-link" href="/Register/Register" target="_blank">注册</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/">我的订单</a>

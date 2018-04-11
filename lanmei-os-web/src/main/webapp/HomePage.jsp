@@ -21,6 +21,21 @@
 	   <br>
 	   <br>
 	   <br>	
+	   <form method="get"  action="http://localhost:8080/lanmei-os/pass/test" >
+	   		<table>
+	   			<tr>
+	   				<td>
+	   					<input type="text" name="usernamme"/>
+	   				</td>
+	   				<td>
+	   					<input type="submit" value="提交 y" target="_blank"/>
+	   				</td>
+	   			</tr>
+	   			
+	   		</table>
+	   		
+	   
+	   </form>
 	   <%@ include  file="/WEB-INF/layouts/common/search.jsp" %>
 	   <%@ include  file="/WEB-INF/layouts/HomePage/index.jsp" %> 	   
 	   <%@ include  file="/WEB-INF/layouts/common/footer.jsp" %>
