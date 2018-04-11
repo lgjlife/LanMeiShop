@@ -27,6 +27,20 @@
 </p>
 
 <h3>二.后端技术<h4>
+<ol>
+	<li>
+		1.核心框架：
+		<a href="https://projects.spring.io/spring-framework/">	
+			Spring Framework 5.0.4.RELEASE
+		</a>
+	</li>
+	<li>
+		2.持久层框架：
+		<a href="http://www.mybatis.org/mybatis-3/">	
+			Mybatis 3.3.0
+		</a>
+	</li>
+</ol>
 <p>
 	1.核心框架：
 	<a href="https://projects.spring.io/spring-framework/">
@@ -50,6 +64,10 @@
 	6.Mybatis 分页插件: 
 	<a href="https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md">
 	pagehelper 6.1.2
+	</a></br>
+	6.短信验证服务: 
+	<a href="https://www.aliyun.com/product/sms?spm=5176.8195934.765261.387.5c464183yLVTAN">
+	阿里云短信服务
 	</a></br>
 </p>
 <h4>三.前端技术<h4>
