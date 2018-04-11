@@ -4,27 +4,33 @@
 <h1>技术选型</h1>
 
 <h3>一.开发环境<h4>
-<p>
-	1.IDE：
-	<a href="https://www.eclipse.org/downloads/eclipse-packages/">
-	 Eclipse 4.7.2
-	</a>
-	</br>
-	2.项目构建工具：
-	<a href="https://maven.apache.org/">
-	Maven
-	</a>
-	</br>
-	3.数据库：
-	<a href="https://www.mysql.com/">
-	Mysql 5.7.12
-	</a>
-	</br>
-	4.版本管理：
-	<a href="https://github.com/">
-	github
-	</a>
-</p>
+<ol>
+	<li>
+		IDE：
+		<a href="https://www.eclipse.org/downloads/eclipse-packages/">
+		    Eclipse 4.7.2
+		</a>		
+	</li>
+	<li>
+		项目构建工具：
+		<a href="https://maven.apache.org/">
+			Maven
+		</a>
+	</li>
+	<li>
+		数据库：
+		<a href="https://www.mysql.com/">
+			Mysql 5.7.12
+		</a>
+	</li>
+	<li>
+		版本管理：
+		<a href="https://github.com/">
+			github
+		</a>
+	</li>
+</ol>
+
 
 <h3>二.后端技术<h4>
 <ol>
@@ -70,33 +76,39 @@
 			阿里云短信服务
 		</a>
 	</li>
+		任务调度: 
+		<a href="http://www.quartz-scheduler.org/">
+			quartz
+		</a>
 	<li>
+		数据库连接池：
+		<a href="http://druid.io/">
+			quartz
+		</a>
 	</li>
 	<li>
 	</li>
 </ol>
 
 <h4>三.前端技术<h4>
-<p>
-	<ol>
-   		<li>
-   			JS框架：Jquery
-   		
-   		</li>
-   		<li>
-   			CSS/HTML框架：bootstrap
-   		</li>
-	</ol>	
-</p>
+
+<ol>
+	<li>
+		JS框架：Jquery	
+	</li>
+	<li>
+		CSS/HTML框架：bootstrap
+	</li>
+</ol>	
+
 
 <h1>目录介绍<h1>
 
-<body>
-	<ol>
-		<li>lanmei-os-web</li>--商城web项目
-		<li>lanmei-os-user</li>--用户模块，登录注册相关
-		<li>lanmei-cms-web</li>--后台管理web项目
-		<li>doc</li>--开发日志			
-		<li>mysql</li>--数据库文件，创建数据表相关
-	</ol>
-<body>
+<ol>
+	<li>lanmei-os-web</li>--商城web项目
+	<li>lanmei-os-user</li>--用户模块，登录注册相关
+	<li>lanmei-cms-web</li>--后台管理web项目
+	<li>doc</li>--开发日志			
+	<li>mysql</li>--数据库文件，创建数据表相关
+</ol>
+
