@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
                         
     <description>Spring MVC Configuration</description>
-
+	<!--  -->
 	<!-- 1.开启spring mvc注解模式 -->
 	<!-- 简化配置：添加注解驱动 ;扩充了注解驱动,可以将请求参数绑定到控制器参数  
 		(1)自动注册DefaulAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
@@ -29,6 +29,7 @@
 	-->
 	
 	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/"/>
+	<mvc:resources mapping="/swagger-editor/**" location="/WEB-INF/swagger-editor/"/>
 	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
 
    	<!-- 2.静态资源配置
@@ -39,7 +40,10 @@
 
 	<!-- 3.视图名称解析器：配置ViewResolver,定义跳转的文件的前后缀 。 可以用多个ViewResolver。 使用order属性排序。 InternalResourceViewResolver放在最后。 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀,变成一个 可用的url地址 -->
+		
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<!-- 给Controller里的字符串返回加上前缀和后缀 -->
+		<!-- return "user/login" 变成为路径： /WEB-INF/views/user/login.jsp -->
 		<property name="prefix" value="/WEB-INF/views" />
 		<property name="suffix" value=".jsp" />
 	</bean>	
