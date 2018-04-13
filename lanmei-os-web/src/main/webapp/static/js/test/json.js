@@ -63,7 +63,7 @@ function sendmapJson(){
 //JSON.stringify
 function formToJson(){
 
-	$('#formDemo').append("userName = " + $("formDemo").attr("userName")
+	$('#formDemo').append("userName = " + $("#formDemo").attr("userName")
 						+ "  passWord = " + $('#formDemo').attr('passWord')
 						+ "  phoneNum = " + $('#formDemo').attr('phoneNum'));
 	//return $('#formDemo').serializeJSON();

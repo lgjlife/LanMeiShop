@@ -54,5 +54,9 @@
 		<br>
 		<!-- 该butto放置在表单内会导致整个页面刷新 -->
 		<button id="form_btn" onclick="sendformJson()">发送</button>
+		
+		<hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />
+		<h5>数据库测试</h5>
+		<a href="${projectPath}/user/info">数据库访问测试</a>
 	</body>
 </html>

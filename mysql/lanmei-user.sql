@@ -34,7 +34,9 @@ CREATE TABLE `os_user`(
     PRIMARY KEY (`user_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="用户表";
 
-INSERT INTO `os_user` VALUES(2,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(1,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(3,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13999999999",NULL,NULL,5);  
+
 /*用户登录表*/
 DROP TABLE IF EXISTS `os_user_login`;
 CREATE TABLE `os_user_login`(

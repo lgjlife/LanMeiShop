@@ -1,0 +1,4 @@
+TRACE [main] 2018-04-13 17:30:08 (BaseJdbcLogger.java:165) <==    Columns: user_id, user_number, nick_name, login_password, actual_name, gender, age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, head_portrait
+TRACE [main] 2018-04-13 17:30:08 (BaseJdbcLogger.java:165) <==        Row: 1, 1, Fly, 123456789, 梁飞飞, 男, 25, 0, liang@lanmei.com, 0, 13888888888, null, null, 5, <<BLOB>>
+TRACE [main] 2018-04-13 17:31:54 (BaseJdbcLogger.java:165) <==    Columns: user_id, user_number, nick_name, login_password, actual_name, gender, age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, head_portrait
+TRACE [main] 2018-04-13 17:31:54 (BaseJdbcLogger.java:165) <==        Row: 1, 1, Fly, 123456789, 梁飞飞, 男, 25, 0, liang@lanmei.com, 0, 13888888888, null, null, 5, <<BLOB>>

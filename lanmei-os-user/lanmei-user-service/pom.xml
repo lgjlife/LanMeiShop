@@ -8,4 +8,13 @@
   <artifactId>org.lanmei.user.service</artifactId>
   <name>org.lanmei.user.service</name>
   <description>蓝莓商城前台用户模块服务层</description>
+  
+  <dependencies>
+		<!-- 0.Morning相关依赖 begin -->
+		<dependency>
+			<groupId>org.lanmei.shop</groupId>
+			<artifactId>org.lanmei.user.dao</artifactId>
+			<version>${lanmei.version}</version>
+		</dependency>
+  </dependencies>
 </project>

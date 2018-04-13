@@ -34,4 +34,11 @@ public interface OsUserMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(OsUser record);
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	OsUser selectById(Long  userId);
 }

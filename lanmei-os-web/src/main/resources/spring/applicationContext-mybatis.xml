@@ -9,8 +9,11 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-
+	
+	
 	<description>mybatis Configuration</description>
+	
+	<context:component-scan base-package="org.lanmei"></context:component-scan>
 	<!-- 引入数据库配置文件 -->
 	<context:property-placeholder location="classpath:mysqljdbc.properties" />
     <!-- 事务管理器:基于jdbc,ibatis,mybaits的spring事务管理 -->
@@ -86,20 +89,27 @@
 	</bean> 
 	
 
-	<!-- <bean id="dataSource"
+	 <bean id="dataSource1"
 		  class="org.apache.ibatis.datasource.pooled.PooledDataSource">		  
-		  <property name="url" value="${url}"/>
-		  <property name="driver" value="${driver}"/>
-		  <property name="username" value="${username}"/>
-		  <property name="password" value="${password}"/>
-	</bean> -->
+		  <property name="url" value="${jdbc.url}"/>
+		  <property name="driver" value="${jdbc.driver}"/>
+		  <property name="username" value="${jdbc.username}"/>
+		  <property name="password" value="${jdbc.password}"/>
+	</bean>
 	<!-- MyBatis SqlSessionFactoryBean 配置 -->
 	<bean id="sqlSessionFactory" 
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
 	      
 	      <property name="configLocation" value="classpath:/config/mybatis-config.xml"/>
 	      <property name="dataSource" ref="dataSource"  />
-	      <property name="mapperLocations" value="classpath:org/lanmei/*/dao/mapper/*.xml">
+	      <property name="mapperLocations" >
+	      	<array>
+	      		<value>classpath:org/lanmei/*/dao/mapper/*.xml</value>
+	      	</array>
+	      </property>
+	      
+	      <property name="typeAliasesPackage" value="org.lanmei.user.dao.model">
+	      
 	      </property>
 		
 	</bean>
@@ -145,7 +155,8 @@
 	<!-- MyBatis 动态实现:DAO接口所在包名,Spring会自动查找其下的类 -->
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 对Dao 接口动态实现,需要知道接口在哪 -->
-		<property name="basePackage" value="org.lanmei.*.dao.mapper"/>
+		<property name="basePackage" value="org.lanmei.**.dao.mapper"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
 </beans>

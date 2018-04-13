@@ -18,6 +18,7 @@
      | defaultExecutorType       SIMPLE, 配置和设定执行器，SIMPLE 执行器执行其它语句。REUSE 执行器可能重复使用prepared statements 语句，BATCH执行器可以重复执行语句和批量更新。
      | defaultStatementTimeout   null, 设置一个时限，以决定让驱动器等待数据库回应的多长时间为超时
      | -->
+     
     <settings>
         <!-- 这个配置使全局的映射器启用或禁用缓存 -->
         <setting name="cacheEnabled" value="true" />
@@ -31,12 +32,30 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
-	<!-- 查询对象别名配置 -->
+
+	
 	<typeAliases>
-		<!-- 
-		<typeAlias alias="userVo" type="xxx.vo.UserVo" />
-		 -->
-	</typeAliases>
+        <package name="org.lanmei.*.dao.model"/>
+    </typeAliases>
+
+    <!-- <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/lanmei"/>
+                <property name="username" value="root"/>
+                <property name="password" value="563739007"/>
+            </dataSource>
+        </environment>
+    </environments> -->
+
+    <!-- <mappers>
+        <mapper resource="org/lanmei/user/dao/mapper/OsUserMapper.xml"/>
+    </mappers> -->
+    
 </configuration>
 
 
