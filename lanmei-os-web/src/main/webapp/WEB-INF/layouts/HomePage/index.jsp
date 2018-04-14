@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css"  href="static/bootstrap/bootstrap.css">
+		<script type="text/javascript" src="static/bootstrap/bootstrap.js"></script>
 		<meta charset="utf-8">
  	    <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,9 +11,15 @@
 		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="static/js/homepage/homepage.js"></script>
 		<link rel="stylesheet" href="static/css/homepage/homepage.css">
+		
+		<link rel="stylesheet" type="text/css"  href="static/bootstrap/bootstrap.css">
+		<script type="text/javascript" src="static/bootstrap/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css"  href="static/bootstrap/test1.css">
 	</head>
 	
 	<body>
+	    <h1 class="ptext1" >
+		</h1>
 	    <!-- 创建顶部导航栏 -->
 	     <div class="container-fluid">
 			<div class="row">

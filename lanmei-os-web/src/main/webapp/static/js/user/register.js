@@ -1,0 +1,8 @@
+
+/**/
+$(function(){
+	$("#registerPhoneNum").blur(function(){
+		
+	});
+	
+});

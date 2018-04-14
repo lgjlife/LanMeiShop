@@ -20,6 +20,8 @@
 		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> --><!-- 过滤其中这四个注解中的一个 -->
 	</context:component-scan>
 	
+	
+	
 	<!-- 验证码KAPTCHA:配置文件引入-->
 	<!-- <import resource="classpath:spring/applicationContext-kaptcha.xml" /> -->
 	

@@ -114,4 +114,13 @@
 		<session-timeout>10</session-timeout> 
 		<!-- 设 定HttpSession的生命周期。这里以分钟计算。下面的设定指明Session在最长不活动时间为10分钟。过了这个时间，Servlet容器将它 作为无效处理。注意这里和程序里指定的计数单位不同，程序里是以秒为单位。<session-config>只有<session- timeout>这个元素–>  -->
 	</session-config>
+	
+	<!-- <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping> -->
 </web-app>  

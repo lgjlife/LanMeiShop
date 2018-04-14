@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.wordnik.swagger.annotations.Api;
 
@@ -23,12 +24,17 @@ public class UserLoginController {
 	@Autowired
 	UserServiceImpl  userServiceImpl;
 
-	@RequestMapping("/info")
+	@RequestMapping(path="/info")
 	public String  getUserInfoById(){
 		logger.debug("into /user/info");
 		OsUser user = userServiceImpl.getById(3L);
 		System.out.println("PhoneNum = " + user.getPhoneNum());
-		return "/user/user_register";
+		return "/user/register";
 	}
 	
+	@RequestMapping(value="/register",method=RequestMethod.GET)
+	public String register() {
+		logger.debug("INTO /user/register");
+		return "/user/register";
+	}
 }

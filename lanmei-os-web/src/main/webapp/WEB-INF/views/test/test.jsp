@@ -27,7 +27,7 @@
 		Scheme = ${Scheme}</br>
 		ServerName = ${ServerName}</br>
 		ServerPort = ${ServerPort}</br>
-		
+		contextPathOfStatic = ${contextPathOfStatic}
 		<hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />		
 		<a href="${projectPath}/test/responsbody">打印responsbody 测试</a>
 		</br>

@@ -1,22 +1,25 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@ page import="java.util.Date" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- base.jsp 路径定义 / 包含 bootstrap 和  jquery 文件-->
+<jsp:include page="/WEB-INF/layouts/common/base.jsp"/>
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>蓝莓商城-用户注册</title>
 		<meta charset="utf-8">
- 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1">		
 	</head>
 	
 	<body>
+	
 	    <!-- 创建顶部导航栏 -->
 	     <div class="container-fluid">
 			<div class="row">
 				<div class="col-2">
 				</div>
 				<div class="col-4" >
-					<ul class="nav ">
+					<ul class="nav">
 						<li class="nav-item">
 							<a class="nav-link" href="/lanmei-os">商城首页</a>
 						</li>
@@ -51,7 +54,7 @@
 							<a class="nav-link" href="/pass/login" target="_blank">登录</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/Register/Register" target="_blank">注册</a>
+							<a class="nav-link" href="${projectPath}/user/register" target="_blank">注册</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/">我的订单</a>

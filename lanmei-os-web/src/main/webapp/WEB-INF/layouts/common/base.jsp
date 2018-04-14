@@ -23,3 +23,19 @@ ServerPort = 8080
 <c:set var="Scheme" value="${pageContext.request.scheme}"/>
 <c:set var="ServerName" value="${pageContext.request.serverName}"/>
 <c:set var="ServerPort" value="${pageContext.request.serverPort}"/>
+<!-- 静态资源路径 -->
+<c:set var="contextPathOfStatic" value="${pageContext.request.contextPath}/static"/>
+
+<!-- jquery -->
+<script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>
+<!-- bootstrap 文件 -->
+<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
+<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script>
+<!-- 表单验证插件 -->
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<!-- 表单验证插件 中文提示 -->
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+<!-- 自定义 --> 
+<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
+
