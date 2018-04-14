@@ -52,8 +52,9 @@
 				<form id="registerForm">
 					<div class="form-group">
 						<label  for="phoneNum" >电话号码</label>
-						<input type="text" id="registerPhoneNum"  class="form-control" placeholder="请输入11位电话号码"
-						number="true"  maxlength="11"  minlength="11" required />
+						<input type="text" id="registerPhoneNum"  class="form-control" placeholder="请输入11位电话号码"/>
+						<span id="registerPhoneNumWarn" style="color:#EE2C2C"></span>
+						
 					</div>
 					<div class="form-group">
 						<label  for="phoneNum" >验证码<button style="background-color:#EED8AE">获取验证码</button></label>
@@ -61,13 +62,13 @@
 					</div>
 					<div class="form-group">
 						<label  for="phoneNum" >设置密码</label>
-						<input type="text" id="registerPassword"  class="form-control" placeholder="设置密码" 
-							minlength:8 required/>
-						<span class="help-block" style="color:#8B795E">由字母、数字、特殊符号构成，不能为纯数字,至少为8位。
+						<input type="text" id="registerPassword"  class="form-control" placeholder="设置密码" />
+						<span id="registerPasswordWarn" style="color:#EE2C2C"></span>
+						<span class="help-block" style="color:#8B795E">由字母、数字、特殊符号构成，不能为纯数字,至少为8位。</span>
 					</div>
 					<div class="form-group">
 						<label  for="phoneNum" >确认密码</label>
-						<input type="text" id="registerPasswordAgain"  class="form-control" placeholder="重新输入密码" required/>
+						<input type="password" id="registerPasswordAgain"  class="form-control" placeholder="重新输入密码" />
 					</div>
 					<div class="checkbox">
 						<label>
