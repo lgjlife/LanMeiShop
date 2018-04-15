@@ -1,3 +1,9 @@
+/* 输入框标签 */
 .form-group>label{
 	color:#FF7F00;
 }
+/* 输入框错误提示 */
+.formWarn{
+	color:#EE2C2C;
+} 
+

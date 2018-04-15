@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- base.jsp 路径定义 / 包含 bootstrap 和  jquery 文件-->
 <%-- <jsp:include page="/WEB-INF/layouts/common/base.jsp"/> --%>
@@ -12,6 +12,7 @@
  	    <meta name="viewport" content="width=device-width, initial-scale=1">      
  	    
 		<script src="${contextPathOfStatic}/js/user/register.js"></script>
+		<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
 		
  	    <script type="text/javascript">
 	 	   $().ready(function() {
@@ -52,36 +53,43 @@
 				<form id="registerForm">
 					<div class="form-group">
 						<label  for="phoneNum" >电话号码</label>
-						<input type="text" id="registerPhoneNum"  class="form-control" placeholder="请输入11位电话号码"/>
-						<span id="registerPhoneNumWarn" style="color:#EE2C2C"></span>
-						
+						<input type="text" id="registerPhoneNum"  class="form-control" style="width:60%" placeholder="请输入11位电话号码"/>
+						<span id="registerPhoneNumWarn" class="formWarn" ></span>						
 					</div>
 					<div class="form-group">
-						<label  for="phoneNum" >验证码<button style="background-color:#EED8AE">获取验证码</button></label>
-						<input type="text" id="registerPhoneNumValidate"  class="form-control" placeholder="手机验证码" required />
+						<label  for="registerPhoneNumValidate" >验证码<button id="getPhoneNumValidateBtn" style="background-color:#EED8AE">获取验证码</button></label>
+						<input type="text" id="registerPhoneNumValidate"  class="form-control" style="width:60%" placeholder="手机验证码" disabled />
+						<span id="registerPhoneNumValidateWarn" class="formWarn" ></span>
 					</div>
 					<div class="form-group">
-						<label  for="phoneNum" >设置密码</label>
-						<input type="text" id="registerPassword"  class="form-control" placeholder="设置密码" />
-						<span id="registerPasswordWarn" style="color:#EE2C2C"></span>
+						<label  for="registerPassword" >设置密码</label>
+						<br>
+						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" "value=""/>
+						<span id="PasswordStrength" style="color:#DC143C"></span>
+						<br>
+						<span id="registerPasswordWarn" class="formWarn"></span>
 						<span class="help-block" style="color:#8B795E">由字母、数字、特殊符号构成，不能为纯数字,至少为8位。</span>
 					</div>
 					<div class="form-group">
-						<label  for="phoneNum" >确认密码</label>
-						<input type="password" id="registerPasswordAgain"  class="form-control" placeholder="重新输入密码" />
+						<label  for="registerPasswordAgain" >确认密码</label>
+						<input type="text" id="registerPasswordAgain"  class="form-control" style="width:60%" placeholder="重新输入密码" value=""/>
+						<span id="registerPasswordAgainWarn" class="formWarn" ></span>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" id="egisterCheckbox"required><b>我同意</b><span style="color:red">蓝莓商城的注册协议</span>							
+							<input type="checkbox" id="registerCheckbox" >							
+							<b>我同意</b><span style="color:red">蓝莓商城的注册协议</span>	
+							<br>
+							<span id="registerCheckboxWarn" class="formWarn" ></span>						
 						</label>
 					</div>
-					<button type="submit" class="btn btn-default" id="registerSubmit">提交</button>
+					<button type="submit" id="registerSubmit">提交</button>
 				</form>
 			</div>
 			<div class="col-4">				
 			</div>
 		</div><!--<div class="row">  -->
 	</div><!-- end of <div class="container-fluid">  -->
-
+	<%@ include  file="/WEB-INF/layouts/common/footer.jsp" %>
 </body>
 </html>
