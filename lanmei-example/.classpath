@@ -22,17 +22,19 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/aliyun-java-sdk-core-3.3.1.jar"/>
 	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/aliyun-java-sdk-dysmsapi-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/smsKey.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

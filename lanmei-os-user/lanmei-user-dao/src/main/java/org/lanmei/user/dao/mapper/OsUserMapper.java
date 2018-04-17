@@ -41,4 +41,10 @@ public interface OsUserMapper {
 	 * @return
 	 */
 	OsUser selectById(Long  userId);
+	/**
+	 * 
+	 * @param phoneNum
+	 * @return
+	 */
+	OsUser selectByPhoneNum(String phoneNum);
 }

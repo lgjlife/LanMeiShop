@@ -6,8 +6,10 @@ var isRegisterPasswordAgainValid = false;
 var isRegisterCheckboxValid = false;//
 var endTime = 0;//倒计时截止时间
 var getPhoneNumValidateFlag = false;//获取验证码标志
-var COUNTDOWN_TIME_S=30;  //倒计时时间 S
+var COUNTDOWN_TIME_S=60;  //倒计时时间 单位：S
 var registerPhoneNumValidateLength = 6; //手机验证码长度
+var phoneValidateCode = null;//手机验证码
+
 /***
  * 电话输入框失去焦点时校验
  * 1.电话号码最长度为11位
@@ -29,12 +31,48 @@ $(function(){
 		else{
 			//是电话号码
 			$("#registerPhoneNumWarn").text("");
+			sendCheckPhoneJson();
 			isRegisterPhoneNumValid = true ;
 		}
 		
 	});
 	
 });
+/**
+ * 向服务端发送手机号，验证该手机号是否已经注册
+ * 如果未注册则可以点击获取验证码
+ * @returns
+ */
+function sendCheckPhoneJson(){
+	var jsonPhoneNum={"phoneNum":"sda"};
+
+	jsonPhoneNum.phoneNum = $("#registerPhoneNum").val();
+	
+	console.log("sendCheckPhoneJson  执行开始....  ");
+	console.log("PhoneNum = " + jsonPhoneNum.phoneNum);
+	  $.ajax({
+	        type : "post",
+	        url : "checkphonenum",
+	        contentType : "application/json;charset=utf-8",
+	        //数据格式是json串,传进一个person
+	        data : JSON.stringify(jsonPhoneNum),
+	        dataType: "json",
+	        success:function(data){
+	            console.log("UserStatus:" + data.phoneCheckStatus);
+	            if(data.phoneCheckStatus == "PHONE_NUM_REGISTER"){
+	            	$("#registerPhoneNumWarn").text("该手机号码已经注册，请重新输入");
+	            	$("#getPhoneNumValidateBtn").attr("disabled",true);
+	            }
+	            else if(data.phoneCheckStatus == "PHONE_NUM_NOT_REGISTER"){
+	            	$("#registerPhoneNumWarn").text("该手机号码未注册，可以注册，请获取验证码");
+	            	$("#getPhoneNumValidateBtn").attr("disabled",false);
+	            }
+	        }
+
+	    });
+	  console.log("sendCheckPhoneJson 执行结束....");
+}
+
 /**
  * 获取验证码按键按下处理
  * 按下进行倒计时
@@ -45,10 +83,11 @@ $(function(){
 		console.log("time display" );
 		endTime =  new Date().getTime() + COUNTDOWN_TIME_S * 1000;
 		showCountdownTime();
+		getPhoneValidateCode();//向服务端获取验证码
 		return false;
-	});
-	
+	});	
 });
+
 function showCountdownTime(){
 	var startTime = new Date().getTime();
 	
@@ -60,7 +99,7 @@ function showCountdownTime(){
 		$("#getPhoneNumValidateBtn").text("" + countDownTime + "秒后重新获取验证码");
 		setTimeout("showCountdownTime()",1000);
 		getPhoneNumValidateFlag = true;
-		$("#getPhoneNumValidateBtn").attr("disabled",true);
+		//$("#getPhoneNumValidateBtn").attr("disabled",true);
 		$("#registerPhoneNumValidate").attr("disabled",false);
 	}
 	else{
@@ -70,6 +109,32 @@ function showCountdownTime(){
 		$("#registerPhoneNumValidate").attr("disabled",true);
 	}
 	
+}
+/**
+ * 向服务端发送请求获取验证码
+ * @returns
+ */
+function getPhoneValidateCode(){
+	var jsonPhonValidateCode={"phoneNum":""};
+
+	jsonPhonValidateCode.phoneNum = $("#registerPhoneNum").val();
+	
+	console.log("getPhoneValidateCode  执行开始....  ");
+	console.log("PhoneNum = " + jsonPhonValidateCode.phoneNum);
+	  $.ajax({
+	        type : "post",
+	        url : "get-phone-validate-code",
+	        contentType : "application/json;charset=utf-8",
+	        //数据格式是json串,传进一个person
+	        data : JSON.stringify(jsonPhonValidateCode),
+	        dataType: "json",
+	        success:function(data){
+	            console.log("手机验证码:" + data.phoneValidateCode);
+	            phoneValidateCode = data.phoneValidateCode;
+	        }
+
+	    });
+	  console.log("getPhoneValidateCode 执行结束....");
 }
 /**
  * 输入验证码框处理
@@ -90,6 +155,7 @@ $(function(){
 			else{
 				$("#registerPhoneNumValidateWarn").text("");
 				isRegisterPhoneNumValidateValid = true;
+				
 			}
 		}
 	});

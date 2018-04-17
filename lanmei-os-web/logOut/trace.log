@@ -2,3 +2,1281 @@ TRACE [main] 2018-04-13 17:30:08 (BaseJdbcLogger.java:165) <==    Columns: user_
 TRACE [main] 2018-04-13 17:30:08 (BaseJdbcLogger.java:165) <==        Row: 1, 1, Fly, 123456789, 梁飞飞, 男, 25, 0, liang@lanmei.com, 0, 13888888888, null, null, 5, <<BLOB>>
 TRACE [main] 2018-04-13 17:31:54 (BaseJdbcLogger.java:165) <==    Columns: user_id, user_number, nick_name, login_password, actual_name, gender, age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, head_portrait
 TRACE [main] 2018-04-13 17:31:54 (BaseJdbcLogger.java:165) <==        Row: 1, 1, Fly, 123456789, 梁飞飞, 男, 25, 0, liang@lanmei.com, 0, 13888888888, null, null, 5, <<BLOB>>
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:16:32 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:41:11 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:41:11 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:41:11 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:41:11 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:41:11 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:41:11 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:11 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:41:11 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:41:11 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:41:11 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5357c287
+TRACE [main] 2018-04-16 14:41:11 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5357c287
+TRACE [main] 2018-04-16 14:41:11 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5357c287
+TRACE [main] 2018-04-16 14:41:11 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5357c287
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:41:55 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:41:55 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:41:55 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:41:55 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:41:55 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:41:55 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:41:55 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:41:55 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:41:55 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:41:55 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@41813449
+TRACE [main] 2018-04-16 14:41:55 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@41813449
+TRACE [main] 2018-04-16 14:41:55 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@41813449
+TRACE [main] 2018-04-16 14:41:55 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@41813449
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:53:53 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:53:53 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:53:53 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:53:53 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:53:53 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:53:53 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:53:53 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:53:53 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:53:53 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:53:53 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30f5a68a
+TRACE [main] 2018-04-16 14:53:53 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30f5a68a
+TRACE [main] 2018-04-16 14:53:53 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30f5a68a
+TRACE [main] 2018-04-16 14:53:53 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30f5a68a
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:54:43 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:54:43 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:54:43 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:54:43 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:54:43 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:54:43 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:54:43 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:54:43 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:54:43 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:54:43 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@13e3c1c7
+TRACE [main] 2018-04-16 14:54:43 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@13e3c1c7
+TRACE [main] 2018-04-16 14:54:43 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@13e3c1c7
+TRACE [main] 2018-04-16 14:54:43 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@13e3c1c7
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:55:01 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:55:01 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:55:01 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:55:01 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:55:01 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:55:01 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:55:01 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 14:55:01 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 14:55:01 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 14:55:01 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:55:34 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:55:34 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:55:34 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:55:34 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:55:34 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:55:34 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:55:34 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@25748410
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@25748410
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@25748410
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@25748410
+TRACE [main] 2018-04-16 14:55:34 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 14:55:34 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@25748410
+TRACE [main] 2018-04-16 14:55:34 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:59:16 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:59:16 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:59:16 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:59:16 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:59:16 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:59:16 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:59:16 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2b43529a
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2b43529a
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2b43529a
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2b43529a
+TRACE [main] 2018-04-16 14:59:16 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 14:59:16 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2b43529a
+TRACE [main] 2018-04-16 14:59:16 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 14:59:47 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 14:59:47 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:59:47 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 14:59:47 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 14:59:47 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 14:59:47 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 14:59:47 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30990c1b
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30990c1b
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30990c1b
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30990c1b
+TRACE [main] 2018-04-16 14:59:47 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 14:59:47 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@30990c1b
+TRACE [main] 2018-04-16 14:59:47 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 15:00:17 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 15:00:18 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:00:18 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:00:18 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:00:18 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 15:00:18 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 15:00:18 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:00:18 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:00:18 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:00:18 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 15:00:45 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 15:00:45 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:00:45 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:00:45 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:00:45 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 15:00:45 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 15:00:45 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:00:45 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - null, rememberMe=true]
+TRACE [main] 2018-04-16 15:00:45 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:00:45 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@4b3c354a
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 15:04:25 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 15:04:25 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:04:25 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:04:25 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:04:25 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 15:04:25 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 15:04:25 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:25 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:25 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:25 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 15:04:26 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:04:26 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:04:26 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:04:26 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@62fe6067
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 15:05:48 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 15:05:48 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:05:48 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:05:48 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:05:48 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 15:05:48 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 15:05:48 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 15:05:48 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:05:48 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:05:48 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@7a527389
+TRACE [main] 2018-04-16 15:05:48 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 15:06:49 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 15:06:49 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:06:49 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:06:49 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:06:49 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 15:06:49 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 15:06:49 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 15:06:49 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:06:49 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 15:06:49 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@1623134f
+TRACE [main] 2018-04-16 15:06:49 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 16:03:11 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 16:03:12 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 16:03:12 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 16:03:12 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 16:03:12 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 16:03:12 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 16:03:12 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 16:03:12 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 16:03:12 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (CachingRealm.java:167) Cleared cache entries for account with principals [lonestarr]
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 16:03:12 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 16:03:12 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@485a3466
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:22:21 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:22:21 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:21 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:21 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:22:21 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:22:21 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:22:21 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:22:21 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:21 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (CachingRealm.java:167) Cleared cache entries for account with principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:21 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:21 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@207ea13
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:22:28 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:22:28 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:28 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:28 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:22:28 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:22:28 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:22:28 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:22:28 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:28 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (CachingRealm.java:167) Cleared cache entries for account with principals [lonestarr]
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:22:28 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:22:28 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40c80397
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:23:22 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:23:22 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:23:22 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:23:22 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:23:22 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:23:22 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:23:22 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:23:22 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:23:22 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (CachingRealm.java:167) Cleared cache entries for account with principals [lonestarr]
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:23:22 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:23:22 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@31e75d13
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:24:14 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:24:14 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:14 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:14 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:24:14 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:24:14 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:24:14 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:24:14 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:14 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (CachingRealm.java:167) Cleared cache entries for account with principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:14 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@40e10ff8
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:24:52 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:24:52 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:52 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:52 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:24:52 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:24:52 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:24:52 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:24:52 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:52 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:24:52 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@76f7d241
+TRACE [main] 2018-04-16 18:25:36 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:25:36 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:25:37 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:25:37 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:25:37 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:25:37 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:25:37 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:25:37 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:25:37 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:25:37 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:25:37 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:25:37 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@2453f95d
+TRACE [main] 2018-04-16 18:25:37 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:26:06 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:26:06 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:06 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:06 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:26:06 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:26:06 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:06 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:26:29 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:26:29 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:29 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:29 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:26:29 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:26:29 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:29 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:26:29 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:26:29 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:26:53 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:26:53 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:53 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:26:53 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:26:53 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:26:53 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:26:53 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:26:53 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:26:53 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:27:11 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:27:11 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:27:11 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:27:11 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:27:11 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:27:11 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:11 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:27:11 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:27:28 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:27:29 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:27:29 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:27:29 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:27:29 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:27:29 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:27:29 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:27:29 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:28:02 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:28:02 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:02 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:02 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:28:02 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:28:02 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:28:02 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:02 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:02 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:02 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:28:03 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:03 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:03 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@6d304f9d
+TRACE [main] 2018-04-16 18:28:03 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: root=secret,admin
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: guest=guest,guest
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: presidentskroob=12345,president
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: darkhelmet=ludicrousspeed, darklord, schwartz
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: lonestarr=vespa,goodguy,schwartz
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: admin=*
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: schwartz=lightsaber:*
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:545) Discovered key/value pair: goodguy=winnebago:drive:eagle5
+TRACE [main] 2018-04-16 18:28:23 (Ini.java:160) Specified name was null or empty.  Defaulting to the default section (name = "")
+TRACE [main] 2018-04-16 18:28:23 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:23 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:23 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:28:23 (DefaultSecurityManager.java:490) No identity (PrincipalCollection) found in the context.  Looking for a remembered identity.
+TRACE [main] 2018-04-16 18:28:23 (DefaultSecurityManager.java:516) No remembered identity found.  Returning original context.
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (ThreadContext.java:169) Bound value of type [org.apache.shiro.subject.support.DelegatingSubject] for key [org.apache.shiro.util.ThreadContext_SUBJECT_KEY] to thread [main]
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = true; session has id = false
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:334) Starting session for host null
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:218) Created default SessionValidationScheduler instance of type [org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler].
+TRACE [main] 2018-04-16 18:28:23 (DefaultSessionManager.java:156) Creating session for host null
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = true; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractAuthenticator.java:194) Authentication attempt received for token [org.apache.shiro.authc.UsernamePasswordToken - lonestarr, rememberMe=true]
+TRACE [main] 2018-04-16 18:28:23 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:23 (DefaultSecurityManager.java:412) Context already contains a SecurityManager instance.  Returning.
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (ThreadContext.java:126) get() - in thread [main]
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DefaultSecurityManager.java:217) This org.apache.shiro.mgt.DefaultSecurityManager instance does not have a [org.apache.shiro.mgt.RememberMeManager] instance configured.  RememberMe services will not be performed for account [lonestarr].
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (DelegatingSubject.java:317) attempting to get session; create = false; session is null = false; session has id = true
+TRACE [main] 2018-04-16 18:28:23 (AbstractValidatingSessionManager.java:116) Attempting to retrieve session with key org.apache.shiro.session.mgt.DefaultSessionKey@5ad10c1a
+TRACE [main] 2018-04-16 18:28:23 (AuthorizingRealm.java:319) Retrieving AuthorizationInfo for principals [lonestarr]

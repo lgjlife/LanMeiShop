@@ -14,20 +14,7 @@
 		<script src="${contextPathOfStatic}/js/user/register.js"></script>
 		<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
 		
- 	    <script type="text/javascript">
-	 	   $().ready(function() {
-	 		    $("#registerForm").validate();
-	 		});
-	 	   
-	 	  $( "#registerForm" ).validate({
-	 		  rules: {
-	 			registerPassword: "required",
-	 			registerPasswordAgain: {
-	 		      equalTo: "#registerPassword"
-	 		    }
-	 		  }
-	 		});
- 	    </script>
+ 
 	</head>
 	
 <body>
@@ -57,7 +44,9 @@
 						<span id="registerPhoneNumWarn" class="formWarn" ></span>						
 					</div>
 					<div class="form-group">
-						<label  for="registerPhoneNumValidate" >验证码<button id="getPhoneNumValidateBtn" style="background-color:#EED8AE">获取验证码</button></label>
+						<label  for="registerPhoneNumValidate" >
+							验证码<button id="getPhoneNumValidateBtn" style="background-color:#EED8AE" disabled>获取验证码</button>
+						</label>
 						<input type="text" id="registerPhoneNumValidate"  class="form-control" style="width:60%" placeholder="手机验证码" disabled />
 						<span id="registerPhoneNumValidateWarn" class="formWarn" ></span>
 					</div>
@@ -90,6 +79,6 @@
 			</div>
 		</div><!--<div class="row">  -->
 	</div><!-- end of <div class="container-fluid">  -->
-	<%@ include  file="/WEB-INF/layouts/common/footer.jsp" %>
+	<jsp:include page="/WEB-INF/layouts/common/footer.jsp" />
 </body>
 </html>

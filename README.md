@@ -1,6 +1,12 @@
 <h1>蓝莓商城</h1>
 基于Spring + Spring MVC + Mybatis 的商城系统
 
+<br>
+	<a href="http://blog.csdn.net/u011676300/">
+			CSDN博客
+	</a>
+<br>
+
 <h1>技术选型</h1>
 
 <h3>一.开发环境<h4>
@@ -34,6 +40,9 @@
 
 <h3>二.后端技术<h4>
 <ol>
+	<li>
+		JAVA版本：9.0.1	
+	</li>
 	<li>
 		核心框架：
 		<a href="https://projects.spring.io/spring-framework/">	
@@ -76,10 +85,12 @@
 			阿里云短信服务
 		</a>
 	</li>
+	<li>
 		任务调度: 
 		<a href="http://www.quartz-scheduler.org/">
 			quartz
 		</a>
+	</li>
 	<li>
 		数据库连接池：
 		<a href="http://druid.io/">
@@ -87,6 +98,10 @@
 		</a>
 	</li>
 	<li>
+		安全管理框架：
+		<a href="http://shiro.apache.org/">
+			shiro
+		</a>
 	</li>
 </ol>
 
@@ -97,7 +112,7 @@
 		JS框架：Jquery	
 	</li>
 	<li>
-		CSS/HTML框架：bootstrap
+		CSS框架：bootstrap
 	</li>
 </ol>	
 

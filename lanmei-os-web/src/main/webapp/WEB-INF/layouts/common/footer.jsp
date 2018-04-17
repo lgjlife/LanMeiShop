@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@ include file="/WEB-INF/layouts/common/base.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,26 +22,26 @@
 				<!-- 正品保证 -->
 				<div class="col-2">
 					<a href="https://sale.suning.com/syb/fangxinquxihuan/index.html#tab1">
-						<img alt="text" src="static/img/common/AuthenticGuarantee.png">
+						<img alt="text" src="${contextPathOfStatic}/img/common/AuthenticGuarantee.png">
 					</a>
 				</div>
 				<!-- 售后无忧 -->
 				<div class="col-2">
 					<a href="https://help.suning.com/page/id-670.htm">
-						<img alt="text" src="static/img/common/AfterSales.png">
+						<img alt="text" src="${contextPathOfStatic}/img/common/AfterSales.png">
 					</a>					
 				</div>
 				<!--  急速物流 -->
 				<div class="col-2">
 					<a  href="https://sale.suning.com/syb/fangxinquxihuan/index.html#tab2">
-						<img alt="text" src="static/img/common/RapidLogistics.png">
+						<img alt="text" src="${contextPathOfStatic}/img/common/RapidLogistics.png">
 					</a>
 					
 				</div>
 				<!-- 帮助中心 -->
 				<div class="col-2">
 					<a href="https://help.suning.com/">
-						<img alt="text" src="static/img/common/help.png">
+						<img alt="text" src="${contextPathOfStatic}/img/common/help.png">
 					</a>					
 				</div>
 				<!-- 右侧空白 -->

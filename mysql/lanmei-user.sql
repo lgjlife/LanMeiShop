@@ -36,7 +36,8 @@ CREATE TABLE `os_user`(
 
 INSERT INTO `os_user` VALUES(1,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
 INSERT INTO `os_user` VALUES(3,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13999999999",NULL,NULL,5);  
-
+INSERT INTO `os_user` VALUES(4,1,"Fly","123456789","梁国剑","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(5,1,"Fly","123456789","和经费","男",25,NULL,0,"liang@lanmei.com",0,"12345678911",NULL,NULL,5);  
 /*用户登录表*/
 DROP TABLE IF EXISTS `os_user_login`;
 CREATE TABLE `os_user_login`(

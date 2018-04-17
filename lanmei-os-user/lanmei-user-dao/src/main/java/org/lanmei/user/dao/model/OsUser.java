@@ -356,4 +356,12 @@ public class OsUser {
 	public void setHeadPortrait(byte[] headPortrait) {
 		this.headPortrait = headPortrait;
 	}
+	
+	
+	public String toString() {
+
+		return  "OsUser属性值：+\r\n"
+				+ "  UserId = " + this.getUserId() 
+				+ "  UserNumber = " + this.getUserNumber() ;
+	}
 }

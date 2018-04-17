@@ -20,7 +20,10 @@
    <properties>
    
   	    <lanmei.version>0.0.1-SNAPSHOT</lanmei.version>
+  	    <aliyun-core.version>3.7.1</aliyun-core.version>
+  	    <aliyun-dysmsapi.version>1.1.0</aliyun-dysmsapi.version>
   	    <aspectj.version>1.8.13</aspectj.version>
+  	    <commons-httpclient.version>3.0.1</commons-httpclient.version>
   	    <commons-codec.version>1.9</commons-codec.version>
   	    <commons.version>1.2</commons.version>
   	    <commons-logging.version>1.1.3</commons-logging.version>
@@ -31,6 +34,7 @@
 	 	<file.encoding>UTF-8</file.encoding>
 	 	<jsr250-api.version>1.0</jsr250-api.version>
 	 	<jackson.version>2.9.5</jackson.version>
+	 	<jedis.version>2.9.0</jedis.version>
 	 	<json-lib.version>2.4</json-lib.version>
 	 	<jetty.version>8.1.8.v20121106</jetty.version>
 	 	<jstl.version>1.2</jstl.version>
@@ -55,6 +59,21 @@
    </properties>
    <dependencies>
 
+		<dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+            <version>${aliyun-dysmsapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>${aliyun-core.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>${commons-httpclient.version}</version>
+        </dependency>
 		<!--  -->
 		<dependency>
             <groupId>commons-beanutils</groupId>
@@ -120,6 +139,12 @@
 		    <version>1.3.2</version>
 		</dependency>
 		<dependency>
+		<!--redis 依赖  -->
+		<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		<dependency>
 		    <groupId>junit</groupId>
 		    <artifactId>junit</artifactId>
 		    <version>${junit.version}</version>
@@ -155,7 +180,7 @@
              <version>${PageHelper.version}</version>
         </dependency>
 		<!-- quartz任务调度 -->
-        <dependency>
+		<dependency>
 		    <groupId>org.quartz-scheduler</groupId>
 		    <artifactId>quartz</artifactId>
 		    <version>${quartz.version}</version>
@@ -278,7 +303,30 @@
             <scope>provided</scope>
         </dependency>		
 		<!-- shiro相关依赖  安全管理-->
-		
+		<!-- freemarker begin -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.20</version>
+		</dependency>
+		<!-- freemarker begin -->
+		<!-- freemarker + shiro（标签） begin -->
+		<dependency>
+			<groupId>net.mingsoft</groupId>
+			<artifactId>shiro-freemarker-tags</artifactId>
+			<version>0.1</version>
+		</dependency>
+		<!-- freemarker + shiro（标签） begin -->
+		<dependency>
+			<artifactId>quartz</artifactId>
+			<groupId>org.opensymphony.quartz</groupId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-all</artifactId>
+			<version>1.2.5</version>
+		</dependency>
 		<dependency>
 		    <groupId>org.apache.shiro</groupId>
 		    <artifactId>shiro-core</artifactId>
@@ -298,6 +346,11 @@
 		    <groupId>org.apache.shiro</groupId>
 		    <artifactId>shiro-ehcache</artifactId>
 		    <version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+		<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-quartz</artifactId>
+			<version>${shiro.version}</version>
 		</dependency>
         
         <dependency>

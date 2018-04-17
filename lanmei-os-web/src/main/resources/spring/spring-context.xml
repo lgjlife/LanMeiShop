@@ -28,8 +28,8 @@
 	<!-- 持久层框架MYBATIS:配置文件引入 -->
 	<import resource="classpath:spring/applicationContext-mybatis.xml" /> 
 	
-	<!-- 缓存框架EHCACHE:配置文件引入 -->
- 	 <import resource="classpath:spring/applicationContext-ehcache.xml" /> 
+	<!-- 缓存框架CACHE:配置文件引入 -->
+ 	 <import resource="classpath:spring/applicationContext-cache.xml" /> 
 	
 	<!-- 安全框架SHIRO:配置文件引入 -->
 	<import resource="classpath:spring/applicationContext-shiro.xml" />  

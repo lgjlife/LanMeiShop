@@ -21,7 +21,7 @@
 
 	   <%@ include  file="/WEB-INF/layouts/common/search.jsp" %>
 	   <%@ include  file="/WEB-INF/layouts/HomePage/index.jsp" %> 	   
-	   <%@ include  file="/WEB-INF/layouts/common/footer.jsp" %>
+	   <jsp:include page="/WEB-INF/layouts/common/footer.jsp" />
 	   <p>
 	   		<%
 	   			Date now = new Date();
