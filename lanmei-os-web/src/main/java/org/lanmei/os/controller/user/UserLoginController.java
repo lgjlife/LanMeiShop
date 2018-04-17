@@ -89,7 +89,7 @@ public class UserLoginController {
 		
 		try {
 			logger.debug("+++++++++");
-			SmsDemo.send();
+			SmsDemo.send();//执行短信发送函数
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
