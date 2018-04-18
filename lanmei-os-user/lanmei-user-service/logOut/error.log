@@ -300,3 +300,29 @@ ERROR [main] 2018-04-08 17:30:46 (log4j2Test.java:14) err print
 ERROR [main] 2018-04-08 17:30:46 (log4j2Test.java:14) err print
 ERROR [main] 2018-04-08 17:30:46 (log4j2Test.java:14) err print
 ERROR [main] 2018-04-08 17:30:46 (log4j2Test.java:14) err print
+ERROR [main] 2018-04-18 23:02:11 (alisms.java:56) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : D02CF400-36FA-44FF-8780-B9058374690E
+ERROR [main] 2018-04-18 23:05:48 (alisms.java:56) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : B9CF463E-10FF-4748-9111-7AB6BDE61E68
+ERROR [main] 2018-04-18 23:06:04 (alisms.java:56) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 8EBC00CE-C73C-4A46-BF32-288009523C7C
+ERROR [main] 2018-04-18 23:06:19 (alisms.java:56) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : B5DFAD82-BE75-4E71-B91E-1166929FCE1D
+ERROR [main] 2018-04-18 23:06:37 (alisms.java:56) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 04DAFFA9-F9BA-4224-BBA8-BD862C51F02E
+ERROR [main] 2018-04-18 23:09:34 (alisms.java:59) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 5177FF9C-5395-4E9E-BF7F-F7D44BD9E09A
+ERROR [main] 2018-04-18 23:09:54 (alisms.java:59) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : B0F0EEE7-1098-46FB-95D7-8CFCC9E05C2C
+ERROR [main] 2018-04-18 23:10:11 (alisms.java:60) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 4891BF84-4B1C-4222-A1D7-E57EC1FACF9F
+ERROR [main] 2018-04-18 23:12:36 (alisms.java:60) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 3E6E39C0-D25A-460F-82DE-60F0E758B9AD
+ERROR [main] 2018-04-18 23:24:29 (alisms.java:62) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : 7E1A91EF-2D63-4F11-945B-5718FF0C64D6
+ERROR [main] 2018-04-18 23:50:11 (alisms.java:62) send msgcode error :InvalidDayuStatus.Malformed : The specified dayu status is wrongly formed.
+RequestId : BDBEAD8C-32D4-49D8-AD45-F6D1DA799B7B
+ERROR [main] 2018-04-18 23:53:10 (alisms.java:62) send msgcode error :SDK.InvalidRegionId : Can not find endpoint to access.
+ERROR [main] 2018-04-18 23:54:07 (alisms.java:62) send msgcode error :SDK.InvalidRegionId : Can not find endpoint to access.
+ERROR [main] 2018-04-18 23:54:41 (alisms.java:63) send msgcode error :SDK.InvalidRegionId : Can not find endpoint to access.
+ERROR [main] 2018-04-18 23:55:19 (alisms.java:64) send msgcode error :SDK.InvalidRegionId : Can not find endpoint to access.

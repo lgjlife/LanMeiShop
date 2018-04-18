@@ -2,13 +2,16 @@
 <%@ page import="java.util.Date" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- base.jsp 路径定义 / 包含 bootstrap 和  jquery 文件-->
-<jsp:include page="/WEB-INF/layouts/common/base.jsp"/>
+<%@ include file="/WEB-INF/layouts/common/base.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>蓝莓商城-用户注册</title>
 		<meta charset="utf-8">
- 	    <meta name="viewport" content="width=device-width, initial-scale=1">		
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1">	
+ 	    
+ 	    <script src="${contextPathOfStatic}/js/homepage/header.js"></script>
+ 	    	
 	</head>
 	
 	<body>
@@ -51,10 +54,13 @@
 				<div class="col-4">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="/pass/login" target="_blank">登录</a>
+							<a class="nav-link" href="${projectPath}/user-login" target="_blank">登录</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="${projectPath}/user/register" target="_blank">注册</a>
+							<a class="nav-link" href="${projectPath}/user-register/register" target="_blank">注册</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" style="color: #6c757d;" id="infoLink" >个人中心</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/">我的订单</a>

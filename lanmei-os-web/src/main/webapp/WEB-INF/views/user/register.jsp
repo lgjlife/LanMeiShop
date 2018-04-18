@@ -19,7 +19,7 @@
 	
 <body>
   
-	<%@ include  file="/WEB-INF/layouts/common/header-nav.jsp" %>
+	<jsp:include page="/WEB-INF/layouts/common/header-nav.jsp" />
 	   <br>
 	   <br>
 	   <br>

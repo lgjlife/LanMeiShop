@@ -14,7 +14,6 @@
 		
 		<link rel="stylesheet" type="text/css"  href="static/bootstrap/bootstrap.css">
 		<script type="text/javascript" src="static/bootstrap/bootstrap.js"></script>
-		<link rel="stylesheet" type="text/css"  href="static/bootstrap/test1.css">
 	</head>
 	
 	<body>
@@ -168,7 +167,7 @@
 					</div>
 					
 					<div class="col-6" >
-					
+					    <!-- 展示图片 -->
 						<div id="ImgWrapper">
 							 <ul  id="list-group-img">  
                                <li class="list-li"  style="display:none"><a href="#" target="_blank"><img id="img-huodong" src="static/img/recommend/recommend-2.jpg" alt="" /></a></li>  
@@ -181,7 +180,7 @@
 					</div>
 					
 				
-					<!-- 右侧侧空白 -->
+					<!-- 放置个人登录窗口 -->
 					<div class="col-2" >
 					</div>
 				</div>

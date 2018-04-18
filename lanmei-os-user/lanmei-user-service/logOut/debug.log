@@ -1,1 +1,4 @@
-DEBUG [main] 2018-04-17 19:42:45 (AliSms.java:115) phoneNum = 13925716752  Code = 123456
+DEBUG [main] 2018-04-18 23:55:19 (alisms.java:31) ----main----
+DEBUG [main] 2018-04-18 23:55:19 (alisms.java:41) ----1----
+DEBUG [main] 2018-04-18 23:55:19 (alisms.java:47) ----2----
+DEBUG [main] 2018-04-18 23:55:19 (alisms.java:59) ----3----
