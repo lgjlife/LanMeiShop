@@ -14,13 +14,12 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ShiroTest {
 	
-	 private static final transient Logger log = LoggerFactory.getLogger(ShiroTest.class);
+	 private static final transient Logger log = LoggerFactory.getLogger("ShiroTest.class");
 	 
 	//@Test
 	public  static void MyShiro() {

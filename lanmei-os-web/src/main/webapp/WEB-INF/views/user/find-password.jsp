@@ -82,7 +82,7 @@
 					<div class="form-group">
 						<label  for="registerPassword" >设置密码</label>
 						<br>
-						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" "value=""/>
+						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" value=""/>
 						<span id="PasswordStrength" style="color:#DC143C"></span>
 						<br>
 						<span id="registerPasswordWarn" class="formWarn"></span>

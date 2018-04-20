@@ -72,6 +72,7 @@
 				</div>			
 			</div>
 		</div><!--  <div class="container-fluid"> -->
+		</div>
 		
 		<form action="login" method="post">
 			<input name="userName" type="text"/>

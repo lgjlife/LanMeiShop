@@ -70,9 +70,7 @@ public class UserServiceImpl extends BaseService implements  UserService{
 		return (int) (Math.random() * 999999);
 	}
 	
-	public  void sendMsg(String phoneNum,String code ) {
-		logger.debug("fdgsfgfd");
-		
+	public  void sendMsg(String phoneNum,String code ) {	
 		try {
 			SmsDemo.sendSms(phoneNum,code);
 			logger.debug("发送结束");

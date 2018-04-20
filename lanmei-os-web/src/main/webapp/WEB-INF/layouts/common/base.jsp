@@ -26,9 +26,7 @@ ServerPort = 8080
 <!-- 静态资源路径 -->
 <c:set var="contextPathOfStatic" value="${pageContext.request.contextPath}/static"/>
 
-<contextPathData
-	contextPathValue="${contextPath}"
-></contextPathData>
+<contextPathData	contextPathValue="${contextPath}"></contextPathData>
 
 <!-- jquery -->
 <script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>

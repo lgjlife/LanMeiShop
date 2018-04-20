@@ -6,8 +6,12 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.crypto.Cipher;
 
@@ -57,6 +61,77 @@ public class RsaUtils {
         KeyFactory keyFactory=KeyFactory.getInstance("RSA");  
         return keyFactory.generatePrivate(privateKeySpec);  
     }  
+    
+    public Map<String, Object> getPublicKeyExpAndMod(RSAPublicKey keyPair){
+    	
+    	Map<String, Object> publicEM = null;
+    	
+    	BigInteger publicKeyModulus = keyPair.getModulus();
+		BigInteger publicKeyExponent = keyPair.getPublicExponent();
+		
+    	return publicEM;
+    }
+    
+    public Map<String, Object> getPrivateKeyExpAndMod(RSAPrivateKey keyPair){
+    	
+    	Map<String, Object> privateEM = null;
+    	
+    	BigInteger publicKeyModulus = keyPair.getModulus();
+		BigInteger publicKeyExponent = keyPair.getPrivateExponent();
+		
+    	return privateEM;
+    }
+    
+    
+    public static void getKeyEm( HashMap<String, String> publicEM1,  HashMap<String, String> privateEM1) {
+    	
+    	KeyPair keyPair = null;
+    	
+    	try {
+			keyPair = RsaUtils.genKeyPair();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	RSAPublicKey PubKey = (RSAPublicKey)keyPair.getPublic();
+		RSAPrivateKey  PriKey = (RSAPrivateKey)keyPair.getPrivate();
+		
+		BigInteger publicKeyModulus = PubKey.getModulus();
+		BigInteger publicKeyExponent = PubKey.getPublicExponent();
+		BigInteger privateKeyModulus = PriKey.getModulus();
+		BigInteger privateKeyExponent = PriKey.getPrivateExponent();
+		
+		
+		
+		/*Map<String, String> publicEM1 = new HashMap<String, String>();
+		Map<String, String> privateEM1 = new HashMap<String, String>();*/
+		
+		Integer vr1 = 1;
+		Integer vr2 = 2;
+		Integer vr3 = 3;
+		Integer vr4 = 4;
+		
+		publicEM1.put("publicKeyModulus", publicKeyModulus.toString());
+		publicEM1.put("publicKeyExponent", publicKeyExponent.toString());
+		privateEM1.put("privateKeyModulus", privateKeyModulus.toString());
+		privateEM1.put("privateKeyExponent", privateKeyExponent.toString());
+		
+		/*System.out.println("---公钥 Modulus：" + publicEM1.get("publicKeyModulus"));
+		System.out.println("---公钥 Exponent：" + publicEM1.get("publicKeyExponent"));
+		System.out.println("---私钥 Modulus：" + privateEM1.get("privateKeyModulus"));
+		System.out.println("---私钥 Exponent：" + privateEM1.get("privateKeyExponent"));*/
+		
+		/*publicEM.put("publicKeyModulus", publicKeyModulus);
+		publicEM.put("publicKeyExponent", publicKeyExponent);
+		privateEM.put("privateKeyModulus", privateKeyModulus);
+		privateEM.put("privateKeyExponent", privateKeyExponent);*/
+		
+		/*System.out.println("--公钥 Modulus：" + publicEM.get("publicKeyModulus"));
+		System.out.println("--公钥 Exponent：" + publicEM.get("publicKeyExponent"));
+		System.out.println("--私钥 Modulus：" + privateEM.get("privateKeyModulus"));
+		System.out.println("--私钥 Exponent：" + privateEM.get("privateKeyExponent"));*/
+    }
 }
 
 

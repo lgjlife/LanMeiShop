@@ -13,7 +13,7 @@
 		<script  type="text/javascript" src="static/js/test/json.js"></script>
 		<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.9.0/jquery.serializejson.js"></script>
 		<script src="https://cdn.bootcss.com/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
-		</script>
+		
 		<script type="text/javascript">
 		
 		</script>

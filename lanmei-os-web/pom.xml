@@ -23,6 +23,13 @@
   		<artifactId>org.lanmei.user.service</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
+  	
+  	<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
+			<version>1.46</version>
+	</dependency>
+		
   </dependencies>
   <build>
   		<finalName>

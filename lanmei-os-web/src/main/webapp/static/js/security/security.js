@@ -638,14 +638,18 @@ if(typeof $w.twoDigit === 'undefined') {
 // string after it has been converted to an array. This fixes an
 // incompatibility with Flash MX's ActionScript.
 RSAUtils.encryptedString = function(key, s) {
+	
+
 	var a = [];
 	var sl = s.length;
 	var i = 0;
+	
 	while (i < sl) {
 		a[i] = s.charCodeAt(i);
 		i++;
 	}
 
+	
 	while (a.length % key.chunkSize != 0) {
 		a[i++] = 0;
 	}
@@ -659,10 +663,14 @@ RSAUtils.encryptedString = function(key, s) {
 		for (k = i; k < i + key.chunkSize; ++j) {
 			block.digits[j] = a[k++];
 			block.digits[j] += a[k++] << 8;
+
 		}
+
 		var crypt = key.barrett.powMod(block, key.e);
 		var text = key.radix == 16 ? RSAUtils.biToHex(crypt) : RSAUtils.biToString(crypt, key.radix);
 		result += text + " ";
+		
+
 	}
 	return result.substring(0, result.length - 1); // Remove last space.
 };
@@ -672,6 +680,7 @@ RSAUtils.decryptedString = function(key, s) {
 	var result = "";
 	var i, j, block;
 	for (i = 0; i < blocks.length; ++i) {
+
 		var bi;
 		if (key.radix == 16) {
 			bi = RSAUtils.biFromHex(blocks[i]);

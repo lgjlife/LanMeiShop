@@ -10,8 +10,11 @@
 		<title>蓝莓商城-用户注册</title>
 		<meta charset="utf-8">
  	    <meta name="viewport" content="width=device-width, initial-scale=1">      
- 	    
-		<script src="${contextPathOfStatic}/js/user/register.js"></script>
+ 	  
+ 	    <script src="${contextPathOfStatic}/js/security/Barrett.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/security/BigInt.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/security/RSA.js"></script>
+		<script src="${contextPathOfStatic}/js/user/register.js"></script>		
 		<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
 		
  
@@ -37,7 +40,10 @@
 			<div class="col-4">		
 			</div>
 			<div class="col-4">
-				<form id="registerForm">
+				<!-- 获取服务端发来的 publicKeyModulus 和 publicKeyExponent-->
+				<form id="registerForm" 
+					  publicKey-modulus="${modulus}" 
+				      publicKey-exponent="${exponent}">
 					<div class="form-group">
 						<label  for="phoneNum" >电话号码</label>
 						<input type="text" id="registerPhoneNum"  class="form-control" style="width:60%" placeholder="请输入11位电话号码"/>
@@ -53,7 +59,7 @@
 					<div class="form-group">
 						<label  for="registerPassword" >设置密码</label>
 						<br>
-						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" "value=""/>
+						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" value=""/>
 						<span id="PasswordStrength" style="color:#DC143C"></span>
 						<br>
 						<span id="registerPasswordWarn" class="formWarn"></span>
@@ -72,7 +78,8 @@
 							<span id="registerCheckboxWarn" class="formWarn" ></span>						
 						</label>
 					</div>
-					<button type="submit" id="registerSubmit">提交</button>
+					<button type="button" id="registerSubmit">提交</button>
+					<button type="button" id="keytest">测试加密</button>
 				</form>
 			</div>
 			<div class="col-4">				

@@ -81,10 +81,10 @@ public class SmsDemo {
 		}
 		if(sendSmsResponse.getCode() != null)
 		{
-			 logger.debug("code = "  +  sendSmsResponse.getCode());
+			 logger.debug("sendSmsResponse code = "  +  sendSmsResponse.getCode());
 		}
 		else {
-			logger.debug("code = null");
+			logger.debug("sendSmsResponse code = null");
 		}
 		//查明细
         if(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {

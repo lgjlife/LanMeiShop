@@ -13,7 +13,7 @@ import com.wordnik.swagger.annotations.Api;
 @RequestMapping("/test")
 public class LanmeiTest {
 	
-	private final static Logger logger = LoggerFactory.getLogger(LanmeiTest.class);
+	private final static Logger logger = LoggerFactory.getLogger("LanmeiTest.class");
 	
 	{		
 		logger.debug("Create LanmeiTest bean ----");

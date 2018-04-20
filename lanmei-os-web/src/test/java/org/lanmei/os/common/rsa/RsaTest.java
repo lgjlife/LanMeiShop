@@ -7,6 +7,7 @@ import java.security.PublicKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
+import java.util.HashMap;
 
 import org.junit.Test;
 
@@ -34,11 +35,11 @@ public class RsaTest {
 		BigInteger privateKeyExponent = PriKey.getPrivateExponent();
 		
 		System.out.println("公钥 Modulus：" + publicKeyModulus);
-		System.out.println("公钥 Modulus：" + publicKeyModulus.toString());
 		System.out.println("公钥 Exponent：" + publicKeyExponent);
 		System.out.println("私钥 Modulus：" + privateKeyModulus);
 		System.out.println("私钥 Exponent：" + privateKeyExponent);
 		
+        
 		/*通过Modulus 和 Exponent 获取公钥和私钥*/
 		PublicKey publicKey = null;
 		PrivateKey privateKey = null;
@@ -82,6 +83,16 @@ public class RsaTest {
 		System.out.println("加密后的 encryptedBytes = " + new String(encryptedBytes) );
 		System.out.println("解密后的 decryptedBytes = " + new String(decryptedBytes) );
 		
+		System.out.println("-------------分割线---------------" );
+		System.out.println("-------------RsaUtils.getKeyEm(publicEM,privateEM)函数测试---------------" );
+		HashMap<String, String> publicEM = new HashMap<String, String>();
+		HashMap<String, String> privateEM = new HashMap<String, String>();
+		
+		RsaUtils.getKeyEm(publicEM,privateEM);
+		System.out.println("公钥 Modulus==：" + publicEM.get("publicKeyModulus"));
+		System.out.println("公钥 Exponent==：" + publicEM.get("publicKeyExponent"));
+		System.out.println("私钥 Modulus==：" + privateEM.get("privateKeyModulus"));
+		System.out.println("私钥 Exponent==：" + privateEM.get("privateKeyExponent"));
 		
 	}
 }

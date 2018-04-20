@@ -37,7 +37,7 @@
 				<a href="#" class="list-group-item">收获地址</a>
 			</div>
 			<div class="col-8">
-				<from class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">昵称：</label>
 						<div class="col-sm-10">
@@ -65,7 +65,7 @@
 						
 						
 					</div>
-				</from>
+				</form>
 			</div><!-- end of div class="col-8  -->
 			<div class="col-2">
 			</div>

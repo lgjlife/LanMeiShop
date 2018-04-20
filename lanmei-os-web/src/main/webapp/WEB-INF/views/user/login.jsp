@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<label  for="registerPassword" >密码</label>
 						<br>
-						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" "value=""/>
+						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" value=""/>
 					</div>
 					<a>忘记密码？</a><a  href="${projectPath}/user-login/find-password" target="_blank" 
 					style="color=#EEB422">点击找回密码</a>

@@ -1,15 +1,21 @@
 package org.lanmei.os.controller.user;
 
+import java.math.BigInteger;
+import java.security.KeyPair;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.imageio.spi.RegisterableService;
-
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.config.Ini;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.lanmei.common.UserStatus;
+import org.lanmei.os.common.rsa.RSAKeyFactory;
+import org.lanmei.os.common.rsa.RSAUtilNew;
+import org.lanmei.os.common.rsa.RsaUtils;
 import org.lanmei.user.UserServiceImpl;
 import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
@@ -20,11 +26,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import net.sf.json.JSONObject;
+
+
+
 
 /**
  * 处理用户登录，注册请求Controller
@@ -60,7 +71,8 @@ public class UserRegisterController {
 		return "/user/register";
 	}
 	/**
-	 * 
+	 * 校验注册的手机是否已经注册
+	 * 返回  UserStatus 状态
 	 * @return
 	 */
 	@ApiOperation(value="/user-register/checkPhoneNum",notes="注册时校验手机号是否已经注册")
@@ -70,8 +82,10 @@ public class UserRegisterController {
 		UserStatus phoneCheckStatus = null;//
 		
 		logger.debug("into /user-register/checkPhoneNum");
+		
 		phoneCheckStatus = userServiceImpl.checkPhoneNum(user.getPhoneNum());
 			
+		
 		Map<String,Object> map = new HashMap<String,Object>();		
 		map.put("phoneCheckStatus", phoneCheckStatus);
 		JSONObject json = JSONObject.fromObject(map);
@@ -96,36 +110,110 @@ public class UserRegisterController {
 		Session session = currentUser.getSession();
 		session.setAttribute("PhoneNum", user.getPhoneNum());
 		session.setAttribute("phoneValidateCode", phoneValidateCode);
-		userServiceImpl.sendMsg(user.getPhoneNum(), String.valueOf(phoneValidateCode));
+		//userServiceImpl.sendMsg(user.getPhoneNum(), String.valueOf(phoneValidateCode));
 		
+		//返回手机验证码
 		Map<String,Object> map = new HashMap<String,Object>();		
-		map.put("phoneValidateCode", new String());
+		map.put("phoneValidateCode",phoneValidateCode);
 		JSONObject json = JSONObject.fromObject(map);
 		
 		return json;
 	}
 	/**
 	 * 客户端提交注册按钮
-	 * @return
+	 * @return JSONObject 注册成功：UserStatus.REGISTER_SUCCESS
+	 * 					  注册失败：UserStatus.REGISTER_FAIL
 	 */
+	@ResponseBody
 	@RequestMapping(value="/register-submit",method=RequestMethod.POST)
-	public JSONObject register(@RequestBody OsUser user) {
+	public JSONObject register(@RequestBody Map<String, Object> models) {		
+		logger.debug("INTO /user-register/register-submit");
 		
+		//OsUser user= JSON.toJSONString(OsUser,OsUser.class);
+		/*接受客户端发来的数据*/
+		OsUser user1= JSON.parseObject(JSON.toJSONString(models),OsUser.class);
+		String phoneNumValidate = (String)models.get("phoneNumValidate");
+		
+		logger.debug("PhoneNum = " + user1.getPhoneNum() 
+					 + "\r\n  password = " + user1.getLoginPassword() 
+					 + "\r\n  phoneNumValidate  = " + phoneNumValidate) ; 
+		
+		/*获取Modulus和Exponent 保存在session中*/
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		KeyPair key = (KeyPair)session.getAttribute("KeyPair");
+		RSAPrivateKey privateKey = (RSAPrivateKey) key.getPrivate();
+		
+	
+		logger.debug("通过 privateKeyModulus  和 privateKeyExponent 获取私钥");
+		/*	RSAPrivateKey privateKey = null;
+		try {
+			 privateKey = RSAUtilNew.generateRSAPrivateKey(privateEM.get("privateKeyModulus").getBytes(),
+																		privateEM.get("privateKeyExponent").getBytes());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		logger.debug(" 获取私钥为 = " + privateKey );
+	    logger.debug(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
+		logger.debug(" 私钥  privateKeyExponent = " + privateKey.getPrivateExponent());
+		byte[] en_result = new BigInteger(user1.getLoginPassword(), 16).toByteArray();
+		byte[] pass = null;
+		try {
+			
+			 pass =RSAUtilNew.decrypt(privateKey,en_result);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String  passStr = new String(pass);
+		StringBuffer StrBuf = new StringBuffer();
+		StrBuf.append(passStr);
+		String passWord = StrBuf.reverse().toString();
+		logger.debug("解密的密码为 = " + passWord);
+
+		UserStatus registerStatus = UserStatus.REGISTER_SUCCESS;
 		
 		Map<String,Object> map = new HashMap<String,Object>();		
-		map.put("phoneValidateCode", new String());
+		map.put("registerStatus", registerStatus);
 		JSONObject json = JSONObject.fromObject(map);
 		
 		return json;
 	}
+	/**
+	 * 进入注册页面
+	 * @return
+	 */
 	@RequestMapping(value="/register",method=RequestMethod.GET)
-	public String register() {
+	public ModelAndView register() {
 		logger.debug("INTO /user/register");
-		/*ShiroTest.MyShiro();*/
 		
-		logger.debug("This a shiro test");
 		
-		Ini ini = new Ini();
+		
+		/*将私钥的Modulus和Exponent 保存在session中*/
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		
+		/*将公钥的Modulus和Exponent 发送给客户端*/
+		
+		KeyPair key = RSAKeyFactory.getInstance().getKeyPair();
+		session.setAttribute("KeyPair",key);
+		
+		RSAPublicKey pkey = (RSAPublicKey) key.getPublic();
+		String modulus = pkey.getModulus().toString(16);
+		String exponent = pkey.getPublicExponent().toString(16);		
+		ModelAndView mv = new ModelAndView("/user/register");
+		mv.addObject("modulus", modulus);
+		mv.addObject("exponent", exponent);	
+		
+		return mv;
+	}
+	public void ShiroTest() {
+
+		/*logger.debug("This a shiro test");
+		
+		Ini ini = new Ini();*/
 		
 		/*enable the shiro*/
 		//1.
@@ -166,10 +254,5 @@ public class UserRegisterController {
 		+ "\r\n timeout = "  + session.getTimeout() 
 		+ "\r\n startime =  " +  session.getStartTimestamp()
 		+ "\r\n lastaccess = " + session.getLastAccessTime());*/
-		
-		
-		
-		
-		return "/user/register";
 	}
 }
