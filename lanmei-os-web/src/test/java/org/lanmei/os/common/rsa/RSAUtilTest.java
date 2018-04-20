@@ -34,7 +34,7 @@ public class RSAUtilTest{
 		try {
 			encryptData = RSAUtilNew.encrypt(publicKey,password.getBytes());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		System.out.println("加密操作后\r\n" + new String(encryptData));

@@ -11,7 +11,7 @@
 	<!--安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<!-- 设置自定义Realm -->
-		 <!-- <property name="realm" ref="shiroDbRealm" /> -->
+		 <property name="realm" ref="SystemAuthorizingRealm" /> 
 		<!-- 将缓存管理器，交给安全管理器:ehcahe缓存shiro自带 -->
 		<!-- 使用redis缓存管理器 -->
 		<!-- <property name="cacheManager" ref="jedisShiroCacheManager" />  -->
@@ -22,8 +22,13 @@
 	</bean>
 
 	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroAuthorizingRealm.java -->
-	 <bean id="shiroDbRealm" class="org.lanmei.os.common.security.SystemAuthorizingRealm" >
-	   <!--  <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />   -->
+	 <bean id="SystemAuthorizingRealm" class="org.lanmei.os.common.security.SystemAuthorizingRealm" >
+	   		<property name="credentialsMatcher">
+	   			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+	   				<property name="hashAlgorithmName" value="MD5"></property>
+	   				<property name="hashIterations" value="3"></property>
+	   			</bean>
+	   		</property>
 	</bean>
 
     <!-- 记住密码Cookie -->

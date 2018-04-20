@@ -16,10 +16,11 @@
 DROP TABLE IF EXISTS `os_user`;
 CREATE TABLE `os_user`(
    `user_id` INT   AUTO_INCREMENT COMMENT "用户ID",    
-   `user_number` INT  NOT NULL COMMENT "用户编号",
-   `nick_name`  VARCHAR(30) NOT NULL COMMENT "昵称" ,
+   `user_number` INT  DEFAULT NULL COMMENT "用户编号",
+   `nick_name`  VARCHAR(30) DEFAULT NULL COMMENT "昵称" ,
    `login_password` VARCHAR(50) NOT NULL COMMENT "登录密码",
-   `actual_name` VARCHAR(100) NOT NULL COMMENT "真实姓名",
+   `salt` VARCHAR(50) DEFAULT NULL COMMENT "登录密码盐",
+   `actual_name` VARCHAR(100) DEFAULT NULL COMMENT "真实姓名",
    `gender`  VARCHAR(10) DEFAULT NULL COMMENT "性别",
    `age`  TINYINT UNSIGNED DEFAULT NULL  COMMENT "年龄",
    `head_portrait` LONGBLOB COMMENT "头像",
@@ -34,10 +35,10 @@ CREATE TABLE `os_user`(
     PRIMARY KEY (`user_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="用户表";
 
-INSERT INTO `os_user` VALUES(1,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
-INSERT INTO `os_user` VALUES(3,1,"Fly","123456789","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13999999999",NULL,NULL,5);  
-INSERT INTO `os_user` VALUES(4,1,"Fly","123456789","梁国剑","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
-INSERT INTO `os_user` VALUES(5,1,"Fly","123456789","和经费","男",25,NULL,0,"liang@lanmei.com",0,"12345678911",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(1,1,"Fly","123456789","","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(3,1,"Fly","123456789","","梁飞飞","男",25,NULL,0,"liang@lanmei.com",0,"13999999999",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(4,1,"Fly","123456789","","梁国剑","男",25,NULL,0,"liang@lanmei.com",0,"13888888888",NULL,NULL,5);  
+INSERT INTO `os_user` VALUES(5,1,"Fly","123456789","","和经费","男",25,NULL,0,"liang@lanmei.com",0,"12345678911",NULL,NULL,5);  
 /*用户登录表*/
 DROP TABLE IF EXISTS `os_user_login`;
 CREATE TABLE `os_user_login`(

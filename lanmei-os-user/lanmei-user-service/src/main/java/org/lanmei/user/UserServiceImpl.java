@@ -69,6 +69,25 @@ public class UserServiceImpl extends BaseService implements  UserService{
 		
 		return (int) (Math.random() * 999999);
 	}
+	/**
+	 * 用户注册
+	 * @param userName       用户名
+	 * @param userPassword   密码
+	 * @return
+	 */
+	public UserStatus register(OsUser osuser ) {
+		UserStatus status = null;
+		
+		Integer id = userMapper.insertRegister(osuser);
+		if(id == null) {
+			logger.debug("用户创建失败");
+			return UserStatus.REGISTER_FAIL;
+		}
+		else {
+			logger.debug("用户创建成功，id = " + id);
+			return UserStatus.REGISTER_SUCCESS;
+		}
+	}
 	
 	public  void sendMsg(String phoneNum,String code ) {	
 		try {

@@ -14,4 +14,5 @@ public enum UserStatus {
 	REGISTER_FAIL,           //注册失败
 	LOGIN_SUCCESS,           //登录成功
 	LOGIN_FAIL,              //登陆失败
+	VALIDATE_CODE_ERR,       //验证码有误
 }

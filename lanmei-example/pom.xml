@@ -5,9 +5,7 @@
     <artifactId>org.lanmei.parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.lanmei.shop</groupId>
   <artifactId>org.lanmei.example</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>org.lanmei.example</name>
   <description>放置测试代码</description>
 </project>

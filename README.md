@@ -6,6 +6,19 @@
 			CSDN博客
 	</a>
 <br>
+<h1>完成模块</h1>
+<ol>
+	<li>
+		用户注册模块
+		<ul type="disc">
+			<li>注册界面。</li>
+			<li>密码强度校验：正则表达式。</li>
+			<li>手机短信验证码：使用阿里云短信</li>
+			<li>密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密.</li>
+			<li>密码加密保存：MD5算法加密。</li>
+		</ul>
+	</li>
+</ol>
 
 <h1>技术选型</h1>
 
@@ -125,5 +138,18 @@
 	<li>lanmei-cms-web</li>--后台管理web项目
 	<li>doc</li>--开发日志			
 	<li>mysql</li>--数据库文件，创建数据表相关
+</ol>
+
+<h1>个人博客相关文章</h1>
+<ol>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/79946220">[蓝莓商城]Js中使用正则表达式判断密码强度</a>
+	</li>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/79855398">slf4j + Log4j2 日志记录框架配置和使用详解</a>
+	</li>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/79950339">js中倒计时实现</a>
+	</li>
 </ol>
 

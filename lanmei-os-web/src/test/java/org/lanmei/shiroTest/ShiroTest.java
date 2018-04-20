@@ -29,7 +29,7 @@ public class ShiroTest {
 		
 		/*enable the shiro*/
 		//1.
-		Factory<SecurityManager> factory =(Factory) new IniSecurityManagerFactory("classpath:shiro/shirotest.ini");
+		Factory<SecurityManager> factory =(Factory<SecurityManager>) new IniSecurityManagerFactory("classpath:shiro/shirotest.ini");
 		//2.
 		SecurityManager securityManager = factory.getInstance();
 		//3.

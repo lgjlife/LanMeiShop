@@ -20,7 +20,7 @@ public class MybatisTest extends GetSqlSession{
 			
 			System.out.println(user.getPhoneNum());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 	}

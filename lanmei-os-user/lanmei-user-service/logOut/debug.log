@@ -1,4 +1,1 @@
-DEBUG [main] 2018-04-18 23:55:19 (alisms.java:31) ----main----
-DEBUG [main] 2018-04-18 23:55:19 (alisms.java:41) ----1----
-DEBUG [main] 2018-04-18 23:55:19 (alisms.java:47) ----2----
-DEBUG [main] 2018-04-18 23:55:19 (alisms.java:59) ----3----
+DEBUG [main] 2018-04-20 21:33:36 (UserServiceImpl.java:31) UserServiceImpl create bean ......

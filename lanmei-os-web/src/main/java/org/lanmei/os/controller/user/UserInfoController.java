@@ -39,7 +39,7 @@ public class UserInfoController {
 	
 	private final static Logger logger = LoggerFactory.getLogger("UserLoginController.class");	
 	{
-		logger.debug("UserInfoController Created Bean............. ");
+		logger.debug("UserInfoController Create Bean............. ");
 	}
 	
 	

@@ -293,7 +293,7 @@ $(function(){
 		var loginPassword = encryptedString(publicKey, encodeURIComponent(registerPassword));
 		console.log("经过加密后 loginPassword   = " + loginPassword);
 			
-		//if(checkAllInput() == true)
+		if(checkAllInput() == true)
 		{
 			var jsonData={"phoneNum":"","phoneNumValidate":"","loginPassword":"",};
 			jsonData.phoneNum = $("#registerPhoneNum").val();

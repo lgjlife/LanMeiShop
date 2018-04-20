@@ -8,6 +8,9 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * 自定义shiro 的realm 
@@ -17,14 +20,20 @@ import org.apache.shiro.subject.PrincipalCollection;
  * @author lgj
  *
  */
+@Component
 public class SystemAuthorizingRealm extends AuthorizingRealm  {
 
+	private final static Logger logger = LoggerFactory.getLogger("SystemAuthorizingRealm.class");	
+	{
+		logger.debug("SystemAuthorizingRealm Create Bean............. ");
+	}
 	/**
 	 * 权限验证
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// TODO Auto-generated method stub
+		logger.debug("into doGetAuthorizationInfo....");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		
 		return info;
@@ -37,7 +46,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		// TODO Auto-generated method stub
-		
+		logger.debug("into doGetAuthenticationInfo....");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		return null;
 	}
