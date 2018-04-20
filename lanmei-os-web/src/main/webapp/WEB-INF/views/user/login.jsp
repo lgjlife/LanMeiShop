@@ -11,7 +11,12 @@
 		<meta charset="utf-8">
  	    <meta name="viewport" content="width=device-width, initial-scale=1">      
  	    
-		<script src="${contextPathOfStatic}/js/user/register.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/security/Barrett.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/security/BigInt.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/security/RSA.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/common/regex.js"></script>	
+ 	    <script src="${contextPathOfStatic}/js/user/register.js"></script>
+		<script src="${contextPathOfStatic}/js/user/login.js"></script>
 		<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
 		
  
@@ -37,33 +42,41 @@
 			<div class="col-4">		
 			</div>
 			<div class="col-4">		
-				<form id="loginForm" >
+				<form id="loginForm" 
+					publicKey-modulus="${modulus}" 
+				    publicKey-exponent="${exponent}">
 					<div class="form-group">
 						<label  for="loginName" >登录帐号</label>
 						<input type="text" id="loginName"  class="form-control" style="width:60%" 
 						placeholder="电话号码/邮箱/用户名"/>
-						<span id="registerPhoneNumWarn" class="formWarn" ></span>						
+						<span id="loginNameWarn" class="formWarn" ></span>						
 					</div>
 					<div>
 						<label class="radio-inline">
-							<input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 手机号
+							<input type="radio" name="optionsRadiosinline" id="optionsRadiosPhone" value="option1" > 手机号
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 邮箱
+							<input type="radio" name="optionsRadiosinline" id="optionsRadiosEmail"  value="option2"> 邮箱
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="optionsRadiosinline" id="optionsRadios4"  value="option2"> 用户名
+							<input type="radio" name="optionsRadiosinline" id="optionsRadiosUserName"  value="option3"> 用户名
 						</label>
 					</div>
 					<div class="form-group">
-						<label  for="registerPassword" >密码</label>
+						<label  for="loginPassword" >密码</label>
 						<br>
-						<input type="text" id="registerPassword"  class="form-control" style="width:60%;display:inline"  placeholder="设置密码" value=""/>
+						<input type="text" id="loginPassword"  class="form-control" style="width:60%;display:inline"  placeholder="请输入密码" value=""/>
+					</div>
+					<div class="form-group">
+						<label  for="loginValidateCode" >验证码</label>
+						<br>
+						<input type="text" id="logginVerificationCode"  class="form-control" style="width:60%;display:inline"  placeholder="验证码" value=""/>
+						<img id="vcode" title="点击更换" alt="验证图片" style="vertical-align: middle;" src="cgvc" height="30" width="80">
 					</div>
 					<a>忘记密码？</a><a  href="${projectPath}/user-login/find-password" target="_blank" 
 					style="color=#EEB422">点击找回密码</a>
 					<br>
-					<button type="submit" id="loginSubmit">登录</button>
+					<button type="button" id="loginSubmit">登录</button>
 				</form>
 			</div>
 			<div class="col-4">				

@@ -14,7 +14,8 @@
  	    <script src="${contextPathOfStatic}/js/security/Barrett.js"></script>
  	    <script src="${contextPathOfStatic}/js/security/BigInt.js"></script>
  	    <script src="${contextPathOfStatic}/js/security/RSA.js"></script>
-		<script src="${contextPathOfStatic}/js/user/register.js"></script>		
+		<script src="${contextPathOfStatic}/js/user/register.js"></script>
+		<script src="${contextPathOfStatic}/js/common/regex.js"></script>			
 		<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
 		
  
