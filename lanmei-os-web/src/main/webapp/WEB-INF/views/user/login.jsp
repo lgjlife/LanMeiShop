@@ -71,7 +71,9 @@
 						<label  for="loginValidateCode" >验证码</label>
 						<br>
 						<input type="text" id="logginVerificationCode"  class="form-control" style="width:60%;display:inline"  placeholder="验证码" value=""/>
-						<img id="vcode" title="点击更换" alt="验证图片" style="vertical-align: middle;" src="cgvc" height="30" width="80">
+						<img id="vcode" title="点击更换" alt="验证图片" 
+						src="${projectPath}/kaptcha" onclick="this.src='${projectPath}/kaptcha?d=+Math.random()'"
+						style="vertical-align: middle;"  height="30" width="80">
 					</div>
 					<a>忘记密码？</a><a  href="${projectPath}/user-login/find-password" target="_blank" 
 					style="color=#EEB422">点击找回密码</a>

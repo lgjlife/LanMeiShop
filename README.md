@@ -18,6 +18,17 @@
 			<li>密码加密保存：MD5算法加密。</li>
 		</ul>
 	</li>
+	<li>
+		用户登录模块
+		<ul type="disc">
+			<li>登录界面</li>
+			<li>登录方式选择：手机/邮箱/用户名</li>
+			<li>动态验证码:kaptcha</li>			
+			<li>密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密.</li>
+			<li>shiro登录验证</li>
+			<li>帐号登录日志管理</li>
+		</ul>
+	</li>
 </ol>
 
 <h1>技术选型</h1>
@@ -114,6 +125,12 @@
 		安全管理框架：
 		<a href="http://shiro.apache.org/">
 			shiro
+		</a>
+	</li>
+	<li>
+		验证码库：
+		<a >
+			kaptcha
 		</a>
 	</li>
 </ol>

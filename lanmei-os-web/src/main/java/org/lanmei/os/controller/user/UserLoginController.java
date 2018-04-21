@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
+import com.aliyuncs.http.HttpRequest;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -44,6 +48,8 @@ import net.sf.json.JSONObject;
 @RequestMapping("/user-login")
 public class UserLoginController {
 
+	
+	
 	private final static Logger logger = LoggerFactory.getLogger("UserLoginController.class");	
 	{
 		logger.debug("UserLoginController Created Bean............. ");

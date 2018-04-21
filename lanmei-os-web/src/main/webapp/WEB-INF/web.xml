@@ -89,6 +89,8 @@
     	<servlet-name>lanmei</servlet-name>    	
     	<url-pattern>/</url-pattern>
     </servlet-mapping>
+   
+    
     
     <!-- 配置404与500错误处理 -->   
 	<error-page>

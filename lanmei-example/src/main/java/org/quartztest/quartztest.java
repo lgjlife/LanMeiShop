@@ -1,7 +1,8 @@
 package org.quartztest;
 
+import static org.quartz.CronScheduleBuilder.cronSchedule;
+
 import java.util.Date;
-import java.util.TimeZone;
 
 import org.quartz.DateBuilder;
 import org.quartz.JobBuilder;
@@ -11,9 +12,6 @@ import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
-import static org.quartz.TriggerBuilder.*;  
-import static org.quartz.CronScheduleBuilder.*;  
-import static org.quartz.DateBuilder.*;
 
 public class quartztest {
 	public void run() throws Exception {  

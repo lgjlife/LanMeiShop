@@ -24,16 +24,22 @@
   	    <aliyun-dysmsapi.version>1.1.0</aliyun-dysmsapi.version>
   	    <aliyun-sms.version>3.0.0-rc1</aliyun-sms.version>
   	    <aspectj.version>1.8.13</aspectj.version>
+  	    <commons-lang.version>2.5</commons-lang.version>
   	    <commons-httpclient.version>3.0.1</commons-httpclient.version>
   	    <commons-codec.version>1.9</commons-codec.version>
+  	    <commons-collections4.version>4.1</commons-collections4.version>
   	    <commons.version>1.2</commons.version>
   	    <commons-logging.version>1.1.3</commons-logging.version>
 	 	<commons-dbcp.version>1.4</commons-dbcp.version>
 	 	<commons-io.version>2.6</commons-io.version>
 	    <commons-fileupload.version>1.3.3</commons-fileupload.version>
+	    <commons-beanutils.version>1.8.0</commons-beanutils.version>
+		<commons-collections.version>4.1</commons-collections.version>
 		<druid.version>1.0.29</druid.version>
+		<ezmorph.version>1.0.6</ezmorph.version>		
 	 	<file.encoding>UTF-8</file.encoding>
 	 	<jsr250-api.version>1.0</jsr250-api.version>
+	 	<jcaptcha.version>1.0-RC6</jcaptcha.version>
 	 	<jackson.version>2.9.5</jackson.version>
 	 	<jedis.version>2.9.0</jedis.version>
 	 	<json-lib.version>2.4</json-lib.version>
@@ -53,13 +59,28 @@
 	    <swagger.version>1.0.2</swagger.version>
 		<testng.version>6.8.7</testng.version> 	 
 		<joda-time.version>2.9.9</joda-time.version>
-		<commons-beanutils.version>1.8.0</commons-beanutils.version>
-		<commons-collections.version>3.2.1</commons-collections.version>
-		<ezmorph.version>1.0.6</ezmorph.version>
-		<commons-lang.version>2.5</commons-lang.version>
+		<filters.version>2.0.235</filters.version>
+		<jcaptcha-api.version>1.0</jcaptcha-api.version>
    </properties>
    <dependencies>
-
+		<!-- 图片验证码 jcaptcha -->
+		<!-- <dependency>
+            <groupId>com.jhlabs</groupId>
+            <artifactId>filters</artifactId>
+            <version>${filters.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.octo.captcha</groupId>
+            <artifactId>jcaptcha-api</artifactId>
+            <version>${jcaptcha-api.version}</version>
+        </dependency> 
+        
+        <dependency>
+            <groupId>com.octo.captcha</groupId>
+            <artifactId>jcaptcha-all</artifactId>
+            <version>1.0-RC6</version>
+        </dependency>-->
+        
 		<dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
@@ -87,8 +108,8 @@
             <version>${commons-beanutils.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
+            <groupId> org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
         <dependency>
@@ -165,6 +186,7 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
+	  
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
