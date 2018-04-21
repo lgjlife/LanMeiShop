@@ -105,11 +105,35 @@
   </select>
   <!-- 注册用户 -->
   <insert id="insertRegister" parameterType="org.lanmei.user.dao.model.OsUser">
-    <selectKey keyProperty="userId" order="BEFORE" resultType="java.lang.Integer">
+    <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into os_user (login_password, salt,  phone_num, register_time)
     values (#{loginPassword,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},
       #{phoneNum,jdbcType=VARCHAR},#{registerTime,jdbcType=TIMESTAMP})
   </insert>
+  <!-- 根据电话号码获取OsUser -->
+  <select id="selectByTelNum" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_number, nick_name, login_password, salt, actual_name, gender, 
+    age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, 
+    head_portrait
+    from os_user
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据email获取OsUser -->
+ <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_number, nick_name, login_password, salt, actual_name, gender, 
+    age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, 
+    head_portrait
+    from os_user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据用户名称获取OsUser -->
+  <select id="selectByNickName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select user_id, user_number, nick_name, login_password, salt, actual_name, gender, 
+    age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, 
+    head_portrait
+    from os_user
+    where nickName = #{nickName,jdbcType=VARCHAR}
+  </select>
 </mapper>

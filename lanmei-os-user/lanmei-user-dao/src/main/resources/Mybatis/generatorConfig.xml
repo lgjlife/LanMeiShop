@@ -54,8 +54,10 @@
          targetProject="org.lanmei.user.dao/src/main/java"/>
 		<!-- os_favorites  os_receipt_address  os_receipt_address os_user_login   -->
         <!-- 可以配置多个table,每个表单独配置-->
+        <!-- type="post" identity="true" :	ORDER = AFTER -->
+        <!-- type="pre" identity="false"(only  the value) :	ORDER = BEFORE -->
         <table tableName="os_user">
-      	  <generatedKey column="user_id" sqlStatement="MySql"/>    
+      	  <generatedKey column="user_id" sqlStatement="MySql" type="post" identity="true"/>    
         </table> 
         <table tableName="os_user_login">
       	  <generatedKey column="login_id" sqlStatement="MySql"/>    

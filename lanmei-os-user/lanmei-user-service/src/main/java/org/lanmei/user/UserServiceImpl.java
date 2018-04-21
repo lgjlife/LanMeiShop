@@ -84,7 +84,7 @@ public class UserServiceImpl extends BaseService implements  UserService{
 			return UserStatus.REGISTER_FAIL;
 		}
 		else {
-			logger.debug("用户创建成功，id = " + id);
+			logger.debug("用户创建成功，id = " + osuser.getUserId());
 			return UserStatus.REGISTER_SUCCESS;
 		}
 	}
@@ -99,6 +99,18 @@ public class UserServiceImpl extends BaseService implements  UserService{
 		}
 		logger.debug("PhoneNum = " + phoneNum  + "  phoneValidateCode = " + code); 
 		
+	}
+	public OsUser getUserByTelNum(String phoneNum) {
+		OsUser osuser = userMapper.selectByTelNum(phoneNum);
+		return osuser;
+	}
+	public OsUser getUserByEmail(String email) {
+		OsUser osuser = userMapper.selectByEmail(email);
+		return osuser;
+	}
+	public OsUser getUserByNickName(String nickName ) {
+		OsUser osuser = userMapper.selectByNickName(nickName);
+		return osuser;
 	}
 }
 

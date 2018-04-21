@@ -7,6 +7,9 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +46,15 @@ public class KaptchaImageCreate {
         response.addHeader("Cache-Control", "post-check=0, pre-check=0");  
         response.setHeader("Pragma", "no-cache");  
         response.setContentType("image/jpeg");  
-        String capText = kaptchaProducer.createText();  
-        logger.debug("验证码 = " +  capText);
-        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);  
-        BufferedImage bi = kaptchaProducer.createImage(capText);  
+        String verificationCode = kaptchaProducer.createText();  
+        logger.debug("验证码 = " +  verificationCode);
+        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, verificationCode); 
+        
+        Subject currentUser = SecurityUtils.getSubject();		
+		Session session = currentUser.getSession();
+		session.setAttribute("verificationCode",verificationCode);
+		
+        BufferedImage bi = kaptchaProducer.createImage(verificationCode);  
         ServletOutputStream out = response.getOutputStream();  
         ImageIO.write(bi, "jpg", out);  
         try {  

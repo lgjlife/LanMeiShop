@@ -307,7 +307,11 @@ $(function(){
 		        data : JSON.stringify(jsonData),
 		        dataType: "json",
 		        success:function(data){
-		            console.log("手机验证码d:" + data.registerStatus);
+		            console.log("注册状态:" + data.registerStatus);
+		            if(data.registerStatus == "REGISTER_SUCCESS"){
+		            	$("#registerForm").hide();
+		        		$("#registerSuccessDisplay").show();
+		            }
 		        }
 			 });
 		}

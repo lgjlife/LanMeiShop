@@ -1,15 +1,24 @@
 package org.lanmei.os.common.security;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
+import org.lanmei.os.common.regex.ProjectRegex;
+import org.lanmei.user.UserServiceImpl;
+import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,6 +36,10 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 	{
 		logger.debug("SystemAuthorizingRealm Create Bean............. ");
 	}
+	
+	@Autowired
+	UserServiceImpl  userServiceImpl;
+	
 	/**
 	 * 权限验证
 	 */
@@ -35,6 +48,8 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 		// TODO Auto-generated method stub
 		logger.debug("into doGetAuthorizationInfo....");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		
+		
 		
 		return info;
 	}
@@ -47,9 +62,48 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		logger.debug("into doGetAuthenticationInfo....");
-		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-		return null;
-	}
+		
+		String userName = token.getPrincipal().toString();
+		OsUser user = null;
+		if(ProjectRegex.isTelNum(userName)) {
+			 user = userServiceImpl.getUserByTelNum(userName);
+		}
+		else if(ProjectRegex.isEmail(userName)) {
+			 user = userServiceImpl.getUserByEmail(userName);
+		}
+		else {
+			 user = userServiceImpl.getUserByNickName(userName);
+		}
+		
+		if(user != null) {
+			logger.debug("查询到用户");
+		}
+		else {
+			logger.debug("未查询到用户");
+			throw new UnknownAccountException();
+		}
+		
+		SimpleAuthenticationInfo authenticationInfo 
+			= new SimpleAuthenticationInfo(user,user.getLoginPassword(),
+					ByteSource.Util.bytes(user.getSalt()),user.getPhoneNum());
+		
+		this.setSession("currentUser", user.getUserId());
+		
+		return authenticationInfo;
+	}	
 	
-	
+	/** 
+     * 将一些数据放到ShiroSession中,以便于其它地方使用 
+     * @see 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到 
+     */  
+    private void setSession(Object key, Object value){  
+        Subject currentUser = SecurityUtils.getSubject();  
+        if(null != currentUser){  
+            Session session = currentUser.getSession();  
+            System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");  
+            if(null != session){  
+                session.setAttribute(key, value);  
+            }  
+        }  
+    }  
 }

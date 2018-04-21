@@ -44,7 +44,8 @@
 			<div class="col-4">		
 				<form id="loginForm" 
 					publicKey-modulus="${modulus}" 
-				    publicKey-exponent="${exponent}">
+				    publicKey-exponent="${exponent}"
+				    style="display:block;">
 					<div class="form-group">
 						<label  for="loginName" >登录帐号</label>
 						<input type="text" id="loginName"  class="form-control" style="width:60%" 
@@ -74,12 +75,20 @@
 						<img id="vcode" title="点击更换" alt="验证图片" 
 						src="${projectPath}/kaptcha" onclick="this.src='${projectPath}/kaptcha?d=+Math.random()'"
 						style="vertical-align: middle;"  height="30" width="80">
+						<span id="loginValidateCodeWarn" class="formWarn" ></span>
 					</div>
 					<a>忘记密码？</a><a  href="${projectPath}/user-login/find-password" target="_blank" 
 					style="color=#EEB422">点击找回密码</a>
 					<br>
 					<button type="button" id="loginSubmit">登录</button>
+					<span id="loginWarn" class="formWarn" ></span>
 				</form>
+				
+				<!-- 登陆成功现实 -->
+				<span  id="loginSuccessDisplay" style="display:none; font-size:40px;  position:relative; left:15%;" >
+					恭喜您！登陆成功。
+					<a href="${projectPath}" style="color:#DC143C;">点击返回主界面！</a>
+				</span>
 			</div>
 			<div class="col-4">				
 			</div>

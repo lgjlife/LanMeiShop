@@ -82,7 +82,15 @@
 					<button type="button" id="registerSubmit">提交</button>
 					<button type="button" id="keytest">测试加密</button>
 				</form>
+				
+				<!-- 注册成功显示 -->
+				<span  id="registerSuccessDisplay" style="display:none; font-size:40px;  position:relative; left:15%;" >
+					恭喜您注册成功!
+					</br>
+					<a href="${projectPath}" style="color:#DC143C;">点击返回主界面！</a>
+				</span>
 			</div>
+			
 			<div class="col-4">				
 			</div>
 		</div><!--<div class="row">  -->

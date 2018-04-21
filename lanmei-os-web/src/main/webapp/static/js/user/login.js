@@ -139,7 +139,17 @@ $(function(){
 		        data : JSON.stringify(jsonData),
 		        dataType: "json",
 		        success:function(data){
-		            console.log("手机验证码d:" + data.registerStatus);
+		            console.log("手机验证码d:" + data.loginStatus);
+		            if(data.loginStatus == "VALIDATE_CODE_ERR"){
+		            	$("#loginValidateCodeWarn").text("验证码有误");
+		            }
+		            else if(data.loginStatus == "LOGIN_SUCCESS"){
+		            	$("#loginForm").hide();
+		        		$("#loginSuccessDisplay").show();
+		            }
+		            else if(data.loginStatus == "LOGIN_FAIL"){
+		            	$("#loginWarn").text("用户验证失败，请输入正确的登陆名称或者密码！");
+		            }
 		        }
 			 });
 		}

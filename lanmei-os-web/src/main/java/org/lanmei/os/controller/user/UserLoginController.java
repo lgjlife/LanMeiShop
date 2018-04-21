@@ -4,23 +4,22 @@ import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.lanmei.common.UserStatus;
 import org.lanmei.os.common.rsa.RSAKeyFactory;
 import org.lanmei.os.common.rsa.RSAUtilNew;
 import org.lanmei.user.UserServiceImpl;
-import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.aliyuncs.http.HttpRequest;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
@@ -117,6 +114,8 @@ public class UserLoginController {
 	public JSONObject register(@RequestBody Map<String, Object> models) {		
 		logger.debug("INTO /user-login/login");
 		
+		Map<String,Object> map = new HashMap<String,Object>();	
+		
 		//OsUser user= JSON.toJSONString(OsUser,OsUser.class);
 		/*接受客户端发来的数据*/
 		/*获取电话号码和密码(使用RSA进行加密)*/
@@ -129,20 +128,29 @@ public class UserLoginController {
 		/*获取Modulus和Exponent 保存在session中*/
 		Subject currentUser = SecurityUtils.getSubject();
 		Session session = currentUser.getSession();
+		/*获取RSA 的keyPair */
 		KeyPair key = (KeyPair)session.getAttribute("KeyPair");
 		RSAPrivateKey privateKey = (RSAPrivateKey) key.getPrivate();
-		
-	
+		/*从session获取验证码*/
+		String verificationCodeSave = (String)session.getAttribute("verificationCode");
+		logger.debug("之前保存的验证码 = " + verificationCodeSave);
+		logger.debug("用户提交的验证码 = " + logginVerificationCode);
+		if(verificationCodeSave.equals(logginVerificationCode) == false) {
+			//验证码有误
+			map.put("loginStatus", UserStatus.VALIDATE_CODE_ERR);
+			JSONObject json = JSONObject.fromObject(map);
+			
+			return json;
+		} 
+	    /*解密，获取原始密码*/
 		logger.debug("通过 privateKeyModulus  和 privateKeyExponent 获取私钥");
 		logger.debug(" 获取私钥为 = " + privateKey );
 	    logger.debug(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
 		logger.debug(" 私钥  privateKeyExponent = " + privateKey.getPrivateExponent());
 		byte[] en_result = new BigInteger(loginPassword, 16).toByteArray();
 		byte[] pass = null;
-		try {
-			
-			 pass =RSAUtilNew.decrypt(privateKey,en_result);
-			
+		try {			
+			 pass =RSAUtilNew.decrypt(privateKey,en_result);			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -153,10 +161,38 @@ public class UserLoginController {
 		String passWord = StrBuf.reverse().toString();
 		logger.debug("解密的密码为 = " + passWord);
 
-		UserStatus registerStatus = UserStatus.REGISTER_SUCCESS;
+		UsernamePasswordToken token = new UsernamePasswordToken(loginName,passWord);
+		System.out.println("认证状态 = " + currentUser.isAuthenticated());
+		try {
+			currentUser.login(token);
+			
+		}catch(UnknownAccountException uae){  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");  
+         
+        }catch(IncorrectCredentialsException ice){  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误的凭证");  
+          
+        }catch(LockedAccountException lae){  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,账户已锁定");  
+             
+        }catch(ExcessiveAttemptsException eae){  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误次数过多");  
+             
+        }catch(AuthenticationException ae){  
+            //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,堆栈轨迹如下");  
+            ae.printStackTrace();  
+           
+        } 
+		System.out.println("认证状态 = " + currentUser.isAuthenticated());
+		if(currentUser.isAuthenticated()) {
+			System.out.println("用户[" + loginName + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)"); 
+		}
 		
-		Map<String,Object> map = new HashMap<String,Object>();		
-		map.put("registerStatus", registerStatus);
+		UserStatus loginStatus = UserStatus.LOGIN_SUCCESS;
+		
+			
+		map.put("loginStatus", loginStatus);
 		JSONObject json = JSONObject.fromObject(map);
 		
 		return json;

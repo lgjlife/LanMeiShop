@@ -46,5 +46,10 @@ public interface OsUserMapper {
 	
 	int insertRegister(OsUser record);
 	
+	OsUser selectByTelNum(String phoneNum);
+	
+	OsUser selectByEmail(String email);
+	
+	OsUser selectByNickName(String nickName);
 	
 }
