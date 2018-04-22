@@ -15,7 +15,9 @@
 	</head>
 	
 	<body>
-	
+		<ServiceInfo id="ServiceInfo" 
+		user="${user}" userid="${user.userId}">		
+		</info>
 	    <!-- 创建顶部导航栏 -->
 	     <div class="container-fluid">
 			<div class="row">
@@ -54,7 +56,14 @@
 				<div class="col-4">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="${projectPath}/user-login" target="_blank">登录</a>
+							<a id="loginTag" class="nav-link" href="${projectPath}/user-login" target="_blank">登录</a>
+						
+							<a class="nav-link" href="${projectPath}/user-info" target="_blank" 
+							id="LoginedTag" style="display:none;">
+							用户(${user.userId})
+							</a>
+							
+							
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="${projectPath}/user-register/register" target="_blank">注册</a>

@@ -97,12 +97,33 @@
     from os_user
   </select>
   
-  <!-- 查询电话号码是否已经注册 -->
+  <!-- 通过电话号码查询 -->
    <select id="selectByPhoneNum" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select user_id
+    select user_id, user_number, nick_name, login_password, salt, actual_name, gender, 
+    age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, 
+    head_portrait
     from os_user
     where phone_num = #{phoneNum,jdbcType=VARCHAR}
   </select>
+   <!-- 通过电话号码/邮箱/用户名查询 -->
+   <!-- 动态SQL -->
+   <select id="selectByUser" resultMap="BaseResultMap">
+    select user_id, user_number, nick_name, login_password, salt, actual_name, gender, 
+    age, status, email, email_active, phone_num, register_time, last_login_time, login_nums, 
+    head_portrait
+    from os_user
+ 	 where  1 = 1 
+    <if test="nickName != null and nickName != '' ">
+    and nick_name = #{nickName,jdbcType=VARCHAR}
+    </if> 
+    <if test="phoneNum != null and phoneNum !='' ">
+    and phone_num = #{phoneNum,jdbcType=VARCHAR} 
+    </if>
+   <if test="email != null and email != '' ">
+    and email = #{email,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
   <!-- 注册用户 -->
   <insert id="insertRegister" parameterType="org.lanmei.user.dao.model.OsUser">
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">

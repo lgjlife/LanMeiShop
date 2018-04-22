@@ -1,6 +1,8 @@
 package org.lanmei.user.dao.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.lanmei.user.dao.model.OsUserLogin;
 
 public interface OsUserLoginMapper {
@@ -34,4 +36,11 @@ public interface OsUserLoginMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(OsUserLogin record);
+	/*通过userId更新登录日志*/
+	int updateByUserId(@Param("userId") Integer userId,@Param("userLogin") OsUserLogin  userLogin);
+	/*通过userId插入登录日志*/
+	int insertByUserId(@Param("userId") Integer userId,@Param("userLogin") OsUserLogin  userLogin);
+	/*通过userId获取登录日志*/
+	List<OsUserLogin> selectByUserId(Integer userId);
+	
 }

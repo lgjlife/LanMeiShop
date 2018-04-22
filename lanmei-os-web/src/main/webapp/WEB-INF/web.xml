@@ -9,9 +9,9 @@
     
     <display-name>taotao-manager</display-name>  
     <!--首页显示-->
-    <welcome-file-list>  
+   <!--  <welcome-file-list>  
         <welcome-file>HomePage.jsp</welcome-file>  
-    </welcome-file-list>  
+    </welcome-file-list>   -->
     
    <!-- 
    1.context-param全局配置文件，表示应用范围内

@@ -41,7 +41,7 @@
     update os_user_login
     set login_time = #{loginTime,jdbcType=TIMESTAMP},
       login_ip = #{loginIp,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER},
+      user_id = #{loginId,jdbcType=INTEGER},
       explorer = #{explorer,jdbcType=VARCHAR}
     where login_id = #{loginId,jdbcType=INTEGER}
   </update>
@@ -62,4 +62,30 @@
     select login_id, login_time, login_ip, user_id, explorer
     from os_user_login
   </select>
+  <!-- 自定义 -->
+   <update id="updateByUserId" parameterType="org.lanmei.user.dao.model.OsUserLogin">
+    update os_user_login
+    set login_time = #{userLogin.loginTime,jdbcType=TIMESTAMP},
+      login_ip = #{userLogin.loginIp,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      explorer = #{userLogin.explorer,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <!-- 通过 user_id  更新登录日志  -->
+  <insert id="insertByUserId" parameterType="org.lanmei.user.dao.model.OsUserLogin">
+    <selectKey keyProperty="loginId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into os_user_login (login_id, login_time, login_ip, 
+      user_id, explorer)
+    values (#{userLogin.loginId,jdbcType=INTEGER}, #{userLogin.loginTime,jdbcType=TIMESTAMP},#{userLogin.loginIp,jdbcType=VARCHAR},  #{userId,jdbcType=INTEGER}, #{userLogin.explorer,jdbcType=VARCHAR})
+  </insert>
+  <!-- 通过user_id 获取登录日志 -->
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select login_id, login_time, login_ip, user_id, explorer
+    from os_user_login
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  
 </mapper>

@@ -1,30 +1,16 @@
 package org.lanmei.os.controller.user;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.imageio.spi.RegisterableService;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.config.Ini;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
-import org.lanmei.common.UserStatus;
-import org.lanmei.user.UserServiceImpl;
+import org.lanmei.os.common.session.SessionUtils;
 import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-
-import net.sf.json.JSONObject;
 
 /**
  * 处理用户登录，注册请求Controller
@@ -45,16 +31,26 @@ public class UserInfoController {
 	
 	@ApiOperation(value="/user-login",httpMethod="GET",notes="请求个人中心页面")
 	@RequestMapping(method=RequestMethod.GET)
-	public String  loginPage() {
+	public ModelAndView  loginPage() {
 		
 		logger.debug("into /user-info");
-		return "/user/info"; 
+		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		
+
+		ModelAndView mv = new ModelAndView("/user/info");
+		mv.addObject("user", user);
+		return mv;
 	}
 	@ApiOperation(value="/user-login",httpMethod="GET",notes="请求个人中心页面")
 	@RequestMapping(path="/setting", method=RequestMethod.GET)
-	public String  infoSeting() {
+	public ModelAndView  infoSeting() {
 		
 		logger.debug("into /user-info/setting");
-		return "/user/info-setting"; 
+		
+		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		
+		ModelAndView mv = new ModelAndView("/user/info-setting");
+		mv.addObject("user", user);
+		return mv;
 	}
 }

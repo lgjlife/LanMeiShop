@@ -52,7 +52,7 @@ CREATE TABLE `os_user_login`(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户登录表';
 
 INSERT INTO  `os_user_login` VALUES (1,NULL,"192.172.1.123",1,"Chrom");
-/*收获地址表*/
+/*收货地址表*/
 DROP TABLE IF EXISTS `os_receipt_address`;
 CREATE TABLE `os_receipt_address`(
 	`receipt_address_id` INT  AUTO_INCREMENT COMMENT "收货地址ID",

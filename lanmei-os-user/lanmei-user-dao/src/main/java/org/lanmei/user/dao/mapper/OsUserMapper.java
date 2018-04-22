@@ -1,6 +1,8 @@
 package org.lanmei.user.dao.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.lanmei.user.dao.model.OsUser;
 
 public interface OsUserMapper {
@@ -51,5 +53,7 @@ public interface OsUserMapper {
 	OsUser selectByEmail(String email);
 	
 	OsUser selectByNickName(String nickName);
+	
+	OsUser selectByUser(@Param("nickName") String nickName,@Param("phoneNum") String phoneNum,@Param("email")String email);
 	
 }

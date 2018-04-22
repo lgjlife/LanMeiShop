@@ -19,6 +19,7 @@
       <!--   <property name="rememberMeManager" ref="rememberMeManager"/> -->
 		<!-- 配置session管理器 -->
 		<property name="sessionManager" ref="sessionManager" />
+		
 	</bean>
 
 	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroAuthorizingRealm.java -->
@@ -36,11 +37,12 @@
 	
 	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
        <!-- session的失效时长，单位毫秒 -->
-     	<property name="globalSessionTimeout" value="600000"/>
+     	<property name="globalSessionTimeout" value="-1"/>
       <!-- 删除失效的session -->
     	<property name="deleteInvalidSessions" value="true"/>
      	<property name="sessionIdCookieEnabled" value="true"/>
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <property name="sessionValidationSchedulerEnabled" value="true" />  
     </bean>
     <!-- 必须，否则会报错 -->
     <!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,

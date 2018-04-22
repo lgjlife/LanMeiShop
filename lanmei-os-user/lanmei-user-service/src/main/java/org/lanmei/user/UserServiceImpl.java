@@ -11,16 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.profile.DefaultProfile;
-import com.aliyuncs.profile.IClientProfile;
 
-
+@Transactional
 @Service
 public class UserServiceImpl extends BaseService implements  UserService{
 
@@ -62,8 +57,21 @@ public class UserServiceImpl extends BaseService implements  UserService{
 		else {
 			logger.debug("您查找的手机号码" + phoneNum +"已经注册");
 			System.out.println(osuser.toString());			
-			return UserStatus.PHONE_NUM_REGISTER;
+			return UserStatus.PHONE_NUM_REGISTER; 
 		}		
+	}
+	public OsUser getUser(String nickName,String phoneNum,String email){
+		
+		OsUser osuser = userMapper.selectByUser(nickName,phoneNum,email);
+		
+		if(osuser == null ) {
+			logger.debug("您查找的用户不存在");
+			
+		}
+		else {
+			logger.debug("您查找的用户" + osuser.getUserId() +"存在");
+		}		
+		return osuser;
 	}
 	public static int getRandom() {
 		
