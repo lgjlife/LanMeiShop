@@ -116,6 +116,27 @@ public class UserLoginController {
 		
 		return mv;
 	}
+	@RequestMapping(value="/redistest",method=RequestMethod.GET)
+	public ModelAndView redis() {
+		logger.debug("\r\n-------/redistest");
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		session.setAttribute("testredis","testvalue");
+		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
+		
+		OsUser user = new OsUser();
+		user.setUserId(12);
+		session.setAttribute("testUser",user);
+		
+		OsUser user1 = (OsUser)session.getAttribute("testUser");
+		
+		logger.debug("\r\n-------获取的user1 id value :"+user1.getUserId());
+		
+		ModelAndView mv = new ModelAndView("/user/login");
+
+		
+		return mv;
+	}
 	/**
 	 * 客户端提交注册按钮
 	 * 1.校验验证码是否正确
@@ -181,6 +202,8 @@ public class UserLoginController {
 		UsernamePasswordToken token = new UsernamePasswordToken(loginName,passWord);
 		System.out.println("认证状态 = " + currentUser.isAuthenticated());
 		try {
+			
+			token.setRememberMe(true);
 			/*登录验证*/
 			currentUser.login(token);
 			logger.debug("用户登录成功");

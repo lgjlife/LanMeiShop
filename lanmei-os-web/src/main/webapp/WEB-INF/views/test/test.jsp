@@ -58,5 +58,11 @@
 		<hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />
 		<h5>数据库测试</h5>
 		<a href="${projectPath}/user/info">数据库访问测试</a>
+		
+		<hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />
+		<h5>Redis数据库测试</h5>
+		<a href="${projectPath}/redis">Redis数据库访问测试</a>
+		
+		
 	</body>
 </html>

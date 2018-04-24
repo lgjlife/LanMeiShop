@@ -46,7 +46,7 @@ CREATE TABLE `os_user_login`(
 	`login_time`  DATETIME DEFAULT NULL COMMENT "登录时间",
 	`login_ip`   VARCHAR(50) DEFAULT NULL COMMENT "登录IP",
 	`user_id`  INT DEFAULT NULL COMMENT "用户id",
-	`explorer` VARCHAR(20) DEFAULT NULL  COMMENT "浏览器",
+	`explorer` VARCHAR(150) DEFAULT NULL  COMMENT "浏览器",
 	PRIMARY KEY (`login_id`)
 	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户登录表';
