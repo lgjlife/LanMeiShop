@@ -37,7 +37,7 @@ public class JedisTest {
 		
 		ApplicationContext ac=new ClassPathXmlApplicationContext("spring/applicationContext-cache.xml");
 		
-		RedisTemplate<String, Object> redisTemplate = (RedisTemplate)ac.getBean("redisTemplate");
+		RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>)ac.getBean("redisTemplate");
 		
 		User user1 = new User("aaa",1);
 		User user2 = new User("bbb",2);

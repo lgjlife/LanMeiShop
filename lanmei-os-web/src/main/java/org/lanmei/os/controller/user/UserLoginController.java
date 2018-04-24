@@ -124,13 +124,13 @@ public class UserLoginController {
 		session.setAttribute("testredis","testvalue");
 		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
 		
-		OsUser user = new OsUser();
+		/*OsUser user = new OsUser();
 		user.setUserId(12);
 		session.setAttribute("testUser",user);
 		
 		OsUser user1 = (OsUser)session.getAttribute("testUser");
 		
-		logger.debug("\r\n-------获取的user1 id value :"+user1.getUserId());
+		logger.debug("\r\n-------获取的user1 id value :"+user1.getUserId());*/
 		
 		ModelAndView mv = new ModelAndView("/user/login");
 

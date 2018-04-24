@@ -5,11 +5,39 @@
     <artifactId>org.lanmei.parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+
   <artifactId>org.lanmei.cms.web</artifactId>
+  <!-- 设置为WAR则为WEB项目，普通Java项目设置为jar -->
   <packaging>war</packaging>
   <name>org.lanmei.cms.web</name>
-  <description>蓝莓商城后台管理前端项目</description>
+  <description>蓝莓商城后台管理web</description>
   
+  <dependencies>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.user.dao</artifactId> 
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.user.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16</artifactId>
+			<version>1.46</version>
+	</dependency>
+	<!-- jcaptcha 验证码插件 -->
+	<dependency>  
+     <groupId>com.github.penggle</groupId>  
+     <artifactId>kaptcha</artifactId>  
+     <version>2.3.2</version>  
+   </dependency>  
+	
+		
+  </dependencies>
   <build>
   		<finalName>
   			lanmei-cms
@@ -37,5 +65,4 @@
 	    </plugin>  
 	</plugins> 
   </build>
-  
 </project>

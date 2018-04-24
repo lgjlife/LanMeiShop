@@ -57,10 +57,10 @@ public class HomePageController {
 		session.setAttribute("testredis","testvalue");
 		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
 		
-		OsUser user = new OsUser();
+		/*OsUser user = new OsUser();
 		user.setUserId(12);
 		session.setAttribute("testUser",user);
-		
+		*/
 		
 		
 		ModelAndView mv = new ModelAndView("/homepage/HomePage");

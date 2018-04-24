@@ -66,13 +66,19 @@ public class RedisSessionDao extends AbstractSessionDAO {
 		// TODO Auto-generated method stub
 		logger.debug("获取session,session id = {}",sessionId.toString());	
 		Session session = redisTemplateUtils.readSession(getKey(sessionId.toString()));
-		logger.debug(" doReadSession redis 获取session,session id = {}",session.getId().toString());
+		if(session != null) {
+			logger.debug(" doReadSession redis 获取session,session id = {}",session.getId().toString());
+		}
+		else {
+			logger.debug("session 不存在");
+		}
+		
 		
 		/*Set<String> keys = new HashSet<String>();*/
-		Collection<Object> keys = session.getAttributeKeys();
+		/*Collection<Object> keys = session.getAttributeKeys();
 		for(Object str:keys) {
 			logger.debug("key = " + str + "  value = " + session.getAttribute(str));
-		}
+		}*/
 		return session;
 	}
 

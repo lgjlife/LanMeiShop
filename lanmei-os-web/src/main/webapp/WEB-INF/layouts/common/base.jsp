@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*"  contentType="text/html; charset=utf-8"%>
+<%@ page language="java" import="java.lang.String"  import="java.lang.Object" contentType="text/html; charset=utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -40,4 +40,3 @@ ServerPort = 8080
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <!-- 自定义 --> 
 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">
-

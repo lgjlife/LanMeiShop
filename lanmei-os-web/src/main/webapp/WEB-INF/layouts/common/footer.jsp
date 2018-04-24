@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" import="java.lang.String" contentType="text/html; charset=utf-8"%>
 <%@ include file="/WEB-INF/layouts/common/base.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@
 					<a href="#" class="list-group-item">品牌大全</a>
 				</div>
 				<!-- 支付方式 -->
-				<div class="col-1">
+				<div class="col-1" style="position:absolute;left:30%">
 					<a href="#" class="list-group-item active">
 					   支付方式
 					</a>
@@ -80,15 +80,15 @@
 					<a href="#" class="list-group-item">微信支付</a>
 				</div>
 				<!-- 物流配送 -->
-				<div class="col-1">
+				<div class="col-1" style="position:absolute;left:43%">
 					<a href="#" class="list-group-item active">免运费政策</a>
 					<a href="#" class="list-group-item">物流配送服务</a>
 					<a href="#" class="list-group-item">签收验货</a>
 					<a href="#" class="list-group-item">物流查询</a>
 				</div>
 				<!-- 售后服务 -->
-				<div class="col-1">
-					<a href="#" class="list-group-item active">售后服务</a>
+				<div class="col-1" style="position:absolute;left:57%">
+					<a href="#" class="list-group-item active" >售后服务</a>
 					
 					<a href="#" class="list-group-item">退换货政策</a>
 					<a href="#" class="list-group-item">退换货流程</a>
@@ -98,7 +98,7 @@
 					<a href="#" class="list-group-item">维修/保养</a>
 				</div>
 				<!-- 商家服务 -->
-				<div class="col-1">
+				<div class="col-1" style="position:absolute;right:20%">
 					<a href="#" class="list-group-item active">商家服务</a>
 					
 					<a href="#" class="list-group-item">商家入住</a>

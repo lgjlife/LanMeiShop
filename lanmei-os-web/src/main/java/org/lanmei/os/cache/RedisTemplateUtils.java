@@ -3,6 +3,7 @@ package org.lanmei.os.cache;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.shiro.session.Session;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class RedisTemplateUtils<K, V>  {
 	public void set(K key, V value) {
 		
 		try {
-			redisTemplate.opsForValue().set(key, value);
+			redisTemplate.opsForValue().set(key, value,30,TimeUnit.MINUTES);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("redis set fail : " + e.getMessage());
@@ -40,7 +41,7 @@ public class RedisTemplateUtils<K, V>  {
 	public void create(K key, V value) {
 		
 		try {
-			redisTemplate.opsForValue().set(key, value);
+			redisTemplate.opsForValue().set(key, value,30,TimeUnit.MINUTES);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("redis set fail : " + e.getMessage());
