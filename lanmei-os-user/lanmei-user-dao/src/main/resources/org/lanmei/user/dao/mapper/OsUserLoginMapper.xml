@@ -41,7 +41,7 @@
     update os_user_login
     set login_time = #{loginTime,jdbcType=TIMESTAMP},
       login_ip = #{loginIp,jdbcType=VARCHAR},
-      user_id = #{loginId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       explorer = #{explorer,jdbcType=VARCHAR}
     where login_id = #{loginId,jdbcType=INTEGER}
   </update>
