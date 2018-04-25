@@ -1,0 +1,30 @@
+ INFO [main] 2018-04-25 21:27:00 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b7c473a: startup date [Wed Apr 25 21:26:59 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:27:00 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:28:05 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:28:05 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:28:05 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:29:47 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@16ce702d: startup date [Wed Apr 25 21:29:47 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:29:47 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:32:45 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:32:45 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:32:45 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:35:09 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:35:09 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:35:09 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:36:17 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:36:17 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:36:17 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:37:37 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:37:37 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:37:37 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:37:51 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@16ce702d: startup date [Wed Apr 25 21:37:51 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:37:51 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:39:05 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:39:05 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:39:05 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:39:30 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:39:30 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:39:30 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:40:16 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:40:16 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:40:16 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:40:56 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:40:56 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:40:56 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:46:14 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:46:14 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:46:14 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:46:57 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:46:57 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:46:57 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]
+ INFO [main] 2018-04-25 21:48:15 (AbstractApplicationContext.java:589) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@71812481: startup date [Wed Apr 25 21:48:15 CST 2018]; root of context hierarchy
+ INFO [main] 2018-04-25 21:48:15 (XmlBeanDefinitionReader.java:316) Loading XML bean definitions from class path resource [spring/applicationContext-email.xml]

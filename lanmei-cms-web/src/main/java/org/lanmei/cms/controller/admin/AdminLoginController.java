@@ -1,37 +1,17 @@
-package org.lanmei.cms.controller.user;
+package org.lanmei.cms.controller.admin;
 
 import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
-import org.lanmei.cms.common.ServletUtils.ServletUtils;
-import org.lanmei.cms.common.regex.ProjectRegex;
 import org.lanmei.cms.common.rsa.RSAKeyFactory;
 import org.lanmei.cms.common.rsa.RSAUtilNew;
 import org.lanmei.cms.common.session.SessionUtils;
-import org.lanmei.common.UserStatus;
-import org.lanmei.user.UserServiceImpl;
-import org.lanmei.user.dao.model.OsUser;
-import org.lanmei.user.dao.model.OsUserLogin;
-import org.lanmei.user.service.OsUserLoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,95 +29,89 @@ import net.sf.json.JSONObject;
  * @author lgj
  * @date:2018/05/17
  */
-@Api(value="/user-login",description="处理用户登录Controller")
+@Api(value="/login",description="处理用户登录Controller")
 @Controller
-@RequestMapping("/user-login")
-public class UserLoginController {
+@RequestMapping("/login")
+public class AdminLoginController {
 
 	
 	
-	private final static Logger logger = LoggerFactory.getLogger("UserLoginController.class");	
+	private final static Logger logger = LoggerFactory.getLogger("AdminLoginController.class");	
 	{
-		logger.debug("UserLoginController Created Bean............. ");
+		logger.debug("AdminLoginController Created Bean............. ");
 	}
 	
-	@Autowired
-	UserServiceImpl  userServiceImpl;
-	@Autowired
-	OsUserLoginService  userLoginService;
-	@Autowired
-	private  HttpServletRequest request;
-
-	    
-	@ApiOperation(value="/user-login",httpMethod="GET")
-	@RequestMapping(path="/find-password")
-	public String  findPassword() {
-		
-		logger.debug("into user-login/find-password");
-		return "/user/find-password"; 
-	}
-	
-	@ApiOperation(value="/user-login",httpMethod="GET")
-	@RequestMapping(path="/test")
-	public String  loginTest() {
-		
-		logger.debug("into user-login/user-test");
-		return "/user/login"; 
-	}
 	/**
-	 * 进入登录界面
+	 * 进入登录页面
 	 * @return
 	 */
-	@ApiOperation(value="/user-login",httpMethod="GET")
+	@ApiOperation(value="/login",notes="进入登录页面",httpMethod="GET")
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView  loginPage() {
+	public ModelAndView login(){
+		logger.debug("into /login  get");
+		ModelAndView mv = new ModelAndView("/admin/login");
 		
-		logger.debug("into /user-login");
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
-		if(user != null) {
-			logger.debug("当前登录的用户号码为 = " + user.getUserId() );
-		}
+		KeyPair keypair = RSAKeyFactory.getInstance().getKeyPair();
+		SessionUtils.setSession("keypair", keypair);
 		
-		/*将私钥的Modulus和Exponent 保存在session中*/
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		
-		/*将公钥的Modulus和Exponent 发送给客户端*/
-		
-		KeyPair key = RSAKeyFactory.getInstance().getKeyPair();
-		session.setAttribute("KeyPair",key);
-		
-		RSAPublicKey pkey = (RSAPublicKey) key.getPublic();
+		RSAPublicKey pkey = (RSAPublicKey) keypair.getPublic();
 		String modulus = pkey.getModulus().toString(16);
 		String exponent = pkey.getPublicExponent().toString(16);		
-		ModelAndView mv = new ModelAndView("/user/login");
 		mv.addObject("modulus", modulus);
-		mv.addObject("exponent", exponent);	
-		
-		return mv;
-	}
-	@RequestMapping(value="/redistest",method=RequestMethod.GET)
-	public ModelAndView redis() {
-		logger.debug("\r\n-------/redistest");
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		session.setAttribute("testredis","testvalue");
-		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
-		
-		/*OsUser user = new OsUser();
-		user.setUserId(12);
-		session.setAttribute("testUser",user);
-		
-		OsUser user1 = (OsUser)session.getAttribute("testUser");
-		
-		logger.debug("\r\n-------获取的user1 id value :"+user1.getUserId());*/
-		
-		ModelAndView mv = new ModelAndView("/user/login");
-
+		mv.addObject("exponent", exponent);		
 		
 		return mv;
 	}
 	/**
+	 * 提交登录
+	 * @return
+	 */
+
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.POST)
+	public JSONObject login(@RequestBody Map<String, Object> map){
+		logger.debug("into /login  post");
+		ModelAndView mv = new ModelAndView("/admin/login");
+		
+		String loginName = (String)map.get("loginName") ;
+		String loginPassword = (String)map.get("loginPassword");
+		String logginValidateCode = (String)map.get("loginValidateCode");
+		
+		String validateCode = (String)SessionUtils.getSession("validateCode");
+		
+		logger.debug("之前保存的验证码 = " + validateCode);
+		logger.debug("用户提交的验证码 = " + logginValidateCode);
+		
+		/*获取私钥*/
+		KeyPair keypair  =(KeyPair)SessionUtils.getSession("keypair");
+		RSAPrivateKey privateKey = (RSAPrivateKey) keypair.getPrivate();
+		/*解密*/
+		byte[] en_result = new BigInteger(loginPassword, 16).toByteArray();
+		byte[] pass = null;
+		try {			
+			 pass =RSAUtilNew.decrypt(privateKey,en_result);			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String  passStr = new String(pass);
+		StringBuffer StrBuf = new StringBuffer();
+		StrBuf.append(passStr);
+		String passWord = StrBuf.reverse().toString();
+		logger.debug("解密的密码为 = " + passWord);		
+		
+		Map<String,Object> retmap = new HashMap<String,Object>();	
+		JSONObject json = JSONObject.fromObject(retmap);	
+		
+		return json;
+	}
+	
+}
+
+/*
+
+
+	*//**
 	 * 客户端提交注册按钮
 	 * 1.校验验证码是否正确
 	 * 2.对加密的密码进行解密。获取原始密码
@@ -146,7 +120,7 @@ public class UserLoginController {
 	 * @return JSONObject 注册成功：UserStatus.REGISTER_SUCCESS
 	 * 					  注册失败：UserStatus.REGISTER_FAIL
 	 *                    验证码有误：UserStatus.VALIDATE_CODE_ERR
-	 */
+	 *//*
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public JSONObject register(@RequestBody Map<String, Object> models) {		
@@ -155,32 +129,32 @@ public class UserLoginController {
 		Map<String,Object> map = new HashMap<String,Object>();	
 		
 		//OsUser user= JSON.toJSONString(OsUser,OsUser.class);
-		/*接受客户端发来的数据*/
-		/*获取电话号码和密码(使用RSA进行加密)*/
+		接受客户端发来的数据
+		获取电话号码和密码(使用RSA进行加密)
 		String loginName = (String)models.get("loginName") ;
 		String loginPassword = (String)models.get("loginPassword");
 		String logginVerificationCode = (String)models.get("logginVerificationCode");
 		
 		
 		
-		/*获取Modulus和Exponent 保存在session中*/
+		获取Modulus和Exponent 保存在session中
 		Subject currentUser = SecurityUtils.getSubject();
 		Session session = currentUser.getSession();
-		/*获取RSA 的keyPair */
+		获取RSA 的keyPair 
 		KeyPair key = (KeyPair)session.getAttribute("KeyPair");
 		RSAPrivateKey privateKey = (RSAPrivateKey) key.getPrivate();
-		/*从session获取验证码*/
+		从session获取验证码
 		String verificationCodeSave = (String)session.getAttribute("verificationCode");
 		logger.debug("之前保存的验证码 = " + verificationCodeSave);
 		logger.debug("用户提交的验证码 = " + logginVerificationCode);
-		/*if(verificationCodeSave.equals(logginVerificationCode) == false) {
+		if(verificationCodeSave.equals(logginVerificationCode) == false) {
 			//验证码有误
 			map.put("loginStatus", UserStatus.VALIDATE_CODE_ERR);
 			JSONObject json = JSONObject.fromObject(map);
 			
 			return json;
-		} */
-	    /*解密，获取原始密码*/
+		} 
+	    解密，获取原始密码
 		logger.debug("通过 privateKeyModulus  和 privateKeyExponent 获取私钥");
 		logger.debug(" 获取私钥为 = " + privateKey );
 	    logger.debug(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
@@ -204,10 +178,10 @@ public class UserLoginController {
 		try {
 			
 			token.setRememberMe(true);
-			/*登录验证*/
+			登录验证
 			currentUser.login(token);
 			logger.debug("用户登录成功");
-			/*登录成功 ，获取当前的用户并保存到session中*/
+			登录成功 ，获取当前的用户并保存到session中
 			OsUser user;
 			if(ProjectRegex.isTelNum(loginName)) {
 				 user = userServiceImpl.getUser(null, loginName, null);
@@ -221,7 +195,7 @@ public class UserLoginController {
 			
 			SessionUtils.setSession("currenLogintUser", user);
 			
-			/*更新登录日志*/
+			更新登录日志
 			OsUserLogin userLogin = new OsUserLogin();
 			userLogin.setLoginIp(ServletUtils.getAddrIP(request));
 			userLogin.setLoginTime(new Date());
@@ -259,4 +233,4 @@ public class UserLoginController {
 		
 		return json;
 	}
-}
+}*/

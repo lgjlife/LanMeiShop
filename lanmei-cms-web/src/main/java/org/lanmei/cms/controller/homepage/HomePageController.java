@@ -28,13 +28,13 @@ public class HomePageController {
 	public ModelAndView HomePage() {
 		logger.debug("into 主界面 ");
 		
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		/*OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
 		if(user != null) {
 			logger.debug("当前登录的用户号码为 = " + user.getUserId());
 		}
 		else {
 			logger.debug("HomePageController 当前无用户登录 ");
-		}
+		}*/
 		/*OsUser user1 = new OsUser();
 		user1.setUserId(1235);
 		Integer num = 465;
@@ -44,8 +44,8 @@ public class HomePageController {
 		logger.debug("\r\n-------获取的user1 id value :"+user2.getUserId());*/
 		
 		
-		ModelAndView mv = new ModelAndView("/homepage/HomePage");
-		mv.addObject("user", user);
+		ModelAndView mv = new ModelAndView("/homepage/homepage");
+	
 
 		return mv;
 	}

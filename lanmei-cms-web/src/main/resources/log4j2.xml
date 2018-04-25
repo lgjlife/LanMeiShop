@@ -140,16 +140,27 @@
     </Appenders>
 
     <Loggers>
+    
+   		 <logger name="org.springframework.data.redis" level="error" >
+   		 	<appender-ref ref="console_out_appender" />
+            <appender-ref ref="console_err_appender" />
+   		 </logger>
+   		 <logger name="org.apache.shiro.web.servlet.SimpleCookie" level="error" >
+   		 	<appender-ref ref="console_out_appender" />
+            <appender-ref ref="console_err_appender" />
+   		 </logger>
+   		 
         <!-- 配置日志的根节点 -->
         <!-- 定义logger，只有定义了logger并引入了appender，appender才会生效 -->
         <root level="trace">
             <appender-ref ref="console_out_appender" />
             <appender-ref ref="console_err_appender" />
-            <appender-ref ref="trace_appender" />
             <appender-ref ref="debug_appender" />
+            <appender-ref ref="trace_appender" />
+          
             <appender-ref ref="info_appender" />
             <appender-ref ref="warn_appender" />
-            <appender-ref ref="error_appender" />
+            <appender-ref ref="error_appender" /> 
         </root>
 
         <!-- 第三方日志系统 -->
@@ -159,7 +170,9 @@
         <logger name="org.springframework.web" level="info" />
         <logger name="org.jboss.netty" level="warn" />
         <logger name="org.apache.http" level="warn" />
-		<logger name="org.lanmei.os.common.shiro.RedisSessionDao" level="info" />
+		
+		
+		
     </Loggers>
 
 </Configuration>
