@@ -27,4 +27,8 @@
 	position:relative;
 	left:10px;
 	height:40px;
+	cursor:pointer;
+}
+.menuBtn{
+	height:50px;	
 }

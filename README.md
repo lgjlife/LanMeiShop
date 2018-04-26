@@ -171,5 +171,8 @@
 	<li>
 		<a  href="https://blog.csdn.net/u011676300/article/details/79950339">js中倒计时实现</a>
 	</li>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/80086709">[蓝莓商城]使用Spring的mail API发送邮件</a>
+	</li>
 </ol>
 

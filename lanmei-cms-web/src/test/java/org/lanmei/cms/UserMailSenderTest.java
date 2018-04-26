@@ -1,15 +1,25 @@
 package org.lanmei.cms;
 
 import org.junit.Test;
+import org.lanmei.admin.dao.model.CmsAdmin;
 import org.lanmei.cms.email.UserMailSender;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.mail.SimpleMailMessage;
 
 public class UserMailSenderTest {
 
-	@Test
+	private final static Logger logger = LoggerFactory.getLogger("UserMailSenderTest.class");	
+	//@Test
 	public void emailTest() {
+		
+		logger.debug("创键admin......");
+		CmsAdmin  admin = new CmsAdmin();
+		logger.debug("创键admin成功");
+		
+		
 		ApplicationContext ac = new ClassPathXmlApplicationContext("spring/applicationContext-email.xml");
 		
 		UserMailSender sender = (UserMailSender) ac.getBean("userMailSender");

@@ -28,8 +28,10 @@
 			<div class="row">
 				<div class="col-2 menu" >	
 					<!-- 人员管理 -->
-					<div>
-						<button type="button" class="btn btn-primary" id="adminManagerBtn">人员管理</button>
+					<div >
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="adminManagerBtn">人员管理</button>
+						</div>						
 						<div id="adminManager" class="collapse">
 							<div>
 								<span class="detaileList" id="adminListItem">管理员列表</span>		
@@ -40,8 +42,10 @@
 						</div>
 					</div>
 					<!-- 个人信息-->
-					<div>
-						<button type="button" class="btn btn-primary" id="adminMessageBtn">个人信息</button>
+					<div >
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="adminMessageBtn">个人信息</button>
+						</div>						
 						<div id="adminMessage" class="collapse">
 							<div>
 								<span class="detaileList" id="adminMesgItem">个人信息</span>
@@ -55,7 +59,9 @@
 					</div>
 					<!-- 会员管理-->
 					<div>
-						<button type="button" class="btn btn-primary" id="userManagerBtn">会员管理</button>
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="userManagerBtn">会员管理</button>
+						</div>
 						<div id="userManager" class="collapse">
 							<span class="detaileList" id="userQueryItem">查询会员</span>	
 							<span class="detaileList" id="userOnlineItem">在线会员</span>	
@@ -64,7 +70,10 @@
 					</div>
 					<!--商品管理-->
 					<div>
-						<button type="button" class="btn btn-primary" id="commodityManagerBtn">商品管理</button>
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="commodityManagerBtn">商品管理</button>
+						</div>
+						
 						<div id="commodityManager" class="collapse">
 							<span class="detaileList" id="categoryManagerItem">类别管理</span>	
 							<span class="detaileList" id="commodityQueryItem">查询商品</span>	
@@ -74,7 +83,10 @@
 					</div>
 					<!--数据管理-->
 					<div>
-						<button type="button" class="btn btn-primary" id="dataManagerBtn">数据管理</button>
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="dataManagerBtn">数据管理</button>
+						</div>
+						
 						<div id="dataManager" class="collapse">
 							<span class="detaileList" id="allUserMesgItem">会员信息</span>	
 							<span class="detaileList" id="CommodityIMesgItem">商品信息</span>	
@@ -82,7 +94,10 @@
 					</div>					
 					<!--设计思路-->
 					<div>
-						<button type="button" class="btn btn-primary" id="designerBtn">设计思路</button>
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="designerBtn">设计思路</button>
+						</div>
+						
 						<div id="designer" class="collapse">
 							<span class="detaileList" id="adminManagerItem">人员管理</span>	
 							<span class="detaileList" id="userMessageItem">个人信息</span>	
@@ -114,10 +129,7 @@
 					</div>
 				</div><!-- end of <div class="col-10">	 -->
 			</div>
-		</div>
-	
-		
-	
+		</div>	
 	</body>
 
  	</style>

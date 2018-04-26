@@ -13,7 +13,7 @@
 	
 	<description>mybatis Configuration</description>
 	
-	<context:component-scan base-package="org.lanmei"></context:component-scan>
+	 <context:component-scan base-package="org.lanmei.admin.dao"></context:component-scan> 
 	<!-- 引入数据库配置文件 -->
 	<context:property-placeholder location="classpath:mysqljdbc.properties" />
     <!-- 事务管理器:基于jdbc,ibatis,mybaits的spring事务管理 -->
@@ -108,7 +108,7 @@
 	      	</array>
 	      </property>
 	      
-	      <property name="typeAliasesPackage" value="org.lanmei.user.dao.model">
+	      <property name="typeAliasesPackage" value="org.lanmei.admin.dao.model">
 	      
 	      </property>
 		

@@ -56,7 +56,7 @@
 		  			<td><input type="text"></td>
 		  		</tr>
 		  		<tr class="adminManagerTr">
-		  			<td><button class="adminbtn" id="addAdminBtn">确认</td>
+		  			<td><button class="adminbtn" id="addAdminBtn">确认</button></td>
 		  			
 		  			<td><button  class="adminbtn" type="button" id="invitationCodeBtn" style="left:160px;">生成邀请码</button></td>
 		  		</tr>

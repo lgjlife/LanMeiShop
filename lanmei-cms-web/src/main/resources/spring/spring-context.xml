@@ -35,5 +35,7 @@
 	<import resource="classpath:spring/applicationContext-shiro.xml" />  
 	
 	<!-- 图片验证码jcaptcha :配置文件引入 -->
-	 <import resource="classpath:spring/applicationContext-kaptcha.xml" /> 
+	 <import resource="classpath:spring/applicationContext-kaptcha.xml" />
+	 <!-- 邮件配置 -->
+	 <import resource="classpath:spring/applicationContext-email.xml" />  
 </beans>

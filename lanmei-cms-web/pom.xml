@@ -15,12 +15,12 @@
   <dependencies>
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
-  		<artifactId>org.lanmei.user.dao</artifactId> 
+  		<artifactId>org.lanmei.admin.dao</artifactId> 
   		<version>${lanmei.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
-  		<artifactId>org.lanmei.user.service</artifactId>
+  		<artifactId>org.lanmei.admin.service</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
   	

@@ -5,9 +5,7 @@
 <%@ include file="/WEB-INF/layouts/common/base.jsp" %>
 <!DOCTYPE html>
 <html>
-	<script src="${contextPathOfStatic}/js/admin/admin-manager.js"></script> --%>
 
-	
 	<body >
 		  管理员信息
 		  </br>

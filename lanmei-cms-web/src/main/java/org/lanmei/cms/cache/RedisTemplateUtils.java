@@ -22,13 +22,21 @@ public class RedisTemplateUtils<K, V>  {
 	public void set(K key, V value) {
 		
 		try {
-			redisTemplate.opsForValue().set(key, value,30,TimeUnit.MINUTES);
+			redisTemplate.opsForValue().set(key, value);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("redis set fail : " + e.getMessage());
 		}
 	}
-	
+	public void set(K key, V value, long timeout, TimeUnit unit) {
+		
+		try {
+			redisTemplate.opsForValue().set(key, value,timeout,unit);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("redis set fail : " + e.getMessage());
+		}
+	}
 	public void delete(K key) {
 		try {
 			redisTemplate.delete(key);
