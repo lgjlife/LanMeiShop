@@ -23,6 +23,12 @@
 			<artifactId>org.lanmei.user.service</artifactId>
 			<version>${lanmei.version}</version>
 	  </dependency>
+	  <dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.common</artifactId>
+  			<version>${lanmei.version}</version>
+	  </dependency>
+	  
 	  
   </dependencies>
   

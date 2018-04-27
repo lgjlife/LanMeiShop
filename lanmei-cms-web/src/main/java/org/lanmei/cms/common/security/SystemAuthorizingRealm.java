@@ -14,7 +14,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.lanmei.admin.dao.model.CmsAdmin;
-import org.lanmei.admin.impl.CmsAdminServiceImpl;
+import org.lanmei.admin.service.CmsAdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 	}
 	
 	@Autowired
-	CmsAdminServiceImpl  adminService;
+	CmsAdminService  adminService;
 	
 	/**
 	 * 权限验证

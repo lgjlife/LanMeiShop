@@ -2,6 +2,7 @@ package org.lanmei.cms.controller.admin;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Controller
@@ -37,12 +40,60 @@ public class AdminManagerController {
 	CmsAdminServiceImpl  adminService;
 	@Autowired
 	UserMailSender sender;
-	@RequestMapping
-	public String  test() {
-		logger.debug("OsUser creat");
-
-		logger.debug("CmsTest creat");
-		return "/";
+	
+	/*@RequestMapping(path="/get/adminlist")
+	public  ModelAndView  getAdminList(@RequestBody Map<String, Object> requestJsonDataMap) {
+		
+		logger.debug("into /admin/get/adminlist");
+		
+		ModelAndView mv = new ModelAndView();
+		
+		Map<String,Object> returnMap = new HashMap<String,Object>();
+		获取页数
+		Integer page = (Integer)requestJsonDataMap.get("page");
+		从数据库中读取数据
+		List<CmsAdmin>  adminList = adminService.getAllAdmin(page);
+		从数据库中读取数据总条数
+		Integer allListCount = adminService.getAdminCount();
+		
+		mv.addObject("adminList", adminList);
+		mv.addObject("allListCount", allListCount);
+		return mv;
+	}*/
+	@RequestMapping(path="/get/adminlist",produces="text/html;charset=UTF-8")
+	public @ResponseBody String  getAdminList(@RequestBody Map<String, Object> requestJsonDataMap) {
+		
+		logger.debug("into /admin/get/adminlist");
+		
+		Map<String,Object> returnMap = new HashMap<String,Object>();
+		logger.debug("page = " + requestJsonDataMap.get("page"));
+		String strPage = (String)requestJsonDataMap.get("page");
+		
+		Integer page = Integer.valueOf(strPage) ;
+		logger.debug("page = " + page);
+		List<CmsAdmin>  adminList = adminService.getAllAdmin(page);
+		 
+		Integer allListCount = adminService.getAdminCount();
+		returnMap.put("adminList", allListCount);
+		returnMap.put("allListCount", allListCount);
+		for(CmsAdmin admin:adminList) {
+			System.out.println(admin.getActualName());
+		}
+		logger.debug("allListCount = " + allListCount + "  page  = " + page );
+	    JSONObject json = JSONObject.fromObject(returnMap);	
+		System.out.println("json = " + json.toString());
+		//json.putAll(JSONObject.fromObject(adminList));
+		JSONArray json1 = JSONArray.fromObject(adminList);
+		System.out.println(json1.toString());
+		json1.add(json);	
+		System.out.println(json1.toString());
+		
+	/*	Map<String,List> returndata = new HashMap<String,List>();
+		returndata.put("adminList", adminList);
+		returndata.put("allListCount", allListCount);
+		JSONObject json = JSONObject.fromObject(returndata);*/
+		
+		return json1.toString();
 	}
 	/**
 	 * 处理新增管理员请求

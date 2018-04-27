@@ -92,7 +92,63 @@ $(function(){
 			return true;
 		}
 	}
+	/**
+	 * 获取管理员列表
+	 */
+	$("#getAdminListBtn").click(function(){
+		console.log("getAdminListBtn  按下");
+		getAdminList('1');
+	});
 	
+    /*事件绑定动态生成的元素*/
+	$(document).on('click','.page-item-add',function(){
+		console.log("按下" + $(this).find('a').text());
+		getAdminList($(this).find('a').text());
+		
+		$(".page-item-add").removeClass("active");
+		$(this).addClass("active");
+		
+	})
+	
+	function getAdminList(page){
+		var jsonData = {"page":""};
+		jsonData.page = page;
+		console.log("传入的page = " + page);
+		$.ajax({
+	        type : "post",
+	        url : "admin/get/adminlist",
+	        contentType : "application/json;charset=utf-8",
+	        //数据格式是json串,传进一个person
+			/*data :'{"phoneNum" : ${phoneNum},"loginPassword": "password","phoneNumValidate":"phoneNumValidate"}',*/
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        	
+	        	$(".page-item-add").remove();
+	        	for(var i = 1;i < (data[5].allListCount / 5 + 1) ;i++)
+	        	{
+	        		var txt = " <li class='page-item page-item-add'><a class='page-link'>"+ i + "</a></li>";
+	        		$("#toNextPage").before(txt);
+	        	}
+	        	
+	        	$(".trList").remove();
+	        	for(var i = 0;i < 5 ;i++){
+	        		var txt = "<tr class='trList'>"
+	        				+ "<td>" + data[i].actualName + "</td>"
+	        				+ "<td>" + data[i].loginJobnum + "</td>"
+	        				+ "<td>" + data[i].gender + "</td>"
+	        				+ "<td>" + data[i].department + "</td>"
+	        				+ "<td>" + data[i].state + "</td>"
+	        				+ "<td>" + data[i].generateTime.date + "</td>"
+	        				+ "</tr>";
+	        		$("#tbodyList").append(txt);		
+		  	 			
+	        	}
+	        	
+	        }
+		 });
+	}
 	
 });
 

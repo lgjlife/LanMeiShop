@@ -1,5 +1,7 @@
 package org.lanmei.admin.impl;
 
+import java.util.List;
+
 import org.lanmei.admin.dao.mapper.CmsAdminMapper;
 import org.lanmei.admin.dao.model.CmsAdmin;
 import org.lanmei.admin.service.CmsAdminService;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageHelper;
 
 
 @Transactional
@@ -71,6 +74,32 @@ public class CmsAdminServiceImpl  extends BaseService implements CmsAdminService
 		}
 		return admin;
 	}
+
+
+
+	/**
+	 * 分页获取管理员的
+	 */
+	@Override
+	public List<CmsAdmin> getAllAdmin(Integer page) {
+		// TODO Auto-generated method stub
+		
+		PageHelper.startPage(page, 5);
+		List<CmsAdmin> adminList = adminMapper.selectAll();
+		return adminList;
+	}
+
+
+
+	
+	@Override
+	public Integer getAdminCount() {
+		Integer count = adminMapper.selectCount();
+		return count;
+	}
+	
+	
+	
 	
 	
 	

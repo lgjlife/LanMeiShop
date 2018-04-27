@@ -1,11 +1,13 @@
 package org.lanmei.cms.controller.admin;
 
-import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -15,12 +17,18 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.lanmei.admin.dao.model.CmsAdmin;
+import org.lanmei.admin.dao.model.CmsAdminLogin;
+import org.lanmei.admin.service.CmsAdminLoginService;
+import org.lanmei.admin.service.CmsAdminService;
+import org.lanmei.cms.common.ServletUtils.ServletUtils;
 import org.lanmei.cms.common.rsa.RSAKeyFactory;
 import org.lanmei.cms.common.rsa.RSAUtilNew;
 import org.lanmei.cms.common.session.SessionUtils;
 import org.lanmei.enumDefine.AdminStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +57,15 @@ public class AdminLoginController {
 	{
 		logger.debug("AdminLoginController Created Bean............. ");
 	}
+	
+	
+	@Autowired
+	private  HttpServletRequest request;
+	@Autowired
+	CmsAdminService  adminService;
+	
+	@Autowired
+	CmsAdminLoginService  adminLoginService;
 	
 	/**
 	 * 进入登录页面
@@ -140,15 +157,22 @@ public class AdminLoginController {
 			currentUser.login(token);
 			logger.debug("用户登录成功");
 			
-			/*SessionUtils.setSession("currenLogintAdmin", user);*/
 			
-			/*更新登录日志*/
-		/*	OsUserLogin userLogin = new OsUserLogin();
-			userLogin.setLoginIp(ServletUtils.getAddrIP(request));
-			userLogin.setLoginTime(new Date());
-			userLogin.setExplorer(ServletUtils.getAggent(request));
-			userLoginService.addLoginLog(user.getUserId(), userLogin);*/
-			
+			CmsAdmin  admin = adminService.getAdminByJobnum(loginJobNum);
+			if(admin != null) {
+				SessionUtils.setSession("currenLogintAdmin", admin);
+				
+				/*更新登录日志*/
+				CmsAdminLogin adminLogin = new CmsAdminLogin();
+				
+				adminLogin.setLoginIp(ServletUtils.getAddrIP(request));
+				adminLogin.setLoginTime(new Date());
+				adminLogin.setExplorer(ServletUtils.getAggent(request));
+				adminLogin.setAdminId(admin.getAdminId());
+				/*写入数据库*/
+				System.out.println(adminLogin.toString());
+				adminLoginService.addAdminLoginLog(admin.getAdminId(), adminLogin);
+			}			
 		}catch(UnknownAccountException uae){  
             System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,未知账户1"); 
             retmap.put("loginStatus", AdminStatus.UNKNOWN_ACCOUNT);

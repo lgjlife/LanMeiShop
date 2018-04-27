@@ -62,4 +62,17 @@
     select login_id, login_time, login_ip, admin_id, explorer
     from cms_admin_login
   </select>
+  
+   <!-- 插入登陆日志 -->
+   <insert id="insertByAdminId">
+	    <selectKey keyProperty="loginId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+	    insert into cms_admin_login (login_time, login_ip, admin_id, 
+	      explorer)
+	    values (#{adminLogin.loginTime,jdbcType=TIMESTAMP}, #{adminLogin.loginIp,jdbcType=VARCHAR},
+	     #{adminLogin.adminId,jdbcType=INTEGER}, 
+	      #{adminLogin.explorer,jdbcType=VARCHAR})
+  </insert>
+  
 </mapper>

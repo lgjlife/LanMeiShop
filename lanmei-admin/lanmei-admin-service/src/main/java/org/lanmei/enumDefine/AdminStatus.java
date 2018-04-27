@@ -11,4 +11,6 @@ public enum AdminStatus {
 	LOGIN_FAIL,					/*登录失败*/
 	UNKNOWN_ACCOUNT,           /*未知账户*/
     PASSWORD_ERROR_TOO_MANY,   /*密码错误过多*/
+    LOGGIN_LOG_SUCCESS,        /*登陆日志写入成功*/
+    LOGGIN_LOG_FAIL,		   /*登陆日志写入失败*/
 }

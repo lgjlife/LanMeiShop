@@ -1,6 +1,8 @@
 package org.lanmei.admin.dao.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.lanmei.admin.dao.model.CmsAdminLogin;
 
 public interface CmsAdminLoginMapper {
@@ -34,4 +36,6 @@ public interface CmsAdminLoginMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CmsAdminLogin record);
+
+	int insertByAdminId(@Param("adminId") Integer adminId,@Param("adminLogin") CmsAdminLogin adminLogin);
 }

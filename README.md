@@ -132,6 +132,7 @@
 	<li>lanmei-os-web</li>--商城web项目
 	<li>lanmei-os-user</li>--用户模块，登录注册相关
 	<li>lanmei-cms-web</li>--后台管理web项目
+	<li>lanmei-admin</li>--后台管理 管理员相关模块(新增/登陆/权限管理等)
 	<li>doc</li>--开发日志			
 	<li>mysql</li>--数据库文件，创建数据表相关
 </ol>
@@ -152,6 +153,29 @@
 		<ul type="disc">
 			<li>登录界面</li>
 			<li>登录方式选择：手机/邮箱/用户名</li>
+			<li>动态验证码:kaptcha</li>			
+			<li>密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密</li>
+			<li>shiro登录验证</li>
+			<li>帐号登录日志管理</li>
+			<li>redis持久化session,还未实现关闭浏览器还能保持登录状态功能</li>
+		</ul>
+	</li>
+	<li>
+		后台新增管理员模块
+		<ul type="disc">
+			<li>新增管理员界面。</li>
+			<li>姓名/工号/默认密码/生成动态邀请码/邮件告知新增的管理员</li>
+			<li>邮件服务使用Spring mail库</li>
+			<li>密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密</li>
+			<li>密码加密保存：MD5算法加密</li>
+		</ul>
+	</li>
+	<li>
+		后台管理员登陆模块
+		<ul type="disc">
+			<li>登录界面</li>
+			<li>登录方式选择：工号</li>
+			<li>其他输入：邀请码/验证码/密码</li>
 			<li>动态验证码:kaptcha</li>			
 			<li>密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密</li>
 			<li>shiro登录验证</li>

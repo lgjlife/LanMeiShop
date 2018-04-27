@@ -78,7 +78,9 @@
     </selectKey>
     insert into os_user_login (login_id, login_time, login_ip, 
       user_id, explorer)
-    values (#{userLogin.loginId,jdbcType=INTEGER}, #{userLogin.loginTime,jdbcType=TIMESTAMP},#{userLogin.loginIp,jdbcType=VARCHAR},  #{userId,jdbcType=INTEGER}, #{userLogin.explorer,jdbcType=VARCHAR})
+    values (#{userLogin.loginId,jdbcType=INTEGER}, #{userLogin.loginTime,jdbcType=TIMESTAMP},
+    #{userLogin.loginIp,jdbcType=VARCHAR},  #{userId,jdbcType=INTEGER}, 
+    #{userLogin.explorer,jdbcType=VARCHAR})
   </insert>
   <!-- 通过user_id 获取登录日志 -->
   <select id="selectByUserId" resultMap="BaseResultMap">

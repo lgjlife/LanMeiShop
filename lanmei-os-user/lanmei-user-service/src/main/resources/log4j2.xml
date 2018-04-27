@@ -145,11 +145,11 @@
         <root level="trace">
             <appender-ref ref="console_out_appender" />
             <appender-ref ref="console_err_appender" />
-            <appender-ref ref="trace_appender" />
+           <!--  <appender-ref ref="trace_appender" />
             <appender-ref ref="debug_appender" />
             <appender-ref ref="info_appender" />
             <appender-ref ref="warn_appender" />
-            <appender-ref ref="error_appender" />
+            <appender-ref ref="error_appender" /> -->
         </root>
 
         <!-- 第三方日志系统 -->

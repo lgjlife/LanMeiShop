@@ -38,4 +38,6 @@ public interface CmsAdminMapper {
 	int insertNewAdmin(CmsAdmin record);
 	
 	CmsAdmin selectByLoginJobnum(String loginJobnum);
+	
+	int selectCount();
 }

@@ -13,6 +13,8 @@
  	    	
  	    <script src="${contextPathOfStatic}/js/admin/homepage.js"></script>
 		<script src="${contextPathOfStatic}/js/admin/homepage_display_control.js"></script>
+
+
 	</head>
 	
 	<body>
@@ -20,10 +22,11 @@
 			<div id="titleName">
 			   <span>蓝莓商城后台管理系统</span>
 			</div>
-			<div>
-				
-			</div>
+			<div id="loginMsg"  style="position:relative;left:400px">
+				<span>当前登陆用户：${admin.actualName} </span>
+			</div>			
 		</div>
+		
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-2 menu" >	
@@ -110,10 +113,10 @@
 				</div>
 				<div class="col-10">	
 					<div id="adminManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
-						<jsp:include page="/WEB-INF/views/homepage/admin_manager.jsp" />
+						<jsp:include page="/WEB-INF/views/admin/admin_manager.jsp" />
 					</div> 						
 					<div id="adminMessageDisplay" class="pageDisplayCtrl" style="display:none;" >
-						<jsp:include page="/WEB-INF/views/homepage/admin_message.jsp" /> 
+						<jsp:include page="/WEB-INF/views/admin/admin_message.jsp" /> 
 					</div>	
 					<div id="userMessageDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/homepage/user_message.jsp" /> 

@@ -1,12 +1,17 @@
 package org.lanmei.cms.controller.homepage;
 
+import java.util.List;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.lanmei.admin.dao.model.CmsAdmin;
+import org.lanmei.admin.service.CmsAdminService;
 import org.lanmei.cms.common.session.SessionUtils;
 import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,29 +29,31 @@ public class HomePageController {
 		logger.debug("HomePageController Created Bean............. ");
 	}
 	
+	@Autowired
+	CmsAdminService  adminService;
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView HomePage() {
 		logger.debug("into 主界面 ");
 		
-		/*OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
-		if(user != null) {
-			logger.debug("当前登录的用户号码为 = " + user.getUserId());
+		CmsAdmin admin =(CmsAdmin) SessionUtils.getSession("currenLogintAdmin");
+		if(admin != null) {
+			logger.debug("当前登录的用户号码为 = " + admin.getActualName());
 		}
 		else {
 			logger.debug("HomePageController 当前无用户登录 ");
-		}*/
-		/*OsUser user1 = new OsUser();
-		user1.setUserId(1235);
-		Integer num = 465;
+		}
+       List<CmsAdmin>  adminList = adminService.getAllAdmin(1);
+       if(adminList != null) {
+    	   for(CmsAdmin ad:adminList) {
+    		   System.out.println(ad.getActualName());
+    	   }
+       }
 		
-		OsUser user2 = (OsUser)SessionUtils.getSession("testUser");
-		
-		logger.debug("\r\n-------获取的user1 id value :"+user2.getUserId());*/
-		
-		
-		ModelAndView mv = new ModelAndView("/homepage/homepage");
-	
 
+		ModelAndView mv = new ModelAndView("/homepage/homepage");
+		mv.addObject("admin", admin);
+		
 		return mv;
 	}
 	@RequestMapping(value="/redistest",method=RequestMethod.GET)
