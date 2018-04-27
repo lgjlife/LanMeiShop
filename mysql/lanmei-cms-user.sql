@@ -18,7 +18,7 @@
 DROP TABLE IF  EXISTS `cms_admin`;
 CREATE TABLE `cms_admin`(
 	`admin_id` INT  AUTO_INCREMENT COMMENT "管理员ID",
-	`admin_account` INT DEFAULT NULL COMMENT "管理员帐号",
+	`login_jobNum` VARCHAR(20) DEFAULT NULL COMMENT "管理员工号",
 	`admin_password` VARCHAR(100) DEFAULT  NULL COMMENT "管理员登录密码",
 	`password_salt`  VARCHAR(50)  DEFAULT  NULL COMMENT "密码加密的盐",
 	`nick_name`  VARCHAR(50) DEFAULT NULL COMMENT "管理员昵称",

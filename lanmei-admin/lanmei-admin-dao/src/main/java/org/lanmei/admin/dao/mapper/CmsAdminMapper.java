@@ -34,6 +34,8 @@ public interface CmsAdminMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CmsAdmin record);
-	
+
 	int insertNewAdmin(CmsAdmin record);
+	
+	CmsAdmin selectByLoginJobnum(String loginJobnum);
 }

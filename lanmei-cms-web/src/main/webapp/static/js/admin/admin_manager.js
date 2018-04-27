@@ -40,9 +40,9 @@ $(function(){
 		
 		if(checkAllInput() == true){
 			/*输入无误*/
-			var jsonData={"actualName":"","adminAccount":"","invitationCode":"","adminPassword":"","email":""};
+			var jsonData={"actualName":"","loginJobnum":"","invitationCode":"","adminPassword":"","email":""};
 			jsonData.actualName = actualName;
-			jsonData.adminAccount = jobNum;
+			jsonData.loginJobnum = jobNum;
 			jsonData.invitationCode = invitationCode;
 			jsonData.adminPassword = adminPassword;
 			jsonData.email = email;

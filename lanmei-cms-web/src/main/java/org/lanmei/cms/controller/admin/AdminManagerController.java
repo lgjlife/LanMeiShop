@@ -73,6 +73,7 @@ public class AdminManagerController {
 			logger.debug("admin = null");
 		}
 		logger.debug("actualName = " + admin.getActualName()
+					+ "   loginJobnum = " + admin.getLoginJobnum()
 					+ "   invitationCode = " + admin.getInvitationCode()
 					+ "   adminPassword = " + admin.getAdminPassword()
 					+ "   email = " + admin.getEmail());
@@ -95,8 +96,9 @@ public class AdminManagerController {
         mail.setSubject("蓝莓商城后台管理员帐号激活");//主题
         String text = "这是来自蓝莓商城的邮件。" 
         		+ "欢迎注册成为蓝莓商城后台管理员，您的注册邀请码为：" + admin.getInvitationCode()
-        		+ "点击链接进行注册激活："
-        		+ "localhost:8080/lanmei-os/login";  
+        		+ ",点击链接进行注册激活："
+        		+ "localhost:8080/lanmei-os/login"
+        		+ "请使用工号进行登录激活";  
             
         mail.setText(text );//正文
         

@@ -13,9 +13,8 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
-import org.lanmei.cms.common.regex.ProjectRegex;
-import org.lanmei.user.UserServiceImpl;
-import org.lanmei.user.dao.model.OsUser;
+import org.lanmei.admin.dao.model.CmsAdmin;
+import org.lanmei.admin.impl.CmsAdminServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 	}
 	
 	@Autowired
-	UserServiceImpl  userServiceImpl;
+	CmsAdminServiceImpl  adminService;
 	
 	/**
 	 * 权限验证
@@ -63,31 +62,25 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 		// TODO Auto-generated method stub
 		logger.debug("into doGetAuthenticationInfo....");
 		
-		String userName = token.getPrincipal().toString();
-		OsUser user = null;
-		if(ProjectRegex.isTelNum(userName)) {
-			 user = userServiceImpl.getUserByTelNum(userName);
-		}
-		else if(ProjectRegex.isEmail(userName)) {
-			 user = userServiceImpl.getUserByEmail(userName);
-		}
-		else {
-			 user = userServiceImpl.getUserByNickName(userName);
-		}
+		String loginJobNum = token.getPrincipal().toString();
+	    String password  = token.getCredentials().toString();
+		CmsAdmin admin = null;
 		
-		if(user != null) {
+		admin = adminService.getAdminByJobnum(loginJobNum);
+		if(admin != null) {
 			logger.debug("查询到用户");
 		}
 		else {
 			logger.debug("未查询到用户");
 			throw new UnknownAccountException();
 		}
-		
+		System.out.println("密码：" +   admin.getAdminPassword() + "\r\ntoken 密码：" + password
+		                     + "  盐：" +  admin.getPasswordSalt() + "  工号：" +  admin.getLoginJobnum());
 		SimpleAuthenticationInfo authenticationInfo 
-			= new SimpleAuthenticationInfo(user,user.getLoginPassword(),
-					ByteSource.Util.bytes(user.getSalt()),user.getPhoneNum());
+			= new SimpleAuthenticationInfo(admin,admin.getAdminPassword(),
+					ByteSource.Util.bytes(admin.getPasswordSalt()),admin.getLoginJobnum());
 		
-		this.setSession("currentUser", user.getUserId());
+		this.setSession("currentUser", admin.getAdminId());
 		
 		return authenticationInfo;
 	}	

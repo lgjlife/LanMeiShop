@@ -53,5 +53,25 @@ public class CmsAdminServiceImpl  extends BaseService implements CmsAdminService
 			return AdminStatus.ADMIN_CREATE_SUCCESS;
 		}
 	}
+
+
+
+
+	@Override
+	public CmsAdmin getAdminByJobnum(String jobnum) {
+		
+		CmsAdmin admin = adminMapper.selectByLoginJobnum(jobnum);
+		if(admin == null) {			
+			logger.error("账户不存在，账户工号：(jobnum)",jobnum);
+			
+		}
+		else {		
+			logger.debug("账户存在，账户工号：(jobnum)",jobnum);
+			
+		}
+		return admin;
+	}
+	
+	
 	
 }

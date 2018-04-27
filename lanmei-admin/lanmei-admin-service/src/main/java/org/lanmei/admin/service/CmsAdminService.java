@@ -6,4 +6,6 @@ import org.lanmei.enumDefine.AdminStatus;
 public interface CmsAdminService {
 
 	AdminStatus  addAdmin(CmsAdmin admin);
+	
+	CmsAdmin getAdminByJobnum(String jobnum);
 }

@@ -37,7 +37,7 @@
 			  		</tr>
 			  		<tr class="adminManagerTr">
 			  			<td>密码</td>
-			  			<td><input type="text" value="123456" disabled id="adminPassword">默认密码</td>
+			  			<td><input type="text" value="zxcvbnm123" disabled id="adminPassword">默认密码</td>
 			  		</tr>
 			  		<tr>
 			  			<td>邮箱</td>

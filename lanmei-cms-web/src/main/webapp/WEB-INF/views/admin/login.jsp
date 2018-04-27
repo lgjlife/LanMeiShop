@@ -18,17 +18,25 @@
 	
 	<body>
 	
-		<span id="title">蓝莓商城-后台管理</span>
+		<div id="title">
+			<span >蓝莓商城-后台管理</span>
+		</div>
 		
-	    <div id="login">
+		
+		
+	    <div id="login" class="loginPage">
 	    	<form action="" 
 	    	    publicKey-modulus="${modulus}" 
 			    publicKey-exponent="${exponent}"
 			    id="loginForm">
 	    		<table>	    		
 	    			<tr>
-	    				<td><div align="right">登录名</div></td>
-	    				<td><input type="text" id="loginName"></td>	    				
+	    				<td><div align="right">工号</div></td>
+	    				<td><input type="text" id="loginJobNum"></td>	    				
+	    			</tr>
+	    			<tr>
+	    				<td><div align="right">邀请码</div></td>
+	    				<td><input type="text" id="loginInvitationCode"></td>	    				
 	    			</tr>
 	    			<tr>
 	    				<td><div align="right">密码</div></td>
@@ -47,24 +55,30 @@
 	    		</table>
 	    	</form>
 	    	<button id="loginSubmit">登录</button>
-	    	<span id="loginWarn"></span>
+	    	<div id="loginWarn">
+	    		<span></span>
+	    	</div>
+	    	
 	    	<a href="#" >忘记密码？点击找回密码</a>
 	    	
 	    </div> 
-			 <br>
-	    	<br>
-	    	<br>
-	 		
-	 		<div>
-	 			<a href="${projectPath}/login/test">login/test</a>	
-	 		</div>
-	 	
-	 		
+	    
+	    <div id="loginSuccessPage">
+	    		
+	    		<a href="${projectPath}/">登陆成功!点击跳转至主页-！</a>
+	    </div>	
 	</body>
 	
 	<style type="text/css">
     	body{
     	   background-image:url(${contextPathOfStatic}/img/homepage/background.jpeg); 
+    	}
+    	#loginSuccessPage{
+    		position:relative; 
+    		text-align:center;  		
+    		font-size:60px;
+    		top:45%;
+    		display:none;
     	}
     	
     	#login{
@@ -75,17 +89,18 @@
 			position:absolute;
 		    left:28%;
 		    top:38%;
+		    
     	}
     	#title{
-    		position:absolute;
-    		left:33%;
+    		position:relative;
+    		text-align:center;
 		    top:26%;
 		    font-size:40px;
     	}
     	table{
     		position:absolute;
     		left:18%;
-		    top:16%;
+		    top:2%;
     	}
     	button{
     		position:absolute;
@@ -98,7 +113,13 @@
     		color:red;
     		position:absolute;
     		left:28%;
-		    top:80%;
+		    top:85%;
     	} 
+    	#loginWarn{
+    		color:red;
+    		position:relative; 
+    		text-align:center;
+		     top:66%; 
+    	}
  	</style>
 </html>

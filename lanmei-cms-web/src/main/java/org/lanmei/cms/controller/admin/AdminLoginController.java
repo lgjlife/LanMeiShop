@@ -7,9 +7,18 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.lanmei.cms.common.rsa.RSAKeyFactory;
 import org.lanmei.cms.common.rsa.RSAUtilNew;
 import org.lanmei.cms.common.session.SessionUtils;
+import org.lanmei.enumDefine.AdminStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -69,24 +78,44 @@ public class AdminLoginController {
 
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST)
-	public JSONObject login(@RequestBody Map<String, Object> map){
+	public JSONObject login(@RequestBody Map<String, Object> requestJsonMap){
 		logger.debug("into /login  post");
-		ModelAndView mv = new ModelAndView("/admin/login");
 		
-		String loginName = (String)map.get("loginName") ;
-		String loginPassword = (String)map.get("loginPassword");
-		String logginValidateCode = (String)map.get("loginValidateCode");
+		Map<String,Object> retmap = new HashMap<String,Object>();
 		
+		if(requestJsonMap ==  null) {
+			logger.debug("requestJsonMap ==  null");
+		}
+		logger.debug("从map中获取数据");
+		String loginInvitationCode = (String)requestJsonMap.get("loginInvitationCode") ;
+		logger.debug("从map中获取数据1");
+		String loginJobNum = (String)requestJsonMap.get("loginJobNum") ;
+		String loginPassword = (String)requestJsonMap.get("loginPassword");
+		String logginValidateCode = (String)requestJsonMap.get("loginValidateCode");
+		logger.debug("loginJobNum = " + loginJobNum 
+				+ "  loginInvitationCode = " + loginInvitationCode 
+				+ "  loginPassword = " + loginPassword 
+				+ "  logginValidateCode = " + logginValidateCode );
 		String validateCode = (String)SessionUtils.getSession("validateCode");
 		
+		/*对比验证码*/
 		logger.debug("之前保存的验证码 = " + validateCode);
 		logger.debug("用户提交的验证码 = " + logginValidateCode);
+		/*if(!validateCode.equals(logginValidateCode)) {
+			logger.debug("验证码有误");
+			
+			retmap.put("loginStatus", AdminStatus.VALIDATE_CODE_ERR);
+			JSONObject json = JSONObject.fromObject(retmap);	
+			
+			return json;
+		}*/
 		
 		/*获取私钥*/
 		KeyPair keypair  =(KeyPair)SessionUtils.getSession("keypair");
 		RSAPrivateKey privateKey = (RSAPrivateKey) keypair.getPrivate();
 		/*解密*/
-		byte[] en_result = new BigInteger(loginPassword, 16).toByteArray();
+		//byte[] en_result = new BigInteger(loginPassword, 16).toByteArray();
+		byte[] en_result  = RSAUtilNew.hexStringToBytes(loginPassword);//解决Bad arguments问题
 		byte[] pass = null;
 		try {			
 			 pass =RSAUtilNew.decrypt(privateKey,en_result);			
@@ -98,12 +127,69 @@ public class AdminLoginController {
 		StringBuffer StrBuf = new StringBuffer();
 		StrBuf.append(passStr);
 		String passWord = StrBuf.reverse().toString();
-		logger.debug("解密的密码为 = " + passWord);		
+		logger.debug("解密的密码为 = " + passWord);	
 		
-		Map<String,Object> retmap = new HashMap<String,Object>();	
-		JSONObject json = JSONObject.fromObject(retmap);	
 		
-		return json;
+		Subject currentUser = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(loginJobNum,passWord);
+		System.out.println("认证状态 = " + currentUser.isAuthenticated());
+		try {
+			
+			token.setRememberMe(true);
+			/*登录验证*/
+			currentUser.login(token);
+			logger.debug("用户登录成功");
+			
+			/*SessionUtils.setSession("currenLogintAdmin", user);*/
+			
+			/*更新登录日志*/
+		/*	OsUserLogin userLogin = new OsUserLogin();
+			userLogin.setLoginIp(ServletUtils.getAddrIP(request));
+			userLogin.setLoginTime(new Date());
+			userLogin.setExplorer(ServletUtils.getAggent(request));
+			userLoginService.addLoginLog(user.getUserId(), userLogin);*/
+			
+		}catch(UnknownAccountException uae){  
+            System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,未知账户1"); 
+            retmap.put("loginStatus", AdminStatus.UNKNOWN_ACCOUNT);
+    		JSONObject json = JSONObject.fromObject(retmap);		
+    		return json;	
+         
+        }catch(IncorrectCredentialsException ice){  
+            System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,错误的凭证2");  
+            retmap.put("loginStatus", AdminStatus.LOGIN_FAIL);
+    		JSONObject json = JSONObject.fromObject(retmap);		
+    		return json;	
+          
+        }catch(LockedAccountException lae){  
+            System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,账户已锁定3");  
+            retmap.put("loginStatus", AdminStatus.LOGIN_FAIL);
+    		JSONObject json = JSONObject.fromObject(retmap);		
+    		return json;	
+             
+        }catch(ExcessiveAttemptsException eae){  
+            System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,错误次数过多4");  
+            retmap.put("loginStatus", AdminStatus.PASSWORD_ERROR_TOO_MANY);
+    		JSONObject json = JSONObject.fromObject(retmap);		
+    		return json;	
+             
+        }catch(AuthenticationException ae){  
+            //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景  
+            System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,堆栈轨迹如下5");  
+            ae.printStackTrace();  
+            retmap.put("loginStatus", AdminStatus.LOGIN_FAIL);
+    		JSONObject json = JSONObject.fromObject(retmap);		
+    		return json;	
+        } 
+		System.out.println("认证状态 = " + currentUser.isAuthenticated());
+		if(currentUser.isAuthenticated()) {
+			System.out.println("用户[" + loginJobNum + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)"); 
+		}
+		/*运行到这里说明登陆成功*/
+		retmap.put("loginStatus", AdminStatus.LOGIN_SUCCESS);
+		JSONObject json = JSONObject.fromObject(retmap);		
+		return json;	
+		
 	}
 	
 }
