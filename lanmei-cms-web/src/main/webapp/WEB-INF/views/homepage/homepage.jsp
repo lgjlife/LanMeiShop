@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.Date" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- base.jsp 路径定义 / 包含 bootstrap 和  jquery 文件-->
 <%@ include file="/WEB-INF/layouts/common/base.jsp" %>
@@ -22,8 +23,20 @@
 			<div id="titleName">
 			   <span>蓝莓商城后台管理系统</span>
 			</div>
-			<div id="loginMsg"  style="position:relative;left:400px">
-				<span>当前登陆用户：${admin.actualName} </span>
+		
+			<div id="loginMsg"  style="position:absolute;left:400px;display:inline;">
+				<div>
+					<span>当前登录用户：${admin.actualName} </span>
+				</div>
+				<div>
+					<span>当前用户权限： </span>
+				</div>
+				<shiro:authenticated > 
+					<div>
+						<a href="${projectPath}/login/out" style="color:red">退出登录</a>
+					</div>
+				</shiro:authenticated>
+				
 			</div>			
 		</div>
 		
@@ -94,7 +107,18 @@
 							<span class="detaileList" id="allUserMesgItem">会员信息</span>	
 							<span class="detaileList" id="CommodityIMesgItem">商品信息</span>	
 						</div>
-					</div>					
+					</div>
+					<!--秒杀活动 -->
+					<div>
+						<div class="menuBtn">
+							<button type="button" class="btn btn-primary" id="seckillBtn">秒杀活动</button>
+						</div>
+						
+						<div id="seckillManager" class="collapse">
+							<span class="detaileList" id="seckillingtem">当前秒杀活动</span>	
+							<span class="detaileList" id="seckilledItem">已结束活动</span>
+						</div>
+					</div>						
 					<!--设计思路-->
 					<div>
 						<div class="menuBtn">
@@ -112,9 +136,18 @@
 					
 				</div>
 				<div class="col-10">	
+					<!-- 秒杀管理界面 -->
+					<!-- 待解决问题 必须放在adminManagerDisplay才有效果 -->
+					<div id="seckillDisplay" class="pageDisplayCtrl " style="display:none;" >
+						 <jsp:include page="/WEB-INF/views/seckill/seckill.jsp" />
+					</div>				
+					<!--管理员管理 -->
 					<div id="adminManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/admin/admin_manager.jsp" />
-					</div> 						
+					</div> 	
+					
+					
+										
 					<div id="adminMessageDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/admin/admin_message.jsp" /> 
 					</div>	
@@ -127,6 +160,7 @@
 					<div id="dataManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/homepage/data_manager.jsp" /> 
 					</div>	
+					
 					<div id="designerDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/homepage/designer.jsp" />  
 					</div>

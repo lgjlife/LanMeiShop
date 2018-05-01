@@ -130,7 +130,7 @@
 		    <bean class="org.lanmei.cms.common.intercepter.IntercepterWebLogin"/>
 		</mvc:interceptor> 		
 	</mvc:interceptors> 
-	
+
 	
     
 </beans>

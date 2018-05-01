@@ -138,7 +138,7 @@
     where login_jobNum = #{loginJobnum,jdbcType=VARCHAR}
   </select>
   
-  <select id="selectCount" resultType="java.lang.Integer" >
+  <select id="selectCount" resultType="java.lang.Integer">
   	select COUNT(*) from cms_admin
   </select>
 </mapper>

@@ -13,6 +13,7 @@
   <description>蓝莓商城后台管理web</description>
   
   <dependencies>
+  	<!-- 管理员模块 -->
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.admin.dao</artifactId> 
@@ -21,6 +22,17 @@
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.admin.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<!-- 秒杀模块 -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.seckill.dao</artifactId> 
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.seckill.service</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
   	

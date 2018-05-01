@@ -1,14 +1,10 @@
 package org.lanmei.cms.controller.homepage;
 
-import java.util.List;
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.lanmei.admin.dao.model.CmsAdmin;
 import org.lanmei.admin.service.CmsAdminService;
 import org.lanmei.cms.common.session.SessionUtils;
-import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,47 +27,63 @@ public class HomePageController {
 	
 	@Autowired
 	CmsAdminService  adminService;
-	
+	/**
+	 * 进入主界面
+	 * @return
+	 */
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView HomePage() {
 		logger.debug("into 主界面 ");
 		
+		/*获取当前登录的用户*/
 		CmsAdmin admin =(CmsAdmin) SessionUtils.getSession("currenLogintAdmin");
 		if(admin != null) {
 			logger.debug("当前登录的用户号码为 = " + admin.getActualName());
 		}
 		else {
 			logger.debug("HomePageController 当前无用户登录 ");
-		}
-       List<CmsAdmin>  adminList = adminService.getAllAdmin(1);
-       if(adminList != null) {
-    	   for(CmsAdmin ad:adminList) {
-    		   System.out.println(ad.getActualName());
-    	   }
-       }
-		
+		}		
 
+		shirotest();
+		
 		ModelAndView mv = new ModelAndView("/homepage/homepage");
 		mv.addObject("admin", admin);
 		
 		return mv;
 	}
-	@RequestMapping(value="/redistest",method=RequestMethod.GET)
-	public ModelAndView redis() {
-		logger.debug("\r\n-------/redistest");
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		session.setAttribute("testredis","testvalue");
-		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
-		
-		OsUser user = new OsUser();
-		user.setUserId(12);
-		session.setAttribute("testUser",user);
-		
-		
-		
-		ModelAndView mv = new ModelAndView("/homepage/HomePage");
-
+	
+	@RequestMapping("/Unauthorize")
+	public String Unauthorize() {
+		logger.debug("into /Unauthorize ");
+		return "/shiro/Unauthorize";
+	}
+	@RequiresRoles("user")
+	@RequestMapping(path="/shirotest",method=RequestMethod.GET)
+	public ModelAndView shirotest() {
+		logger.debug("进入角色-权限");
+		shiro();
+		ModelAndView mv = new ModelAndView("/homepage/homepage");		
 		return mv;
 	}
+	
+	@RequiresRoles("usertest")
+	@RequiresPermissions("sada")
+	@RequestMapping(path="/shirotest1",method=RequestMethod.GET)
+	public ModelAndView shirotest1() {
+		logger.debug("进入角色-权限  1");
+		shiro();
+		ModelAndView mv = new ModelAndView("/homepage/homepage");		
+		return mv;
+	}
+	
+	@RequiresRoles("usertest1")
+	@RequiresPermissions("sad1")
+	public ModelAndView shiro() {
+		logger.debug("进入角色-权限 shiro");
+		ModelAndView mv = new ModelAndView("/homepage/homepage");		
+		return mv;
+	}
+
 }
+
+

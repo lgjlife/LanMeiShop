@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="lanmei" targetNamespace="lanmei">
+	<xsd:element name="cms_menu" type="cms_menu__type" />
+	<xsd:element name="cms_role_permission" type="cms_role_permission__type" />
+	<xsd:element name="os_receipt_address" type="os_receipt_address__type" />
+	<xsd:element name="cms_admin_login" type="cms_admin_login__type" />
+	<xsd:element name="os_user" type="os_user__type" />
+	<xsd:element name="seckill" type="seckill__type" />
+	<xsd:element name="cms_role" type="cms_role__type" />
+	<xsd:element name="os_favorites" type="os_favorites__type" />
+	<xsd:element name="os_user_login" type="os_user_login__type" />
+	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
+	<xsd:element name="seckill_success" type="seckill_success__type" />
+	<xsd:element name="cms_admin" type="cms_admin__type" />
+	<xsd:complexType name="cms_menu__type">
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="menu_type" use="optional" />
+		<xsd:attribute name="icon" use="optional" />
+		<xsd:attribute name="permission" use="optional" />
+		<xsd:attribute name="remark" use="optional" />
+		<xsd:attribute name="sort" use="optional" />
+		<xsd:attribute name="update_admin_id" use="optional" />
+		<xsd:attribute name="update_time" use="optional" />
+		<xsd:attribute name="create_admin_id" use="optional" />
+		<xsd:attribute name="parent_id" use="optional" />
+		<xsd:attribute name="menu_name" use="optional" />
+		<xsd:attribute name="menu_code" use="optional" />
+		<xsd:attribute name="href" use="optional" />
+		<xsd:attribute name="menu_id" use="optional" />
+		<xsd:attribute name="status" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="cms_role_permission__type">
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="role_id" use="optional" />
+		<xsd:attribute name="create_admin_id" use="optional" />
+		<xsd:attribute name="permission_id" use="optional" />
+		<xsd:attribute name="role_permission_id" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="os_receipt_address__type">
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="receipt_address_id" use="optional" />
+		<xsd:attribute name="street_name" use="optional" />
+		<xsd:attribute name="province_name" use="optional" />
+		<xsd:attribute name="district_name" use="optional" />
+		<xsd:attribute name="city_name" use="optional" />
+		<xsd:attribute name="update_time" use="optional" />
+		<xsd:attribute name="user_id" use="optional" />
+		<xsd:attribute name="province_id" use="optional" />
+		<xsd:attribute name="post_code" use="optional" />
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="phone_num" use="optional" />
+		<xsd:attribute name="district_id" use="optional" />
+		<xsd:attribute name="street_id" use="optional" />
+		<xsd:attribute name="city_id" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="cms_admin_login__type">
+		<xsd:attribute name="login_id" use="optional" />
+		<xsd:attribute name="login_time" use="optional" />
+		<xsd:attribute name="admin_id" use="optional" />
+		<xsd:attribute name="explorer" use="optional" />
+		<xsd:attribute name="login_ip" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="os_user__type">
+		<xsd:attribute name="salt" use="optional" />
+		<xsd:attribute name="gender" use="optional" />
+		<xsd:attribute name="last_login_time" use="optional" />
+		<xsd:attribute name="actual_name" use="optional" />
+		<xsd:attribute name="register_time" use="optional" />
+		<xsd:attribute name="user_number" use="optional" />
+		<xsd:attribute name="login_nums" use="optional" />
+		<xsd:attribute name="email_active" use="optional" />
+		<xsd:attribute name="login_password" use="optional" />
+		<xsd:attribute name="user_id" use="optional" />
+		<xsd:attribute name="nick_name" use="optional" />
+		<xsd:attribute name="phone_num" use="optional" />
+		<xsd:attribute name="age" use="optional" />
+		<xsd:attribute name="email" use="optional" />
+		<xsd:attribute name="head_portrait" use="optional" />
+		<xsd:attribute name="status" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="seckill__type">
+		<xsd:attribute name="start_time" use="optional" />
+		<xsd:attribute name="stock_count" use="optional" />
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="seckill_id" use="optional" />
+		<xsd:attribute name="seckill_name" use="optional" />
+		<xsd:attribute name="state" use="optional" />
+		<xsd:attribute name="finish_time" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="cms_role__type">
+		<xsd:attribute name="role_name" use="optional" />
+		<xsd:attribute name="update_time" use="optional" />
+		<xsd:attribute name="role_flag" use="optional" />
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="role_id" use="optional" />
+		<xsd:attribute name="create_admin_id" use="optional" />
+		<xsd:attribute name="remark" use="optional" />
+		<xsd:attribute name="state" use="optional" />
+		<xsd:attribute name="update_admin_id" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="os_favorites__type">
+		<xsd:attribute name="favorites_id" use="optional" />
+		<xsd:attribute name="commodity_id" use="optional" />
+		<xsd:attribute name="user_id" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="os_user_login__type">
+		<xsd:attribute name="login_id" use="optional" />
+		<xsd:attribute name="user_id" use="optional" />
+		<xsd:attribute name="login_time" use="optional" />
+		<xsd:attribute name="explorer" use="optional" />
+		<xsd:attribute name="login_ip" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="dbmaintain_scripts__type">
+		<xsd:attribute name="file_name" use="optional" />
+		<xsd:attribute name="executed_at" use="optional" />
+		<xsd:attribute name="checksum" use="optional" />
+		<xsd:attribute name="file_last_modified_at" use="optional" />
+		<xsd:attribute name="version" use="optional" />
+		<xsd:attribute name="succeeded" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="seckill_success__type">
+		<xsd:attribute name="create_time" use="optional" />
+		<xsd:attribute name="seckill_id" use="optional" />
+		<xsd:attribute name="user_id" use="optional" />
+		<xsd:attribute name="state" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="cms_admin__type">
+		<xsd:attribute name="invitation_code" use="optional" />
+		<xsd:attribute name="generate_time" use="optional" />
+		<xsd:attribute name="gender" use="optional" />
+		<xsd:attribute name="last_login_time" use="optional" />
+		<xsd:attribute name="login_jobNum" use="optional" />
+		<xsd:attribute name="activate_time" use="optional" />
+		<xsd:attribute name="colose_time" use="optional" />
+		<xsd:attribute name="actual_name" use="optional" />
+		<xsd:attribute name="admin_password" use="optional" />
+		<xsd:attribute name="email_is_activate" use="optional" />
+		<xsd:attribute name="password_salt" use="optional" />
+		<xsd:attribute name="login_count" use="optional" />
+		<xsd:attribute name="last_login_ip" use="optional" />
+		<xsd:attribute name="admin_id" use="optional" />
+		<xsd:attribute name="nick_name" use="optional" />
+		<xsd:attribute name="phone_num" use="optional" />
+		<xsd:attribute name="state" use="optional" />
+		<xsd:attribute name="department" use="optional" />
+		<xsd:attribute name="create_admin" use="optional" />
+		<xsd:attribute name="age" use="optional" />
+		<xsd:attribute name="email" use="optional" />
+		<xsd:attribute name="head_portrait" use="optional" />
+	</xsd:complexType>
+</xsd:schema>

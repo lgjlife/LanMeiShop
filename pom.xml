@@ -45,7 +45,7 @@
 	 	<json-lib.version>2.4</json-lib.version>
 	 	<jetty.version>8.1.8.v20121106</jetty.version>
 	 	<jstl.version>1.2</jstl.version>
-	 	<junit.version>4.9</junit.version>
+	 	<junit.version>4.12</junit.version>
 	 	<log4j2.version>2.11.0</log4j2.version> 
 	 	<mail.version>1.4.7</mail.version>
 	 	<mysql.version>5.1.29</mysql.version>
@@ -62,8 +62,53 @@
 		<joda-time.version>2.9.9</joda-time.version>
 		<filters.version>2.0.235</filters.version>
 		<jcaptcha-api.version>1.0</jcaptcha-api.version>
+		<unitils.version>3.4.2</unitils.version>
    </properties>
-   <dependencies>        
+   <dependencies>  
+   		<!-- Unitils -dbunit、Spring -->
+   		<dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-core</artifactId>
+            <version>${unitils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-dbunit</artifactId>
+            <version>${unitils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-io</artifactId>
+            <version>${unitils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-database</artifactId>
+            <version>${unitils.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.dbunit</groupId>
+		    <artifactId>dbunit</artifactId>
+		    <version>2.5.3</version>
+	    </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-spring</artifactId>
+            <version>${unitils.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.unitils</groupId>
+		    <artifactId>unitils</artifactId>
+		    <version>3.4.6</version>
+		    <type>pom</type>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.unitils</groupId>
+		    <artifactId>unitils-testng</artifactId>
+		    <version>3.4.6</version>
+		</dependency>
+        
 		<dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
@@ -470,7 +515,18 @@
             <scope>provided</scope>
         </dependency>       
   </dependencies>
+ 
   <build>
+  <!-- 配置maven对resourcew文件过滤规则，如果不过滤maven会对resource文件重编码，导致Excel文件被破坏 -->
+  	 <resources>
+	    <resource>
+	      <directory>src/test/resources</directory>
+	      <includes>
+	        <include>**/*.*</include>
+	      </includes>
+	      <filtering>false</filtering>
+	    </resource>
+	</resources>
   	<plugins>  
   		  <!-- 资源文件拷贝插件 -->
         <plugin>

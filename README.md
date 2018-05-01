@@ -121,6 +121,9 @@
 	<li>
 		CSS框架：bootstrap
 	</li>
+	<li>
+		时间选择控件：<a href="https://github.com/AuspeXeu/bootstrap-datetimepicker">bootstrap-datetimepicker</a>
+	</li>
 </ol>	
 
 <h4>三.前后端交互</h4>

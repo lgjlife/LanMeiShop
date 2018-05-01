@@ -74,25 +74,22 @@ public class AdminManagerController {
 		List<CmsAdmin>  adminList = adminService.getAllAdmin(page);
 		 
 		Integer allListCount = adminService.getAdminCount();
-		returnMap.put("adminList", allListCount);
+		/*returnMap.put("adminList", allListCount);
 		returnMap.put("allListCount", allListCount);
 		for(CmsAdmin admin:adminList) {
 			System.out.println(admin.getActualName());
 		}
 		logger.debug("allListCount = " + allListCount + "  page  = " + page );
-	    JSONObject json = JSONObject.fromObject(returnMap);	
+	    JSONObject json = JSONObject.fromObject(returnMap);	*/
+		JSONObject json = new JSONObject();
+		json.put("allListCount", allListCount);
 		System.out.println("json = " + json.toString());
 		//json.putAll(JSONObject.fromObject(adminList));
 		JSONArray json1 = JSONArray.fromObject(adminList);
 		System.out.println(json1.toString());
 		json1.add(json);	
 		System.out.println(json1.toString());
-		
-	/*	Map<String,List> returndata = new HashMap<String,List>();
-		returndata.put("adminList", adminList);
-		returndata.put("allListCount", allListCount);
-		JSONObject json = JSONObject.fromObject(returndata);*/
-		
+	
 		return json1.toString();
 	}
 	/**

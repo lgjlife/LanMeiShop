@@ -21,8 +21,15 @@ $(function(){
 	});
 	
 	$("#dataManagerBtn").click(function(){
+		console.log("dataManagerBtn");
 		$(".pageDisplayCtrl").hide();
 		$("#dataManagerDisplay").show();
+	});
+	
+	$("#seckillBtn").click(function(){
+		console.log("seckillBtn");
+		$(".pageDisplayCtrl").hide();
+		$("#seckillDisplay").show();
 	});
 	
 	$("#designerBtn").click(function(){

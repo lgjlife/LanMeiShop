@@ -48,8 +48,9 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 		logger.debug("into doGetAuthorizationInfo....");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		
-		
-		
+		info.addRole("usertest");
+		info.addStringPermission("sad");
+		/*info.addRole("user");*/
 		return info;
 	}
 

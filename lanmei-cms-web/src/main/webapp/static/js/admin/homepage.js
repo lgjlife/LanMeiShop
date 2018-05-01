@@ -39,6 +39,13 @@ $(function(){
 	
 });
 $(function(){
+	$("#seckillBtn").click(function(){
+		
+		$("#seckillManager").toggle();
+	});
+	
+});
+$(function(){
 	$("#designerBtn").click(function(){
 		
 		$("#designer").toggle();

@@ -5,7 +5,7 @@
     <artifactId>org.lanmei.admin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>org.lanmei.shop</groupId>
+
   <packaging>jar</packaging>
   <artifactId>org.lanmei.admin.service</artifactId>
   <version>0.0.1-SNAPSHOT</version>

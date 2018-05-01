@@ -1,9 +1,12 @@
+
 /**
  * 新增管理员页面
  * @returns
  */
 $(function(){
 	
+	var currentPage = "0";   //当前的页码数，页码定义为string,后端才可以解析
+	var maxPage; //最大页数
 	/**
 	 * 获取随机数按钮按下
 	 * @returns
@@ -93,23 +96,41 @@ $(function(){
 		}
 	}
 	/**
-	 * 获取管理员列表
+	 * 获取管理员列表按钮
 	 */
 	$("#getAdminListBtn").click(function(){
 		console.log("getAdminListBtn  按下");
-		getAdminList('1');
+		currentPage = "1";
+		getAdminList(currentPage);
 	});
 	
     /*事件绑定动态生成的元素*/
 	$(document).on('click','.page-item-add',function(){
 		console.log("按下" + $(this).find('a').text());
-		getAdminList($(this).find('a').text());
+		currentPage = $(this).find('a').text();
+		getAdminList(currentPage);
 		
-		$(".page-item-add").removeClass("active");
+		/*$(".page-item-add").removeClass("active");*/
 		$(this).addClass("active");
+		console.log("this  = " + $(this));
 		
 	})
-	
+	$("#toPreviousPage").click(function(){
+		if(currentPage > "1"){
+			currentPage--;
+			getAdminList(currentPage.toString());
+		}
+	});
+	$("#toNextPage").click(function(){
+		if(currentPage < maxPage){
+			currentPage++;
+			getAdminList(currentPage.toString());
+		}
+	});
+	/**
+	 * 获取总页码数和管理员列表
+	 * page : 第几页
+	 */
 	function getAdminList(page){
 		var jsonData = {"page":""};
 		jsonData.page = page;
@@ -126,21 +147,61 @@ $(function(){
 	        	
 	        	
 	        	$(".page-item-add").remove();
-	        	for(var i = 1;i < (data[5].allListCount / 5 + 1) ;i++)
-	        	{
-	        		var txt = " <li class='page-item page-item-add'><a class='page-link'>"+ i + "</a></li>";
-	        		$("#toNextPage").before(txt);
+	        	var length = 0;
+	        	for(var e  in data){
+	        		length++;
 	        	}
-	        	
+	        	console.log(" length = " +  length );
+	        	var loopCounts;
+	        	// 5 -- page = 1 -- 5/5 = 1  loopCounts = 2 
+	        	//6 -- loopCounts = 3 == 6/5=1 + 2 = 3
+	        	var allListCount = data[length-1].allListCount;
+	        	if(allListCount == 0){
+	        		return;
+	        	}
+	        	else if((allListCount%5 == 0)){
+	        		loopCounts = (allListCount / 5) + 1;
+	        	}
+	        	else{
+	        		loopCounts = Math.round(allListCount / 5) + 2;
+	        	}
+	        	//获取最大页码
+	        	maxPage = (loopCounts - 1).toString();
+	        	console.log("loopCounts = " + loopCounts );
+	        	for(var i = 1;i < loopCounts ;i++)
+	        	{
+	        		if(  i == currentPage){
+	        			var txt = " <li class='page-item page-item-add active'><a class='page-link'>"+ i + "</a></li>";
+		        		$("#toNextPage").before(txt);
+	        		}
+	        		else{
+	        			var txt = " <li class='page-item page-item-add'><a class='page-link'>"+ i + "</a></li>";
+		        		$("#toNextPage").before(txt);
+	        		}
+	        	}
+	        	/*console.log("this currentPage = " + currentPage);
+	        	if($(".page-item-add").find('a').text() == currentPage){
+	        		$(this).addClass("active");
+	        		console.log("this = " + $(this));
+	        	}*/
 	        	$(".trList").remove();
-	        	for(var i = 0;i < 5 ;i++){
+	        	for(var i = 0;i < (length - 1) ;i++){
+	        		
+	        		
+	        		/*时间*/
+	        		var generateTime  = data[i].generateTime;
+	        		var time =  "20" + (generateTime.year - 100) + "/"
+	        					+  generateTime.month + "/" 
+	        					+ generateTime.date + "-" 
+	        					+ generateTime.hours + ":" + generateTime.minutes;
+	        		/*显示列表*/
 	        		var txt = "<tr class='trList'>"
 	        				+ "<td>" + data[i].actualName + "</td>"
 	        				+ "<td>" + data[i].loginJobnum + "</td>"
 	        				+ "<td>" + data[i].gender + "</td>"
 	        				+ "<td>" + data[i].department + "</td>"
 	        				+ "<td>" + data[i].state + "</td>"
-	        				+ "<td>" + data[i].generateTime.date + "</td>"
+	        				+ "<td>" + time + "</td>"
 	        				+ "</tr>";
 	        		$("#tbodyList").append(txt);		
 		  	 			
@@ -177,6 +238,5 @@ $(function(){
 	$("#authorityItem").click(function(){
 		$(".adminManagerPageDiplay").hide();
 		$("#authorityItemPage").show();
-	});
-	
+	});	
 });
