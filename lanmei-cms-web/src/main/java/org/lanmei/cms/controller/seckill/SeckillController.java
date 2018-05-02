@@ -1,6 +1,7 @@
 package org.lanmei.cms.controller.seckill;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.lanmei.seckill.dao.model.Seckill;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import net.sf.json.JSONObject;
 
 /**
  * 秒杀模块Controller
@@ -30,9 +33,23 @@ public class SeckillController {
 		logger.debug("seckillController Create Bean............. ");
 	}
 	
-	@RequestMapping(path="/test",method=RequestMethod.GET,produces="text/html;charset=UTF-8")
-	public void SeckillControllerTest() {
+	@RequestMapping(path="/test/object")
+	public void testObject(@RequestBody SoftInfo SoftInfo) {
 		logger.debug("SeckillControllerTest  INTO /seckill/test ");
+		System.out.println("id = " + SoftInfo.getId());
+	}
+	@RequestMapping(path="/test/map")
+	public JSONObject testMap(@RequestBody Map<String, Object> requestJsonDataMap) {
+		logger.debug("SeckillControllerTest  INTO /seckill/test ");
+		System.out.println("id = " + requestJsonDataMap.get("id")
+						+ "   name = " + requestJsonDataMap.get("name") );
+		
+		Map<String,Object> map = new HashMap<String,Object>();   
+        map.put("id", "789");
+        map.put("name", "guanyu");
+        
+        JSONObject jsonObject = JSONObject.fromObject(map);
+        return jsonObject;
 	}
 	@RequestMapping(path="/new/seckill",method=RequestMethod.POST,produces="text/html;charset=UTF-8")
 	public void newSeckill(@RequestBody Map<String, Object> requestJsonDataMap) {

@@ -47,7 +47,7 @@ import net.sf.json.JSONObject;
  * @date:2018/05/17
  */
 @Api(value="/login",description="处理用户登录Controller")
-@Controller
+//@Controller
 @RequestMapping("/login")
 public class AdminLoginController {
 
@@ -59,7 +59,7 @@ public class AdminLoginController {
 	}
 	
 	
-	@Autowired
+	//@Autowired
 	private  HttpServletRequest request;
 	@Autowired
 	CmsAdminService  adminService;

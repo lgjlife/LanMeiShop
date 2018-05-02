@@ -22,7 +22,7 @@ import com.wordnik.swagger.annotations.Api;
 import net.sf.json.JSONObject;
 
 @Api("Json传输测试")
-@Controller
+//@Controller
 @RequestMapping("/json")
 public class JsonTest{
 	
@@ -41,7 +41,7 @@ public class JsonTest{
 	@Autowired
 	OsUserLoginService userLoginService;
 	
-	@Autowired
+	//@Autowired
 	private  HttpServletRequest request;
 	
 	@RequestMapping("/json")
