@@ -132,12 +132,16 @@
 <h1>目录介绍</h1>
 <h3>目录介绍</h3>
 <ol>
-	<li>lanmei-os-web</li>--商城web项目
-	<li>lanmei-os-user</li>--用户模块，登录注册相关
+	<li>doc</li>--开发日志
+	<li>lanmei-admin</li>--后台管理 管理员相关模块(新增/登陆/权限管理等) 秒杀活动管理
 	<li>lanmei-cms-web</li>--后台管理web项目
-	<li>lanmei-admin</li>--后台管理 管理员相关模块(新增/登陆/权限管理等)
-	<li>doc</li>--开发日志			
-	<li>mysql</li>--数据库文件，创建数据表相关
+	<li>lanmei-common</li>--放置公共类
+	<li>lanmei-example</li>--用于测试某个技术点功能实现
+	<li>lanmei-os-web</li>--商城web项目
+	<li>lanmei-os-user</li>--用户模块，登录注册相关	
+	<li>lanmei-seckill</li>--秒杀模块		
+	<li>lanmei-seckill</li>--秒杀模块	
+	<li>mysql</li>--数据库脚本文件，创建数据表相关
 </ol>
 <h1>完成模块</h1>
 <ol>
@@ -184,6 +188,23 @@
 			<li>shiro登录验证</li>
 			<li>帐号登录日志管理</li>
 			<li>redis持久化session,还未实现关闭浏览器还能保持登录状态功能</li>
+		</ul>
+	</li>
+	<li>
+		秒杀模块
+		<ul type="disc">
+			<li>后台管理</li>
+			<li>已结束和未结束秒杀活动展示</li>
+			<li>管理秒杀活动（新增，删除，修改）</li>
+			<li>前台秒杀活动列表页面</li>			
+			<li>秒杀页面，未开始则进行倒计时</li>
+			<li>秒杀逻辑实现</li>
+			<li>为防止软件提前刷，造成服务器压力，秒杀开始后服务端才暴露秒杀地址</li>
+			<li>秒杀地址动态部分由seckillId和随机生成的数字组合，再经过MD5加密而成</li>
+			<li>生成的MD5保存在Session中，执行秒杀操作时再进行比对</li>
+			<li>使用spring的事物管理，执行秒杀过程出现异常则进行数据库回滚</li>
+			<li>首次使用spring test 进行web层测试，提高效率。数据曾和服务曾未单独进行测试</li>
+			<li>首次使用DTO进行层间数据传送</li>
 		</ul>
 	</li>
 </ol>

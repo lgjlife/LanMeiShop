@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.lanmei.common.baseservice.BaseService;
 import org.lanmei.common.exception.UnloginException;
+import org.lanmei.common.session.SessionUtils;
 import org.lanmei.seckill.dao.mapper.SeckillMapper;
 import org.lanmei.seckill.dao.mapper.SeckillSuccessMapper;
 import org.lanmei.seckill.dao.model.Seckill;
@@ -163,8 +164,10 @@ public class SeckillServiceImpl extends BaseService  implements SeckillService {
 					seckill.getStartTime().getTime(),
 					seckill.getFinishTime().getTime()));
 		}
-	
+		//动态生成MD5
 		String md5 = getMd5(seckillId);	
+		//将MD5 保存在Session中
+		SessionUtils.setSession("md5", md5);
 		return  (new ExposerDto(true,md5,seckillId));
 	}
 	/*事物管理，失败则回滚*/
@@ -173,7 +176,8 @@ public class SeckillServiceImpl extends BaseService  implements SeckillService {
 	public ExecutionDto executeSeckill(Integer seckillId ,String md5,Integer currentUserId) 
 	       throws SeckillCloseException,RepeatkillException,SeckillException{
 		// TODO Auto-generated method stub
-		if((seckillId == null)|| (md5 == null) || (md5.equals(getMd5(seckillId)) == false) ){
+		String innerMd5 = (String)SessionUtils.getSession("md5");
+		if((seckillId == null)|| (md5 == null) || (md5.equals(innerMd5) == false) ){
 			
 			throw  new  SeckillException("秒杀请求异常");
 		}
@@ -227,9 +231,10 @@ public class SeckillServiceImpl extends BaseService  implements SeckillService {
 	 * 通过seckillId获取MD5值
 	 */
 	private String getMd5(Integer seckillId) {
-		String random = seckillId + "lanmei" +  "salt";	
+		Long random = Math.round(Math.random() * 100);
+		String salt = seckillId + "lanmei" +  "salt" + random.toString();	
 		//将原始密码加盐（上面生成的盐），并且用md5算法加密三次，将最后结果存入数据库中
-		String resultMd5 = new Md5Hash(seckillId.toString().getBytes(),random,3).toString();
+		String resultMd5 = new Md5Hash(salt.getBytes(),salt,3).toString();
 		return resultMd5;
 	}
 	

@@ -30,6 +30,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONObject;
 
+/**
+ * 秒杀模块控制曾
+ * @author lgj
+ *
+ */
 
 @Controller
 @RequestMapping(path="/seckill")
@@ -83,7 +88,10 @@ public class SeckillController {
 		mv.addObject("seckill", seckill);
 		return mv;	
 	}
-
+	/**
+	 * 获取当前的服务器时间
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(path="/get/time",
 					method=RequestMethod.GET)
@@ -97,7 +105,11 @@ public class SeckillController {
 		logger.debug("return seckill/get/time");
 		return retJson;	
 	}
-	
+	/**
+	 * 获取秒杀地址
+	 * @param seckillId
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(path="/{seckillId}/exposer",
 					method=RequestMethod.GET)
