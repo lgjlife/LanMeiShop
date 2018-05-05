@@ -33,10 +33,5 @@ ServerPort = 8080
 <!-- bootstrap 文件 -->
 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
 <script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script>
-<!-- 表单验证插件 -->
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<!-- 表单验证插件 中文提示 -->
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <!-- 自定义 --> 
 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/user/register.css">

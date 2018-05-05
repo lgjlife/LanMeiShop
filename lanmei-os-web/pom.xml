@@ -25,6 +25,17 @@
   	</dependency>
   	
   	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.seckill.dao</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.seckill.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	
+  	<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk16</artifactId>
 			<version>1.46</version>

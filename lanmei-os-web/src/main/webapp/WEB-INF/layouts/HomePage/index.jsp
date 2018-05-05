@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@include file="/WEB-INF/layouts/common/base.jsp"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,15 +23,7 @@
 	    <!-- 创建顶部导航栏 -->
 	     <div class="container-fluid">
 			<div class="row">
-				<div class="col-2">
-				</div>
-				<div class="col-2" >
-					<ul class="nav ">
-						<li class="nav-item">
-							<a class="nav-link" href="/lanmei-os">全部商品分类</a>
-						</li>
-						
-					</ul>
+				<div class="col-4">
 				</div>
 				
 				<div class="col-4" >
@@ -51,16 +44,13 @@
 							<a class="nav-link" href="/">特卖</a>
 						</li>	
 						<li class="nav-item">
-							<a class="nav-link" href="/">抢购活动</a>
+							<a class="nav-link" href="${projectPath}/seckill/list">秒杀活动</a>
 						</li>	        
 					 </ul>
 					
 				</div>
-	
-				<div class="col-2">
-				</div>
 				<!-- 右侧空白 -->
-				<div class="col-2">
+				<div class="col-4">
 				</div>
 					
 			</div>

@@ -517,16 +517,8 @@
   </dependencies>
  
   <build>
-  <!-- 配置maven对resourcew文件过滤规则，如果不过滤maven会对resource文件重编码，导致Excel文件被破坏 -->
-  	 <resources>
-	    <resource>
-	      <directory>src/test/resources</directory>
-	      <includes>
-	        <include>**/*.*</include>
-	      </includes>
-	      <filtering>false</filtering>
-	    </resource>
-	</resources>
+ 
+  	 
   	<plugins>  
   		  <!-- 资源文件拷贝插件 -->
         <plugin>

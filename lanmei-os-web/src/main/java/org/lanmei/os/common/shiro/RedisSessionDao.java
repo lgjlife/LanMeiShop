@@ -29,7 +29,7 @@ public class RedisSessionDao extends AbstractSessionDAO {
 	@Override
 	public void update(Session session) throws UnknownSessionException {
 		// TODO Auto-generated method stub
-		logger.debug("更新session,session id = {}",session.getId().toString());
+		//logger.debug("更新session,session id = {}",session.getId().toString());
 		
 		redisTemplateUtils.set(getKey(session.getId().toString()), session);
 	}
@@ -37,14 +37,14 @@ public class RedisSessionDao extends AbstractSessionDAO {
 	@Override
 	public void delete(Session session) {
 		// TODO Auto-generated method stub
-		logger.debug("删除session,session id = {}",session.getId().toString());
+		//logger.debug("删除session,session id = {}",session.getId().toString());
 		redisTemplateUtils.delete(getKey(session.getId().toString()));
 	}
 
 	@Override
 	public Collection<Session> getActiveSessions() {
 		// TODO Auto-generated method stub
-		logger.debug("获取活动的session");
+		///logger.debug("获取活动的session");
 		Set<String> sessionKey = new HashSet<String>();
 		/*sessions = redisTemplate.keys(keyPrefix +_"*");*/
 		redisTemplateUtils.getList(keyPrefix + "*");
@@ -56,7 +56,7 @@ public class RedisSessionDao extends AbstractSessionDAO {
 		// TODO Auto-generated method stub
 		Serializable sessionId = generateSessionId(session);
 		assignSessionId(session, sessionId);  
-		logger.debug("更新session,session id = {}",session.getId().toString());
+		//logger.debug("更新session,session id = {}",session.getId().toString());
 		redisTemplateUtils.create(getKey(session.getId().toString()), session);
 		return sessionId;
 	}
@@ -64,10 +64,10 @@ public class RedisSessionDao extends AbstractSessionDAO {
 	@Override
 	protected Session doReadSession(Serializable sessionId) {
 		// TODO Auto-generated method stub
-		logger.debug("获取session,session id = {}",sessionId.toString());	
+	//	logger.debug("获取session,session id = {}",sessionId.toString());	
 		Session session = redisTemplateUtils.readSession(getKey(sessionId.toString()));
 		if(session != null) {
-			logger.debug(" doReadSession redis 获取session,session id = {}",session.getId().toString());
+			//logger.debug(" doReadSession redis 获取session,session id = {}",session.getId().toString());
 		}
 		else {
 			logger.debug("session 不存在");

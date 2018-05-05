@@ -102,6 +102,7 @@
         <property name="filterChainDefinitions">  
             <value>  
                 /user-info = authc
+                /seckill/*/detail = authc
             </value>  
         </property>  
     </bean>

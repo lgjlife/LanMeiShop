@@ -149,9 +149,10 @@ public class UserLoginController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public JSONObject register(@RequestBody Map<String, Object> models) {		
+	public JSONObject login(@RequestBody Map<String, Object> models) {		
 		logger.debug("INTO /user-login/login");
 		
+		UserStatus loginStatus  = null ;
 		Map<String,Object> map = new HashMap<String,Object>();	
 		
 		//OsUser user= JSON.toJSONString(OsUser,OsUser.class);
@@ -218,9 +219,15 @@ public class UserLoginController {
 			else {
 				user = userServiceImpl.getUser(loginName, null, null);;
 			}
-			
+			logger.debug("当前用户 = " + user.getUserId());
 			SessionUtils.setSession("currenLogintUser", user);
-			
+			OsUser user1=(OsUser) SessionUtils.getSession("currenLogintUser");
+			if(user1 != null) {
+				logger.debug("当前登录的用户号码为 = " + user1.getUserId());
+			}
+			else {
+				logger.debug("HomePageController 当前无用户登录 ");
+			}
 			/*更新登录日志*/
 			OsUserLogin userLogin = new OsUserLogin();
 			userLogin.setLoginIp(ServletUtils.getAddrIP(request));
@@ -228,32 +235,35 @@ public class UserLoginController {
 			userLogin.setExplorer(ServletUtils.getAggent(request));
 			userLoginService.addLoginLog(user.getUserId(), userLogin);
 			
+			loginStatus = UserStatus.LOGIN_SUCCESS;
+			
 		}catch(UnknownAccountException uae){  
             System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");  
+            loginStatus = UserStatus.LOGIN_FAIL;
          
         }catch(IncorrectCredentialsException ice){  
             System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误的凭证");  
+            loginStatus = UserStatus.LOGIN_FAIL;
           
         }catch(LockedAccountException lae){  
             System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,账户已锁定");  
+            loginStatus = UserStatus.LOGIN_FAIL;
              
         }catch(ExcessiveAttemptsException eae){  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误次数过多");  
+            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误次数过多"); 
+            loginStatus = UserStatus.LOGIN_FAIL;
              
         }catch(AuthenticationException ae){  
             //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景  
             System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,堆栈轨迹如下");  
             ae.printStackTrace();  
+            loginStatus = UserStatus.LOGIN_FAIL;
            
         } 
 		System.out.println("认证状态 = " + currentUser.isAuthenticated());
 		if(currentUser.isAuthenticated()) {
 			System.out.println("用户[" + loginName + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)"); 
-		}
-		
-		UserStatus loginStatus = UserStatus.LOGIN_SUCCESS;
-		
-			
+		}			
 		map.put("loginStatus", loginStatus);
 		JSONObject json = JSONObject.fromObject(map);
 		

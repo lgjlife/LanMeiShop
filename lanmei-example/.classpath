@@ -6,11 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -35,5 +30,10 @@
 	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/aliyun-java-sdk-core-3.3.1.jar"/>
 	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/aliyun-java-sdk-dysmsapi-1.0.0.jar"/>
 	<classpathentry kind="lib" path="/home/lgj/.m2/repository/alimsglib/smsKey.jar"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

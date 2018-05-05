@@ -221,50 +221,5 @@ public class UserRegisterController {
 		
 		return mv;
 	}
-	public void ShiroTest() {
-
-		/*logger.debug("This a shiro test");
-		
-		Ini ini = new Ini();*/
-		
-		/*enable the shiro*/
-		//1.
-/*		Factory<SecurityManager> factory =(Factory) new IniSecurityManagerFactory("classpath:shiro/shirotest.ini");
-		//2.
-		SecurityManager securityManager = factory.getInstance();
-		//3.
-		SecurityUtils.setSecurityManager(securityManager);*/
-		
-		/*logger.debug("访问次数：" + loginCount);
-		
-		Subject currentUser = SecurityUtils.getSubject();
-		
-		Session session = currentUser.getSession();
-		if(loginCount == 1) {
-			session.setAttribute("phone",session.getId());
-			logger.debug("session setAttribute..........");
-		}
-		if(loginCount == 5) {
-			session.removeAttribute("phone");
-			loginCount = 0;
-		}
-		
-		String phone = (String)session.getAttribute("phone");
-		
-		if(phone == null) {
-			logger.debug("第" + loginCount + "次访问的手机号码："  + "---手机号码为空");
-		}
-		else {
-			logger.debug("第" + loginCount + "次访问的手机号码：" + phone );
-		}
-		loginCount++;
 	
-		
-		//ShiroTest.PrintSession(session);
-		
-		System.out.println(" id = " +  session.getId() 
-		+ "\r\n timeout = "  + session.getTimeout() 
-		+ "\r\n startime =  " +  session.getStartTimestamp()
-		+ "\r\n lastaccess = " + session.getLastAccessTime());*/
-	}
 }

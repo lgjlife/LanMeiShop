@@ -3,7 +3,9 @@ package org.lanmei.seckill.dao.mapper;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.lanmei.seckill.dao.model.SeckillSuccess;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface SeckillSuccessMapper {
 
 	/**
@@ -35,4 +37,7 @@ public interface SeckillSuccessMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(SeckillSuccess record);
+	
+	int insertRecord(SeckillSuccess record);
+
 }

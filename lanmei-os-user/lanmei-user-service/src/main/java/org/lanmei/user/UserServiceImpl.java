@@ -1,5 +1,7 @@
 package org.lanmei.user;
 
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.lanmei.common.BaseService;
 import org.lanmei.common.UserStatus;
 import org.lanmei.sms.SmsDemo;
@@ -120,5 +122,7 @@ public class UserServiceImpl extends BaseService implements  UserService{
 		OsUser osuser = userMapper.selectByNickName(nickName);
 		return osuser;
 	}
+	
+	
 }
 
