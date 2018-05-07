@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -36,11 +37,9 @@ public class SeckillController {
 		logger.debug("seckillController Create Bean............. ");
 	}
 	
-	@RequestMapping(path="/test/object")
-	public void testObject(@RequestBody SoftInfo SoftInfo) {
-		logger.debug("SeckillControllerTest  INTO /seckill/test ");
-		System.out.println("id = " + SoftInfo.getId());
-	}
+	
+	
+	@ResponseBody
 	@RequestMapping(path="/test/map")
 	public JSONObject testMap(@RequestBody Map<String, Object> requestJsonDataMap) {
 		logger.debug("SeckillControllerTest  INTO /seckill/test ");
@@ -52,7 +51,8 @@ public class SeckillController {
         map.put("name", "guanyu");
         
         JSONObject jsonObject = JSONObject.fromObject(map);
-        return jsonObject;
+        
+        return jsonObject;   
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class SeckillController {
 		Date finishTime = new Date();
 		finishTime.setTime((Long)requestJsonDataMap.get("finishTime"));
 		logger.debug("finishTime = " + finishTime);
-		/*写入数据库*/
+		
 		Seckill seckill = new Seckill(seckillName,stockCount,new Date(),startTime,finishTime);
 		SeckillState seckillState =  seckillService.createSeckill(seckill);
 	

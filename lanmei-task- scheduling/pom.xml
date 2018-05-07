@@ -5,17 +5,9 @@
     <artifactId>org.lanmei.parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-
-  <artifactId>org.lanmei.common</artifactId>
+  <groupId>org.lanmei.shop</groupId>
+  <artifactId>org.lanmei.task.scheduling</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>org.lanmei.common</name>
-  <description>包含公共的类</description>
-  
-  <dependencies>
-  		<dependency>
-	  		<groupId>org.lanmei.shop</groupId>
-	  		<artifactId>org.lanmei.user.dao</artifactId> 
-	  		<version>${lanmei.version}</version>
-  		</dependency>
-  </dependencies>
+  <name>org.lanmei.task.scheduling</name>
+  <description>任务调度管理</description>
 </project>

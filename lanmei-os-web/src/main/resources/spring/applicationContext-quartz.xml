@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 
+	  Spring 整合quartz步骤
+	  1.定义工作任务Job,用户编写，需继承org.quartz.Job类
+	  2.定义触发器，并将触发器与工作任务绑定
+	  3.定义调度器，并将触发器注册到调度器中
+	 -->
+	 <!-- 1.定义工作任务Job,用户编写，需继承org.quartz.Job类 -->
+	<!-- <bean id="mysqlBackup" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		指定Job的名称
+		<property name="name" value="mysqlBackupJob"/>
+		指定Job的组
+		<property name="group" value="mysqlBackupGroup"/>	
+		指定Job的类，用户自定义
+		<property name="jobClass" value="org.lanmei.backup.MysqlBackup"/>
+		必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中会删除该任务 
+        <property name="durability" value="true"/>
+        指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的
+        <property name="applicationContextJobDataKey" value="applicationContext"/>
+	</bean>
+	
+	
+	2.定义触发器，并将触发器与工作任务绑定
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        指定Trigger的名称
+        <property name="name" value="mysqlBackup_trigger"/>
+        指定Trigger的名称
+        <property name="group" value="mysqlBackup_trigger_group"/>
+        指定Tirgger绑定的Job
+        <property name="jobDetail" ref="mysqlBackup"/>
+        指定Cron 的表达式 ，当前是每隔1s运行一次
+        <property name="cronExpression" value="0/20 * * * * ?" />
+    </bean>
+    
+    
+	 3.定义调度器，并将触发器注册到调度器中
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger"/>
+                <ref bean="cronTrigger"/>
+            </list>
+        </property>
+        <property name="autoStartup" value="true" /> 
+    </bean> -->
+    <bean id="myJob" class="org.lanmei.backup.MysqlBackup"></bean>
+    <!-- 配置JobDetail -->
+    <bean id="springQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 执行目标job -->
+        <property name="targetObject" ref="myJob"></property>
+
+        <!-- 要执行的方法 -->
+        <property name="targetMethod" value="execute"></property>
+    </bean>
+
+    <!-- 配置tirgger触发器 -->
+    <bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <!-- jobDetail -->
+        <property name="jobDetail" ref="springQtzJobMethod"></property>
+
+        <!-- cron表达式，执行时间  每5秒执行一次 -->
+        <property name="cronExpression" value="0/5 * * * * ?"></property>
+    </bean>
+
+    <!-- 配置调度工厂 -->
+    <bean id="springJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerFactoryBean"></ref>
+            </list>
+        </property>
+
+    </bean>
+	
+</beans>

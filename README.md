@@ -207,6 +207,16 @@
 			<li>首次使用DTO进行层间数据传送</li>
 		</ul>
 	</li>
+	<li>
+		AOP日志记录
+		<ul type="disc">
+			<li>使用AOP实现Controller层日志记录</li>
+			<li>使用AOP的前置通知和异常通知</li>	
+			<li>记录访问类，描述，异常，时间等信息</li>
+			<li>相关信息持久化到数据库</li>
+			<li>并在进入Controller中的方法时打印请求路径</li>
+		</ul>
+	</li>
 </ol>
 <h1>个人博客相关文章</h1>
 <ol>

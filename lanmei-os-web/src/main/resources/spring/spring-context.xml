@@ -19,12 +19,6 @@
 	<context:component-scan base-package="org.lanmei"><!-- base-package 如果多个，用“,”分隔 -->
 		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> --><!-- 过滤其中这四个注解中的一个 -->
 	</context:component-scan>
-	
-	
-	
-	<!-- 验证码KAPTCHA:配置文件引入-->
-	<!-- <import resource="classpath:spring/applicationContext-kaptcha.xml" /> -->
-	
 	<!-- 持久层框架MYBATIS:配置文件引入 -->
 	<import resource="classpath:spring/applicationContext-mybatis.xml" /> 
 	
@@ -36,4 +30,10 @@
 	
 	<!-- 图片验证码jcaptcha :配置文件引入 -->
 	 <import resource="classpath:spring/applicationContext-kaptcha.xml" /> 
+	 
+	 <!-- 任务调度 quartz -->
+ 	<!-- <import resource="classpath:spring/applicationContext-quartz.xml" />   -->
+ 	
+ 	<!-- Aop 配置文件 -->
+	 <import resource="classpath:spring/applicationContext-aop.xml" /> 
 </beans>

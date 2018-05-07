@@ -86,7 +86,7 @@
     set stock_count = (stock_count - 1)
     where seckill_id = #{seckillId,jdbcType=INTEGER}
   		  and stock_count &gt; 0
-   		  and   finish_time >= #{currentTime,jdbcType=TIMESTAMP}
+   		  and   finish_time &gt;= #{currentTime,jdbcType=TIMESTAMP}
   </update>
    <!-- 自定义 -->
   <!-- 增加库存 -->

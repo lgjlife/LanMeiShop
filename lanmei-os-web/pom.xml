@@ -13,6 +13,7 @@
   <description>蓝莓商城前端项目</description>
   
   <dependencies>
+ 	 <!-- User 模块 -->
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.user.dao</artifactId> 
@@ -23,7 +24,7 @@
   		<artifactId>org.lanmei.user.service</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
-  	
+  	<!-- 秒杀模块 -->
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.seckill.dao</artifactId>
@@ -32,6 +33,18 @@
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.seckill.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<!-- 任务调度模块 -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.task.scheduling</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+  	<!-- 任务公共模块 -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.common</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
   	

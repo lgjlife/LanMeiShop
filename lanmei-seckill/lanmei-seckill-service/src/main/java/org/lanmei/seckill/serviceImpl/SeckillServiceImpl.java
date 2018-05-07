@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.lanmei.common.baseservice.BaseService;
-import org.lanmei.common.exception.UnloginException;
 import org.lanmei.common.session.SessionUtils;
 import org.lanmei.seckill.dao.mapper.SeckillMapper;
 import org.lanmei.seckill.dao.mapper.SeckillSuccessMapper;
@@ -24,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
@@ -171,7 +171,7 @@ public class SeckillServiceImpl extends BaseService  implements SeckillService {
 		return  (new ExposerDto(true,md5,seckillId));
 	}
 	/*事物管理，失败则回滚*/
-   // @Transactional
+    @Transactional
 	@Override
 	public ExecutionDto executeSeckill(Integer seckillId ,String md5,Integer currentUserId) 
 	       throws SeckillCloseException,RepeatkillException,SeckillException{

@@ -24,6 +24,7 @@
   	    <aliyun-dysmsapi.version>1.1.0</aliyun-dysmsapi.version>
   	    <aliyun-sms.version>3.0.0-rc1</aliyun-sms.version>
   	    <aspectj.version>1.8.13</aspectj.version>
+  	    <cglib.version>3.2.6</cglib.version>
   	    <commons-lang.version>2.5</commons-lang.version>
   	    <commons-httpclient.version>3.0.1</commons-httpclient.version>
   	    <commons-codec.version>1.9</commons-codec.version>
@@ -446,7 +447,12 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjtools</artifactId>
-			<version>1.8.0</version>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
 		</dependency>
 		
          <!-- java.util.logging 实际调用slf4j -->  

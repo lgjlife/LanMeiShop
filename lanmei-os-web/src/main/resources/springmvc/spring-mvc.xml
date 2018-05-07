@@ -69,7 +69,7 @@
 	</context:component-scan>
 
 	<!-- 5.避免IE执行AJAX时,返回JSON出现下载文件 -->
-	<!-- <bean id="mappingJacksonHttpMessageConverter"
+	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>
@@ -77,7 +77,7 @@
 				<value>application/json;charset=UTF-8</value> 
 			</list>
 		</property>
-	</bean> -->
+	</bean>
    
 	<!-- 6.配置文件上传,如果没有使用文件上传可以不用配置,当然如果不配,那么配置文件中也不必引入上传组件包 -->
 	<bean id="multipartResolver"  

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.lanmei.common.session.SessionUtils;
+import org.lanmei.common.syslog.annotation.SyslogAnno;
 import org.lanmei.os.controller.seckill.dto.SeckillResult;
 import org.lanmei.os.controller.user.UserLoginController;
 import org.lanmei.seckill.dao.model.Seckill;
@@ -40,8 +41,6 @@ import net.sf.json.JSONObject;
 @RequestMapping(path="/seckill")
 public class SeckillController {
 	
-
-	
 	private final static Logger logger = LoggerFactory.getLogger(UserLoginController.class);	
 	{
 		logger.debug("Create Bean seckillController.....");
@@ -56,6 +55,7 @@ public class SeckillController {
 	 * 返回的是还没结束的秒杀
 	 * @return
 	 */
+	@SyslogAnno(description="select操作",operationName="获取秒杀列表")
 	@RequestMapping(path="/list",
 			        method=RequestMethod.GET)
 	public ModelAndView getList() {
@@ -63,6 +63,7 @@ public class SeckillController {
 		List<Seckill>  seckill = seckillService.getSeckillingList();
 		ModelAndView mv = new ModelAndView("/seckill/seckill_list");
 		mv.addObject("seckill", seckill);
+		
 		return mv;		
 	}
 	/**
@@ -70,13 +71,14 @@ public class SeckillController {
 	 * @param seckillId
 	 * @return
 	 */
+	@SyslogAnno(description="根据seckillId获取秒杀列表",operationName="根据seckillId获取秒杀列表")
 	@RequestMapping(path="/{seckillId}/detail",
 					method=RequestMethod.GET)
 	public ModelAndView detail(@PathVariable("seckillId") Integer seckillId) {
 		
 		logger.debug("into /seckill/{seckillId}/detail ");
 		ModelAndView mv = new ModelAndView();
-				
+		int num = 5/0;		
 		if(seckillId == null) {
 			mv.setViewName("forward:/seckill/seckill_list");
 		}

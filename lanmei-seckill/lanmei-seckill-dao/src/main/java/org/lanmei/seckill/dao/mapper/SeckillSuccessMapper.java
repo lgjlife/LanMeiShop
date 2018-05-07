@@ -37,7 +37,7 @@ public interface SeckillSuccessMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(SeckillSuccess record);
-	
+
 	int insertRecord(SeckillSuccess record);
 
 }

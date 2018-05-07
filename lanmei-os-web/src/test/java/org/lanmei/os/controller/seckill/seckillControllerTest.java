@@ -47,6 +47,7 @@ public class seckillControllerTest {
 	public void testGetList() throws Exception{
 		System.out.println("testGetList 开始进行测试");  
 		  
+		
         //发送请求  
          	
         MvcResult mvcResult = mockMvc.perform( get("/seckill/list")
@@ -61,12 +62,13 @@ public class seckillControllerTest {
         	System.out.println("seckill = " + sec.toString() );
         }
         
+        while(true);
 	}
 	/**
 	 * 获取详情
 	 * @throws Exception
 	 */
-	//@org.junit.Test  
+	@org.junit.Test  
 	public void testDetail() throws Exception{
 		System.out.println("testDetail 开始进行测试");  
 		  
@@ -126,7 +128,7 @@ public class seckillControllerTest {
 	 * 执行秒杀测试
 	 * @throws Exception
 	 */
-	@org.junit.Test  
+	//@org.junit.Test  
 	public void  testExecuteSeckill() throws Exception{
 		System.out.println("testGetExposer 开始进行测试");  
 		  
@@ -137,6 +139,8 @@ public class seckillControllerTest {
         		.andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
+        
+     
 	}
 
 }
