@@ -7,7 +7,32 @@
 	</a>
 <br>
 
-
+<h1>如何运行项目</h1>
+<ol>
+	<li>下载项目工程</li>
+	<li>安装Java和Tomcat,并配置好环境</li>
+	<li>安装Ｍysql数据库</li>
+	<li>由于缓存使用Ｒedis进行持久化，所以需要安装Ｒedis,否则运行时会报错，网上安装教程很多，这里不进行说明</li>
+	<li>Eclipse导入项目工程，没用过其他编译器，不知道其他编译器会不会导入有问题</li>
+	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目</li>
+	<li>创建lanmei数据库，并执行数据库脚本文件．
+		<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
+		数据库脚本文件位置</a></li>
+	<li>根据你的数据库配置，修改数据库配置文件
+		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/mysqljdbc.properties">商城前台mysql数据库配置文件</a>，
+		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/mysqljdbc.properties">商城后台管理系统mysql数据库配置文件</a>
+	</li>
+	<li>根据你的数据库配置，修改Redis配置,修改的是hostName和port.<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城前台Redis数据库配置文件</a>，
+		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城后台管理系统Redis数据库配置文件</a></li>
+	<li>配置完毕</li>
+	<li>添加Tomcat服务器</li>
+	<li>运行项目：lanmei-os-web(商城前台web项目)，lanmei-cms-web(商城后台web项目)</li>
+	<li>后台管理项目帐号：201801，密码：zxcvbnm123</li>
+	<li>前台项目需先进行注册后再登录</li>
+	<li>有任何问题可以到本博客下进行讨论，欢迎交流！
+	<a href="https://blog.csdn.net/u011676300/article/details/80276014">蓝莓商城项目交流</a>
+	</li>
+</ol>
 <h1>技术选型</h1>
 
 <h3>一.开发环境</h4>
