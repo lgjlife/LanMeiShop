@@ -12,7 +12,11 @@
     <profile>
 	   <modules>
 			<module>org.lanmei.os.web</module>
+			<module>org.lanmei.cms.web</module>
 			<module>org.lanmei.user</module>
+			<module>org.lanmei.admin</module>
+			<module>org.lanmei.common</module>
+			<module>org.lanmei.seckill</module>
 	   </modules>
   	</profile>
   </profiles>

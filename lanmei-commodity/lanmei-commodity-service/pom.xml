@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.lanmei.shop</groupId>
+    <artifactId>org.lanmei.commodity</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>org.lanmei.shop</groupId>
+  <artifactId>org.lanmei.commodity.service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>org.lanmei.commodity.service</name>
+  <description>商品模块Ｓervice</description>
+  
+  <dependencies>
+  	<!-- 商品模块　commodity -->
+  	<dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.commodity.dao</artifactId>
+  			<version>${lanmei.version}</version>
+	</dependency>
+  	<!-- 公共模块 -->
+  	<dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.common</artifactId>
+  			<version>${lanmei.version}</version>
+	</dependency>
+  </dependencies>
+</project>

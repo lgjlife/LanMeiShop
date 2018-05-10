@@ -10,10 +10,15 @@
 		<title>蓝莓商城-后台管理</title>
 		<meta charset="utf-8">
  	    <meta name="viewport" content="width=device-width, initial-scale=1">	
+ 	    
+ 	     <script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script> 
+		
+
+
  	    <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/homepage/homepage.css">
  	    	
- 	    <script src="${contextPathOfStatic}/js/admin/homepage.js"></script>
-		<script src="${contextPathOfStatic}/js/admin/homepage_display_control.js"></script>
+ 	    <script src="${contextPathOfStatic}/js/homepage/homepage.js"></script>
+		<script src="${contextPathOfStatic}/js/homepage/homepage_display_control.js"></script>
 
 
 	</head>
@@ -136,6 +141,11 @@
 					
 				</div>
 				<div class="col-10">	
+				    
+				    <!-- 商品管理 -->
+					<div id="commodityManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
+						<jsp:include page="/WEB-INF/views/commodity/commodity_manager.jsp" /> 
+					</div>	
 					<!-- 秒杀管理界面 -->
 					<!-- 待解决问题 必须放在adminManagerDisplay才有效果 -->
 					<div id="seckillDisplay" class="pageDisplayCtrl " style="display:none;" >
@@ -154,9 +164,7 @@
 					<div id="userMessageDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/homepage/user_message.jsp" /> 
 					</div>	
-					<div id="commodityManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
-						<jsp:include page="/WEB-INF/views/homepage/commodity_manager.jsp" /> 
-					</div>	
+					
 					<div id="dataManagerDisplay" class="pageDisplayCtrl" style="display:none;" >
 						<jsp:include page="/WEB-INF/views/homepage/data_manager.jsp" /> 
 					</div>	

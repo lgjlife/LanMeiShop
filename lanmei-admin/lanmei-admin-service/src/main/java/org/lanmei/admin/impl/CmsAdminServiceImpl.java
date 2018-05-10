@@ -65,11 +65,11 @@ public class CmsAdminServiceImpl  extends BaseService implements CmsAdminService
 		
 		CmsAdmin admin = adminMapper.selectByLoginJobnum(jobnum);
 		if(admin == null) {			
-			logger.error("账户不存在，账户工号：(jobnum)",jobnum);
+			logger.error("账户不存在，账户工号：{}",jobnum);
 			
 		}
 		else {		
-			logger.debug("账户存在，账户工号：(jobnum)",jobnum);
+			logger.debug("账户存在，账户工号：{}",jobnum);
 			
 		}
 		return admin;

@@ -47,7 +47,7 @@ import net.sf.json.JSONObject;
  * @date:2018/05/17
  */
 @Api(value="/login",description="处理用户登录Controller")
-//@Controller
+@Controller
 @RequestMapping("/login")
 public class AdminLoginController {
 
@@ -59,7 +59,7 @@ public class AdminLoginController {
 	}
 	
 	
-	//@Autowired
+	@Autowired
 	private  HttpServletRequest request;
 	@Autowired
 	CmsAdminService  adminService;
@@ -159,20 +159,29 @@ public class AdminLoginController {
 			
 			
 			CmsAdmin  admin = adminService.getAdminByJobnum(loginJobNum);
+			logger.debug("admin = " + admin.getLoginJobnum());
 			if(admin != null) {
+				logger.debug("setSession");
 				SessionUtils.setSession("currenLogintAdmin", admin);
-				
+				logger.debug("after setSession");
 				/*更新登录日志*/
 				CmsAdminLogin adminLogin = new CmsAdminLogin();
-				
+				logger.debug("after adminLogin");
 				adminLogin.setLoginIp(ServletUtils.getAddrIP(request));
+				logger.debug("after setLoginIp");
 				adminLogin.setLoginTime(new Date());
+				logger.debug("after setLoginTime");
 				adminLogin.setExplorer(ServletUtils.getAggent(request));
+				logger.debug("after setExplorer");
 				adminLogin.setAdminId(admin.getAdminId());
 				/*写入数据库*/
+				logger.debug("save the  adminLogin");
 				System.out.println(adminLogin.toString());
 				adminLoginService.addAdminLoginLog(admin.getAdminId(), adminLogin);
-			}			
+			}
+			else {
+				logger.debug("admin is null");
+			}
 		}catch(UnknownAccountException uae){  
             System.out.println("对用户[" + loginJobNum + "]进行登录验证..验证未通过,未知账户1"); 
             retmap.put("loginStatus", AdminStatus.UNKNOWN_ACCOUNT);

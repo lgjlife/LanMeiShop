@@ -47,7 +47,7 @@ public class SysLogAspect {
 	 * 4.通过方法入参定义切点 * admin(String. *)）匹配方法admin的地一个参数为String ,第二个参数为任意类型的方法
 	 */
 	/*匹配 org.lanmei.os.controller本包及其子孙包的所有方法*/
-	@Pointcut(value = "execution(* org.lanmei.os.controller..*(..))")
+	@Pointcut(value = "execution(* org.lanmei.*.controller..*(..))")
 	public void controllerPointcut() {
 		
 	}
@@ -83,20 +83,24 @@ public class SysLogAspect {
             Method[] methods = targetClass.getMethods();  
             String description = "";  
             String operationName = "";  
+            
              for (Method method : methods) {    
                  if (method.getName().equals(methodName)) {    
                     Class[] clazzs = method.getParameterTypes();    
+                    
                      if (clazzs.length == arguments.length) {    
                     	 description = method.getAnnotation(SyslogAnno.class).description();  
                          operationName = method.getAnnotation(SyslogAnno.class).operationName(); 
                          //获取方法注解RequestMapping中请求路径
                          String[] path = method.getAnnotation(RequestMapping.class).path();
+                
                          methodRequestPath = path[0]; 
-                         
+            
                          break;    
                     }    
                 }    
             }  
+             logger.debug("error point 3");
              //获取类注解RequestMapping中请求路径
              RequestMapping requestMapping = (RequestMapping)targetClass.getAnnotation(RequestMapping.class);
              String[] classRequestPath = requestMapping.path();
@@ -120,7 +124,7 @@ public class SysLogAspect {
      		sysLog.setCreateDate(new Date());
      		sysLog.setDescription(description);
      		//写入数据库
-     		sysLogService.saveLog(sysLog);
+     		//sysLogService.saveLog(sysLog);
 
 		} catch (Exception e) {
 			logger.debug("前置通知出现异常,error = " + e);

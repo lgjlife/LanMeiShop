@@ -31,6 +31,12 @@
 		</a>
 	</li>
 	<li>
+		缓存数据库：
+		<a href="https://redis.io/">
+			Redis 4.0.9
+		</a>
+	</li>
+	<li>
 		版本管理：
 		<a href="https://github.com/">
 			github
@@ -122,7 +128,7 @@
 		CSS框架：bootstrap
 	</li>
 	<li>
-		时间选择控件：<a href="https://github.com/AuspeXeu/bootstrap-datetimepicker">bootstrap-datetimepicker</a>
+		多级列表树插件：<a href="http://www.bootcdn.cn/bootstrap-treeview/readme/</li>">Bootstrap Tree View</a>
 	</li>
 </ol>	
 

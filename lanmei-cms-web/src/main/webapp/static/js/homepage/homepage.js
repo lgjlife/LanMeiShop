@@ -1,22 +1,54 @@
-var indexImgAutoDispay = 0;
-var count = 0;
-var ImgPath=["static/img/recommend/recommend-1.jpg",
-			 "static/img/recommend/recommend-2.jpg",
-			 "static/img/recommend/recommend-3.jpg",
-			 "static/img/recommend/recommend-4.jpg"];
 
 $(function(){
-	$("#list-group-img").children(":first").show();
-	setInterval(function(){showPic()},6000);
+	$("#adminManagerBtn").click(function(){
+		
+		$("#adminManager").toggle();
+	});
+	
 });
 
-function showPic(){
+$(function(){
+	$("#adminMessageBtn").click(function(){
+		
+		$("#adminMessage").toggle();
+	});
 	
-	$("#img-huodong").attr("href",ImgPath[indexImgAutoDispay]);
-	indexImgAutoDispay++;
-	
-	if(indexImgAutoDispay >= 4) indexImgAutoDispay =0;
-/*	console.log("indexImgAutoDispay = " + indexImgAutoDispay);
-	console.log($("#img-huodong").attr("href"));*/
+});
 
-}
+$(function(){
+	$("#userManagerBtn").click(function(){
+		
+		$("#userManager").toggle();
+	});
+	
+});
+
+$(function(){
+	$("#commodityManagerBtn").click(function(){
+		
+		$("#commodityManager").toggle();
+	});
+	
+});
+
+$(function(){
+	$("#dataManagerBtn").click(function(){
+		
+		$("#dataManager").toggle();
+	});
+	
+});
+$(function(){
+	$("#seckillBtn").click(function(){
+		
+		$("#seckillManager").toggle();
+	});
+	
+});
+$(function(){
+	$("#designerBtn").click(function(){
+		
+		$("#designer").toggle();
+	});
+	
+});

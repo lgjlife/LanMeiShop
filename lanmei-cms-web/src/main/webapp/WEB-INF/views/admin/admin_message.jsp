@@ -6,8 +6,13 @@
 <!DOCTYPE html>
 <html>
 
+	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
+	
 	<body >
-		  管理员信息
+		<div class="pageTitle">
+		  	 <caption>管理员信息 </caption>
+		</div>
+		  
 		  </br>
 		  姓名
 		  </br>

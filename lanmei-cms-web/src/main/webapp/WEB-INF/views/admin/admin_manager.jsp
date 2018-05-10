@@ -10,6 +10,7 @@
 	<script src="${contextPathOfStatic}/js/admin/admin_manager.js"></script>
 
 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/admin/admin_manager.css">
+	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
 	<body >
 		
 		<div id="adminListItemPage" class="adminManagerPageDiplay">
@@ -24,10 +25,7 @@
 		  	 	 <shiro:hasRole name="usertest"> 
 		  	 		<button id="PerssionBtn">权限测试1</button>
 		  	 	 </shiro:hasRole>
-		  	 	<ul class="pagination pagination-sm">
-				  <li class="page-item" id="toPreviousPage"><a class="page-link" href="#">Previous</a></li>
-				  <li class="page-item" id="toNextPage"><a class="page-link" href="#">Next</a></li>
-				</ul>				
+		  	 					
 		  	 	<table class="table table-bordered">
 		  	 		<thead>
 		  	 			<tr>
@@ -39,9 +37,13 @@
 		  	 				<td>创建时间</td>
 		  	 			</tr>		  	 			
 		  	 		</thead>
-		  	 		<tbody id="tbodyList">		  	 			
+		  	 		<tbody id="tbodyAdminList">		  	 			
 		  	 		</tbody>	  	 		
-		  	 	</table>		  	 	
+		  	 	</table>	
+		  	 	<ul class="pagination pagination-sm">
+				  <li class="page-item" id="toPreviousAdminManagerPage"><a class="page-link" href="#">Previous</a></li>
+				  <li class="page-item" id="toNextAdminManagerPage"><a class="page-link" href="#">Next</a></li>
+				</ul>	  	 	
 		  	 </div>
 		</div><!-- <div id="adminListItemPage" class="adminManagerPageDiplay"> -->
 		

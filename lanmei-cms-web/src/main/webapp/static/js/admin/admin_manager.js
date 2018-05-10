@@ -115,13 +115,13 @@ $(function(){
 		console.log("this  = " + $(this));
 		
 	})
-	$("#toPreviousPage").click(function(){
+	$("#toPreviousAdminManagerPage").click(function(){
 		if(currentPage > "1"){
 			currentPage--;
 			getAdminList(currentPage.toString());
 		}
 	});
-	$("#toNextPage").click(function(){
+	$("#toNextAdminManagerPage").click(function(){
 		if(currentPage < maxPage){
 			currentPage++;
 			getAdminList(currentPage.toString());
@@ -168,15 +168,17 @@ $(function(){
 	        	//获取最大页码
 	        	maxPage = (loopCounts - 1).toString();
 	        	console.log("loopCounts = " + loopCounts );
+	        	
 	        	for(var i = 1;i < loopCounts ;i++)
 	        	{
+	        		console.log("i  = " + i + "  currentPage = " + currentPage);
 	        		if(  i == currentPage){
 	        			var txt = " <li class='page-item page-item-add active'><a class='page-link'>"+ i + "</a></li>";
-		        		$("#toNextPage").before(txt);
+		        		$("#toNextAdminManagerPage").before(txt);
 	        		}
 	        		else{
 	        			var txt = " <li class='page-item page-item-add'><a class='page-link'>"+ i + "</a></li>";
-		        		$("#toNextPage").before(txt);
+		        		$("#toNextAdminManagerPage").before(txt);
 	        		}
 	        	}
 	        	/*console.log("this currentPage = " + currentPage);
@@ -203,7 +205,7 @@ $(function(){
 	        				+ "<td>" + data[i].state + "</td>"
 	        				+ "<td>" + time + "</td>"
 	        				+ "</tr>";
-	        		$("#tbodyList").append(txt);		
+	        		$("#tbodyAdminList").append(txt);		
 		  	 			
 	        	}
 	        	

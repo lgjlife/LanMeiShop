@@ -35,11 +35,28 @@
   		<artifactId>org.lanmei.seckill.service</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
-  	
+  	<!-- 公共模块 -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.common</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
   	<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk16</artifactId>
 			<version>1.46</version>
+	</dependency>
+	
+	<!-- 商品模块　commodity -->
+  	<dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.commodity.dao</artifactId>
+  			<version>${lanmei.version}</version>
+	</dependency>
+	<dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.commodity.service</artifactId>
+  			<version>${lanmei.version}</version>
 	</dependency>
 	<!-- jcaptcha 验证码插件 -->
 	<dependency>  

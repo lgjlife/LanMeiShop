@@ -11,7 +11,7 @@
 
 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/seckill/seckill.css">
 	<!-- 日期时间选择控件 -->
-	
+	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
 	<body >
 		<div class="seckillPageDiplay" id="seckillingItemPage">			
 			<div class="pageTitle">
@@ -34,8 +34,8 @@
 		  	 </table>
 		  	 <!-- 分页箭头 -->	
 		  	<ul class="pagination pagination-sm" style="position:relative;left:40%">
-				  <li class="page-item" id="toPreviousPage"><a class="page-link" href="#">Previous</a></li>
-				  <li class="page-item" id="toNextPage"><a class="page-link" href="#">Next</a></li>
+				  <li class="page-item" id="toPreviousSeckillPage"><a class="page-link" href="#">Previous</a></li>
+				  <li class="page-item" id="toNextSeckillPage"><a class="page-link" href="#">Next</a></li>
 			</ul>	
 			
 			<!-- 新增，秒杀活动 -->

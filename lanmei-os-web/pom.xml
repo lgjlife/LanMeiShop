@@ -41,7 +41,7 @@
   		<artifactId>org.lanmei.task.scheduling</artifactId>
   		<version>${lanmei.version}</version>
   	</dependency>
-  	<!-- 任务公共模块 -->
+  	<!-- 公共模块 -->
   	<dependency>
   		<groupId>org.lanmei.shop</groupId>
   		<artifactId>org.lanmei.common</artifactId>

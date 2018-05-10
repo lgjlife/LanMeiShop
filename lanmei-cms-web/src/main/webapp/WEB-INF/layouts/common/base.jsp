@@ -30,10 +30,10 @@ ServerPort = 8080
 <contextPathData	contextPathValue="${contextPath}"></contextPathData>
 
 <!-- jquery -->
-<script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>
+<%-- <script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script> --%>
 <!-- bootstrap 文件 -->
-<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
-<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script>
+<%-- <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
+<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script> --%>
 
 
 <!-- 自定义 --> 
