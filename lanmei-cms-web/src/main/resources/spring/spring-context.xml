@@ -40,5 +40,5 @@
 	 <import resource="classpath:spring/applicationContext-email.xml" /> 
 	 
 	 <!-- aop配置-->
-	 <import resource="classpath:spring/applicationContext-aop.xml" />   
+	<!--  <import resource="classpath:spring/applicationContext-aop.xml" />    -->
 </beans>

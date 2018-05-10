@@ -69,11 +69,44 @@
     from commodity_classification
   </select>
   <!-- 自定义 -->
-  <!-- 通过 -->
+  <!-- 通过 ＰarentId 查询子节点数据-->
   <select id="selectByＰarentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, pid, name, isParent, create_by, create_time, remarks
     from commodity_classification
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+  <!-- 自定义 -->
+  <!-- 通过 ｉd 更新 isParent-->
+  <update id="updateIsParentByPrimaryKey" >
+    update commodity_classification
+    set isParent = #{isparent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 自定义 -->
+  <!-- 通过 ｉd 更改name-->
+  <update id="updateRename">
+    update commodity_classification
+    set name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 自定义是否是主节点 -->
+  <select id="selectIsHaveChild" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select count(pid)
+    from commodity_classification
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <!-- 通过ｉd 获取 pid -->
+  <select id="selectPidById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select pid
+    from commodity_classification
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--如果没有子节点，则设置 isparent-->
+  <update id="updateIsParentNotParent">
+    update commodity_classification
+    	set isParent = #{isparent,jdbcType=VARCHAR}
+    where id = #{pid,jdbcType=INTEGER}
+  </update>
+  
   
 </mapper>

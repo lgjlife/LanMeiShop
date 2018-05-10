@@ -14,8 +14,7 @@
 	<body >
 		
 		<div id="adminListItemPage" class="adminManagerPageDiplay">
-			<div>
-		  	 
+			<div>		  	 
 		  	 	<div class="pageTitle">
 		  	 		<caption>管理员列表</caption>
 		  	 	</div>

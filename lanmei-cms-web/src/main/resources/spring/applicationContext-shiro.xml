@@ -99,6 +99,7 @@
            		/kaptcha=anon    <!-- 登录验证码 -->
             	/login=anon      <!-- 登录页面 -->    
             	/shirotest=roles[user]
+            	/commodity/**=authc
               <!--   /**=authc            -->      
             </value>  
         </property>  

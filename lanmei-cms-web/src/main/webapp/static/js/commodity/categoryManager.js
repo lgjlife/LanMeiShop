@@ -61,7 +61,7 @@ function zTreeOnExpand(event, treeId, treeNode) {
 function filter(treeId, parentNode, childNodes) {
 	if (!childNodes) return null;
 	for (var i=0, l=childNodes.length; i<l; i++) {
-		childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+		childNodes[i].name = childNodes[i].name.replace(/\.n/g,'.');
 	}
 	return childNodes;
 }
@@ -88,7 +88,7 @@ var zNodes =[
  * @returns
  */
 function zTreeOnAsyncSuccess(event, treeId, treeNode, msg) {
-    //alert(msg);
+   // alert(msg);
 };
 function showIconForTree(treeId, treeNode) {
 	return false;
@@ -121,6 +121,21 @@ function beforeRemove(treeId, treeNode) {
 }
 function onRemove(e, treeId, treeNode) {
 	showLog("[ "+getTime()+" onRemove ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name);
+	deleteRequest(treeNode.id);
+}
+function deleteRequest(id){
+	var jsonData={"id":""};
+	jsonData.id = id;	
+	$.ajax({
+        type : "post",
+        url : "/lanmei-cms/commodity/delete/node",
+        contentType : "application/json;charset=utf-8",
+        data : JSON.stringify(jsonData),
+        dataType: "json",
+        success:function(data){
+        	console.log("msg  = " + data.data.msg);
+        }
+	 });
 }
 function beforeRename(treeId, treeNode, newName, isCancel) {
 	className = (className === "dark" ? "":"dark");
@@ -135,8 +150,44 @@ function beforeRename(treeId, treeNode, newName, isCancel) {
 	}
 	return true;
 }
+/**
+ * 节点重命名回调函数
+ * @param e
+ * @param treeId
+ * @param treeNode
+ * @param isCancel
+ * @returns
+ */
 function onRename(e, treeId, treeNode, isCancel) {
-	showLog((isCancel ? "<span style='color:red'>":"") + "[ "+getTime()+" onRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>":""));
+	//showLog((isCancel ? "<span style='color:red'>":"") + "[ "+getTime()+" onRename ]&nbsp;&nbsp;&nbsp;&nbsp; " + treeNode.name + (isCancel ? "</span>":""));
+	console.log("treeId = " + treeId);
+	console.log("父节点 = " + treeNode.getParentNode().name);
+	console.log("节点编辑完成" + "   treeNode.name = " + treeNode.name  + "  treeNode.id = " + treeNode.id);
+	
+	modifyRequest(treeNode.id,treeNode.getParentNode().id,treeNode.name);
+}
+/**
+ * 向服务端发送更改节点名称请求
+ * @param id
+ * @param name
+ * @returns
+ */
+function modifyRequest(id,pid,name){
+	var jsonData={"id":"","id":"pid","name":""};
+	jsonData.id = id;
+	jsonData.pid = pid;
+	jsonData.name = name;
+	
+	$.ajax({
+        type : "post",
+        url : "/lanmei-cms/commodity/modify/node",
+        contentType : "application/json;charset=utf-8",
+        data : JSON.stringify(jsonData),
+        dataType: "json",
+        success:function(data){
+        	console.log("msg  = " + data.data.msg);
+        }
+	 });
 }
 function showRemoveBtn(treeId, treeNode) {
 	return true;
@@ -196,7 +247,8 @@ $(document).ready(function(){
  */
 $(function(){
 	$("#addNewNode").click(function(){
-		var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-		zTree.addNodes(null, {id:(100 + newCount), pId:0, name:$("#mainCategoryInput").val()});
+		//var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+		//zTree.addNodes(null, {id:(100 + newCount), pId:0, name:$("#mainCategoryInput").val()});
+		modifyRequest(99999999,0,$("#mainCategoryInput").val());
 	})
 })

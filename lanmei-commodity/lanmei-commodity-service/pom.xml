@@ -12,6 +12,12 @@
   <description>商品模块Ｓervice</description>
   
   <dependencies>
+  	<!-- 管理员模块 -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.admin.dao</artifactId> 
+  		<version>${lanmei.version}</version>
+  	</dependency>
   	<!-- 商品模块　commodity -->
   	<dependency>
 	  		<groupId>org.lanmei.shop</groupId>

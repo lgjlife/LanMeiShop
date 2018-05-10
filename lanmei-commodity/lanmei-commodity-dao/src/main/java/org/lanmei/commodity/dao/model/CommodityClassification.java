@@ -172,4 +172,17 @@ public class CommodityClassification {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+
+	public CommodityClassification() {
+		super();
+	}
+
+	public CommodityClassification(Integer pid, String name, String isparent, String createBy, Date createTime) {
+		super();
+		this.pid = pid;
+		this.name = name;
+		this.isparent = isparent;
+		this.createBy = createBy;
+		this.createTime = createTime;
+	}
 }

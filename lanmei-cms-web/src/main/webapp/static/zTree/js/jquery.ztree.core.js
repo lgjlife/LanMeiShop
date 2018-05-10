@@ -385,6 +385,7 @@
                 _init.roots.push(initRoot);
             },
             addNodesData: function (setting, parentNode, index, nodes) {
+            	
                 var children = data.nodeChildren(setting, parentNode), params;
                 if (!children) {
                     children = data.nodeChildren(setting, parentNode, []);

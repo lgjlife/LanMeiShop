@@ -24,13 +24,13 @@ public class ConvertBeanToBeanTest {
 		System.out.println("to : " + to);	 
 		
 		To to1 = new To();
-		List<From> listFrom = new ArrayList();
+		List<From> listFrom = new ArrayList<From>();
 		listFrom.add(from);
 		listFrom.get(0);
 		to1 = (To)ConvertBeanToBean.convert(listFrom.get(0), to1);
 		System.out.println("to1 : " + to1);	
 		
-		List<To> listTo = new ArrayList();
+		List<To> listTo = new ArrayList<To>();
 		
 	}
 }

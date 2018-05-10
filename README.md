@@ -128,7 +128,7 @@
 		CSS框架：bootstrap
 	</li>
 	<li>
-		多级列表树插件：<a href="http://www.bootcdn.cn/bootstrap-treeview/readme/</li>">Bootstrap Tree View</a>
+		多级列表树插件：<a href="http://www.treejs.cn/v3/api.php">zTree</a>
 	</li>
 </ol>	
 
@@ -139,15 +139,37 @@
 <h3>目录介绍</h3>
 <ol>
 	<li>doc</li>--开发日志
-	<li>lanmei-admin</li>--后台管理 管理员相关模块(新增/登陆/权限管理等) 秒杀活动管理
-	<li>lanmei-cms-web</li>--后台管理web项目
-	<li>lanmei-common</li>--放置公共类
-	<li>lanmei-example</li>--用于测试某个技术点功能实现
-	<li>lanmei-os-web</li>--商城web项目
-	<li>lanmei-os-user</li>--用户模块，登录注册相关	
-	<li>lanmei-seckill</li>--秒杀模块		
-	<li>lanmei-seckill</li>--秒杀模块	
-	<li>mysql</li>--数据库脚本文件，创建数据表相关
+	<li>lanmei-admin</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-admin">
+		后台管理 管理员相关模块(新增/登陆/权限管理等) 秒杀活动管理
+		</a>	
+	<li>lanmei-cms-web</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-cms-web">
+		后台管理web项目</a>
+	<li>lanmei-common</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-common">
+		放置公共类</a>
+	<li>lanmei-commodity</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-commodity">
+		商品模块</a>
+	<li>lanmei-example</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-example">
+		用于测试某个技术点功能实现</a>	
+	<li>lanmei-os-user</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-os-user">
+		用户模块，登录注册相关</a>	
+	<li>lanmei-os-web</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-os-web">
+		商城web项目</a>
+	<li>lanmei-seckill</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-seckill">
+		秒杀模块</a>
+	<li>lanmei-task-scheduling</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-task-%20scheduling">
+		任务管理模块</a>
+	<li>mysql</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
+		数据库脚本文件，创建数据表相关</a>
 </ol>
 <h1>完成模块</h1>
 <ol>

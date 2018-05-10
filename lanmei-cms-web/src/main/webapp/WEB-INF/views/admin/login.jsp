@@ -8,6 +8,13 @@
 	<head>
 		<title>蓝莓商城-后台管理</title>
 		<meta charset="utf-8">
+		
+		 <script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script> 
+		<!-- bootstrap 文件 -->
+		 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
+	   	<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script> 
+
+
  	    <meta name="viewport" content="width=device-width, initial-scale=1">
  	    <script src="${contextPathOfStatic}/js/security/Barrett.js"></script>
  	    <script src="${contextPathOfStatic}/js/security/BigInt.js"></script>

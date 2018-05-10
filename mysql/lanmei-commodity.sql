@@ -56,19 +56,19 @@ CREATE TABLE `commodity_classification`(
 	PRIMARY KEY (`id`)
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品分类表";
-
+	
 insert into `commodity_classification` 	(id,pid,name,isParent) values(1,0,"手机/数码/配件","true");
 insert into `commodity_classification` 	(id,pid,name,isParent) values(2,0,"电脑/办公/外设","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(3,0,"厨卫电器 生活电器","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(4,0,"大家电","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(5,0,"家居/日用/厨具","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(6,0,"服装鞋帽","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(7,0,"家装主材","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(8,0,"家具","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(9,0,"运动户外","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(10,0,"钟表/礼品/乐器","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(11,0,"珠宝","true");
-insert into `commodity_classification` 	(id,pid,name,isParent) values(12,0,"其他","true");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(3,0,"厨卫电器 生活电器","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(4,0,"大家电","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(5,0,"家居/日用/厨具","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(6,0,"服装鞋帽","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(7,0,"家装主材","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(8,0,"家具","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(9,0,"运动户外","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(10,0,"钟表/礼品/乐器","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(11,0,"珠宝","false");
+insert into `commodity_classification` 	(id,pid,name,isParent) values(12,0,"其他","false");
 
 insert into `commodity_classification` 	(id,pid,name,isParent) values(13,1,"手机通讯","false");
 insert into `commodity_classification` 	(id,pid,name,isParent) values(14,1,"手机配件","false");
