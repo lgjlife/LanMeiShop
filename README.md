@@ -11,18 +11,18 @@
 <ol>
 	<li>下载项目工程</li>
 	<li>安装Java和Tomcat,并配置好环境</li>
-	<li>安装Ｍysql数据库</li>
+	<li>安装MySQL数据库</li>
 	<li>由于缓存使用Ｒedis进行持久化，所以需要安装Ｒedis,否则运行时会报错，网上安装教程很多，这里不进行说明</li>
 	<li>Eclipse导入项目工程，没用过其他编译器，不知道其他编译器会不会导入有问题</li>
 	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目</li>
 	<li>创建lanmei数据库，并执行数据库脚本文件．
 		<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
 		数据库脚本文件位置</a></li>
-	<li>根据你的数据库配置，修改数据库配置文件
-		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/mysqljdbc.properties">商城前台mysql数据库配置文件</a>，
-		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/mysqljdbc.properties">商城后台管理系统mysql数据库配置文件</a>
+	<li>根据你的MySQL数据库配置，修改数据库配置文件
+		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/mysqljdbc.properties">商城前台MySQL数据库配置文件</a>，
+		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/mysqljdbc.properties">商城后台管理系统MySQL数据库配置文件</a>
 	</li>
-	<li>根据你的数据库配置，修改Redis配置,修改的是hostName和port.<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城前台Redis数据库配置文件</a>，
+	<li>根据你的Redis数据库配置，修改Redis配置,修改的是hostName和port.<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城前台Redis数据库配置文件</a>，
 		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城后台管理系统Redis数据库配置文件</a></li>
 	<li>配置完毕</li>
 	<li>添加Tomcat服务器</li>

@@ -6,43 +6,33 @@
 
 <!DOCTYPE html>
 <html>
-
- <script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script> 
-<!-- bootstrap 文件 -->
- <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
-<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script> 
-
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 	<script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>
+	<!-- bootstrap 文件 -->
+	 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
+	<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script> 
+	
+	
 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity_manager.css">
+	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/addCommodity.css">
 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
 	<script src="${contextPathOfStatic}/js/commodity/menu_display_switch.js"></script>
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap-treeview/bootstrap-treeview.min.css">
-	<script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>
-	<script src="${contextPathOfStatic}/bootstrap-treeview/bootstrap-treeview.min.js"></script>
-	
 
-	
-	　　<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	  <!-- zTree -->
 	  <link rel="stylesheet" href="${contextPathOfStatic}/zTree/css/demo.css" type="text/css">
 	  <link rel="stylesheet" href="${contextPathOfStatic}/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.all.js"></script>
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.core.js"></script>
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.excheck.js"></script>
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.exedit.js"></script>
+	  <!-- 类别管理 -->
 	  <script src="${contextPathOfStatic}/js/commodity/categoryManager.js"></script>
-
-	  <style type="text/css">
-		.ztree li span.button.add 
-		{margin-left:2px;
-		 	margin-right: -1px;
-		  	background-position:-144px 0; 
-		    vertical-align:top;
-		   *vertical-align:middle
-		 }
-		</style>
+	  <!-- 增加商品 -->
+	  <script src="${contextPathOfStatic}/js/commodity/addCommodity.js"></script>
 	<body >
 		
 		<div class="pageTitle">
-		  	 <caption>商品管理页面 </caption>
+		  	 <caption>商品管理页面 </caption>		  	
 		</div>
 		<!-- 类别管理 -->
 		<div id="categoryManagerItemPage" class="commopdityManagerPageDiplay">
@@ -58,10 +48,6 @@
 				</div>
 			   
 			</div>
-			<!-- 新增类别 -->
-			<div>
-				新增类别
-			</div>
 		</div><!-- <div id="categoryManagerItemPage" class="adminManagerPageDiplay"> -->
 		<!-- 查询商品 -->
 		<div id="commodityQueryItemPage" class="commopdityManagerPageDiplay">
@@ -69,7 +55,100 @@
 		</div><!-- <div id="commodityQueryItemPage" class="adminManagerPageDiplay"> -->
 		<!-- 增添商品 -->
 		<div id="addCommodityItemPage" class="commopdityManagerPageDiplay">
-			增添管理
+			
+			
+			
+			<h3>选择类别</h3>
+			<br>
+			<for  m action="">
+			<!--产品分类设计
+			大类/一级分类/二级分类/品牌/产品名称
+			这里只需要把二级分类的ｉd　发送给服务端，大类/一级分类不需要
+			 -->
+					<!-- 选择大类 -->
+				<div class="form-group">
+					<label  for="btn-group" >选择大类</label>　
+					<input type="text" list="datalist0" class="addCommodityInput" id="bigCategoryInput">
+					<datalist id="datalist0">
+				    </datalist>
+				    <br>
+				</div>
+				<!-- 一级细分 -->
+				<div class="form-group" >
+					<label  for="btn-group" >一级细分</label>　
+					<input type="text" list="datalist1" class="addCommodityInput" id="firstCategoryInput">	
+					<datalist id="datalist1">
+				    </datalist>
+				    <br>
+				</div>			    
+				<!-- 二级细分 -->
+				<div class="form-group" >
+					<label  for="btn-group" >二级细分</label>　	
+				    <input type="text" list="datalist2" class="addCommodityInput" id="secondCategoryInput">	
+					<datalist id="datalist2">
+				    </datalist>　
+				    <br>
+				</div>				
+			    <!-- 品牌 -->
+			    <div class="form-group">
+			    	<label  for="btn-group" >品　　牌</label>　	
+					<input type="text" class="addCommodityInput" id="brandInput"　>
+			    </div>
+			     <!-- 名称 -->
+			    <div class="form-group">
+			    	<label  for="btn-group" >名　　称</label>　	
+					<input type="text" class="addCommodityInput" id="productNameInput"　>
+			    </div>
+			     <!-- 显示标题 -->
+			    <div class="form-group">
+			    	<label  for="btn-group"  >显示标题</label>　	
+					<input type="text" class="addCommodityInput" id="titleInput">
+			    </div>
+			    <!-- 参考价格 -->
+			    <div class="form-group">
+			    	<label  for="btn-group" >参考价格</label>　	
+					<input type="text" class="addCommodityInput" id="referencePriceInput">
+			    </div>
+				<!-- 活动价格 -->
+			    <div class="form-group">
+			    	<label  for="btn-group" >活动价格</label>　	
+					<input type="text" class="addCommodityInput" id="activityPriceInput">
+			    </div>	
+			    <!-- 商品简介 -->
+			    <div class="form-group">
+			    	<label  for="btn-group" >商品简介</label>　	
+					<input type="text" class="addCommodityInput" id="descriptionInput">
+			    </div>	
+			    
+			</form>
+			<!-- 图片上传 -->
+			<form id="imgUploadForm" enctype="multipart/form-data"  >
+			    <div>
+			    	<span>图片1:<input type="file" name="files" accept="image/gif, image/jpeg"></span>
+			    </div>
+			    <div>
+			    	<span>图片2:<input type="file" name="files" accept="image/gif, image/jpeg"></span> 
+			    </div>
+			    <div>
+			    	<span>图片3:<input type="file" name="files" accept="image/gif, image/jpeg"></span> 
+			    </div>
+			    <div>
+			    	<span>图片4:<input type="file" name="files" accept="image/gif, image/jpeg"></span> 
+			    </div>
+			    <div>
+			    	<span>图片5:<input type="file" name="files" accept="image/gif, image/jpeg"></span> 
+			    </div>				
+			</form>			
+			<button type="button" id="imgUnloadBtn">上传</button>
+		
+			<!-- 提交按钮 -->
+			<div>
+				<button type="button" id="addCommoditySubmitBtn">提交</button>
+			</div>
+			<img src="upload/img/1526071381701图片1.jpg"> 
+			    		
+
+		
 		</div><!-- <div id="addCommodityItemPage" class="adminManagerPageDiplay"> -->
 		<!-- 删除商品 -->
 		<div id="deleteCommodityItemPage" class="commopdityManagerPageDiplay">

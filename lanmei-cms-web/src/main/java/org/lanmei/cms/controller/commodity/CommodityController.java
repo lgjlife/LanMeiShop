@@ -2,8 +2,10 @@ package org.lanmei.cms.controller.commodity;
 
 import java.util.List;
 import java.util.Map;
-
+import java.io.File;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+
 
 import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
 import org.lanmei.commodity.dto.ClassificationDto;
@@ -16,7 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Controller
 @RequestMapping(path="/commodity")
@@ -75,9 +79,7 @@ public class CommodityController {
 		ClassificationDto classificationDto = classificationService.addTreeNode(id, name);
 		CommodityResultDto<ClassificationDto> commodityResultDto 
 			= new CommodityResultDto<ClassificationDto>(true,classificationDto);
-		return commodityResultDto;
-		
-		
+		return commodityResultDto;		
 	}
 	/**
 	 * 类别名称修改　业务分析
@@ -131,6 +133,50 @@ public class CommodityController {
 			= new CommodityResultDto<ClassificationDto>(true,classificationDto);
 		return commodityResultDto;		
 	}
+	
+	@SyslogAnno(description="上传商品图片",operationName="insert")
+	@ResponseBody
+	@RequestMapping(path="/upload/img")
+	public void uploadImg(@RequestParam("files") CommonsMultipartFile[] files) {
+		
+		
+		
+		
+		String imgUploadAbsolutePath = request.getServletContext().getInitParameter("imgUploadAbsolutePath");
+		String imgUploadRelativePath = request.getServletContext().getInitParameter("imgUploadRelativePath");
+		
+		
+		try {
+			for(int i  = 0 ;i < files.length ; i++) {
+				String fileName = files[i].getOriginalFilename();
+				logger.debug("file  name = " + fileName);
+				String path = imgUploadAbsolutePath + imgUploadRelativePath  //路径
+					     + (new Date().getTime()) + Math.round(Math.random() * 1000)  //文件名动态部分
+					     + fileName;	//文件名　原始文件名        
+				File newfile = new File( path);
+				logger.debug("创建文件夹　= " + newfile.mkdirs() +  "  path = " + newfile.getPath());
+				logger.debug("" + newfile.getAbsolutePath());
+				files[i].transferTo(newfile);
+			}			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+	}
+	/**
+	 * 
+	 * 添加商品请求处理
+	 */
+	@SyslogAnno(description="新建商品",operationName="insert")
+	@ResponseBody
+	@RequestMapping(path="/new/commodity")
+	public void newCommodity(@RequestBody Map<String, Object> requestMap) {
+		
+		
+	}
+	
 	
 	
 }

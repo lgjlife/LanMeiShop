@@ -4,10 +4,12 @@ package org.lanmei.commodity.serviceImpl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.lanmei.admin.dao.model.CmsAdmin;
 import org.lanmei.commodity.dao.mapper.CommodityClassificationAssociationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityClassificationMapper;
+import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommodityClassification;
 import org.lanmei.commodity.dto.ClassificationDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
@@ -21,8 +23,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.fastjson.JSON;
 
 @Service
 public class ClassificationServiceImpl extends BaseService  implements ClassificationService{
@@ -218,5 +222,45 @@ public class ClassificationServiceImpl extends BaseService  implements Classific
 			classificationMapper.updateIsParentNotParent(pid, "false");
 	    }		
 		return new ClassificationDto(true,CommodityState.DELETE_CLASSIFICATION_SUCCESS,"删除节点成功");
+	}
+    /**
+     * 增加商品处理
+     * 
+     * @param map　商品的基本信息　商品的二级分类ＩＤ
+     */
+	@Override
+	public void addCommodity(Map<String, Object> map) {
+		
+		//从请求中获取数据
+		Commodity commodity= JSON.parseObject(JSON.toJSONString(map),Commodity.class);
+		if(commodity == null) {
+			logger.error("commodity is null!!!!");
+		}
+		else {
+			logger.debug("commodity name = " + commodity.getName());
+		}
+		Integer secondid = (Integer)map.get("id");
+		if(secondid == null) {
+			logger.error("secondid is null!!!!");
+		}
+		else {
+			logger.debug("二级分类　id = " + secondid);
+		}
+		//获取当前登录的管理员
+		//CmsAdmin admin = (CmsAdmin) SessionUtils.getSession("currenLogintAdmin");
+		CmsAdmin admin = new CmsAdmin("测试用户");
+		
+		commodity.setCreateBy(admin.getLoginJobnum());
+		commodity.setCreateTime(new Date());
+		//向数据库写入数据
+		
+		
+	}
+
+	@Override
+	public void upLoadImg(CommonsMultipartFile[] files) {
+		// TODO Auto-generated method stub
+		//CmsAdmin admin = (CmsAdmin) SessionUtils.getSession("currenLogintAdmin");
 	}	
+	
 }
