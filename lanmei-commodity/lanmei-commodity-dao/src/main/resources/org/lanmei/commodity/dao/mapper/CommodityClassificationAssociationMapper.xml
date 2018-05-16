@@ -63,7 +63,7 @@
     from commodity_classification_association
   </select>
   
-   <select id="selectCountById" parameterType="java.lang.Integer"  resultType="java.lang.Integer">
+   <select id="selectCountById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 
     select count(id)
     from commodity_classification_association

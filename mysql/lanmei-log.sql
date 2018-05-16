@@ -30,3 +30,17 @@ CREATE TABLE `sys_log`(
 	PRIMARY KEY (`log_id`)
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="系统日志表";
+
+DROP TABLE IF  EXISTS `sys_solr`;
+CREATE TABLE `sys_solr`(
+	`solrid` INT  AUTO_INCREMENT  COMMENT "ID",
+	`solrname` VARCHAR(50) DEFAULT NULL COMMENT "名称",
+
+	PRIMARY KEY (`solrid`)
+	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="solr";
+
+insert into  `sys_solr` (solrname) values("但是规范的"),("的的发送给"),("ｖ吃饭的的不"),("地方噶的是个"),("啊风格"),("埃弗顿是");
+
+
+

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.lanmei.commodity.dto.ClassificationDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
+import org.lanmei.common.enums.CommodityState;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public interface ClassificationService {
@@ -31,15 +32,6 @@ public interface ClassificationService {
 	 */
 	ClassificationDto deleteTreeNode(Integer id);
 	
-	/**
-	 * 增加商品
-	 * @param map
-	 */
-	void addCommodity(Map<String,Object> map);
-	/**
-	 * 上传商品图片
-	 * @param files
-	 */
-	void upLoadImg(CommonsMultipartFile[] files);
+	
 	
 }

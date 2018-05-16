@@ -36,6 +36,6 @@ public interface CommodityClassificationAssociationMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CommodityClassificationAssociation record);
-	
+
 	Integer selectCountById(int id);
 }

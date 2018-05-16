@@ -2,15 +2,16 @@ package org.lanmei.cms.controller.commodity;
 
 import java.util.List;
 import java.util.Map;
-import java.io.File;
-import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
 import org.lanmei.commodity.dto.ClassificationDto;
+import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
+import org.lanmei.commodity.service.AddCommodityService;
 import org.lanmei.commodity.service.ClassificationService;
+import org.lanmei.common.enums.CommodityState;
 import org.lanmei.common.syslog.annotation.SyslogAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Controller
@@ -28,6 +30,9 @@ public class CommodityController {
   
 	@Autowired
 	ClassificationService classificationService;
+	@Autowired
+	AddCommodityService   addCommodityService;
+	
 	@Autowired
 	private  HttpServletRequest request;
 	
@@ -132,49 +137,75 @@ public class CommodityController {
 		CommodityResultDto<ClassificationDto> commodityResultDto 
 			= new CommodityResultDto<ClassificationDto>(true,classificationDto);
 		return commodityResultDto;		
-	}
-	
+	}	
 	@SyslogAnno(description="上传商品图片",operationName="insert")
 	@ResponseBody
 	@RequestMapping(path="/upload/img")
-	public void uploadImg(@RequestParam("files") CommonsMultipartFile[] files) {
-		
-		
-		
-		
+	public CommodityResultDto uploadImg(@RequestParam("files") CommonsMultipartFile[] files,
+			@RequestParam("commodityId")  int commodityId) {		
 		String imgUploadAbsolutePath = request.getServletContext().getInitParameter("imgUploadAbsolutePath");
 		String imgUploadRelativePath = request.getServletContext().getInitParameter("imgUploadRelativePath");
 		
+		logger.debug("commodityId = " + commodityId);
+		CommodityState commodityState 
+				= addCommodityService.upLoadImg(files, imgUploadAbsolutePath, 
+						                        imgUploadRelativePath,commodityId);
 		
-		try {
-			for(int i  = 0 ;i < files.length ; i++) {
-				String fileName = files[i].getOriginalFilename();
-				logger.debug("file  name = " + fileName);
-				String path = imgUploadAbsolutePath + imgUploadRelativePath  //路径
-					     + (new Date().getTime()) + Math.round(Math.random() * 1000)  //文件名动态部分
-					     + fileName;	//文件名　原始文件名        
-				File newfile = new File( path);
-				logger.debug("创建文件夹　= " + newfile.mkdirs() +  "  path = " + newfile.getPath());
-				logger.debug("" + newfile.getAbsolutePath());
-				files[i].transferTo(newfile);
-			}			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,CommodityState.ADD_COMMODITY_IMG_SUCCESS);
+			return commodityResultDto;			
+	}
+	
+	@ResponseBody
+	@RequestMapping(path="/upload/editor/img")
+	public ImgResultDto uploadEditorImg(@RequestParam("img") List<MultipartFile> list) {		
+		String imgUploadAbsolutePath = request.getServletContext().getInitParameter("imgUploadAbsolutePath");
+		String imgUploadRelativePath = request.getServletContext().getInitParameter("imgUploadRelativePath");
 		
-		
+		//logger.debug("commodityId = " + commodityId);
+		ImgResultDto imgResult
+				= addCommodityService.upLoadEditorImg(list, imgUploadAbsolutePath, 
+						                        imgUploadRelativePath,1);
+			return imgResult;			
 	}
 	/**
 	 * 
 	 * 添加商品请求处理
+	 * 1.写入商品表
+	 * 2.写入
 	 */
 	@SyslogAnno(description="新建商品",operationName="insert")
 	@ResponseBody
 	@RequestMapping(path="/new/commodity")
-	public void newCommodity(@RequestBody Map<String, Object> requestMap) {
+	public CommodityResultDto newCommodity(@RequestBody Map<String,Object> requestMap) {
+		logger.debug("into /new/commodity");
+		CommodityState commodityState = addCommodityService.addCommodity(requestMap);
 		
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+			return commodityResultDto;	
+
+	}
+	@SyslogAnno(description="检查商品名称是否重复",operationName="insert")
+	@ResponseBody
+	@RequestMapping(path="/check/name")
+	public CommodityResultDto checkName(@RequestBody Map<String,Object> requestMap) {
 		
+		CommodityState commodityState = addCommodityService.checkName(requestMap);
+		
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+			return commodityResultDto;	
+
+	}
+
+	@ResponseBody
+	@RequestMapping(path="/set/content")
+	public void setCOntent(@RequestBody Map<String,Object> requestMap) {
+		logger.debug("into /set/content ");
+		String content = (String)requestMap.get("content");
+		System.out.println(content);
+
 	}
 	
 	

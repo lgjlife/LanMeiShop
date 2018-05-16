@@ -68,12 +68,20 @@
       	  <generatedKey column="id" sqlStatement="MySql" type="post" identity="true"/>    
         </table> 
          <!-- 商品图片表 -->
-        <table tableName="commodity_ｉmage">
+        <table tableName="commodity_image">
       	  <generatedKey column="image_id" sqlStatement="MySql" type="post" identity="true"/>    
         </table> 
          <!-- 商品评论表 -->
         <table tableName="commodity_reviews">
       	  <generatedKey column="reviews_id" sqlStatement="MySql" type="post" identity="true"/>    
+        </table> 
+         <!-- 商品sku表 -->
+        <table tableName="commodity_sku">
+      	  <generatedKey column="sku_id" sqlStatement="MySql" type="post" identity="true"/>    
+        </table> 
+         <!-- 商品属性表 -->
+        <table tableName="commodity_attr">
+      	  <generatedKey column="attr_id" sqlStatement="MySql" type="post" identity="true"/>    
         </table> 
     
     </context>

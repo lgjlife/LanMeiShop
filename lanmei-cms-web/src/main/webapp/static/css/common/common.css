@@ -3,4 +3,10 @@
 	position:relative;
 	left:40%;
 	font-size:50px;
+	display:block;
 }
+.pageTitle h1{
+	position:relative;
+	right:50%;
+}
+

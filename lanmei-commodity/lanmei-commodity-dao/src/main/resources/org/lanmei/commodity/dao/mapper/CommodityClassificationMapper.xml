@@ -77,7 +77,7 @@
   </select>
   <!-- 自定义 -->
   <!-- 通过 ｉd 更新 isParent-->
-  <update id="updateIsParentByPrimaryKey" >
+  <update id="updateIsParentByPrimaryKey">
     update commodity_classification
     set isParent = #{isparent,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

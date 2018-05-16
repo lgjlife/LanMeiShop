@@ -1,6 +1,7 @@
 package org.lanmei.commodity.dao.mapper;
 
 import java.util.List;
+
 import org.lanmei.commodity.dao.model.Commodity;
 import org.springframework.stereotype.Repository;
 
@@ -36,4 +37,6 @@ public interface CommodityMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(Commodity record);
+
+	Commodity selectByName(String name);
 }

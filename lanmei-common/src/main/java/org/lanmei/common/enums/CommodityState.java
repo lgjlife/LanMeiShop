@@ -15,4 +15,11 @@ public enum CommodityState {
 	DELETE_CLASSIFICATION_SUCCESS,    //删除分类成功
 	DELETE_CLASSIFICATION_FAIL,       //删除分类失败
 	
+	ADD_COMMODITY_SUCCESS,            //添加商品成功
+	ADD_COMMODITY_FAIL,               //添加商品失败
+	ADD_COMMODITY_IMG_SUCCESS,        //添加商品图片成功
+	ADD_COMMODITY_IMG_FAIL,           //添加商品图片失败
+	
+	COMMODITY_NAME_REPEAT ,            //商品名称重复
+	COMMODITY_NAME_NOT_REPEAT          //商品名称未重复
 }

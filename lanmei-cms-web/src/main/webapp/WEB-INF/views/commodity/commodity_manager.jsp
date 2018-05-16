@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- jquery -->
  	<script src="${contextPathOfStatic}/jquery/jquery-3.3.1.js"></script>
 	<!-- bootstrap 文件 -->
 	 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
@@ -32,9 +33,9 @@
 	<body >
 		
 		<div class="pageTitle">
-		  	 <caption>商品管理页面 </caption>		  	
+		  	 <h1>商品管理页面 </h1>		  	
 		</div>
-		<!-- 类别管理 -->
+		<!-- --------------------------------类别管理 ------------------------------------------->
 		<div id="categoryManagerItemPage" class="commopdityManagerPageDiplay">
 			<div>
 				类别管理
@@ -49,21 +50,20 @@
 			   
 			</div>
 		</div><!-- <div id="categoryManagerItemPage" class="adminManagerPageDiplay"> -->
-		<!-- 查询商品 -->
+		<!----------------------------------- 查询商品 ------------------------------>
 		<div id="commodityQueryItemPage" class="commopdityManagerPageDiplay">
-			查询管理
+			 <jsp:include page="/WEB-INF/views/commodity/edit_commodity.jsp" /> 
 		</div><!-- <div id="commodityQueryItemPage" class="adminManagerPageDiplay"> -->
-		<!-- 增添商品 -->
-		<div id="addCommodityItemPage" class="commopdityManagerPageDiplay">
-			
-			
-			
+		<!------------------------------------ 增添商品------------------------------------ -->
+		<div id="addCommodityItemPage" class="commopdityManagerPageDiplay">			
 			<h3>选择类别</h3>
 			<br>
 			<for  m action="">
 			<!--产品分类设计
-			大类/一级分类/二级分类/品牌/产品名称
-			这里只需要把二级分类的ｉd　发送给服务端，大类/一级分类不需要
+			大类/一级分类/二级分类/三级细分－品牌/产品名称
+			大类/一级分类/二级分类/三级细分－品牌/　这些分类在分类管理那里添加
+			产品名称　在添加产品时自定义
+			这里只需要把三级分类的ｉd　发送给服务端，大类/一级分类不需要
 			 -->
 					<!-- 选择大类 -->
 				<div class="form-group">
@@ -88,40 +88,36 @@
 					<datalist id="datalist2">
 				    </datalist>　
 				    <br>
-				</div>				
-			    <!-- 品牌 -->
-			    <div class="form-group">
-			    	<label  for="btn-group" >品　　牌</label>　	
-					<input type="text" class="addCommodityInput" id="brandInput"　>
-			    </div>
+				</div>	
+				<!-- 三级细分 品牌 -->
+				<div class="form-group" >
+					<label  for="btn-group" >三级细分</label>　	
+				    <input type="text" list="datalist3" class="addCommodityInput" id="threeCategoryInput">	
+					<datalist id="datalist3">
+				    </datalist>　
+				    <br>
+				</div>			
+		
 			     <!-- 名称 -->
 			    <div class="form-group">
 			    	<label  for="btn-group" >名　　称</label>　	
 					<input type="text" class="addCommodityInput" id="productNameInput"　>
+					<span id="productNameInputWarn" ></span>
 			    </div>
+			    
 			     <!-- 显示标题 -->
 			    <div class="form-group">
 			    	<label  for="btn-group"  >显示标题</label>　	
 					<input type="text" class="addCommodityInput" id="titleInput">
 			    </div>
-			    <!-- 参考价格 -->
-			    <div class="form-group">
-			    	<label  for="btn-group" >参考价格</label>　	
-					<input type="text" class="addCommodityInput" id="referencePriceInput">
-			    </div>
-				<!-- 活动价格 -->
-			    <div class="form-group">
-			    	<label  for="btn-group" >活动价格</label>　	
-					<input type="text" class="addCommodityInput" id="activityPriceInput">
-			    </div>	
 			    <!-- 商品简介 -->
 			    <div class="form-group">
 			    	<label  for="btn-group" >商品简介</label>　	
-					<input type="text" class="addCommodityInput" id="descriptionInput">
+					<textarea rows="" cols="" id="descriptionInput"></textarea>					
 			    </div>	
 			    
 			</form>
-			<!-- 图片上传 -->
+			<!-------------------------------------- 图片上传--------------------------- -->
 			<form id="imgUploadForm" enctype="multipart/form-data"  >
 			    <div>
 			    	<span>图片1:<input type="file" name="files" accept="image/gif, image/jpeg"></span>
@@ -144,13 +140,14 @@
 			<!-- 提交按钮 -->
 			<div>
 				<button type="button" id="addCommoditySubmitBtn">提交</button>
+				<span id="addCommoditySubmitWarn"></span>
 			</div>
-			<img src="upload/img/1526071381701图片1.jpg"> 
+		
 			    		
 
 		
 		</div><!-- <div id="addCommodityItemPage" class="adminManagerPageDiplay"> -->
-		<!-- 删除商品 -->
+		<!-- ------------------------------删除商品----------------------------------- -->
 		<div id="deleteCommodityItemPage" class="commopdityManagerPageDiplay">
 			删除管理
 		</div><!-- <div id="deleteCommodityItemPage" class="adminManagerPageDiplay"> -->

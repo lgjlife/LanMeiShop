@@ -60,6 +60,7 @@
 		<quartz.version>2.2.1</quartz.version>
 	 	<servlet.version>3.0-alpha-1</servlet.version>
 	 	<shiro.version>1.2.2</shiro.version>
+	 	<solr.version>7.3.0</solr.version>
 	 	<slf4j.version>1.7.5</slf4j.version> 
 	    <spring.version>5.0.4.RELEASE</spring.version> 
 	    <swagger.version>1.0.2</swagger.version>
@@ -161,7 +162,7 @@
             <artifactId>commons-dbcp</artifactId>
             <version>${commons-dbcp.version}</version>
         </dependency>
-        <!--  -->
+        <!-- 文件上传配置-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -172,6 +173,18 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
+        <!-- 百度　ｕeditor -->
+       <!--  <dependency>
+            <groupId>cn.songxinqiang</groupId>
+            <artifactId>com.baidu.ueditor</artifactId>
+            <version>1.1.2-edit-1.0</version>
+        </dependency> -->
+         
 		<dependency>
             <groupId>com.fasterxml</groupId>
             <artifactId>classmate</artifactId>
@@ -295,6 +308,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+         <!-- Solr 搜索服务 -->
+         <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>${solr.version}</version>
         </dependency>
         <!-- Api 文档库 -->
         <dependency>

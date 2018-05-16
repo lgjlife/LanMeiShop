@@ -1,14 +1,20 @@
 package org.lanmei.cms.controller.commodity;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +26,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import net.sf.json.JSONObject;
 
@@ -105,8 +113,8 @@ public class CommodityControllerTest {
 	 * 删除节点　测试
 	 * @throws Exception
 	 */
-	@Test
-	public void testＤeleteTreeNode() throws Exception{
+	///@Test
+	public void testDeleteTreeNode() throws Exception{
 		System.out.println("testＤeleteTreeNode 开始进行测试");  
 		  
 		Map<String,Object> map = new HashMap<String,Object>();  
@@ -121,4 +129,52 @@ public class CommodityControllerTest {
                .andExpect(status().isOk())
                .andReturn();
 	}
+	
+	/**
+	 * 删除节点　测试
+	 * @throws Exception
+	 */
+	//@Test
+	public void testNewCommodity() throws Exception{
+		System.out.println("testNewCommodity 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("name", "小米6");
+		map.put("brand", "小米");
+		map.put("title", "小米经典款");
+		map.put("referencePrice", 2499);
+		map.put("activityPrice", 2199);
+		map.put("description", "最好的小米手机");
+	    map.put("id", 39);
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	
+       MvcResult mvcResult = mockMvc.perform( get("/commodity/new/commodity")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	
+	
+	
+	@Test
+	public void testUploadEditorImg() throws Exception{
+		System.out.println("testUploadEditorImg 开始进行测试");  
+		List<MultipartFile> list = new ArrayList<MultipartFile> ();
+		File myfile = new  File("/img");
+		FileItem fileItem = new DiskFileItem("img", 
+				null, false, "222.jpg", -1, myfile);
+ 		MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+		
+ 		List<MultipartFile> multipartFileList = new ArrayList<MultipartFile>();
+ 		multipartFileList.add(multipartFile);
+       //发送请求           	
+       MvcResult mvcResult = mockMvc.perform( post("/commodity/upload/editor/img")
+       		.contentType(MediaType.IMAGE_JPEG).param("img", multipartFileList.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	
 }
