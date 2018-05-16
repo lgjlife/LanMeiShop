@@ -14,7 +14,7 @@
 	<li>安装MySQL数据库</li>
 	<li>由于缓存使用Ｒedis进行持久化，所以需要安装Ｒedis,否则运行时会报错，网上安装教程很多，这里不进行说明</li>
 	<li>Eclipse导入项目工程，没用过其他编译器，不知道其他编译器会不会导入有问题</li>
-	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目</li>
+	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目,只能一个一个地导入，按道理应该可以一次性导入的，不知道还需要配置什么地方</li>
 	<li>创建lanmei数据库，并执行数据库脚本文件．
 		<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
 		数据库脚本文件位置</a></li>
@@ -25,6 +25,7 @@
 	<li>根据你的Redis数据库配置，修改Redis配置,修改的是hostName和port.<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城前台Redis数据库配置文件</a>，
 		<a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-cms-web/src/main/resources/spring/applicationContext-cache.xml">商城后台管理系统Redis数据库配置文件</a></li>
 	<li>配置完毕</li>
+	<li>运行Redis</li>
 	<li>添加Tomcat服务器</li>
 	<li>运行项目：lanmei-os-web(商城前台web项目)，lanmei-cms-web(商城后台web项目)</li>
 	<li>后台管理项目帐号：201801，密码：zxcvbnm123</li>
@@ -155,10 +156,26 @@
 	<li>
 		多级列表树插件：<a href="http://www.treejs.cn/v3/api.php">zTree</a>
 	</li>
+	<li>
+		富文本编辑器：<a href="http://www.wangeditor.com/">wangEditor</a>
+	</li>
 </ol>	
 
 <h4>三.前后端交互</h4>
 &nbsp&nbsp&nbsp&nbsp主要使用AJAX传输数据！
+<h4>四.推荐学习书籍</h4>
+<ol>
+	<li>
+		shiro学习：<<跟我学Shiro教程>>
+	</li>
+	<li>
+		Mybatis　:　<<深入浅出MyBatis技术原理与实战　＋　　MyBatis从入门到精通>>
+	</li>
+	<li>
+		Spring　:　<<精通Spring+4.x++企业应用开发实战>>
+	</li>
+	
+</ol>
 
 <h1>目录介绍</h1>
 <h3>目录介绍</h3>
@@ -166,7 +183,7 @@
 	<li>doc</li>--开发日志
 	<li>lanmei-admin</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-admin">
-		后台管理 管理员相关模块(新增/登陆/权限管理等) 秒杀活动管理
+		后台管理 管理员相关模块(新增/登陆/权限管理等，权限未做好) 秒杀活动管理，商品管理等
 		</a>	
 	<li>lanmei-cms-web</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-cms-web">
@@ -179,7 +196,7 @@
 		商品模块</a>
 	<li>lanmei-example</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-example">
-		用于测试某个技术点功能实现</a>	
+		用于测试某个技术点功能实现，目前有quartz定时任务，数据库备份操作</a>	
 	<li>lanmei-os-user</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-os-user">
 		用户模块，登录注册相关</a>	
@@ -191,7 +208,7 @@
 		秒杀模块</a>
 	<li>lanmei-task-scheduling</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-task-%20scheduling">
-		任务管理模块</a>
+		任务管理模块，使用quartz，还存在bug</a>
 	<li>mysql</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
 		数据库脚本文件，创建数据表相关</a>
@@ -285,5 +302,10 @@
 	<li>
 		<a  href="https://blog.csdn.net/u011676300/article/details/80086709">[蓝莓商城]使用Spring的mail API发送邮件</a>
 	</li>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/80313266">[蓝莓商城]使用Spring的mail API发送邮件</a>
+	</li>
+	
+	
 </ol>
 
