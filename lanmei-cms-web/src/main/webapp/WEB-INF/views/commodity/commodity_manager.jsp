@@ -12,12 +12,6 @@
 	<!-- bootstrap 文件 -->
 	 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
 	<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script> 
-	
-	
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity_manager.css">
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/addCommodity.css">
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
-	<script src="${contextPathOfStatic}/js/commodity/menu_display_switch.js"></script>
 
 	  <!-- zTree -->
 	  <link rel="stylesheet" href="${contextPathOfStatic}/zTree/css/demo.css" type="text/css">
@@ -26,10 +20,16 @@
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.core.js"></script>
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.excheck.js"></script>
 	  <script type="text/javascript" src="${contextPathOfStatic}/zTree/js/jquery.ztree.exedit.js"></script>
+	  <!-- 样式文件 -->
+	  <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity.manager.css">
+	  <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity.add.css">
+	  <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
 	  <!-- 类别管理 -->
-	  <script src="${contextPathOfStatic}/js/commodity/categoryManager.js"></script>
+	  <script src="${contextPathOfStatic}/js/commodity/commodity.category.manager.js"></script>
 	  <!-- 增加商品 -->
-	  <script src="${contextPathOfStatic}/js/commodity/addCommodity.js"></script>
+	  <script src="${contextPathOfStatic}/js/commodity/commodity.add.js"></script>	  
+	  <!-- 切换模块显示 -->
+	  <script src="${contextPathOfStatic}/js/commodity/commodity.menu.display.switch.js"></script>
 	<body >
 		
 		<div class="pageTitle">

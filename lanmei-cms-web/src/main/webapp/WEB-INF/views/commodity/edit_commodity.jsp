@@ -12,34 +12,18 @@
 	<!-- bootstrap 文件 -->
 	 <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/bootstrap/bootstrap.css">
 	<script src="${contextPathOfStatic}/bootstrap/bootstrap.js"></script>  --%>
-	<!-- ueditor 百度富文本编辑 -->
-	<%-- <script type="text/javascript" charset="utf-8" src="${contextPath}/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${contextPath}/ueditor//ueditor.all.min.js"> </script> --%>
-    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-  <%--   <script type="text/javascript" charset="utf-8" src="${contextPath}/ueditor/lang/zh-cn/zh-cn.js"></script> --%>
-    
-	
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity_manager.css">
-	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/addCommodity.css">
+<%-- 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity.manager.css">
+	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity.add.css"> --%>
 	<link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/common/common.css">
 
 	  <!-- 增加商品 -->
-	  <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/edit_commodity.css">	
-	  <script src="${contextPathOfStatic}/js/commodity/editCommodity.js"></script>
-	
+	  <link rel="stylesheet" type="text/css"  href="${contextPathOfStatic}/css/commodity/commodity.edit.css">	
+	  <script src="${contextPathOfStatic}/js/commodity/commodity.edit.js"></script>
+	  <!-- 富文本wangEditor -->
 	  <script type="text/javascript" src="${contextPathOfStatic}/wangEditor/wangEditor.js"></script>
 	<body >
 	
-	    <button id="editorSetBtn">设置内容</button>
-	    <button id="editorGetBtn1">获取内容1</button>
-	    <button id="editorGetBtn2">获取内容2</button>
-		<div id="editor">
-            <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
-        </div>
-       <img src="http://localhost:8080/lanmei-cms/upload/img/1526480985331222.jpg" style="max-width:100%;"/>
-       <img src="http://localhost:8080/lanmei-cms/upload/img/1526480985331222.jpg" style="height:150px;width:150px;"/>
-									 
+	   						 
 		
 	 　  　<!-- －－－－－－－－　 商品查询展示列表－－－－－－－－－－－ -->
 		<div id="commodityListModel"　 style="display:none;">
@@ -303,13 +287,25 @@
 				</div><!-- end of  <div id="attrInfoEditMode">  -->
 			</div><!-- end of  <div id="attrInfoEdit">  -->
 		</div><!-- end of <div id="commodityEditModel"> -->
+		 <hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />
 		<!-- ---------------------商品详情编辑-------------------------- -->
-	    <div>
-	       <h4>商品详情编辑</h4>
-    	   <script id="sseditor" type="text/plain" style="width:800px;height:auto;"></script>	    
-	    </div>
-
-		
+	    <div id="descriptionInfoEdit"　>
+	    	<h4>商品详情描述编辑</h4>
+			<button id="descriptionInfoBtn" class="button">编辑</button>
+	    	<div id="descriptionDisplayMode">
+	    		
+	    	</div>
+	    	<div id="descriptionEdiMode">
+	    		<button id="editorSetBtn">设置内容</button>
+			    <button id="editorGetBtn1">获取内容1</button>
+			    <button id="editorGetBtn2">获取内容2</button>
+				<div id="editor">
+		            <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+		        </div>
+		        <button id="descriptionSubmitBtn" class="button">保存</button>
+	    	</div>
+	            
+	    </div>	
 	</body>
 
 </html>

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.lanmei.common.session.SessionUtils;
-import org.lanmei.common.syslog.annotation.SyslogAnno;
 import org.lanmei.os.controller.seckill.dto.SeckillResult;
 import org.lanmei.os.controller.user.UserLoginController;
 import org.lanmei.seckill.dao.model.Seckill;
@@ -18,6 +17,7 @@ import org.lanmei.seckill.exception.SeckillCloseException;
 import org.lanmei.seckill.exception.SeckillException;
 import org.lanmei.seckill.service.SeckillService;
 import org.lanmei.seckill.state.SeckillState;
+import org.lanmei.sysaop.syslog.anno.SyslogAnno;
 import org.lanmei.user.dao.model.OsUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +55,7 @@ public class SeckillController {
 	 * 返回的是还没结束的秒杀
 	 * @return
 	 */
-	@SyslogAnno(description="select操作",operationName="获取秒杀列表")
+	@SyslogAnno(layer="Controller",description="获取秒杀列表")
 	@RequestMapping(path="/list",
 			        method=RequestMethod.GET)
 	public ModelAndView getList() {
@@ -71,7 +71,7 @@ public class SeckillController {
 	 * @param seckillId
 	 * @return
 	 */
-	@SyslogAnno(description="根据seckillId获取秒杀列表",operationName="根据seckillId获取秒杀列表")
+	@SyslogAnno(layer="Controller",description="根据seckillId获取秒杀列表")
 	@RequestMapping(path="/{seckillId}/detail",
 					method=RequestMethod.GET)
 	public ModelAndView detail(@PathVariable("seckillId") Integer seckillId) {

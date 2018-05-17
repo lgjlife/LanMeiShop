@@ -16,10 +16,10 @@
 
 	<description>Aop Configuration</description>
 	
-	<context:component-scan base-package="org.lanmei.common.*.*" />
+	<context:component-scan base-package="org.lanmei.sysaop.syslog" />
 	
 	<!--proxy-target-class="true"强制使用cglib代理   如果为false则spring会自动选择-->  
 	<aop:aspectj-autoproxy proxy-target-class="true"/>  
-	<bean id="sysLogAspect" class="org.lanmei.common.syslog.aspect.SysLogAspect"></bean>
+	<!-- <bean id="sysLogAspect" class="org.lanmei.common.syslog.aspect.SysLogAspect"></bean> -->
 	
 </beans>

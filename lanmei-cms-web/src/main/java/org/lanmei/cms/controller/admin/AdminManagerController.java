@@ -41,25 +41,6 @@ public class AdminManagerController {
 	@Autowired
 	UserMailSender sender;
 	
-	/*@RequestMapping(path="/get/adminlist")
-	public  ModelAndView  getAdminList(@RequestBody Map<String, Object> requestJsonDataMap) {
-		
-		logger.debug("into /admin/get/adminlist");
-		
-		ModelAndView mv = new ModelAndView();
-		
-		Map<String,Object> returnMap = new HashMap<String,Object>();
-		获取页数
-		Integer page = (Integer)requestJsonDataMap.get("page");
-		从数据库中读取数据
-		List<CmsAdmin>  adminList = adminService.getAllAdmin(page);
-		从数据库中读取数据总条数
-		Integer allListCount = adminService.getAdminCount();
-		
-		mv.addObject("adminList", adminList);
-		mv.addObject("allListCount", allListCount);
-		return mv;
-	}*/
 	@RequestMapping(path="/get/adminlist",produces="text/html;charset=UTF-8")
 	public @ResponseBody String  getAdminList(@RequestBody Map<String, Object> requestJsonDataMap) {
 		
@@ -74,13 +55,7 @@ public class AdminManagerController {
 		List<CmsAdmin>  adminList = adminService.getAllAdmin(page);
 		 
 		Integer allListCount = adminService.getAdminCount();
-		/*returnMap.put("adminList", allListCount);
-		returnMap.put("allListCount", allListCount);
-		for(CmsAdmin admin:adminList) {
-			System.out.println(admin.getActualName());
-		}
-		logger.debug("allListCount = " + allListCount + "  page  = " + page );
-	    JSONObject json = JSONObject.fromObject(returnMap);	*/
+
 		JSONObject json = new JSONObject();
 		json.put("allListCount", allListCount);
 		System.out.println("json = " + json.toString());
@@ -148,9 +123,7 @@ public class AdminManagerController {
         		+ "localhost:8080/lanmei-os/login"
         		+ "请使用工号进行登录激活";  
             
-        mail.setText(text );//正文
-        
-        
+        mail.setText(text );//正文        
         try {
         	logger.debug("开始发送邮件");
 			sender.send(mail);

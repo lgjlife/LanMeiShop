@@ -5,6 +5,8 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.lanmei.admin.dao.model.CmsAdmin;
 import org.lanmei.admin.service.CmsAdminService;
 import org.lanmei.cms.common.session.SessionUtils;
+import org.lanmei.sysaop.syslog.anno.SyslogAnno;
+import org.lanmei.sysaop.time_measurement.anno.TimeMeasurementAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class HomePageController {
 	 * 进入主界面
 	 * @return
 	 */
+	@SyslogAnno(layer="Controller",description="主界面访问")
+	@TimeMeasurementAnno(layer="Controller",description="主界面访问")
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView HomePage() {
 		logger.debug("into 主界面 ");
@@ -48,7 +52,7 @@ public class HomePageController {
 		
 		ModelAndView mv = new ModelAndView("/homepage/homepage");
 		mv.addObject("admin", admin);
-		
+		System.out.println("mv name  = " + mv.getViewName());
 		return mv;
 	}
 	

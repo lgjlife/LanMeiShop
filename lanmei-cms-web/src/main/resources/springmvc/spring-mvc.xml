@@ -142,6 +142,7 @@
 	</mvc:interceptors> 
 
 	
-	
+	<!-- aop配置-->
+	 <import resource="classpath:springmvc/applicationContext-aop.xml" />  
     
 </beans>

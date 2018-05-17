@@ -15,10 +15,11 @@
 
 
 /*系统日志表*/
-DROP TABLE IF  EXISTS `sys_log`;
-CREATE TABLE `sys_log`(
+DROP TABLE IF  EXISTS `system_log`;
+CREATE TABLE `system_log`(
 	`log_id` INT  AUTO_INCREMENT  COMMENT "日志ID",
-	`description` TEXT DEFAULT NULL COMMENT "日志描述",
+	`description` VARCHAR(100) DEFAULT NULL COMMENT "日志描述",
+	`layer` VARCHAR(25) DEFAULT NULL COMMENT "层　Controller Service Other",
 	`method` VARCHAR(200) DEFAULT NULL COMMENT "执行方法",
 	`LogType` TINYINT  DEFAULT NULL COMMENT "0：正常日志，1：异常日志",
 	`request_ip` VARCHAR(50) DEFAULT NULL COMMENT "请求IP",
@@ -31,16 +32,6 @@ CREATE TABLE `sys_log`(
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="系统日志表";
 
-DROP TABLE IF  EXISTS `sys_solr`;
-CREATE TABLE `sys_solr`(
-	`solrid` INT  AUTO_INCREMENT  COMMENT "ID",
-	`solrname` VARCHAR(50) DEFAULT NULL COMMENT "名称",
-
-	PRIMARY KEY (`solrid`)
-	
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="solr";
-
-insert into  `sys_solr` (solrname) values("但是规范的"),("的的发送给"),("ｖ吃饭的的不"),("地方噶的是个"),("啊风格"),("埃弗顿是");
 
 
 

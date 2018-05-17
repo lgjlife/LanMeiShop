@@ -54,7 +54,7 @@ public class CommodityControllerTest {
 	 * 获取节点数据　测试
 	 * @throws Exception
 	 */
-	//@Test
+	@Test
 	public void testGetTreeNode() throws Exception{
 		System.out.println("testGetTreeNode 开始进行测试");  
 		  
@@ -158,7 +158,7 @@ public class CommodityControllerTest {
 	
 	
 	
-	@Test
+	//@Test
 	public void testUploadEditorImg() throws Exception{
 		System.out.println("testUploadEditorImg 开始进行测试");  
 		List<MultipartFile> list = new ArrayList<MultipartFile> ();

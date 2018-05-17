@@ -12,7 +12,7 @@ import org.lanmei.commodity.dto.TreeNodeDto;
 import org.lanmei.commodity.service.AddCommodityService;
 import org.lanmei.commodity.service.ClassificationService;
 import org.lanmei.common.enums.CommodityState;
-import org.lanmei.common.syslog.annotation.SyslogAnno;
+import org.lanmei.sysaop.syslog.anno.SyslogAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,7 @@ public class CommodityController {
 	 * 通过父节点获取下一级的子节点
 	 * @return　List<TreeNodeDto>　　
 	 */
-	@SyslogAnno(description="通过父节点获取下一级子节点",operationName="select")
+	
 	@ResponseBody
 	@RequestMapping(path="/get/node")
 	public List<TreeNodeDto> getTreeNode() {
@@ -69,7 +69,6 @@ public class CommodityController {
 	 *           4.选择返回状态success or fail，客户端收到状态后再确认是否需要请求新的节点列表数据
 	 * 需要特别注意的地方：无
 	 */
-	@SyslogAnno(description="增加节点",operationName="update")
 	@ResponseBody
 	@RequestMapping(path="/add/node")
 	public CommodityResultDto addTreeNode(@RequestBody Map<String, Object> reqMap)  {
@@ -92,7 +91,6 @@ public class CommodityController {
 	 * 数据库操作：设置ｉd为传入id的列的name为新名称
 	 * 需要注意的地方：无
 	 */
-	@SyslogAnno(description="修改节点名称",operationName="update")
 	@ResponseBody
 	@RequestMapping(path="/modify/node")
 	public CommodityResultDto modifyTreeNode(@RequestBody Map<String, Object> reqMap) {
@@ -122,7 +120,7 @@ public class CommodityController {
 	 * 数据库操作：１.删除当前节点
 	 * 
 	 */
-	@SyslogAnno(description="通过父节点获取下一级子节点",operationName="select")
+	
 	@ResponseBody
 	@RequestMapping(path="/delete/node")
 	public CommodityResultDto deleteTreeNode(@RequestBody Map<String, Object> reqMap) {
@@ -138,7 +136,6 @@ public class CommodityController {
 			= new CommodityResultDto<ClassificationDto>(true,classificationDto);
 		return commodityResultDto;		
 	}	
-	@SyslogAnno(description="上传商品图片",operationName="insert")
 	@ResponseBody
 	@RequestMapping(path="/upload/img")
 	public CommodityResultDto uploadImg(@RequestParam("files") CommonsMultipartFile[] files,
@@ -174,7 +171,7 @@ public class CommodityController {
 	 * 1.写入商品表
 	 * 2.写入
 	 */
-	@SyslogAnno(description="新建商品",operationName="insert")
+	
 	@ResponseBody
 	@RequestMapping(path="/new/commodity")
 	public CommodityResultDto newCommodity(@RequestBody Map<String,Object> requestMap) {
@@ -186,7 +183,7 @@ public class CommodityController {
 			return commodityResultDto;	
 
 	}
-	@SyslogAnno(description="检查商品名称是否重复",operationName="insert")
+
 	@ResponseBody
 	@RequestMapping(path="/check/name")
 	public CommodityResultDto checkName(@RequestBody Map<String,Object> requestMap) {

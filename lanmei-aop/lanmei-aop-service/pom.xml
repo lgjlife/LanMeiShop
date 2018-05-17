@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.lanmei.shop</groupId>
+    <artifactId>org.lanmei.sysaop</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>org.lanmei.shop</groupId>
+  <artifactId>org.lanmei.sysaop.service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>org.lanmei.sysaop.service</name>
+  <description>aop模块service层</description>
+  
+   <dependencies>
+  	 <dependency>
+		<groupId>org.lanmei.shop</groupId>
+		<artifactId>org.lanmei.sysaop.dao</artifactId>
+		<version>${lanmei.version}</version>
+	  </dependency>  
+	  
+	   <dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+  			<artifactId>org.lanmei.common</artifactId>
+  			<version>${lanmei.version}</version>
+	  </dependency>
+	  <dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+	  		<artifactId>org.lanmei.user.dao</artifactId> 
+	  		<version>${lanmei.version}</version>
+  	  </dependency>
+  	  
+  	  <dependency>
+	  		<groupId>org.lanmei.shop</groupId>
+	  		<artifactId>org.lanmei.admin.dao</artifactId> 
+	  		<version>${lanmei.version}</version>
+  	 </dependency>
+  </dependencies>
+</project>

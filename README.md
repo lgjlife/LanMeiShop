@@ -30,6 +30,7 @@
 	<li>运行项目：lanmei-os-web(商城前台web项目)，lanmei-cms-web(商城后台web项目)</li>
 	<li>后台管理项目帐号：201801，密码：zxcvbnm123</li>
 	<li>前台项目需先进行注册后再登录</li>
+	<li>由于没有使用延迟加载，所以启动时时间可能会过长，如果Ｔomcat出现启动超时，请适当增加超时时间后再重新启动</li>
 	<li>有任何问题可以到本博客下进行讨论，欢迎交流！
 	<a href="https://blog.csdn.net/u011676300/article/details/80276014">蓝莓商城项目交流</a>
 	</li>
@@ -206,6 +207,9 @@
 	<li>lanmei-seckill</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-seckill">
 		秒杀模块</a>
+	<li>lanmei-sysaop</li>
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-seckill">
+		系统Ａop处理</a>
 	<li>lanmei-task-scheduling</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-task-%20scheduling">
 		任务管理模块，使用quartz，还存在bug</a>
@@ -278,13 +282,21 @@
 		</ul>
 	</li>
 	<li>
-		AOP日志记录
+		AOP模块
 		<ul type="disc">
-			<li>使用AOP实现Controller层日志记录</li>
+			<li>１．日志记录模块</li>
+			<li>绑定的是切面注解，只有添加注解SyslogAnno才会监测</li>
 			<li>使用AOP的前置通知和异常通知</li>	
 			<li>记录访问类，描述，异常，时间等信息</li>
 			<li>相关信息持久化到数据库</li>
-			<li>并在进入Controller中的方法时打印请求路径</li>
+			<li>并在进入的方法时打印请求路径</li>
+			<li>２．方法执行时间监测模块</li>
+			<li>绑定的是切面注解，只有添加注解TimeMeasurementAnno才会监测</li>
+			<li>使用AOP的环绕通知</li>	
+			<li>记录方法，平均时间，当前时间，运行次数</li>
+			<li>相关信息持久化到数据库</li>
+			<li>使用＠Order注解控制两个AOP执行顺序.＠Order的值越低，优先级越高，越先执行</li>
+			<li>后续会增加后台实时查看和删除功能</li>
 		</ul>
 	</li>
 </ol>
@@ -303,7 +315,10 @@
 		<a  href="https://blog.csdn.net/u011676300/article/details/80086709">[蓝莓商城]使用Spring的mail API发送邮件</a>
 	</li>
 	<li>
-		<a  href="https://blog.csdn.net/u011676300/article/details/80313266">[蓝莓商城]使用Spring的mail API发送邮件</a>
+		<a  href="https://blog.csdn.net/u011676300/article/details/80313266">Java利用递归实现查找树的节点的所有子节点和所有的终结节点</a>
+	</li>
+	<li>
+		<a  href="https://blog.csdn.net/u011676300/article/details/80345152">使用wangEditor实现富文本编辑（后端为Java）</a>
 	</li>
 	
 	

@@ -129,7 +129,7 @@
 	<!-- MyBatis 动态实现:DAO接口所在包名,Spring会自动查找其下的类 -->
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 对Dao 接口动态实现,需要知道接口在哪 -->
-		<property name="basePackage" value="org.lanmei.**.dao.mapper,org.lanmei.common.syslog.mapper"/>
+		<property name="basePackage" value="org.lanmei.**.mapper,org.lanmei.sysaop.dao.syslog.mapper"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 

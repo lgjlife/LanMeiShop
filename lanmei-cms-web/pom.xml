@@ -64,7 +64,18 @@
      <artifactId>kaptcha</artifactId>  
      <version>2.3.2</version>  
    </dependency>  
-	
+   
+   <!-- aop -->
+  	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.sysaop.dao</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
+	<dependency>
+  		<groupId>org.lanmei.shop</groupId>
+  		<artifactId>org.lanmei.sysaop.service</artifactId>
+  		<version>${lanmei.version}</version>
+  	</dependency>
 		
   </dependencies>
   <build>

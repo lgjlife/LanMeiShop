@@ -9,5 +9,5 @@
   <artifactId>org.lanmei.commodity.dao</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>org.lanmei.commodity.dao</name>
-  <description>商品模块ＤＡＯ层</description>
+  <description>商品模块dao层</description>
 </project>
