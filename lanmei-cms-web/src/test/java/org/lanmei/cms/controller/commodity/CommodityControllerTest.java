@@ -54,7 +54,7 @@ public class CommodityControllerTest {
 	 * 获取节点数据　测试
 	 * @throws Exception
 	 */
-	@Test
+	//@Test
 	public void testGetTreeNode() throws Exception{
 		System.out.println("testGetTreeNode 开始进行测试");  
 		  
@@ -155,7 +155,26 @@ public class CommodityControllerTest {
                .andExpect(status().isOk())
                .andReturn();
 	}
+	/**
+	 * 获取商品列表
+	 * @throws Exception
+	 */
+	@Test
+	public void tesGetCommodityList() throws Exception{
+		System.out.println("tesGetCommodityList 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("id",0);
 	
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( get("/commodity/get/commodity/list")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
 	
 	
 	//@Test

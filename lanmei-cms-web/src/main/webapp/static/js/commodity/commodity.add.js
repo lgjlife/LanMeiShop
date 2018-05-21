@@ -136,17 +136,29 @@ $(function(){
 		$(".optionclass3").remove();
 		$("#threeCategoryInput").val("");
 	})
-
+    
 	/**
 	 * 从字符串中提取数字
 	 * 使用正则表达式
 	 */
 	function getNumByStr(str){
 		
-		var patt1 = /[0-9]+/;
-		return (str.match(patt1));
+		var regexp = /[0-9]+/;
+		return (str.match(regexp));
 	}
-	
+	$("#getBrandBtn").click(function(){
+		var res = getBrandByRegexp("49-坚果１");
+		console.log(res);
+	})
+	/**
+	 * 通过正则表达式去除数字和-
+	 * 输入 123--蓝莓321
+	 * 输出　蓝莓321
+	 */
+	function getBrandByRegexp(str){
+		var regexp =/^[0-9]+-+/g;
+	    return str.replace(regexp,"");
+	}
 	/**
 	 * 提交按钮
 	 */
@@ -158,23 +170,19 @@ $(function(){
 	 * 添加商品　Ajax 请求
 	 */
 	function addCommoditySubmit(){
-		var jsonData={"name":"","categoryId":"","title":"","referencePrice":"",
-				"activityPrice":"","description":""};
-		
-
+		var jsonData={"name":"","categoryId":"","brand":"","title":""};
 		jsonData.name = $("#productNameInput").val();
+		console.log("name = " + jsonData.name);
+		var idAndBrand = $("#threeCategoryInput").val();
 		//三级分类ＩＤ 品牌　ｉd
-		var str = $("#threeCategoryInput").val();
-		var  num = getNumByStr(str);
-		var id =  Number(num);
-		console.log("num = " + num);
-		console.log("str = " + str);
-		console.log("id = " + id);
-		jsonData.categoryId = id;
+		
+		var  num = getNumByStr(idAndBrand);
+		jsonData.categoryId =  Number(num);
+		//品牌
+		jsonData.brand = getBrandByRegexp(idAndBrand);
+		//显示标题
 		jsonData.title = $("#titleInput").val();
-		jsonData.referencePrice = $("#referencePriceInput").val();
-		jsonData.activityPrice = $("#activityPriceInput").val();
-		jsonData.description = $("#descriptionInput").val();		
+		console.log("title = " + JSON.stringify(jsonData));
 		$.ajax({
 	        type : "post",
 	        url : "/lanmei-cms/commodity/new/commodity",
@@ -188,7 +196,7 @@ $(function(){
 	        		
 	        	}
 	        	else{
-	        		$("#addCommoditySubmitWarn").text("");
+	        		$("#addCommoditySubmitWarn").text("创建商品成功！");
 	        	}
 	        }
 		 });

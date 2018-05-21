@@ -6,8 +6,16 @@
  * 4.　商行描述编辑
  * @returns
  */
-
+//公共变量
+var currentEditCommodityData = {"commodityId":"","brand":"","name":"","title":"","createBy":"",
+			"createTime":"","putOnSaleTime":"","putOffSaleTime":"","isPutOff":""};
+/**
+ * 商品查询列表展示
+ * @returns
+ */
 $(function(){
+	
+	
 	var categoryItem;
 	var hideCount = 0; //隐藏计数器
 	
@@ -19,7 +27,7 @@ $(function(){
 		console.log(" mainCategoryItem  mouse enter");
 		hideCount = 0;
 		categoryItem = "mainCategoryItem"; 
-		$("#dynamicProduceTable").show();
+		$("#categoryItemDiv").show();
 		$(".dynamicItemTd").remove();
 		getNodes(0);
 	})
@@ -33,7 +41,7 @@ $(function(){
 		console.log("id = " + id)
 		hideCount = 0;
 		categoryItem = "firstCategoryItem"; 
-		$("#dynamicProduceTable").show();
+		$("#categoryItemDiv").show();
 		$(".dynamicItemTd").remove();
 		getNodes(id);
 		
@@ -48,12 +56,12 @@ $(function(){
 		console.log("id = " + id)
 		hideCount = 0;
 		categoryItem = "secondCategoryItem"; 
-		$("#dynamicProduceTable").show();
+		$("#categoryItemDiv").show();
 		$(".dynamicItemTd").remove();
 		getNodes(id);
 	})
 	/**
-	 * 三级主类目鼠标放置事件
+	 * 三级类目鼠标放置事件
 	 * 
 	 */
 	$("#threeCategoryItem").mouseenter(function(){
@@ -64,7 +72,7 @@ $(function(){
 		
 		hideCount = 0;
 		categoryItem = "threeCategoryItem"; 
-		$("#dynamicProduceTable").show();
+		$("#categoryItemDiv").show();
 		$(".dynamicItemTd").remove();
 		getNodes(id);
 		
@@ -100,26 +108,51 @@ $(function(){
 	    	    		console.log(obj[j].name);
 	    	    	}
 	    	    	//产生动态元素
-	    	    	$("#tableTbody").append('<tr>' + tabletext + '</tr>');
+	    	    	$("#categoryItemTableTbody").append('<tr>' + tabletext + '</tr>');
 	    	    	tabletext = "";
 	    	     }
 	        }
 		 });
 	}
+	/**
+	 * 很据ｉd获取所有符合类的商品
+	 */
+	function getComodityList(id){
+		var jsonData={"id":""};
+		jsonData.id = id;	
+		$.ajax({
+	        type : "get",
+	        url : "/lanmei-cms/commodity/get/commodity/list",
+	        contentType : "application/x-www-form-urlencoded",
+	        data : jsonData,//JSON.stringify(jsonData),
+	        dataType: "text",
+	        success:function(data){
+	        	var jsonData = JSON.parse(data);
+	        	var commodityData = jsonData.data;
+	        
+	        	$("#commodityLisTableTbody").empty();
+	        	if(commodityData != null){
+	        		commodityDataDisplay(commodityData);
+	        	}
+	        	
+	        }
+		 });
+	}
 	/*
 	 * 事件绑定动态生成的元素
-	 * 
+	 * 选择类别
 	 * */
 	$(document).on('click','.dynamicItemTd',function(){
 		var name = $(this).text();
 		var value = $(this).attr("value");
+		getComodityList(value);
 		console.log("value = " + value);
 		if(categoryItem == "mainCategoryItem"){
 			$("#mainCategoryItem").text(name);		
 			$("#mainCategoryItem").attr('value',value);
 			$("#firstCategoryItem").text("所有");
 			$("#secondCategoryItem").text("所有");
-			$("#threeCategoryItem").text("所有");
+			$("#threeCategoryItem").text("所有");		
 		}
 		else if(categoryItem == "firstCategoryItem"){
 			$("#firstCategoryItem").text(name);		
@@ -141,6 +174,171 @@ $(function(){
 		}
 		
 	})	
+	/**
+	 * 商品数据　
+	 * 商品id , 商品品牌　,　商品名称，显示标题，创建人，创建时间，上架时间，下架时间，是否下架
+	 */
+	var  commodityData = [
+		{"commodityId":"1","brand":"华为","name":"P20","title":"全网通手机","createBy":"李白",
+		"createTime":"2018-05-19　14：00:00","putOnSaleTime":"2018-05-20　14：00:00","putOffSaleTime":"2018-06-19　14：00:00","isPutOff":"false"},
+		{"commodityId":"2","brand":"华为","name":"P30","title":"全网通手机","createBy":"张三",
+		"createTime":"2018-05-20　14：00:00","putOnSaleTime":"2018-05-21　14：00:00","putOffSaleTime":"2018-05-22　14：00:00","isPutOff":"true"}
+	];
+	/**
+	 * 展开查询列表
+	 */
+	$("#queryDisplayCtrlBtn").click(function(){	
+		if($("#queryDisplayCtrlBtn").text() == "展开查询列表"){
+			//收起状态－－＞展开状态
+			$("#queryDisplayCtrlBtn").text("收起查询列表");
+			$("#commodityLisTableTbody").empty();
+			//commodityDataDisplay(commodityData);
+			$("#commodityListModel").show();
+			 //getCommodityList(0, 1, 10);
+		}
+		else{
+			//展开状态－－＞收起状态
+			$("#queryDisplayCtrlBtn").text("展开查询列表");
+			$("#commodityListModel").hide();
+		}
+		
+	})
+	
+	/**
+	 * 表格显示商品数据　
+	 */
+	function commodityDataDisplay(commodityData){
+		var commodityDataDisPlayText;
+		console.log("commodityData = " + JSON.stringify(commodityData));
+		
+		for(var i = 0; i <  commodityData.length;i++ ){
+			//转换时间
+			var  date = new Date();
+			var  createTime = "";
+			var  putOffSaleTime = "";
+			var  putOnSaleTime = "";
+			
+			if(commodityData[i].createTime != null){
+				date.setTime(commodityData[i].createTime);
+				createTime =  date.Format("yyyy-MM-dd hh:mm:ss");	
+			}
+			if(commodityData[i].putOffSaleTime != null){
+				
+				date.setTime(commodityData[i].putOffSaleTime);
+				putOffSaleTime =  date.Format("yyyy-MM-dd hh:mm:ss"); 			
+			}
+			if(commodityData[i].putOnSaleTime != null){
+				date.setTime(commodityData[i].putOnSaleTime);
+				putOnSaleTime =  date.Format("yyyy-MM-dd hh:mm:ss"); 
+			}		
+			
+			//获取销售状态
+			var saleState = commodityData[i].saleState;
+			console.log(" saleState = " + saleState);
+			if(saleState == -1){
+				saleState = "未上架";
+			}
+			else if(saleState == 0){
+				saleState = "已上架";
+			}
+			else if(saleState == 1){
+				saleState = "已下架";
+			}
+			console.log(" saleState = " + saleState);
+			commodityDataDisPlayText = '<tr>'
+				+ '<td id="commodity-list-id">' + commodityData[i].commodityId + '</td>'
+				+ '<td id="commodity-list-brand">' + commodityData[i].brand + '</td>'
+				+ '<td id="commodity-list-name">' + commodityData[i].name + '</td>'
+				+ '<td id="commodity-list-title">' + commodityData[i].title + '</td>'
+				+ '<td id="commodity-list-createBy">' + commodityData[i].createBy + '</td>'
+				+ '<td id="commodity-list-createTime" value="' + commodityData[i].createTime + '">' + createTime + '</td>'
+				+ '<td id="commodity-list-putOffSaleTime" value="' + commodityData[i].putOffSaleTime + '">' + putOffSaleTime + '</td>'
+				+ '<td id="commodity-list-putOnSaleTime" value="' + commodityData[i].putOnSaleTime + '">' + putOnSaleTime + '</td>'
+				+ '<td id="commodity-list-isPutOff">' + saleState + '</td>'
+				+ '<td>' + '<button class="commodityListEditBtn">编辑</button>' 
+				+ '<button class="commodityListDeleteBtn">删除</button>'+ '</td>'
+				+ '</tr>';
+			
+			$("#commodityLisTableTbody").append(commodityDataDisPlayText);
+		}
+		
+	}
+	/**
+     * 绑定动态元素 编辑按钮
+     */
+     $(document).on('click','.commodityListEditBtn',function(){
+    	 //获取父及元素
+    	var $parent = $(this).parent().parent();
+    	//
+    	
+    	 //获取值
+    	currentEditCommodityData.commodityId = $parent.find('#commodity-list-id').text();
+    	currentEditCommodityData.brand = $parent.find('#commodity-list-brand').text();
+    	currentEditCommodityData.name = $parent.find('#commodity-list-name').text();
+    	currentEditCommodityData.title = $parent.find('#commodity-list-title').text();
+    	currentEditCommodityData.createBy = $parent.find('#commodity-list-createBy').text();
+    	currentEditCommodityData.createTime = $parent.find('#commodity-list-createTime').text();
+    	currentEditCommodityData.putOffSaleTime = $parent.find('#commodity-list-putOffSaleTime').text();
+    	currentEditCommodityData.putOnSaleTime = $parent.find('#commodity-list-putOnSaleTime').text();
+    	currentEditCommodityData.isPutOff = $parent.find('#commodity-list-isPutOff').text();
+   	    console.log("attrData = " + JSON.stringify(currentEditCommodityData));
+   	 
+   	    $("#commodityEditModel").show();
+		
+   	    var titleText = "当前编辑的商品为:" + "编号：" + currentEditCommodityData.commodityId
+			+ "  名称：" + currentEditCommodityData.name;
+   	    $("#commodityEditModelTitle").empty();
+		$("#commodityEditModelTitle").append(titleText);
+		
+     })
+     /**
+     * 绑定动态元素 删除按钮
+     */
+     $(document).on('click','.commodityListDeleteBtn',function(){
+    	 //获取父及元素
+    	var $parent = $(this).parent().parent();
+
+    	 //获取值
+    	var id = $parent.find('#commodity-list-id').text();
+    	
+    	deleteCommodity(id);
+    	
+     })
+     /**
+ 	 * 很据商品id删除商品
+ 	 */
+ 	function deleteCommodity(id){
+ 		var jsonData={"id":""};
+ 		jsonData.id = id;	
+ 		$.ajax({
+ 	        type : "get",
+ 	        url : "/lanmei-cms/commodity/delete/commodity",
+ 	        contentType : "application/x-www-form-urlencoded",
+ 	        data : jsonData,//JSON.stringify(jsonData),
+ 	        dataType: "text",
+ 	        success:function(data){
+ 	        	
+ 	        	
+ 	        }
+ 		 });
+ 	}
+	/**
+	 * 从服务器获取商品列表
+	 * 
+	 */
+	function  getCommodityList(categoryPid, page, everyPageCount){
+		var jsonData = {"categoryPid":"","page":"","everyPageCount":"",};
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/get/list",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        }
+		 });
+	}
 	
 	/**
 	 * 通过商品获取商品　列表
@@ -166,8 +364,9 @@ $(function(){
 	 $(document).on("click", function(){
 	        
 	       hideCount++;
+	       console.log("hideCount = " + hideCount );
 	       if(hideCount >= 1){
-	        	$("#dynamicProduceTable").hide();
+	        	$("#categoryItemDiv").hide();
 	        }
 	 });
 	
@@ -192,6 +391,72 @@ $(function(){
 			$("#baseInfoBtn").text("编辑");
 		}		
 	})
+	
+	
+})
+/**
+ * SKU属性处理
+ * @returns
+ */
+$(function(){
+	var SkuInfoData =[
+		{"skuId":"1","name":"颜色","attr":"亮黑色","price":"","stock":""},
+		{"skuId":"2","name":"颜色","attr":"宝石蓝","price":"","stock":""},
+		{"skuId":"3","name":"颜色","attr":"极光色","price":"","stock":""},
+		{"skuId":"4","name":"颜色","attr":"樱粉金","price":"","stock":""},
+		{"skuId":"5","name":"颜色","attr":"香槟金","price":"","stock":""}
+		];
+	/**
+     * 点击展开按钮处理
+     * 展开请求ＳＫＵ数据
+     */
+    $("#skuInfoEditDispalyCtrlBtn").click(function(){
+   	
+    	if($("#attrInfoEditDispalyCtrlBtn").text() == "展开"){
+    		$("#attrInfoEditDispalyCtrlBtn").text("收起");
+    		$("#skuInfoEditDispalyCtrl").show();
+    		console.log("attrInfoEditDispalyCtrlBtn 展开");
+    		//向服务端请求数据
+    		//getSkuInfoFromServer(commodityId);
+    		
+    		
+    	}
+    	//　展开状态－－－＞收起状态
+    	else if($("#attrInfoEditDispalyCtrlBtn").text() == "收起"){
+    		$("#attrInfoEditDispalyCtrlBtn").text("展开");
+    		$("#skuInfoEditDispalyCtrl").hide();
+    		console.log("attrInfoEditDispalyCtrlBtn 关闭");
+    	}
+    })
+    /**
+     * 从服务器获取sku属性
+     * ＠Ｐaram : commodityId 商品ID
+     */
+    function getSkuInfoFromServer(commodityId){
+    	
+    	var jsonData = {"commodityId":""};
+		jsonData.commodityId = commodityId;
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/get/sku/info",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        }
+		 });
+    }
+    /**
+     *　动态生成元素
+     *　显示ＳＫＵ属性
+     */
+    function displaySkuInfo(SkuInfoData){
+    	
+    //	var skuInfoText = 
+    }
+
+    
 	/**
 	 * ＳＫＵ属性编辑显示切换
 	 */
@@ -207,11 +472,192 @@ $(function(){
 			$("#skuInfoBtn").text("编辑");
 		}		
 	})
+})
+/**
+ * 商品属性处理操作
+ * @returns
+ */
+$(function(){
+	
+	var attrData = [{"attrId":"1","category":"包装清单","attName":"包装清单","attVal":"手机x1、快速指南x1"},
+			{"attrId":"2","category":"主体","attName":"品牌","attVal":"华为(HUAWEI)"},
+			{"attrId":"3","category":"系统","attName":"手机操作系统","attVal":"Android"},
+			{"attrId":"4","category":"系统","attName":"系统版本","attVal":"华为EMUI 8.1"},
+			{"attrId":"5","category":"网络","attName":"4G网络制式","attVal":"移动4G,联通4G,电信4G"},];
+	
+	 /**
+     * 点击展开按钮处理
+     */
+    $("#attrInfoEditDispalyCtrlBtn").click(function(){
+   	
+    	if($("#attrInfoEditDispalyCtrlBtn").text() == "展开"){
+    		$("#attrInfoEditDispalyCtrlBtn").text("收起");
+    		$("#attrInfoEditDispalyCtrl").show();
+    		console.log("attrInfoEditDispalyCtrlBtn 展开");
+    		//向服务端请求数据
+        	//var commodityId = 
+        	//getＡttrInfo(commodityId);
+    		//$("#attrInfoEditDispalyCtrl").show();
+    		
+    		displayAttr(attrData);
+    	}
+    	//　展开状态－－－＞收起状态
+    	else if($("#attrInfoEditDispalyCtrlBtn").text() == "收起"){
+    		$("#attrInfoEditDispalyCtrlBtn").text("展开");
+    		$("#attrInfoEditDispalyCtrl").hide();
+    		console.log("attrInfoEditDispalyCtrlBtn 关闭");
+    	}
+    })
+   /*
+    * 排序规则
+    */
+    function sortCategory(a,b){  
+         return a.category.localeCompare(b.category,'zh');
+    }
+    /**
+     * 显示属性列表．先排序，，再显示
+     */
+    function displayAttr(data){
+    	//console.log("data.length = " + data.length);
+    	$("#attrInfoTableTbody").empty();
+    	
+    //	console.log("排序前=" + JSON.stringify(data));
+    	data.sort(sortCategory);
+    	//console.log("排序后=" + JSON.stringify(data));
+    	
+    	for(var i =  0;i < data.length ;i++ ){
+    		
+    		var text = '<tr class="attrDisplayList"><td id="attrId" style="display:none">'+data[i].attrId +'</td>'
+    				+ '<td id="category">' + data[i].category + '</td>'
+    				+ '<td id="attName">' + data[i].attName + '</td>'
+    				+ '<td id="attVal">' + data[i].attVal + '</td>'
+    				+ '<td>' + '<button type="button" class="attrInfoEditBtn">编辑</button>'
+    				+ '<button type="button" class="attrInfoDeleteBtn">删除</button>' + '</td>'
+    				+ '</tr>';
+    	//	console.log("text = " + text);
+    		
+    		$("#attrInfoTableTbody").append(text);
+    		
+    	}
+    }
+   
+    /**
+     * 绑定动态元素 编辑按钮
+     */
+     $(document).on('click','.attrInfoEditBtn',function(){
+    	 //获取父及元素
+    	var $attrDisplayList = $(this).parent().parent();
+    	console.log("$attrDisplayList = " + $attrDisplayList);
+    	 //获取值
+    	var attrData = {"attrId":"","category":"","attName":"","attVal":""};
+    	attrData.attrId = $attrDisplayList.find('#attrId').text();
+    	attrData.category = $attrDisplayList.find('#category').text();
+    	attrData.attName = $attrDisplayList.find('#attName').text();
+   	 	attrData.attVal = $attrDisplayList.find('#attVal').text();
+   	    console.log("attrData = " + JSON.stringify(attrData));
+   	    
+   	   //显示
+   	    $("#attrInfoDisplayMode").hide();
+		$("#attrInfoEditMode").show();
+		$("#attrInfoBtn").text("返回");
+		//填充
+		$("#attrInfo-attrId").val(attrData.attrId);
+		$("#attrInfo-category").val(attrData.category);
+		$("#attrInfo-attName").val(attrData.attName);
+		$("#attrInfo-attVal").val(attrData.attVal);
+		
+    	
+     })
+     /**
+      * 提交按钮,提交更新请求
+      */
+     $("#attrInfoSubmitBtn").click(function(){
+    	 
+    	 var attrData = {"attrId":"","category":"","attName":"","attVal":""};
+         attrData.attrId = $("#attrInfo-attrId").val();
+         attrData.category = $("#attrInfo-category").val();
+         attrData.attName = $("#attrInfo-attName").val();
+         attrData.attVal = $("#attrInfo-attVal").val();
+    	 	
+    	 editAttribution(attrData);
+    })
+     /**
+     * 绑定动态元素 删除按钮
+     */
+     $(document).on('click','.attrInfoDeleteBtn',function(){
+    	 //获取父及元素
+    	var $attrDisplayList = $(this).parent().parent();
+    	console.log("$attrDisplayList = " + $attrDisplayList);
+    	 //获取值
+    	var attrData = {"attrId":"","category":"","attName":"","attVal":""};
+    	attrData.attrId = $attrDisplayList.find('#attrId').text();
+    	attrData.category = $attrDisplayList.find('#category').text();
+    	attrData.attName = $attrDisplayList.find('#attName').text();
+   	 	attrData.attVal = $attrDisplayList.find('#attVal').text();
+   	    var result = confirm("是否确认删除" + "属性名称为[" + attrData.attName + "]的条目?" );
+   	    console.log("result = " + result);
+   	    //发送删除请求
+   	    deleteAttribution(attrData.attrId);
+     })
+    
+    /*－－－－－－－－－－－－－－－－－Ajax　请求－－－－－－－－－－－－－－－－－－*/
+     //根据商品id获取商品属性
+     //根据属性id修改属性
+     //根据属性id删除属性
+    /**
+     * 通过商品id 向服务端请求商品属性
+     */
+    function getAttribution(commodityId){
+    	var jsonData = {"commodityId":""};
+		jsonData.commodityId = commodityId;
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/get/attribution",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        }
+		 });
+    }
+    /**
+     * 通过属性id向服务端发送商品属性(编辑现有的属性)
+     */
+    function editAttribution(attrData){
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/edit/attribution",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(attrData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        }
+		 });
+    }
+    /**
+     * 通过属性id删除商品属性(编辑现有的属性)
+     */
+    function deleteAttribution(attrId){
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/delete/attribution",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	
+	        }
+		 });
+    }
+    
+    
 	/**
 	 * 商品属性编辑显示切换
 	 */
 	$("#attrInfoBtn").click(function(){
-		if($("#attrInfoBtn").text() == "编辑"){
+		if($("#attrInfoBtn").text() == "添加属性"){
 			$("#attrInfoDisplayMode").hide();
 			$("#attrInfoEditMode").show();
 			$("#attrInfoBtn").text("返回");
@@ -219,11 +665,10 @@ $(function(){
 		else if($("#attrInfoBtn").text() == "返回"){
 			$("#attrInfoDisplayMode").show();
 			$("#attrInfoEditMode").hide();
-			$("#attrInfoBtn").text("编辑");
+			$("#attrInfoBtn").text("添加属性");
 		}		
 	})
 })
-
  /*
   * 商品详情查看和编辑
   *　富文本编辑器操作相关
@@ -238,22 +683,70 @@ $(function(){
     editor.customConfig.uploadFileName = 'img';
     //创建编辑器
     editor.create();
+    /**
+     * 向服务端获取商品详情内容
+     */
     $("#descriptionSubmitBtn").click(function(){
     	var  descriptionInfo = editor.txt.html();
-    	uploadEditorText(descriptionInfo,commodityId);
+    	uploadDescription(descriptionInfo,commodityId);
     })
-    function uploadEditorText(descriptionInfo,commodityId){
+    /**
+     * 向服务端读取商品详情内容
+     */
+    $("#descriptionInfoEditDispalyCtrlBtn").click(function(){
+   	
+    	if($("#descriptionInfoEditDispalyCtrlBtn").text() == "展开"){
+    		$("#descriptionInfoEditDispalyCtrlBtn").text("收起");
+    		//向服务端请求数据
+    		var  descriptionInfo = editor.txt.html();
+        	//var commodityId = 
+        	getDescription(commodityId);
+    		$("#descriptionInfoEditDispalyCtrl").show();
+    	}
+    	//　展开状态－－－＞收起状态
+    	else if($("#descriptionInfoEditDispalyCtrlBtn").text() == "收起"){
+    		$("#descriptionInfoEditDispalyCtrlBtn").text("展开");
+    		$("#descriptionInfoEditDispalyCtrl").hide();
+    	}
+    })
+    /**
+     * 向服务端发送商品详情
+     */
+    function uploadDescription(descriptionInfo,commodityId){
     	var jsonData = {"descriptionInfo":"","commodityId":""};
 		jsonData.descriptionInfo = descriptionInfo;
 		jsonData.commodityId = commodityId;
 		$.ajax({
 	        type : "post",
-	        url : "/lanmei-cms/commodity/new/commodity",
+	        url : "/lanmei-cms/commodity/edit/description",
 	        contentType : "application/json;charset=utf-8",
 	        data : JSON.stringify(jsonData),
 	        dataType: "json",
 	        success:function(data){
-	    
+	        	
+	        }
+		 });
+    }
+    /**
+     * 向服务端获取商品详情
+     */
+    function getDescription(commodityId){
+    	var jsonData = {"commodityId":""};
+		jsonData.commodityId = commodityId;
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/get/description",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	if(data.success == "true"){
+	        		//清空显示
+					$("#descriptionDisplayMode").empty();
+					//显示编辑器的内容
+					$("#descriptionDisplayMode").prepend(data.data);
+	        	}
+	        	
 	        }
 		 });
     }
@@ -261,11 +754,17 @@ $(function(){
      * 切换显示和编辑状态处理
      */
     $("#descriptionInfoBtn").click(function(){
+    	//显示状态－－－＞编辑状态
 		if($("#descriptionInfoBtn").text() == "编辑"){
 			$("#descriptionDisplayMode").hide();
 			$("#descriptionEdiMode").show();
 			$("#descriptionInfoBtn").text("返回");
+			//获取显示页面的Ｈtml
+			var html = $("#descriptionDisplayMode").html();
+			//设置编辑框内容
+			editor.txt.html(html);
 		}
+		//　编辑状态－－－＞显示状态
 		else if($("#descriptionInfoBtn").text() == "返回"){
 			$("#descriptionDisplayMode").show();
 			$("#descriptionEdiMode").hide();
@@ -289,3 +788,19 @@ $(function(){
     	 alert(editor.txt.text());
     })
 })
+Date.prototype.Format = function (fmt) { //author: meizz
+var o = {
+"M+": this.getMonth() + 1, //月份
+"d+": this.getDate(), //日
+"h+": this.getHours(), //小时
+"m+": this.getMinutes(), //分
+"s+": this.getSeconds(), //秒
+"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+"S": this.getMilliseconds() //毫秒
+};
+console.log("o.getHours = " + this.getHours() );
+if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+for (var k in o)
+if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+return fmt;
+}

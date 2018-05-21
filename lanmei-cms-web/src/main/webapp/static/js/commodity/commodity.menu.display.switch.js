@@ -7,7 +7,7 @@ $(function(){
 		$(".commopdityManagerPageDiplay").hide();
 		$("#categoryManagerItemPage").show();
 	});
-	/*查询商品*/
+	/*查询编辑商品*/
 	$("#commodityQueryItem").click(function(){
 		$(".commopdityManagerPageDiplay").hide();
 		$("#commodityQueryItemPage").show();

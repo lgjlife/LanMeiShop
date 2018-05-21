@@ -3,12 +3,13 @@ package org.lanmei.commodity.service;
 import java.util.List;
 import java.util.Map;
 
+import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.common.enums.CommodityState;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-public interface AddCommodityService {
+public interface CommodityEditService {
 
 	/**
 	 * 增加商品
@@ -37,4 +38,17 @@ public interface AddCommodityService {
 	 * @return
 	 */
 	CommodityState checkName(Map<String,Object> map);
+	
+	/**
+	 * 通过分类id 获取商品列表
+	 * @return
+	 */
+	List<Commodity>  getComodityList(Integer id);
+	
+	/**
+	 * 通过商品id删除商品
+	 * @return
+	 */
+	CommodityState  deleteComodity(Integer id);
+	
 }

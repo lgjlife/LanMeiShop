@@ -173,6 +173,12 @@ public class CommodityClassification {
 		this.remarks = remarks;
 	}
 
+	public CommodityClassification(Integer id, Integer pid) {
+		super();
+		this.id = id;
+		this.pid = pid;
+	}
+
 	public CommodityClassification() {
 		super();
 	}

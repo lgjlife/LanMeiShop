@@ -96,10 +96,10 @@
 						</div>
 						
 						<div id="commodityManager" class="collapse">
-							<span class="detaileList" id="categoryManagerItem">类别管理</span>	
-							<span class="detaileList" id="commodityQueryItem">查询商品</span>	
-							<span class="detaileList" id="addCommodityItem">增添商品</span>		
-							<span class="detaileList" id="deleteCommodityItem">删除商品</span>	
+							<span class="detaileList" id="categoryManagerItem">类别管理</span>							
+							<span class="detaileList" id="addCommodityItem">增添商品</span>
+							<span class="detaileList" id="commodityQueryItem">编辑商品</span>										
+							<!-- <span class="detaileList" id="deleteCommodityItem">删除商品</span>	 -->
 						</div>
 					</div>
 					<!--数据管理-->

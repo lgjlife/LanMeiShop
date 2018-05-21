@@ -2,6 +2,7 @@ package org.lanmei.commodity.dao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanmei.commodity.dao.model.Commodity;
 import org.springframework.stereotype.Repository;
 
@@ -39,4 +40,6 @@ public interface CommodityMapper {
 	int updateByPrimaryKey(Commodity record);
 
 	Commodity selectByName(String name);
+	
+	List<Commodity> selectByCategoryId(@Param("categoryIdList") List<Integer> categoryIdList );
 }

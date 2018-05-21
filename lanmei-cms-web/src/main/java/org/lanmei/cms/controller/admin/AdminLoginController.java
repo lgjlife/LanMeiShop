@@ -71,7 +71,7 @@ public class AdminLoginController {
 	 * 进入登录页面
 	 * @return
 	 */
-	@ApiOperation(value="/login",notes="进入登录页面",httpMethod="GET")
+	@ApiOperation(value="/",notes="进入登录页面",httpMethod="GET")
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView login(){
 		logger.debug("into /login  get");
@@ -94,9 +94,9 @@ public class AdminLoginController {
 	 */
 
 	@ResponseBody
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(path="/in",method=RequestMethod.POST)
 	public JSONObject login(@RequestBody Map<String, Object> requestJsonMap){
-		logger.debug("into /login  post");
+		logger.debug("into /login/in  post");
 		
 		Map<String,Object> retmap = new HashMap<String,Object>();
 		

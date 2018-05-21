@@ -3,6 +3,7 @@ package org.lanmei.sysaop.syslog.aspect;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -202,7 +203,8 @@ public class SysLogAspect {
             Object[] arguments = joinPoint.getArgs();    
             Class targetClass = Class.forName(targetName);    
           
- 
+            logger.debug("methodName　＝　" + methodName);
+            logger.debug("targetClass　＝　" + targetClass);
             Method method = targetClass.getMethod(methodName); 
             logger.debug("method　＝　" + method);
             String description = method.getAnnotation(SyslogAnno.class).description();  

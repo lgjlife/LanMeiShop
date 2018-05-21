@@ -6,19 +6,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
+import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dto.ClassificationDto;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
-import org.lanmei.commodity.service.AddCommodityService;
 import org.lanmei.commodity.service.ClassificationService;
+import org.lanmei.commodity.service.CommodityEditService;
 import org.lanmei.common.enums.CommodityState;
 import org.lanmei.sysaop.syslog.anno.SyslogAnno;
+import org.lanmei.sysaop.time_measurement.anno.TimeMeasurementAnno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +34,7 @@ public class CommodityController {
 	@Autowired
 	ClassificationService classificationService;
 	@Autowired
-	AddCommodityService   addCommodityService;
+	CommodityEditService   commodityEditService;
 	
 	@Autowired
 	private  HttpServletRequest request;
@@ -145,7 +148,7 @@ public class CommodityController {
 		
 		logger.debug("commodityId = " + commodityId);
 		CommodityState commodityState 
-				= addCommodityService.upLoadImg(files, imgUploadAbsolutePath, 
+				= commodityEditService.upLoadImg(files, imgUploadAbsolutePath, 
 						                        imgUploadRelativePath,commodityId);
 		
 		CommodityResultDto<CommodityState> commodityResultDto 
@@ -161,7 +164,7 @@ public class CommodityController {
 		
 		//logger.debug("commodityId = " + commodityId);
 		ImgResultDto imgResult
-				= addCommodityService.upLoadEditorImg(list, imgUploadAbsolutePath, 
+				= commodityEditService.upLoadEditorImg(list, imgUploadAbsolutePath, 
 						                        imgUploadRelativePath,1);
 			return imgResult;			
 	}
@@ -176,19 +179,50 @@ public class CommodityController {
 	@RequestMapping(path="/new/commodity")
 	public CommodityResultDto newCommodity(@RequestBody Map<String,Object> requestMap) {
 		logger.debug("into /new/commodity");
-		CommodityState commodityState = addCommodityService.addCommodity(requestMap);
+		CommodityState commodityState = commodityEditService.addCommodity(requestMap);
 		
 		CommodityResultDto<CommodityState> commodityResultDto 
 		= new CommodityResultDto<CommodityState>(true,commodityState);
 			return commodityResultDto;	
 
 	}
+	/**
+	 * 
+	 * 获取商品列表请求
+	 */
+	//@TimeMeasurementAnno(description="获取商品列表请求",layer="Controller")
+	//@SyslogAnno(description="获取商品列表请求",layer="Controller")
+	@ResponseBody
+	@RequestMapping(path="/get/commodity/list",method=RequestMethod.GET)
+	public CommodityResultDto getCommodityList(@RequestParam("id") Integer id) {//(@RequestBody Map<String,Object> requestMap) {
+		
+		//Integer id = (Integer)requestMap.get("id");
+		logger.debug("id = " + id);
+		List<Commodity> commodity = commodityEditService.getComodityList(id);
+		CommodityResultDto<List> commodityResultDto 
+		= new CommodityResultDto<List>(true,commodity);
+			return commodityResultDto;	
+
+	}
+	@ResponseBody        
+	@RequestMapping(path="/delete/commodity",method=RequestMethod.GET)
+	public CommodityResultDto deleteCommodity(@RequestParam("id") Integer id) {//(@RequestBody Map<String,Object> requestMap) {
+		
+		//Integer id = (Integer)requestMap.get("id");
+		logger.debug("id = " + id);
+		CommodityState commodityState = commodityEditService.deleteComodity(id);
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+			return commodityResultDto;	
+
+	}
+	
 
 	@ResponseBody
 	@RequestMapping(path="/check/name")
 	public CommodityResultDto checkName(@RequestBody Map<String,Object> requestMap) {
 		
-		CommodityState commodityState = addCommodityService.checkName(requestMap);
+		CommodityState commodityState = commodityEditService.checkName(requestMap);
 		
 		CommodityResultDto<CommodityState> commodityResultDto 
 		= new CommodityResultDto<CommodityState>(true,commodityState);
@@ -198,13 +232,78 @@ public class CommodityController {
 
 	@ResponseBody
 	@RequestMapping(path="/set/content")
-	public void setCOntent(@RequestBody Map<String,Object> requestMap) {
+	public void setContent(@RequestBody Map<String,Object> requestMap) {
 		logger.debug("into /set/content ");
 		String content = (String)requestMap.get("content");
 		System.out.println(content);
 
 	}
+	/**
+	 * 编辑商品描述
+	 * @param requestMap
+	 */
+	@SyslogAnno(layer="Controller",description="编辑商品详情")
+	@TimeMeasurementAnno(layer="Controller",description="编辑商品详情")
+	@ResponseBody
+	@RequestMapping(path="/edit/description",method=RequestMethod.POST)
+	public CommodityResultDto editDescription(@RequestBody Map<String,Object> requestMap) {
+		
+		
+		
+		return null;
+
+	}
+	/**
+	 * 获取商品描述
+	 * @param requestMap
+	 */
+	@SyslogAnno(layer="Controller",description="获取商品详情")
+	@TimeMeasurementAnno(layer="Controller",description="获取商品详情")
+	@ResponseBody
+	@RequestMapping(path="/get/description")
+	public CommodityResultDto getDescription(@RequestBody Map<String,Object> requestMap){	
+		
+		return null;
+	}
 	
+	/**
+	 * 编辑商品商品属性
+	 * @param requestMap
+	 */
+	@SyslogAnno(layer="Controller",description="编辑商品属性")
+	@TimeMeasurementAnno(layer="Controller",description="编辑商品属性")
+	@ResponseBody
+	@RequestMapping(path="/edit/attribution",method=RequestMethod.POST)
+	public CommodityResultDto editAttribution(@RequestBody Map<String,Object> requestMap) {
+		
+		
+		
+		return null;
+
+	}
+	/**
+	 * 获取商品描述
+	 * @param requestMap
+	 */
+	@SyslogAnno(layer="Controller",description="获取商品属性")
+	@TimeMeasurementAnno(layer="Controller",description="获取商品属性")
+	@ResponseBody
+	@RequestMapping(path="/get/attribution")
+	public CommodityResultDto getAttribution(@RequestBody Map<String,Object> requestMap){	
+		
+		return null;
+	}
 	
-	
+	/**
+	 * 获取商品sku属性
+	 * @param requestMap
+	 */
+	@SyslogAnno(layer="Controller",description="获取商品sku属性")
+	@TimeMeasurementAnno(layer="Controller",description="获取商品sku属性")
+	@ResponseBody
+	@RequestMapping(path="/get/sku")
+	public CommodityResultDto getSkuInfo(@RequestBody Map<String,Object> requestMap){	
+		
+		return null;
+	}
 }

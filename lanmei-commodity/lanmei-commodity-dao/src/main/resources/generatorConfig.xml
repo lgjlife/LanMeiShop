@@ -75,6 +75,10 @@
         <table tableName="commodity_reviews">
       	  <generatedKey column="reviews_id" sqlStatement="MySql" type="post" identity="true"/>    
         </table> 
+        <!-- 商品sku集合表 -->
+        <table tableName="commodity_sku_collect">
+      	  <generatedKey column="sku_collect_id" sqlStatement="MySql" type="post" identity="true"/>    
+        </table> 
          <!-- 商品sku表 -->
         <table tableName="commodity_sku">
       	  <generatedKey column="sku_id" sqlStatement="MySql" type="post" identity="true"/>    

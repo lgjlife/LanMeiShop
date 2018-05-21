@@ -45,13 +45,11 @@ $(function(){
 			/*jsonData.phoneNum = "phoneNum";
 			jsonData.phoneNumValidate = "phoneNumValidate";
 			jsonData.password = "loginPassword";*/
-			
+			console.log("url == login/in")
 			$.ajax({
 		        type : "post",
-		        url : "login",
+		        url : "login/in",
 		        contentType : "application/json;charset=utf-8",
-		        //数据格式是json串,传进一个person
-				/*data :'{"phoneNum" : ${phoneNum},"loginPassword": "password","phoneNumValidate":"phoneNumValidate"}',*/
 		        data : JSON.stringify(jsonData),
 		        dataType: "json",
 		        success:function(data){

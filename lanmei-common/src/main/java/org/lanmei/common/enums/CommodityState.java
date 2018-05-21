@@ -21,5 +21,8 @@ public enum CommodityState {
 	ADD_COMMODITY_IMG_FAIL,           //添加商品图片失败
 	
 	COMMODITY_NAME_REPEAT ,            //商品名称重复
-	COMMODITY_NAME_NOT_REPEAT          //商品名称未重复
+	COMMODITY_NAME_NOT_REPEAT,          //商品名称未重复
+	
+	COMMODITY_DELETE_SUCCESS ,            //商品名称重复
+	COMMODITY_DELETE_FAIL          //商品名称未重复
 }

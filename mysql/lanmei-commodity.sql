@@ -23,17 +23,24 @@ CREATE TABLE `commodity`(
 	`commodity_id` INT  AUTO_INCREMENT COMMENT "商品ID",
 	`category_id` INT COMMENT "商品类别id 三级分类　品牌",
 	`name` VARCHAR(50) COMMENT "商品名称",
+	`brand` VARCHAR(50) COMMENT "商品品牌",
 	`title` VARCHAR(150) COMMENT "显示标题",
-	`reference_price`  FLOAT COMMENT "参考价格",
-	`activity_price` FLOAT COMMENT "活动价格",
-	`description` VARCHAR(255) COMMENT "商品简介",
+	`description` LONGTEXT COMMENT "商品简介",
 	`create_by` VARCHAR(20) COMMENT "创建人",
 	`create_time` DATETIME COMMENT "创建时间",
 	`put_on_sale_time` DATETIME COMMENT "上架时间",
 	`put_off_sale_time` DATETIME COMMENT "下架时间",
-	`is_put_off` VARCHAR(20) DEFAULT "false" COMMENT "是否下架标志位",
+	`sale_state` TINYINT  DEFAULT -1 COMMENT "销售状态: -1:新建商品，０:　已经上架，正在销售，１：已经下架，停止销售",
 	PRIMARY KEY (`commodity_id`)	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品表";
+LOCK TABLES `commodity` WRITE;
+/*!40000 ALTER TABLE `commodity` DISABLE KEYS */;
+INSERT INTO `commodity` VALUES (1,48,'魅蓝note6','魅蓝','魅蓝旗舰机',NULL,'测试用户','2018-05-22 00:33:05',NULL,NULL,-1),
+(2,49,'坚果R1','坚果','坚果旗舰机',NULL,'测试用户','2018-05-22 00:33:40',NULL,NULL,-1),
+(3,85,'跑步鞋　fly','阿迪达斯','跑步鞋，轻便！',NULL,'测试用户','2018-05-22 00:34:48',NULL,NULL,-1);
+/*!40000 ALTER TABLE `commodity` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /*商品分类关联表*/
 DROP TABLE IF  EXISTS `commodity_classification_association`;
 CREATE TABLE `commodity_classification_association`(
@@ -101,6 +108,18 @@ CREATE TABLE `commodity_reviews`(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品评价表";
 
 /**
+ * sku集合表
+ */
+DROP TABLE IF  EXISTS `commodity_sku_collect`;
+CREATE TABLE `commodity_sku_collect`(
+	`sku_collect_id` INT AUTO_INCREMENT COMMENT "sku 集合 ID",
+	`commodity_id` INT   COMMENT "商品ID",
+	`price` DOUBLE COMMENT "价格",
+	`stock` INT COMMENT "库存",
+	PRIMARY KEY (`sku_collect_id`)	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品SKU集合表";
+
+/**
  * SKU表设计
  * sku_id          sku表id
  * commodity_id    商品id
@@ -109,23 +128,22 @@ CREATE TABLE `commodity_reviews`(
  * price          　价格
  * stock          　库存
  * image_id        sku表与图片表，不同的sku属性会有不同的展示图片
- * ｜sku_id｜commodity_id｜sku_name｜attr｜price｜stock｜image_id｜
- * ｜１　　　｜１　　　　　　｜颜色　　　｜红色　｜99　　｜100　｜101　　　｜
- * ｜２　　　｜１　　　　　　｜颜色　　　｜黄色　｜99　　｜100　｜101　　　｜
- * ｜３　　　｜１　　　　　　｜颜色　　　｜黑色　｜99　　｜100　｜101　　　｜
- * ｜４　　　｜１　　　　　　｜颜色　　　｜蓝色　｜99　　｜100　｜101　　　｜
+ * ｜sku_id｜commodity_id｜sku_name｜attr｜
+ * ｜１　　　｜１　　　　　　｜颜色　　　｜红色　｜
+ * ｜２　　　｜１　　　　　　｜颜色　　　｜黄色　｜
+ * ｜３　　　｜１　　　　　　｜颜色　　　｜黑色　｜
+ * ｜４　　　｜１　　　　　　｜颜色　　　｜蓝色　｜
  * 每一个款式可以添加五张照片和一张跟随属性值的照片
  */
 DROP TABLE IF  EXISTS `commodity_sku`;
 CREATE TABLE `commodity_sku`(
 	`sku_id` INT  AUTO_INCREMENT COMMENT "sku ID",
-	`commodity_id` INT   COMMENT "商品ID",
-	`name` VARCHAR(10) COMMENT "名称:颜色/样式／款式等",
+	`sku_collect_id` INT   COMMENT "商品ID",
+	`name` VARCHAR(10) COMMENT "名称:颜色/样式／款式/尺寸等",
 	`attr`  VARCHAR(30) COMMENT "属性值",
-	`price` DOUBLE COMMENT "价格",
-	`stock` INT COMMENT "库存",
 	PRIMARY KEY (`sku_id`)	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品SKU表";
+
 /**
  * 商品图片,用于列表展示商品显示的图片
  * 或者商品详情页标题处展示的图片
@@ -160,7 +178,7 @@ CREATE TABLE `commodity_image`(
 DROP TABLE IF  EXISTS `commodity_attr`;
 CREATE TABLE `commodity_attr`(
 	`attr_id` INT  AUTO_INCREMENT COMMENT "属性ID",
-	`sku_id` INT   COMMENT "SKU ID",
+	`commodity_id` INT   COMMENT "SKU ID",
 	`attr_name` VARCHAR(30) COMMENT "名称 用户自定义",
 	`attr_val`  VARCHAR(50) COMMENT "属性值",
 	`category`  VARCHAR(30) COMMENT "分类　主体参数/规格参数",

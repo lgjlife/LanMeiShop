@@ -52,11 +52,12 @@
 		</div><!-- <div id="categoryManagerItemPage" class="adminManagerPageDiplay"> -->
 		<!----------------------------------- 查询商品 ------------------------------>
 		<div id="commodityQueryItemPage" class="commopdityManagerPageDiplay">
-			 <jsp:include page="/WEB-INF/views/commodity/edit_commodity.jsp" /> 
+			 <jsp:include page="/WEB-INF/views/commodity/commodity_edit.jsp" /> 
 		</div><!-- <div id="commodityQueryItemPage" class="adminManagerPageDiplay"> -->
 		<!------------------------------------ 增添商品------------------------------------ -->
 		<div id="addCommodityItemPage" class="commopdityManagerPageDiplay">			
 			<h3>选择类别</h3>
+			
 			<br>
 			<for  m action="">
 			<!--产品分类设计
@@ -101,7 +102,8 @@
 			     <!-- 名称 -->
 			    <div class="form-group">
 			    	<label  for="btn-group" >名　　称</label>　	
-					<input type="text" class="addCommodityInput" id="productNameInput"　>
+					<!-- <input type="text" class="addCommodityInput" id="productNameInput"> -->
+					<input type="text" class="addCommodityInput" id="productNameInput">
 					<span id="productNameInputWarn" ></span>
 			    </div>
 			    
@@ -109,16 +111,10 @@
 			    <div class="form-group">
 			    	<label  for="btn-group"  >显示标题</label>　	
 					<input type="text" class="addCommodityInput" id="titleInput">
-			    </div>
-			    <!-- 商品简介 -->
-			    <div class="form-group">
-			    	<label  for="btn-group" >商品简介</label>　	
-					<textarea rows="" cols="" id="descriptionInput"></textarea>					
-			    </div>	
-			    
+			    </div>			    
 			</form>
 			<!-------------------------------------- 图片上传--------------------------- -->
-			<form id="imgUploadForm" enctype="multipart/form-data"  >
+			<form id="imgUploadForm" enctype="multipart/form-data"  style="display:none;" >
 			    <div>
 			    	<span>图片1:<input type="file" name="files" accept="image/gif, image/jpeg"></span>
 			    </div>
@@ -135,7 +131,7 @@
 			    	<span>图片5:<input type="file" name="files" accept="image/gif, image/jpeg"></span> 
 			    </div>				
 			</form>			
-			<button type="button" id="imgUnloadBtn">上传</button>
+			<button type="button" id="imgUnloadBtn" style="display:none;">上传</button>
 		
 			<!-- 提交按钮 -->
 			<div>

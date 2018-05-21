@@ -2,6 +2,7 @@ package org.lanmei.commodity.serviceImpl;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +13,11 @@ import org.lanmei.commodity.dao.mapper.CommodityClassificationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityImageMapper;
 import org.lanmei.commodity.dao.mapper.CommodityMapper;
 import org.lanmei.commodity.dao.model.Commodity;
+import org.lanmei.commodity.dao.model.CommodityClassification;
 import org.lanmei.commodity.dao.model.CommodityImage;
 import org.lanmei.commodity.dto.ImgResultDto;
-import org.lanmei.commodity.service.AddCommodityService;
+import org.lanmei.commodity.service.CommodityEditService;
+import org.lanmei.commodity.utils.TreeUtils;
 import org.lanmei.common.baseservice.BaseService;
 import org.lanmei.common.enums.CommodityState;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -29,7 +32,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.fastjson.JSON;
 
 @Service
-public class AddCommodityServiceImpl extends BaseService  implements AddCommodityService{
+public class CommodityEditServiceImpl extends BaseService  implements CommodityEditService{
 	
 	private static final Logger logger = LoggerFactory.getLogger("AddCommodityServiceImpl.class");
 	
@@ -77,7 +80,7 @@ public class AddCommodityServiceImpl extends BaseService  implements AddCommodit
 		
 		commodity.setCreateBy(admin.getLoginJobnum());
 		commodity.setCreateTime(new Date());
-		
+		commodity.setSaleState((byte)-1);
 		//向数据库写入数据
 		Integer insertCount =  commodityMapper.insert(commodity);
 		if(insertCount == 0) {
@@ -89,6 +92,24 @@ public class AddCommodityServiceImpl extends BaseService  implements AddCommodit
 		//写入成功
 		return CommodityState.ADD_COMMODITY_SUCCESS;
 		
+	}
+	
+	/**
+	 * 通过商品id删除商品
+	 * @return
+	 */
+	@Override
+	public CommodityState  deleteComodity(Integer id) {
+		
+		Integer deletCount = commodityMapper.deleteByPrimaryKey(id);
+		if(deletCount == 0) {
+			logger.debug("商品{}-删除失败！",id);
+			return CommodityState.COMMODITY_DELETE_FAIL;
+		}
+		else {
+			logger.debug("商品{}-删除成功！",id);
+			return CommodityState.COMMODITY_DELETE_SUCCESS;
+		}
 	}
 	
 	@Override
@@ -203,5 +224,42 @@ public class AddCommodityServiceImpl extends BaseService  implements AddCommodit
 		}
 		
 	}	
+	
+	/**
+	 * 通过分类id 获取商品列表
+	 * @return
+	 */
+	public List<Commodity>  getComodityList(Integer id){
+		//获取最终子节点
+		//从数据库获取所以的分类数据
+		List<CommodityClassification> classification = classificationMapper.selectAll();
+		//获取指定ｉd　的所有最终子节点
+		List<CommodityClassification> lastChildNode = new  ArrayList<CommodityClassification>();
+		lastChildNode = TreeUtils.getLastChildNode(classification, lastChildNode, id);
+		
+		
+		
+		//保存到list
+		List<Integer> lastNodeId = new ArrayList<Integer>();
+		
+		if(lastChildNode.isEmpty()) {
+			logger.debug("lastChildNode is empty");
+			lastNodeId.add(id);
+		}
+		else {
+			for(CommodityClassification node : lastChildNode) {
+				lastNodeId.add(node.getId());
+			}
+		}
+		
+		
+		for(Integer nodeId : lastNodeId) {
+			System.out.println("nodeId = " + nodeId);
+		}
+		
+		List<Commodity> commodity = commodityMapper.selectByCategoryId(lastNodeId);
+		
+		return commodity;
+	}
 	
 }

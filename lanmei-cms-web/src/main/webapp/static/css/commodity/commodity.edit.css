@@ -1,5 +1,49 @@
-.navigbreadcrumb{
-	
+/**
+*********************商品查询模块***************************************
+*/
+/**
+* 表格类
+*/
+.table-list{
+	font-size:15px;
+	width:100%;
+	height:auto;
+	border-collapse:collapse;
+	border:1px solid black;
+	text-align:center;
+}
+/**
+*设置th边框
+*/
+.table-list th {
+	border:1px solid black;
+}
+/**
+*设置td边框
+*/
+.table-list td {
+	border:1px solid black;
+}
+/**
+*表头
+*/
+.table-list .table-thead{
+	background-color:#C1CDC1;
+}
+/**
+*商品列表显示默认状态为隐藏
+*/
+#commodityListModel{
+	display:none;
+}
+/**
+*翻页按钮
+*/
+.page-item-div{
+	margin:center;
+}
+.page-item-div ul{
+	list-style-type:none;
 }
 .navigbreadcrumb-item{
 	color:#8B7E66;
@@ -50,6 +94,4 @@
 .name{
 	float:left;
 	color:#8B8878;
-	
-	
 }

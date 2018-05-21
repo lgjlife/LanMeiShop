@@ -208,7 +208,7 @@
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-seckill">
 		秒杀模块</a>
 	<li>lanmei-sysaop</li>
-		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-seckill">
+		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-aop">
 		系统Ａop处理</a>
 	<li>lanmei-task-scheduling</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-task-%20scheduling">
