@@ -207,7 +207,7 @@ CREATE TABLE `commodity` (
 
 LOCK TABLES `commodity` WRITE;
 /*!40000 ALTER TABLE `commodity` DISABLE KEYS */;
-INSERT INTO `commodity` VALUES (1,48,'魅蓝note6','魅蓝','魅蓝旗舰机',NULL,'测试用户','2018-05-22 00:33:05',NULL,NULL,-1),(2,49,'坚果R1','坚果','坚果旗舰机',NULL,'测试用户','2018-05-22 00:33:40',NULL,NULL,-1),(3,85,'跑步鞋　fly','阿迪达斯','跑步鞋，轻便！',NULL,'测试用户','2018-05-22 00:34:48',NULL,NULL,-1);
+INSERT INTO `commodity` VALUES (2,49,'坚果R1','坚果','坚果旗舰机',NULL,'测试用户','2018-05-22 00:33:40',NULL,NULL,-1),(3,85,'跑步鞋　fly','阿迪达斯','跑步鞋，轻便！',NULL,'测试用户','2018-05-22 00:34:48',NULL,NULL,-1);
 /*!40000 ALTER TABLE `commodity` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -752,7 +752,7 @@ CREATE TABLE `time_measurement` (
 
 LOCK TABLES `time_measurement` WRITE;
 /*!40000 ALTER TABLE `time_measurement` DISABLE KEYS */;
-INSERT INTO `time_measurement` VALUES (1,'org.lanmei.cms.controller.homepage.HomePageController.HomePage','主界面访问','Controller',10,253,19);
+INSERT INTO `time_measurement` VALUES (1,'org.lanmei.cms.controller.homepage.HomePageController.HomePage','主界面访问','Controller',8,258,6);
 /*!40000 ALTER TABLE `time_measurement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -791,4 +791,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-22  1:36:21
+-- Dump completed on 2018-05-22 13:22:22

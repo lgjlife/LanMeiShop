@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
 import org.lanmei.commodity.dao.model.Commodity;
+import org.lanmei.commodity.dao.model.CommoditySku;
 import org.lanmei.commodity.dto.ClassificationDto;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
@@ -291,6 +292,7 @@ public class CommodityController {
 	@RequestMapping(path="/get/attribution")
 	public CommodityResultDto getAttribution(@RequestBody Map<String,Object> requestMap){	
 		
+		
 		return null;
 	}
 	
@@ -301,9 +303,87 @@ public class CommodityController {
 	@SyslogAnno(layer="Controller",description="获取商品sku属性")
 	@TimeMeasurementAnno(layer="Controller",description="获取商品sku属性")
 	@ResponseBody
-	@RequestMapping(path="/get/sku")
-	public CommodityResultDto getSkuInfo(@RequestBody Map<String,Object> requestMap){	
+	@RequestMapping(path="/get/sku/info")
+	public CommodityResultDto getSkuInfo(@RequestParam("commodityId")   Integer commodityId){	
+		
+		if(commodityId == null) {
+			return  new CommodityResultDto(false,"未知的错误请求");
+		}
+		
 		
 		return null;
+	}
+	
+	/**
+	 * 设置商品销售属性
+	 * @param requestMap
+	 * @return
+	 */
+	//@SyslogAnno(layer="Controller",description="设置商品sku属性")
+	//@TimeMeasurementAnno(layer="Controller",description="设置商品sku属性")
+	@ResponseBody
+	@RequestMapping(path="/set/sku/attr")
+	public CommodityResultDto setSkuAttr(@RequestBody Map<String, Object>  requestMap){	
+		
+		CommodityState commodityState = commodityEditService.setSkuAttr(requestMap);
+		
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+	
+		return commodityResultDto;	
+
+	}
+	/**
+	 * 获取商品sku属性
+	 * @param commodityId
+	 * @return
+	 */
+	@ResponseBody         
+	@RequestMapping(path="/get/sku/attr",method=RequestMethod.GET)
+	public CommodityResultDto setSkuAttr(@RequestParam("commodityId")   Integer commodityId){	
+		
+		logger.debug("commodityId = " + commodityId);
+		List<CommoditySku>  commoditySku = commodityEditService.getSkuAttr(commodityId);
+		
+		CommodityResultDto<List> commodityResultDto 
+		= new CommodityResultDto<List>(true,commoditySku);
+	
+		return commodityResultDto;	
+
+	}
+	/**
+	 * 删除商品sku属性
+	 * @param skuId
+	 * @return
+	 */
+	/*@ResponseBody        //delete/sku/attr 
+	@RequestMapping(path="/deletea/sku/attr")
+	public CommodityResultDto deleteSkuAttr(@RequestBody Map<String,Object>  requestMap){	
+		
+		Integer skuId = (Integer)requestMap.get("skuId");
+		logger.debug("skuId = " + skuId);
+		CommodityState commodityState  = commodityEditService.deleteSkuAttr(skuId);
+		
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+	
+		return commodityResultDto;	
+
+	}*/
+	
+	@ResponseBody
+	@RequestMapping(path="/delete/sku/attr",method=RequestMethod.DELETE)
+	public CommodityResultDto deleteSkuAttr(@RequestBody Map<String, Object>  requestMap){	
+		
+		logger.debug("访问deleteSkuAttr");
+		Integer skuId = (Integer)requestMap.get("skuId");
+		logger.debug("skuId = "+skuId);
+		CommodityState commodityState  = commodityEditService.deleteSkuAttr(skuId);
+		
+		CommodityResultDto<CommodityState> commodityResultDto 
+		= new CommodityResultDto<CommodityState>(true,commodityState);
+	
+		return null;	
+
 	}
 }

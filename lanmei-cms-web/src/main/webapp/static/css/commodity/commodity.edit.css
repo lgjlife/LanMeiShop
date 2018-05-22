@@ -45,6 +45,21 @@
 .page-item-div ul{
 	list-style-type:none;
 }
+
+/**
+*********************sku模块***************************************
+*/
+.sku-attr-list{
+	width:150px;
+	float:left;
+	color:blue;
+}
+.sku-attr-list button{
+	position:absolute;
+	right:0;
+	color:red;
+}
+
 .navigbreadcrumb-item{
 	color:#8B7E66;
 	list-style-type:none;

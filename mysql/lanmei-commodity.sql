@@ -138,7 +138,8 @@ CREATE TABLE `commodity_sku_collect`(
 DROP TABLE IF  EXISTS `commodity_sku`;
 CREATE TABLE `commodity_sku`(
 	`sku_id` INT  AUTO_INCREMENT COMMENT "sku ID",
-	`sku_collect_id` INT   COMMENT "商品ID",
+	`sku_collect_id` INT   COMMENT "sku集合ID",
+	`commodity_id` INT   COMMENT "商品ID",
 	`name` VARCHAR(10) COMMENT "名称:颜色/样式／款式/尺寸等",
 	`attr`  VARCHAR(30) COMMENT "属性值",
 	PRIMARY KEY (`sku_id`)	
@@ -152,7 +153,7 @@ CREATE TABLE `commodity_sku`(
 DROP TABLE IF  EXISTS `commodity_image`;
 CREATE TABLE `commodity_image`(
 	`image_id` INT  AUTO_INCREMENT COMMENT "商品图片ID",
-	`sku_id` INT  COMMENT "sku ID",
+	`sku_collect_id` INT  COMMENT "sku_collect_id",
 	`path` VARCHAR(100) COMMENT "图片相对路径/相对于工程目录下",
 	`name` VARCHAR(100) COMMENT "图片名称　动态生成",
 	`is_main_img` TINYINT DEFAULT 0  COMMENT "0/1,是否是主图，单个商品仅有一个设为1",

@@ -159,7 +159,7 @@ public class CommodityControllerTest {
 	 * 获取商品列表
 	 * @throws Exception
 	 */
-	@Test
+	//@Test
 	public void tesGetCommodityList() throws Exception{
 		System.out.println("tesGetCommodityList 开始进行测试");  
 		
@@ -196,4 +196,62 @@ public class CommodityControllerTest {
                .andReturn();
 	}
 	
+	/**
+	 * 设置商品销售属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void testSetSkuAttr() throws Exception{
+		System.out.println("tesGetCommodityList 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		map.put("name","颜色");
+		map.put("attr","玫瑰金");
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( post("/commodity/set/sku/attr")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	/**
+	 * 获取商品销售属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void testGetSkuAttr() throws Exception{
+		System.out.println("testGetSkuAttr 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( get("/commodity/get/sku/attr")
+       		.param("commodityId", "2"))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	
+	@Test
+		public void testDeleteSkuAttr() throws Exception{
+			System.out.println("tesGetCommodityList 开始进行测试");  
+			
+			Map<String,Object> map = new HashMap<String,Object>();  
+			map.put("skuId",2);
+			
+		    JSONObject jsonObject = JSONObject.fromObject(map);
+	       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+	       MvcResult mvcResult = mockMvc.perform( post("/commodity/delete/sku/attr")
+	       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+	       		.content(jsonObject.toString()))
+	       		.andDo(print())
+	               .andExpect(status().isOk())
+	               .andReturn();
+		}
 }

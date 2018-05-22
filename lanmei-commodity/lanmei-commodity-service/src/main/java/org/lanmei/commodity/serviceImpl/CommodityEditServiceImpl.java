@@ -12,9 +12,11 @@ import org.lanmei.commodity.dao.mapper.CommodityClassificationAssociationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityClassificationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityImageMapper;
 import org.lanmei.commodity.dao.mapper.CommodityMapper;
+import org.lanmei.commodity.dao.mapper.CommoditySkuMapper;
 import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommodityClassification;
 import org.lanmei.commodity.dao.model.CommodityImage;
+import org.lanmei.commodity.dao.model.CommoditySku;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.service.CommodityEditService;
 import org.lanmei.commodity.utils.TreeUtils;
@@ -44,6 +46,8 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 	CommodityClassificationAssociationMapper  associationMapper;
 	@Autowired
 	CommodityImageMapper commodityImageMapper;
+	@Autowired
+	CommoditySkuMapper commoditySkuMapper;
 	
 	@Autowired
 	private DruidDataSource dataSource; 
@@ -261,5 +265,72 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 		
 		return commodity;
 	}
+	
+	/**
+	 * 获取sku的属性信息
+	 * 1.通过商品id commodityId 获取所有的　sku_collect_id　，每一个sku_collect_id代表一个品类，包含价格和库存
+	 * 2.通过　sku_collect_id　获取　commodity_sku　的信息，包含名称和属性
+	 * 3.通
+	 * 
+	 */
+	public void getSkuInfo(Integer commodityId) {
+		
+	}
+	
+	/**
+	 * 设置销售属性
+	 * @param map
+	 */
+	@Override
+	public CommodityState setSkuAttr(Map<String,Object> map) {
+		
+		CommoditySku  commoditySku = JSON.parseObject(JSON.toJSONString(map),CommoditySku.class);
+		Integer insertCount = commoditySkuMapper.insert(commoditySku);
+		if(insertCount == 0) {
+			logger.debug("插入销售：{}-{}属性失败",commoditySku.getName(),commoditySku.getAttr());
+			return CommodityState.SET_SKU_ATTR_FAIL;
+		}
+		else {
+			logger.debug("插入销售：{}-{}属性成功",commoditySku.getName(),commoditySku.getAttr());
+			return CommodityState.SET_SKU_ATTR_SUCCESS;
+		}
+		
+	}
+	
+	/**
+	 * 获取销售属性
+	 * @param map
+	 */
+	@Override
+	public List<CommoditySku> getSkuAttr( Integer commodityId){
+		
+		List<CommoditySku> commoditySku = commoditySkuMapper.selectByCommodityId(commodityId);
+		if(commoditySku  == null) {
+			logger.debug("获取销售属性失败，不存在数据");
+		}
+		else {
+			logger.debug("获取销售属性成功");
+		}
+		return commoditySku;
+	}
+	/**
+	 * 获取销售属性
+	 * @param map
+	 */
+	@Override
+	public CommodityState deleteSkuAttr( Integer skuId){
+		
+		Integer deleteCount = commoditySkuMapper.deleteByPrimaryKey(skuId);
+		if(deleteCount  == 0) {
+			logger.debug("删除销售属性失败，不存在数据");
+			return CommodityState.DELETE_SKU_ATTR_FAIL;
+		}
+		else {
+			logger.debug("删除销售属性成功");
+			return CommodityState.DELETE_SKU_ATTR_SUCCESS;
+		}
+		
+	}
+	
 	
 }

@@ -23,6 +23,11 @@ public enum CommodityState {
 	COMMODITY_NAME_REPEAT ,            //商品名称重复
 	COMMODITY_NAME_NOT_REPEAT,          //商品名称未重复
 	
-	COMMODITY_DELETE_SUCCESS ,            //商品名称重复
-	COMMODITY_DELETE_FAIL          //商品名称未重复
+	COMMODITY_DELETE_SUCCESS ,        //商品删除成功
+	COMMODITY_DELETE_FAIL,             //商品删除失败
+	
+	SET_SKU_ATTR_SUCCESS,              //设置销售属性成功
+	SET_SKU_ATTR_FAIL,                 //设置销售属性失败
+	DELETE_SKU_ATTR_SUCCESS,           //删除销售属性成功
+	DELETE_SKU_ATTR_FAIL,              //删除销售属性失败
 }

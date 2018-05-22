@@ -7,7 +7,8 @@
  * @returns
  */
 //公共变量
-var currentEditCommodityData = {"commodityId":"","brand":"","name":"","title":"","createBy":"",
+var currentEditCommodityData = {"mainCategory":"","firstCategory":"","secondCategory":"",
+		    "commodityId":"","brand":"","name":"","title":"","createBy":"",
 			"createTime":"","putOnSaleTime":"","putOffSaleTime":"","isPutOff":""};
 /**
  * 商品查询列表展示
@@ -195,6 +196,7 @@ $(function(){
 			//commodityDataDisplay(commodityData);
 			$("#commodityListModel").show();
 			 //getCommodityList(0, 1, 10);
+			getComodityList(0);
 		}
 		else{
 			//展开状态－－＞收起状态
@@ -272,6 +274,9 @@ $(function(){
     	//
     	
     	 //获取值
+    	//currentEditCommodityData.mainCategory = $parent.find('#commodity-list-id').text();
+    	//currentEditCommodityData.firstCategory = $parent.find('#commodity-list-brand').text();
+    	//currentEditCommodityData.secondCategory = $parent.find('#commodity-list-name').text();
     	currentEditCommodityData.commodityId = $parent.find('#commodity-list-id').text();
     	currentEditCommodityData.brand = $parent.find('#commodity-list-brand').text();
     	currentEditCommodityData.name = $parent.find('#commodity-list-name').text();
@@ -372,10 +377,36 @@ $(function(){
 	
 })
 /**
- * 切换显示和编辑页面处理
+ * 商品类别　名称　显示标题　更改
  * @returns
  */
 $(function(){
+	
+	/**
+     * 点击展开按钮处理
+     * 
+     */
+    $("#baseInfoEditDispalyCtrlBtn").click(function(){
+   	
+    	if($("#baseInfoEditDispalyCtrlBtn").text() == "展开"){
+    		$("#baseInfoEditDispalyCtrlBtn").text("收起");
+    		$("#baseInfoEditDispalyCtrl").show();
+    		console.log("baseInfoEditDispalyCtrlBtn 展开");
+    		//向服务端请求数据
+    		//getSkuInfoFromServer(commodityId);
+    		$("#baseInfoDisBrand").text("品　　牌：" + currentEditCommodityData.brand );
+    		$("#baseInfoDisName").text("产品名称：" + currentEditCommodityData.name );
+    		$("#baseInfoDisTitle").text("产品标题：" + currentEditCommodityData.title );
+    	}
+    	//　展开状态－－－＞收起状态
+    	else if($("#baseInfoEditDispalyCtrlBtn").text() == "收起"){
+    		$("#baseInfoEditDispalyCtrlBtn").text("展开");
+    		$("#baseInfoEditDispalyCtrl").hide();
+    		console.log("baseInfoEditDispalyCtrlBtn 关闭");
+    	}
+    })
+    //function 
+	
 	/**
 	 * 类别，名称编辑显示切换
 	 */
@@ -399,12 +430,12 @@ $(function(){
  * @returns
  */
 $(function(){
-	var SkuInfoData =[
-		{"skuId":"1","name":"颜色","attr":"亮黑色","price":"","stock":""},
-		{"skuId":"2","name":"颜色","attr":"宝石蓝","price":"","stock":""},
-		{"skuId":"3","name":"颜色","attr":"极光色","price":"","stock":""},
-		{"skuId":"4","name":"颜色","attr":"樱粉金","price":"","stock":""},
-		{"skuId":"5","name":"颜色","attr":"香槟金","price":"","stock":""}
+	var skuAttrData =[
+		{"skuId":"1","skuCollectId":"1","name":"颜色","attr":"亮黑色","price":"","stock":""},
+		{"skuId":"2","skuCollectId":"2","name":"颜色","attr":"宝石蓝","price":"","stock":""},
+		{"skuId":"3","skuCollectId":"3","name":"颜色","attr":"极光色","price":"","stock":""},
+		{"skuId":"4","skuCollectId":"4","name":"内存","attr":"32Ｇ","price":"","stock":""},
+		{"skuId":"5","skuCollectId":"5","name":"内存","attr":"64Ｇ","price":"","stock":""}
 		];
 	/**
      * 点击展开按钮处理
@@ -418,7 +449,8 @@ $(function(){
     		console.log("attrInfoEditDispalyCtrlBtn 展开");
     		//向服务端请求数据
     		//getSkuInfoFromServer(commodityId);
-    		
+    		//向服务端请求销售数据
+    		getSkuAttr(currentEditCommodityData.commodityId);
     		
     	}
     	//　展开状态－－－＞收起状态
@@ -437,7 +469,7 @@ $(function(){
     	var jsonData = {"commodityId":""};
 		jsonData.commodityId = commodityId;
 		$.ajax({
-	        type : "post",
+	        type : "get",
 	        url : "/lanmei-cms/commodity/get/sku/info",
 	        contentType : "application/json;charset=utf-8",
 	        data : JSON.stringify(jsonData),
@@ -448,6 +480,19 @@ $(function(){
 		 });
     }
     /**
+     * 绑定动态元素 删除按钮
+     */
+     $(document).on('click','.sku-attr-delete-btn-class',function(){
+    	 //获取父及元素
+    	var $parent = $(this).parent();
+
+    	 //获取值
+    	var skuId = $parent.attr("skuId");
+    	
+    	console.log("删除的　skuId = " + skuId);
+    	deleteSkuAttr(skuId);
+     })
+    /**
      *　动态生成元素
      *　显示ＳＫＵ属性
      */
@@ -455,7 +500,169 @@ $(function(){
     	
     //	var skuInfoText = 
     }
+    
+    /**
+     * 添加属性按钮按下
+     */
+    $("#addSkuAttrInputBtn").click(function(){
+    	console.log("addSkuAttrInputBtn 按下");
+    	
+    	var name = $("#addSkuAttrInput-name").val();
+    	var attr = $("#addSkuAttrInput-attr").val();
+    	//发送设置请求给服务端
+    	setSkuAttr(currentEditCommodityData.commodityId,name,attr);
+    	
+    })
+    /**
+     * 向服务端发送设置的销售属性
+     */
+    function setSkuAttr(commodityId,name,attr){
+    	
+    	var jsonData = {"commodityId":"","name":"","attr":""};
+		jsonData.commodityId = commodityId;
+		jsonData.name = name;
+		jsonData.attr = attr;
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/set/sku/attr",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	console.log(data);
+	        	console.log(data.success);
+	        	var returnData = data;//JSON.parse(data);
+	        	if(returnData.success == true){
+	        		if(returnData.data == "SET_SKU_ATTR_SUCCESS"){
+	        			console.log("sku属性添加成功");
+	        			$("#addSkuAttrInputWarn").text("{名称:"+jsonData.name + " 属性：" +  jsonData.attr + "} 属性添加成功");
+	        		}
+	        		else if(returnData.data == "SET_SKU_ATTR_FAIL"){
+	        			console.log("sku属性添加失败");
+	        			$("#addSkuAttrInputWarn").text("{名称:"+jsonData.name + " 属性：" +  jsonData.attr + "} 属性添加失败");
+	        		}
+	        	}	        	
+	        }
+		 });
+    }
+    /**
+     * 向服务端获取sku属性
+     */
+    function getSkuAttr(commodityId){
 
+    	console.log("commodityId = " + commodityId);
+    	console.log("String.valueOf(commodityId) = " + String.valueOf(2))
+    	var jsonData = {"commodityId":""};
+		jsonData.commodityId = commodityId;
+		var sendData= "commodityId="  + commodityId;
+		$.ajax({
+	        type : "get",
+	        url : "/lanmei-cms/commodity/get/sku/attr",
+	        contentType : "application/json;charset=utf-8",
+	        data :sendData,// JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	console.log(data);
+	        	console.log(data.success);
+	        	var returnData = data;//JSON.parse(data);
+	        	if(returnData.success == true){
+	        		skuAttrDataDisplay(returnData.data);
+	        	}	        	
+	        }
+		 });
+    }
+    /**
+     * 向服务端请求删除销售属性
+     */
+    function deleteSkuAttr(skuId){
+    	console.log("向服务端请求删除销售属性 skuId = " + skuId);
+    	var jsonData = {"skuId":"","name":"","attr":""};
+		jsonData.skuId = Number(skuId);
+		jsonData.name = "sdfs";
+		jsonData.attr = "dsf";
+		console.log("向服务端请求删除销售属性");
+		console.log("skuId =  " + jsonData.skuId);
+		$.ajax({
+	        type : "delete",
+	        url : "/lanmei-cms/commodity/delete/sku/attr",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(jsonData),
+	        dataType: "json",
+	        success:function(data){
+	        	console.log(data);        	
+	        }
+		 });
+    }
+    //测试
+    $("#skuAttrDataDisplayBtn").click(function(){
+    	skuAttrDataDisplay(SkuAttrData);
+    })
+    /**
+     * 动态显示销售属性
+     */
+    function skuAttrDataDisplay(SkuAttrData){
+    	
+    	
+    	var len = SkuAttrData.length;
+    	console.log("SkuAttrData len = " + len);
+    	console.log("SkuAttrData name  = " + SkuAttrData[0].name);
+    	console.log("SkuAttrData name  = " + SkuAttrData[4].name);
+    	var arrName;
+    	
+    	arrName = getName(SkuAttrData);
+    	console.log("arrName len  = " + arrName.length);
+    	for(var i = 0;i < arrName.length ;i++ ){
+    		//console.log("arrName name = " + arrName[i]);
+    	}
+    	console.log("开始显示");
+    	$("#sku-attr-display-div").empty();
+    	for(var i = 0;i < arrName.length ;i++ ){    		
+    		console.log("arrName name = " + arrName[i]);
+    		var  text1 = "";
+    	    text1 = '<ul class="list-group sku-attr-list">'
+    			+ '<li class="list-group-item list-group-item-info">' + arrName[i] + '</li>';
+    		var  text2="";
+    		for(var j = 0;j < SkuAttrData.length ;j++ ){
+    			if(arrName[i] == SkuAttrData[j].name){
+    				console.log("j = " + j + "  name = " + SkuAttrData[j].name +  "  arrName = " + arrName[i]);
+    				text2 =text2 + '<li class="list-group-item" skuId="' + SkuAttrData[j].skuId + '">'
+    				+ SkuAttrData[j].attr 
+    				+ '<button class="sku-attr-delete-btn-class">删除</button></li>';
+    			}    			 
+    		}
+    		var text = text1 + text2 + '</ul>';
+    		
+    		console.log(text);
+    		
+    		$("#sku-attr-display-div").append(text);
+    		
+    	}
+    	
+    	
+    }
+    /**
+     * 获取销售属性中name数组，已经去除重复值
+     */
+    function getName(attrdata){
+    	
+    	/*console.log("attrdata len  = " + attrdata.length);
+    	console.log("attrdata name  = " + attrdata[0].name);
+    	console.log("attrdata name  = " + attrdata[4].name);*/
+    	
+    	var json={};
+    	for(var i = 0;i < attrdata.length ;i++ ){
+    		json[attrdata[i].name] = attrdata[i].name;
+    		//console.log("item.name = " + attrdata[i].name);
+    	}
+    	
+    	var arr = new Array();
+    	for(var item in json){
+    		//console.log("item = " + item);
+    		arr.push(item);
+    	}
+    	return arr;
+    }
+    
     
 	/**
 	 * ＳＫＵ属性编辑显示切换

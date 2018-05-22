@@ -1,8 +1,12 @@
 package org.lanmei.commodity.dao.mapper;
 
 import java.util.List;
-import org.lanmei.commodity.dao.model.CommoditySku;
 
+import org.lanmei.commodity.dao.model.CommoditySku;
+import org.springframework.stereotype.Repository;
+	
+
+@Repository
 public interface CommoditySkuMapper {
 
 	/**
@@ -34,4 +38,6 @@ public interface CommoditySkuMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CommoditySku record);
+	
+	List<CommoditySku> selectByCommodityId(Integer commodityId );
 }

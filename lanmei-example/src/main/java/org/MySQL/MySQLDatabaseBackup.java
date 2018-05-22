@@ -90,11 +90,12 @@ public class MySQLDatabaseBackup {
     	System.out.println(properties.get("hostIP"));
     	
 		String fileName = String.valueOf(date.getYear() + 1900) 
-    					  + "-" + String.valueOf(date.getMonth()) 
+    					  + "-" + String.valueOf(date.getMonth()+1) 
     			          + "-" +  String.valueOf(date.getDate()) 
     			          + "-" +  String.valueOf(date.getHours()) 
     			          + ":" +  String.valueOf(date.getMinutes()) 
     			          + ".sql";
+		//fileName  = date.toString() + ".sql";
         try {  
             if (exportDatabaseTool((String)properties.get("hostIP"),
             						(String)properties.get("userName"),

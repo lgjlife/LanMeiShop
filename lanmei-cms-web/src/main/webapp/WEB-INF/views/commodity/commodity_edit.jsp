@@ -90,7 +90,7 @@
 	　　　　　　　　　　　　3.属性编辑，所有的属性由用户自定义
 	　　　　　　　　　　　　
 		 -->
-		<div id="commodityEditModel" style="display:none;">
+		<div id="commodityEditModel" style="display:div;">
 			<h2>编辑商品</h2>	
 			<h3 id="commodityEditModelTitle"></h3>
 			<hr style=" height:2px;border:none;border-top:2px solid #FFE7BA;" />
@@ -104,12 +104,12 @@
 					
 					<!-- 显示状态 -->
 					<div id="baseInfoDisplayMode">
-					　	<span  class="name">大　　类:</span><br>
-						<span class="name">一级分类:</span><br>
-						<span class="name">二级分类:</span><br>
-						<span class="name">品　　牌:</span><br>
-						<span class="name">产品名称:</span><br>
-						<span class="name">产品标题:</span><br>
+					　	<span  class="name" id="baseInfoDisMainCategory">大　　类:</span><br>
+						<span class="name" id="baseInfoDisFirstCategory">一级分类:</span><br>
+						<span class="name" id="baseInfoDisSecondCategory">二级分类:</span><br>
+						<span class="name" id="baseInfoDisBrand">品　　牌:</span><br>
+						<span class="name" id="baseInfoDisName">产品名称:</span><br>
+						<span class="name" id="baseInfoDisTitle">产品标题:</span><br>
 					</div><!-- end of <div id="baseInfoDisplayMode">  -->
 					<!-- 编辑状态 -->
 					<div id="baseInfoEditMode"  style="display:none">
@@ -169,7 +169,59 @@
 				<button id="skuInfoEditDispalyCtrlBtn" class="button">展开</button>
 	    	　　　　<!-- 点击展开时才从后台获取数据 -->
 	    	　　　　<div id="skuInfoEditDispalyCtrl" style="display:none">
-					<button id="skuInfoBtn" class="button">编辑</button>
+					<!-- <button id="skuInfoBtn" class="button">编辑</button> -->
+					<!-- 属性显示 -->
+						<div id="skuAttrDisplayDiv">
+							<h6>销售属性</h6>
+							<div id="sku-attr-display-div">
+								<ul class="list-group sku-attr-list" style="display:none">
+								  <li class="list-group-item list-group-item-info">颜色</li>
+								  <li class="list-group-item">玫瑰金<button>删除</button></li>
+								  <li class="list-group-item">陶瓷白<button>删除</button></li>
+								</ul>
+								<ul class="list-group sku-attr-list" style="display:none">
+								  <li class="list-group-item list-group-item-info">内存</li>
+								  <li class="list-group-item">32Ｇ<button>删除</button></li>
+								  <li class="list-group-item">64Ｇsadsdsssdasdas<button>删除</button></li>
+								</ul>
+							</div>
+							<br/>
+							<button id="skuAttrDataDisplayBtn">显示销售属性</button>
+							
+							
+							<br/>
+							<button class="button" data-toggle="modal" data-target="#myModal">
+								添加销售属性
+							</button>
+							<!-- 模态框（Modal） -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel">
+												添加销售属性
+											</h4>
+										</div>
+										<div class="modal-body" id="addSkuAttrInput">
+											<span>名称：</span><input type="text" id="addSkuAttrInput-name"　placeholder="颜色/尺寸/内存等"><br/>
+											<span>属性：</span><input type="text" id="addSkuAttrInput-attr"><br/>
+											<span id="addSkuAttrInputWarn" style="color:red;"></span>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">
+												取消
+											</button>
+											<button type="button" class="btn btn-primary" id="addSkuAttrInputBtn">
+												提交
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div><!-- 模态框（Modal） --> 
+						</div><!-- <div id="skuAttrDisplayDiv"> -->
 					<!-- 显示状态 -->
 					<div id="skuInfoDisplayMode">
 						 <table class="table table-bordered" id="commodityList">
@@ -205,7 +257,8 @@
 							   　	</tr>
 							　  </tbody>
 						</table>
-						<div>
+						<!-- 图片显示 -->
+						<div id="imgDisplayDiv">
 							<table class="table table-bordered" id="commodityList">
 						    	  <thead>
 						    			<td >主图</td>				    			
@@ -232,6 +285,7 @@
 								　  </tbody>
 							</table>
 						</div>
+						
 					</div><!-- end of <div id="skuInfoDisplayMode"> -->
 					
 					<div id="skuInfoEditMode"　 style="display:none">
