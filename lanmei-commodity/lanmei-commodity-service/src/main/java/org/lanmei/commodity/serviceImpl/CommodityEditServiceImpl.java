@@ -17,6 +17,7 @@ import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommodityClassification;
 import org.lanmei.commodity.dao.model.CommodityImage;
 import org.lanmei.commodity.dao.model.CommoditySku;
+import org.lanmei.commodity.dto.EditDto;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.service.CommodityEditService;
 import org.lanmei.commodity.utils.TreeUtils;
@@ -331,6 +332,42 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 		}
 		
 	}
+	
+	/**
+	 * 设置商品描述
+	 * @param map 
+	 * @return
+	 */
+	public EditDto setDescription(Map<String,Object> map) {
+		
+		Integer commodityId = (Integer)map.get("commodityId");
+		String description = (String)map.get("descriptionInfo");
+		logger.debug("commodityId = {},description = {}",commodityId,description);
+		Integer updateConut = commodityMapper.updateDescByPrimaryKey(commodityId,description);
+		if(updateConut == 0) {
+			return	new EditDto(false,"更新商品描述失败，该商品未存在，请刷新重试！");
+		}
+		else {
+			return	new EditDto(true,"更新商品描述成功！");
+		}
+	}
+	/**
+	 * 获取商品描述
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	public EditDto getDescription(Integer commodityId) {
+	
+		logger.debug("commodityId = {}",commodityId);
+		String description = commodityMapper.selectDescByPrimaryKey(commodityId);
+		if(description != null) {
+			return	new EditDto(true,description,"获取商品描述成功！");
+		}
+		else {
+			return	new EditDto(true,"获取商品描述失败，请刷新重试！");
+		}
+	}
+	
 	
 	
 }

@@ -100,4 +100,20 @@
     <foreach close=")" collection="categoryIdList" index="index" item="item" open="(" separator=",">#{item}</foreach>
   </select>
   
+ 
+   <!--自定义　 -->
+  <!-- 通过商品id设置商品描述description -->
+  <update id="updateDescByPrimaryKey" >
+    update commodity
+    set 
+      description = #{description,jdbcType=LONGVARCHAR}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectDescByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.String">
+    select  description
+    from commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </select>
+  
 </mapper>

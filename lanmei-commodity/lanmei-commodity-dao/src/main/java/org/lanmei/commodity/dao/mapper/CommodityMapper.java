@@ -38,8 +38,32 @@ public interface CommodityMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(Commodity record);
+	/**
+	 * 通过商品名称查询
+	 * @param name
+	 * @return
+	 */
 
 	Commodity selectByName(String name);
-	
+	/**
+	 * 通过分类表的品牌id进行查询
+	 * @param categoryIdList
+	 * @return
+	 */
 	List<Commodity> selectByCategoryId(@Param("categoryIdList") List<Integer> categoryIdList );
+	/**
+	 * 更新商品描述
+	 * @param commodityId　商品id
+	 * @param description 商品描述
+	 * @return
+	 */
+	int updateDescByPrimaryKey(@Param("commodityId") Integer commodityId ,@Param("description") String description );
+	
+	/**
+	 * 查询商品描述
+	 * @param commodityId　商品id
+	 * @return
+	 */
+	String selectDescByPrimaryKey(Integer commodityId);
+	
 }

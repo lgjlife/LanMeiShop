@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommoditySku;
+import org.lanmei.commodity.dto.EditDto;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.common.enums.CommodityState;
 import org.springframework.web.multipart.MultipartFile;
@@ -70,4 +71,19 @@ public interface CommodityEditService {
 	 * @return
 	 */
 	CommodityState deleteSkuAttr( Integer skuId);
+	
+	/**
+	 * 设置商品描述
+	 * @param map 
+	 * @return
+	 */
+	EditDto setDescription(Map<String,Object> map);
+	/**
+	 * 获取商品描述
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	EditDto getDescription(Integer commodityId);
+	
+	
 }

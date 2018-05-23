@@ -9,6 +9,7 @@ import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
 import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommoditySku;
 import org.lanmei.commodity.dto.ClassificationDto;
+import org.lanmei.commodity.dto.EditDto;
 import org.lanmei.commodity.dto.ImgResultDto;
 import org.lanmei.commodity.dto.TreeNodeDto;
 import org.lanmei.commodity.service.ClassificationService;
@@ -243,29 +244,8 @@ public class CommodityController {
 	 * 编辑商品描述
 	 * @param requestMap
 	 */
-	@SyslogAnno(layer="Controller",description="编辑商品详情")
-	@TimeMeasurementAnno(layer="Controller",description="编辑商品详情")
-	@ResponseBody
-	@RequestMapping(path="/edit/description",method=RequestMethod.POST)
-	public CommodityResultDto editDescription(@RequestBody Map<String,Object> requestMap) {
-		
-		
-		
-		return null;
-
-	}
-	/**
-	 * 获取商品描述
-	 * @param requestMap
-	 */
-	@SyslogAnno(layer="Controller",description="获取商品详情")
-	@TimeMeasurementAnno(layer="Controller",description="获取商品详情")
-	@ResponseBody
-	@RequestMapping(path="/get/description")
-	public CommodityResultDto getDescription(@RequestBody Map<String,Object> requestMap){	
-		
-		return null;
-	}
+	
+	
 	
 	/**
 	 * 编辑商品商品属性
@@ -355,22 +335,7 @@ public class CommodityController {
 	 * 删除商品sku属性
 	 * @param skuId
 	 * @return
-	 */
-	/*@ResponseBody        //delete/sku/attr 
-	@RequestMapping(path="/deletea/sku/attr")
-	public CommodityResultDto deleteSkuAttr(@RequestBody Map<String,Object>  requestMap){	
-		
-		Integer skuId = (Integer)requestMap.get("skuId");
-		logger.debug("skuId = " + skuId);
-		CommodityState commodityState  = commodityEditService.deleteSkuAttr(skuId);
-		
-		CommodityResultDto<CommodityState> commodityResultDto 
-		= new CommodityResultDto<CommodityState>(true,commodityState);
-	
-		return commodityResultDto;	
-
-	}*/
-	
+	 */	
 	@ResponseBody
 	@RequestMapping(path="/delete/sku/attr",method=RequestMethod.DELETE)
 	public CommodityResultDto deleteSkuAttr(@RequestBody Map<String, Object>  requestMap){	
@@ -384,6 +349,47 @@ public class CommodityController {
 		= new CommodityResultDto<CommodityState>(true,commodityState);
 	
 		return null;	
+
+	}
+	
+	/**
+	 * 更新商品描述
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/set/description",method=RequestMethod.POST)
+	public CommodityResultDto setDescription(@RequestBody Map<String, Object>  requestMap){	
+		
+		logger.debug("访问setDescription");
+		
+		EditDto editDto  = commodityEditService.setDescription(requestMap);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
+
+	}
+	
+	/**
+	 * 获取商品描述
+	 * 
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/get/description",method=RequestMethod.GET)
+	public CommodityResultDto getDescription(@RequestParam("commodityId")   Integer commodityId){	
+		
+		logger.debug("访问getDescription");
+
+		EditDto editDto  = commodityEditService.getDescription(commodityId);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
 
 	}
 }

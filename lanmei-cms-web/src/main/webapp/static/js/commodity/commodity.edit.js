@@ -895,7 +895,7 @@ $(function(){
      */
     $("#descriptionSubmitBtn").click(function(){
     	var  descriptionInfo = editor.txt.html();
-    	uploadDescription(descriptionInfo,commodityId);
+    	setDescription(descriptionInfo,currentEditCommodityData.commodityId);
     })
     /**
      * 向服务端读取商品详情内容
@@ -907,7 +907,7 @@ $(function(){
     		//向服务端请求数据
     		var  descriptionInfo = editor.txt.html();
         	//var commodityId = 
-        	getDescription(commodityId);
+        	getDescription(currentEditCommodityData.commodityId);
     		$("#descriptionInfoEditDispalyCtrl").show();
     	}
     	//　展开状态－－－＞收起状态
@@ -919,13 +919,13 @@ $(function(){
     /**
      * 向服务端发送商品详情
      */
-    function uploadDescription(descriptionInfo,commodityId){
+    function setDescription(descriptionInfo,commodityId){
     	var jsonData = {"descriptionInfo":"","commodityId":""};
 		jsonData.descriptionInfo = descriptionInfo;
-		jsonData.commodityId = commodityId;
+		jsonData.commodityId = Number(commodityId);
 		$.ajax({
 	        type : "post",
-	        url : "/lanmei-cms/commodity/edit/description",
+	        url : "/lanmei-cms/commodity/set/description",
 	        contentType : "application/json;charset=utf-8",
 	        data : JSON.stringify(jsonData),
 	        dataType: "json",
@@ -940,20 +940,26 @@ $(function(){
     function getDescription(commodityId){
     	var jsonData = {"commodityId":""};
 		jsonData.commodityId = commodityId;
+		var sendData = "commodityId="+commodityId;
 		$.ajax({
-	        type : "post",
+	        type : "get",
 	        url : "/lanmei-cms/commodity/get/description",
 	        contentType : "application/json;charset=utf-8",
-	        data : JSON.stringify(jsonData),
+	        data : sendData,//JSON.stringify(jsonData),
 	        dataType: "json",
 	        success:function(data){
-	        	if(data.success == "true"){
-	        		//清空显示
-					$("#descriptionDisplayMode").empty();
-					//显示编辑器的内容
-					$("#descriptionDisplayMode").prepend(data.data);
-	        	}
+	        	console.log("data.success = " + data.success);
 	        	
+	        	if(data.success == true){
+	        		console.log("data.data.success = " + data.data.success);
+	        		if(data.data.success == true){
+	        			console.log("data.data.data = " + data.data.data);
+	        			//清空显示
+						$("#descriptionDisplayMode").empty();
+						//显示编辑器的内容
+						$("#descriptionDisplayMode").prepend(data.data.data);
+	        		}	        		
+	        	}	        	
 	        }
 		 });
     }
@@ -995,19 +1001,22 @@ $(function(){
     	 alert(editor.txt.text());
     })
 })
+/**
+ * 格式化Date
+ */
 Date.prototype.Format = function (fmt) { //author: meizz
 var o = {
-"M+": this.getMonth() + 1, //月份
-"d+": this.getDate(), //日
-"h+": this.getHours(), //小时
-"m+": this.getMinutes(), //分
-"s+": this.getSeconds(), //秒
-"q+": Math.floor((this.getMonth() + 3) / 3), //季度
-"S": this.getMilliseconds() //毫秒
+	"M+": this.getMonth() + 1, //月份
+	"d+": this.getDate(), //日
+	"h+": this.getHours(), //小时
+	"m+": this.getMinutes(), //分
+	"s+": this.getSeconds(), //秒
+	"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+	"S": this.getMilliseconds() //毫秒
 };
 console.log("o.getHours = " + this.getHours() );
 if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-for (var k in o)
-if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-return fmt;
+	for (var k in o)
+	if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+	return fmt;
 }

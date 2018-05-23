@@ -237,9 +237,12 @@ public class CommodityControllerTest {
                .andExpect(status().isOk())
                .andReturn();
 	}
-	
-	@Test
-		public void testDeleteSkuAttr() throws Exception{
+	/**
+	 * 删除商品销售属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void testDeleteSkuAttr() throws Exception{
 			System.out.println("tesGetCommodityList 开始进行测试");  
 			
 			Map<String,Object> map = new HashMap<String,Object>();  
@@ -253,5 +256,46 @@ public class CommodityControllerTest {
 	       		.andDo(print())
 	               .andExpect(status().isOk())
 	               .andReturn();
-		}
+	}
+	
+	/**
+	 * 设置商品描述
+	 * @throws Exception
+	 */
+	//@Test
+	public void testSetDescription() throws Exception{
+		System.out.println("testSetDescription 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		map.put("descriptionInfo","颜色");
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( post("/commodity/set/description")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	/**
+	 * 获取商品描述
+	 * @throws Exception
+	 */
+	@Test
+	public void testgetDescription() throws Exception{
+		System.out.println("testgetDescription 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( get("/commodity/get/description")
+       		.param("commodityId", "2"))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
 }
