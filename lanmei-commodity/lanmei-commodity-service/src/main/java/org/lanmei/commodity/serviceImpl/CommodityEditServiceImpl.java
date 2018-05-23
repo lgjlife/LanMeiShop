@@ -175,18 +175,14 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 		
 	}	
 	/**
+	 * 商品详情编辑页
+	 * wangEditor编辑器图片上传处理
 	 * 图片上传处理
 	 */
 	@Override
 	public ImgResultDto upLoadEditorImg(List<MultipartFile> list,
-			String UploadAbsolutePath,
 			String UploadRelativePath,
-			int commodityId) {
-		// TODO Auto-generated method stub
-		//获取当前登录的管理员
-		//CmsAdmin admin = (CmsAdmin) SessionUtils.getSession("currenLogintAdmin");
-		CmsAdmin admin = new CmsAdmin("测试用户");
-		String imgUploadAbsolutePath = UploadAbsolutePath;
+			File file) {
 		String imgUploadRelativePath = UploadRelativePath;
 		logger.debug("files.length = " + list.size() );
 		ImgResultDto imgResultDto = new ImgResultDto();
@@ -195,26 +191,19 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 		try {
 			for(MultipartFile img : list) {
 				String fileName = img.getOriginalFilename();
-				if(fileName == "") {
-					continue;
-				}
-				logger.debug("file  name = " + fileName);
-				String finalPath = imgUploadAbsolutePath + imgUploadRelativePath;  //绝对路径　＋　相对路径
-				String finalFileName =	(new Date().getTime()) + Math.round(Math.random() * 1000)  //文件名动态部分
-					                + fileName;	//文件名　原始文件名        
-				File newfile = new File( finalPath + finalFileName);
-				logger.debug("创建文件夹　= " + newfile.mkdirs() +  "  path = " + newfile.getPath());
-				logger.debug("" + newfile.getAbsolutePath());
-				//保存文件
-				img.transferTo(newfile);
-				logger.debug("上传图片成功");
-				//持久化到数据库
-				CommodityImage commodityImage = new  CommodityImage(commodityId, imgUploadRelativePath,
-						finalFileName,(byte)(0),admin.getLoginJobnum(), new Date());
 				
-				commodityImageMapper.insert(commodityImage);
-				logger.debug("数据库写入图片成功");	
-				//
+				logger.debug("file  name = " + fileName);
+				//生成动态的文件名
+				String finalFileName =	
+						(new Date().getTime()) + Math.round(Math.random() * 1000)  //文件名动态部分，时间　＋　随机数
+						+ fileName;	//文件名　原始文件名 
+				//创建文件
+				File imgFile = new File(file,finalFileName);
+				
+				//保存文件
+				img.transferTo(imgFile);
+				logger.debug("上传图片成功");
+				//需要将保存图片的路径返回给客户端
 				urlData[index++] = "http://localhost:8080/lanmei-cms/"+imgUploadRelativePath + finalFileName;
 				logger.debug("index = " + index 
 						+ "  url = " + urlData[0]);

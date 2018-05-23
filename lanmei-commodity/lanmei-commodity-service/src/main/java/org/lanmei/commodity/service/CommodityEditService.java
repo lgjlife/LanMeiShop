@@ -1,5 +1,6 @@
 package org.lanmei.commodity.service;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -31,9 +32,8 @@ public interface CommodityEditService {
 	 * @param files
 	 */
 	ImgResultDto upLoadEditorImg(List<MultipartFile> list,
-			String UploadAbsolutePath,
 			String UploadRelativePath,
-			int commodityId);
+			File file);
 	/**
 	 * 检查是否存在同名商品　
 	 * @param map

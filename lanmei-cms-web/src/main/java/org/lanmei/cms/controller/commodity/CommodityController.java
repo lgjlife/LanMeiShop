@@ -1,5 +1,6 @@
 package org.lanmei.cms.controller.commodity;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -144,7 +145,12 @@ public class CommodityController {
 	@ResponseBody
 	@RequestMapping(path="/upload/img")
 	public CommodityResultDto uploadImg(@RequestParam("files") CommonsMultipartFile[] files,
-			@RequestParam("commodityId")  int commodityId) {		
+			@RequestParam("commodityId")  int commodityId) {	
+		String url1 = request.getContextPath();
+		String url2 = request.getServletContext().getContextPath();
+		
+		logger.debug("url1 = " + url1);
+		logger.debug("url2 = " + url2);
 		String imgUploadAbsolutePath = request.getServletContext().getInitParameter("imgUploadAbsolutePath");
 		String imgUploadRelativePath = request.getServletContext().getInitParameter("imgUploadRelativePath");
 		
@@ -160,14 +166,27 @@ public class CommodityController {
 	
 	@ResponseBody
 	@RequestMapping(path="/upload/editor/img")
-	public ImgResultDto uploadEditorImg(@RequestParam("img") List<MultipartFile> list) {		
-		String imgUploadAbsolutePath = request.getServletContext().getInitParameter("imgUploadAbsolutePath");
+	public ImgResultDto uploadEditorImg(@RequestParam("img") List<MultipartFile> list) {
+		String url1 = request.getContextPath() + "/";
+		String url2 = request.getServletContext().getContextPath();
+		
+		logger.debug("url1 = " + url1);
+		logger.debug("url2 = " + url2);
+		//从配置的参数中获取图片保存的相对位置
 		String imgUploadRelativePath = request.getServletContext().getInitParameter("imgUploadRelativePath");
 		
-		//logger.debug("commodityId = " + commodityId);
+		//获取项目的绝对路径
+		String sPath = request.getRealPath("/") ; //来得到WebServer的根目录的绝对路径
+		//然后：
+		String pathname=sPath+imgUploadRelativePath;
+		//创建目录
+		File file=new File(pathname);
+		if(!file.exists()) {
+			file.mkdir();
+		}
+		logger.debug("url  = " + file.getAbsolutePath());
 		ImgResultDto imgResult
-				= commodityEditService.upLoadEditorImg(list, imgUploadAbsolutePath, 
-						                        imgUploadRelativePath,1);
+				= commodityEditService.upLoadEditorImg(list,imgUploadRelativePath,file);
 			return imgResult;			
 	}
 	/**

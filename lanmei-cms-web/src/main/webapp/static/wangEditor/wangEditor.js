@@ -730,10 +730,11 @@ var config = {
             var url = result.data[0];
             //http://localhost:8080/lanmei-cms
            /// insertImg("http://localhost:8080/lanmei-cms/upload/img/1526486285563123.jpg");
+            // setTimeout(insertImg,3000,url);
             insertImg(url);
             	     //http://localhost:8080/lanmei-cms/upload/img/1526486285563123.jpg
-            insertImg("http://localhost:8080/lanmei-cms/upload/img/1526486954908123.jpg");
-            insertImg("http://localhost:8080/lanmei-cms/upload/img/1526486510526图片5.jpg");
+            //insertImg("http://localhost:8080/lanmei-cms/upload/img/1526486954908123.jpg");
+          //  insertImg("http://localhost:8080/lanmei-cms/upload/img/1526486510526图片5.jpg");
             console.log("插入图片 url = " + url );
             // result 必须是一个 JSON 格式字符串！！！否则报错
         }
