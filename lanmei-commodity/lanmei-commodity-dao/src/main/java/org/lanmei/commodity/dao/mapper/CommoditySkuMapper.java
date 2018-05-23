@@ -38,6 +38,6 @@ public interface CommoditySkuMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CommoditySku record);
-	
+
 	List<CommoditySku> selectByCommodityId(Integer commodityId );
 }

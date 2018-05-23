@@ -1,5 +1,6 @@
 package org.lanmei.cms.controller.commodity;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -259,6 +260,95 @@ public class CommodityControllerTest {
 	}
 	
 	/**
+	 *新建商品属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void testNewAttribution() throws Exception{
+		System.out.println("testNewAttribution 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		map.put("attrName","品牌");
+		map.put("attrVal","小米");
+		map.put("category","主体");
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( post("/commodity/new/attribution")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	/**
+	 *编辑商品属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void tesEditAttribution() throws Exception{
+		System.out.println("tesEditAttribution 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("attrId",2);
+		map.put("commodityId",2);
+		map.put("attrName","品牌");
+		map.put("attrVal","小米(MI)");
+		map.put("category","主体");
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( post("/commodity/edit/attribution")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	/**
+	 *删除商品属性
+	 * @throws Exception
+	 */
+	//@Test
+	public void testDeleteAttribution() throws Exception{
+		System.out.println("testDeleteAttribution 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("attrId",1);		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( delete("/commodity/delete/attribution")
+       		.contentType(MediaType.APPLICATION_JSON_UTF8)
+       		.content(jsonObject.toString()))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	/**
+	 *获取商品属性
+	 * @throws Exception
+	 */
+	@Test
+	public void testGetAttribution() throws Exception{
+		System.out.println("testNewAttribution 开始进行测试");  
+		
+		Map<String,Object> map = new HashMap<String,Object>();  
+		map.put("commodityId",2);
+		map.put("attrName","品牌");
+		map.put("attrVal","小米");
+		map.put("category","主体");
+		
+	    JSONObject jsonObject = JSONObject.fromObject(map);
+       //发送请求           	                        commodity/get/commodity/list?id=1 400 () 
+       MvcResult mvcResult = mockMvc.perform( get("/commodity/get/attribution")
+       		.param("commodityId","2"))
+       		.andDo(print())
+               .andExpect(status().isOk())
+               .andReturn();
+	}
+	
+	/**
 	 * 设置商品描述
 	 * @throws Exception
 	 */
@@ -283,7 +373,7 @@ public class CommodityControllerTest {
 	 * 获取商品描述
 	 * @throws Exception
 	 */
-	@Test
+	//@Test
 	public void testgetDescription() throws Exception{
 		System.out.println("testgetDescription 开始进行测试");  
 		

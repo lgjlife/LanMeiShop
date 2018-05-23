@@ -206,7 +206,7 @@
 											</h4>
 										</div>
 										<div class="modal-body" id="addSkuAttrInput">
-											<span>名称：</span><input type="text" id="addSkuAttrInput-name"　placeholder="颜色/尺寸/内存等"><br/>
+											<span>名称：</span><input type="text" id="addSkuAttrInput-name" placeholder="颜色/尺寸/内存等"><br/>
 											<span>属性：</span><input type="text" id="addSkuAttrInput-attr"><br/>
 											<span id="addSkuAttrInputWarn" style="color:red;"></span>
 										</div>
@@ -330,9 +330,40 @@
 			
 				<h4>商品属性编辑</h4>
 				<button id="attrInfoEditDispalyCtrlBtn" class="button">展开</button>
+				<!-- 模态框（Modal） -->
+				<div class="modal fade" id="attrInfoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+								<h4 class="modal-title" id="myModalLabel">
+									添加商品属性
+								</h4>
+							</div>
+							<div class="modal-body" id="addSkuAttrInput">
+								<span>ID：</span><input type="text" id="editAttrInfoInput-attrId" style="display:none;"><br/>
+								<span>类别：</span><input type="text" id="editAttrInfoInput-category"><br/>
+								<span>名称：</span><input type="text" id="editAttrInfoInput-attrName"><br/>
+								<span>属性：</span><input type="text" id="editAttrInfoInput-attrVal"><br/>
+								<span id="editAttrInfoInputWarn" style="color:red;"></span>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									取消
+								</button>
+								<button type="button" class="btn btn-primary" id="editAttrInfoInput-submitBtn">
+									提交
+								</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal -->
+				</div><!-- 模态框（Modal） --> 
+							
 	    	　　　　<!-- 点击展开时才从后台获取数据 -->
 	    	　　　　<div id="attrInfoEditDispalyCtrl" style="display:none">
-					<button id="attrInfoBtn" class="button">添加属性</button>	
+					<button id="attrInfoBtn" class="button" data-toggle="modal" data-target="#attrInfoEditModal">添加属性</button>	
 					<!-- 显示状态 -->
 					<div id="attrInfoDisplayMode">
 						<table class="table table-bordered" id="attrInfoList">

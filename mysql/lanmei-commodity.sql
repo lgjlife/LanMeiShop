@@ -180,9 +180,9 @@ DROP TABLE IF  EXISTS `commodity_attr`;
 CREATE TABLE `commodity_attr`(
 	`attr_id` INT  AUTO_INCREMENT COMMENT "属性ID",
 	`commodity_id` INT   COMMENT "SKU ID",
+	`category`  VARCHAR(30) COMMENT "分类　主体参数/规格参数",
 	`attr_name` VARCHAR(30) COMMENT "名称 用户自定义",
 	`attr_val`  VARCHAR(50) COMMENT "属性值",
-	`category`  VARCHAR(30) COMMENT "分类　主体参数/规格参数",
 	PRIMARY KEY (`attr_id`)	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT="商品属性表";
 

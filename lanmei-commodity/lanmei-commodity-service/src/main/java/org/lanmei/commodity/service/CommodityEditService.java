@@ -73,6 +73,31 @@ public interface CommodityEditService {
 	CommodityState deleteSkuAttr( Integer skuId);
 	
 	/**
+	 * 新建商品属性
+	 * @param map 
+	 * @return
+	 */
+	EditDto newAttribution(Map<String,Object> map);
+	/**
+	 * 编辑商品属性
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	EditDto editAttribution(Map<String,Object> map);
+	/**
+	 * 删除商品属性
+	 * @param map 
+	 * @return
+	 */
+	EditDto deleteAttribution(Map<String,Object> map);
+	/**
+	 * 获取商品属性
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	EditDto getAttribution(Integer commodityId);
+	
+	/**
 	 * 设置商品描述
 	 * @param map 
 	 * @return

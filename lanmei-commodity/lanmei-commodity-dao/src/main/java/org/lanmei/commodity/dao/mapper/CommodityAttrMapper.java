@@ -2,7 +2,9 @@ package org.lanmei.commodity.dao.mapper;
 
 import java.util.List;
 import org.lanmei.commodity.dao.model.CommodityAttr;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CommodityAttrMapper {
 
 	/**
@@ -34,4 +36,10 @@ public interface CommodityAttrMapper {
 	 * @mbg.generated
 	 */
 	int updateByPrimaryKey(CommodityAttr record);
+	/**
+	 * 通过商品id获取数据
+	 * @param commodity
+	 * @return
+	 */
+	List<CommodityAttr> selectByCommodityId(Integer commodity);
 }

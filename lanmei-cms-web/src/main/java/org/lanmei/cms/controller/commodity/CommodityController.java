@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanmei.cms.controller.commodity.dto.CommodityResultDto;
 import org.lanmei.commodity.dao.model.Commodity;
 import org.lanmei.commodity.dao.model.CommoditySku;
@@ -38,6 +39,8 @@ public class CommodityController {
 	ClassificationService classificationService;
 	@Autowired
 	CommodityEditService   commodityEditService;
+	
+	
 	
 	@Autowired
 	private  HttpServletRequest request;
@@ -259,41 +262,7 @@ public class CommodityController {
 		System.out.println(content);
 
 	}
-	/**
-	 * 编辑商品描述
-	 * @param requestMap
-	 */
-	
-	
-	
-	/**
-	 * 编辑商品商品属性
-	 * @param requestMap
-	 */
-	@SyslogAnno(layer="Controller",description="编辑商品属性")
-	@TimeMeasurementAnno(layer="Controller",description="编辑商品属性")
-	@ResponseBody
-	@RequestMapping(path="/edit/attribution",method=RequestMethod.POST)
-	public CommodityResultDto editAttribution(@RequestBody Map<String,Object> requestMap) {
-		
-		
-		
-		return null;
 
-	}
-	/**
-	 * 获取商品描述
-	 * @param requestMap
-	 */
-	@SyslogAnno(layer="Controller",description="获取商品属性")
-	@TimeMeasurementAnno(layer="Controller",description="获取商品属性")
-	@ResponseBody
-	@RequestMapping(path="/get/attribution")
-	public CommodityResultDto getAttribution(@RequestBody Map<String,Object> requestMap){	
-		
-		
-		return null;
-	}
 	
 	/**
 	 * 获取商品sku属性
@@ -370,7 +339,83 @@ public class CommodityController {
 		return null;	
 
 	}
+	/****************************商品基本属性处理开始***********************************/
+	/**
+	 * 新建商品属性
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/new/attribution",method=RequestMethod.POST)
+	public CommodityResultDto newAttribution(@RequestBody Map<String, Object>  requestMap){	
 	
+		EditDto editDto  = commodityEditService.newAttribution(requestMap);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
+
+	}
+	/**
+	 * 编辑商品属性
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/edit/attribution",method=RequestMethod.POST)
+	public CommodityResultDto editAttribution(@RequestBody Map<String, Object>  requestMap){	
+		
+		logger.debug("访问editAttribution");
+		Integer skuId = (Integer)requestMap.get("skuId");
+		logger.debug("skuId = "+skuId);
+		EditDto editDto  = commodityEditService.editAttribution(requestMap);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
+
+	}
+	/**
+	 * 删除商品属性
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/delete/attribution",method=RequestMethod.DELETE)
+	public CommodityResultDto deleteAttribution(@RequestBody Map<String, Object>  requestMap){	
+		
+		logger.debug("访问deleteAttribution");
+		EditDto editDto  = commodityEditService.deleteAttribution(requestMap);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
+
+	}
+	/**
+	 * 获取商品属性
+	 * @param skuId
+	 * @return
+	 */	
+	@ResponseBody
+	@RequestMapping(path="/get/attribution",method=RequestMethod.GET)
+	public CommodityResultDto getAttribution(@RequestParam("commodityId") Integer commodityId ){	
+		
+		logger.debug("访问getAttribution");
+		EditDto editDto  = commodityEditService.getAttribution( commodityId);
+		
+		CommodityResultDto<EditDto> commodityResultDto 
+		= new CommodityResultDto<EditDto>(true,editDto);
+	
+		return commodityResultDto;	
+
+	}
+	
+	/****************************商品基本属性处理结束***********************************/
+	/****************************商品描述处理开始***********************************/
 	/**
 	 * 更新商品描述
 	 * @param skuId
@@ -411,4 +456,5 @@ public class CommodityController {
 		return commodityResultDto;	
 
 	}
+	/****************************商品描述处理结束***********************************/
 }

@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.lanmei.admin.dao.model.CmsAdmin;
+import org.lanmei.commodity.dao.mapper.CommodityAttrMapper;
 import org.lanmei.commodity.dao.mapper.CommodityClassificationAssociationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityClassificationMapper;
 import org.lanmei.commodity.dao.mapper.CommodityImageMapper;
 import org.lanmei.commodity.dao.mapper.CommodityMapper;
 import org.lanmei.commodity.dao.mapper.CommoditySkuMapper;
 import org.lanmei.commodity.dao.model.Commodity;
+import org.lanmei.commodity.dao.model.CommodityAttr;
 import org.lanmei.commodity.dao.model.CommodityClassification;
 import org.lanmei.commodity.dao.model.CommodityImage;
 import org.lanmei.commodity.dao.model.CommoditySku;
@@ -49,6 +51,8 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 	CommodityImageMapper commodityImageMapper;
 	@Autowired
 	CommoditySkuMapper commoditySkuMapper;
+	@Autowired
+	CommodityAttrMapper commodityAttrMapper;
 	
 	@Autowired
 	private DruidDataSource dataSource; 
@@ -320,6 +324,80 @@ public class CommodityEditServiceImpl extends BaseService  implements CommodityE
 			return CommodityState.DELETE_SKU_ATTR_SUCCESS;
 		}
 		
+	}
+	
+	/**
+	 * 新建商品属性
+	 * @param map 
+	 * @return
+	 */
+	@Override
+	public EditDto newAttribution(Map<String,Object> map) {
+		
+		CommodityAttr  commodityAttr = JSON.parseObject(JSON.toJSONString(map),CommodityAttr.class);
+		Integer insertCount = commodityAttrMapper.insert(commodityAttr);
+		if(insertCount == 0) {
+			logger.debug("新建商品属性失败！");
+			return	new EditDto(false,"新建商品属性失败！");
+		}
+		else {
+			logger.debug("新建商品属性成功！");
+			return	new EditDto(true,"新建商品属性成功！");
+		}
+	}
+	/**
+	 * 编辑商品属性
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	@Override
+	public EditDto editAttribution(Map<String,Object> map) {
+		CommodityAttr  commodityAttr = JSON.parseObject(JSON.toJSONString(map),CommodityAttr.class);
+		Integer updateCount = commodityAttrMapper.updateByPrimaryKey(commodityAttr);
+		if(updateCount == 0) {
+			logger.debug("编辑商品属性失败！");
+			return	new EditDto(false,"编辑商品属性失败！");
+		}
+		else {
+			logger.debug("编辑商品属性成功！");
+			return	new EditDto(true,"编辑商品属性成功！");
+		}
+	}
+	/**
+	 * 删除商品属性
+	 * @param map 
+	 * @return
+	 */
+	@Override
+	public EditDto deleteAttribution(Map<String,Object> map) {
+		
+		Integer attrId = (Integer)map.get("attrId");
+		Integer updateCount = commodityAttrMapper.deleteByPrimaryKey(attrId);
+		if(updateCount == 0) {
+			logger.debug("删除商品属性失败！");
+			return	new EditDto(false,"删除商品属性失败！");
+		}
+		else {
+			logger.debug("删除商品属性成功！");
+			return	new EditDto(true,"删除商品属性成功！");
+		}
+	}
+	/**
+	 * 获取商品属性
+	 * @param Integer　商品ＩＤ
+	 * @return
+	 */
+	@Override
+	public EditDto getAttribution(Integer commodityId) {
+		List<CommodityAttr> commodityAttr  = commodityAttrMapper.selectByCommodityId(commodityId);
+		if(commodityAttr == null) {
+			logger.debug("获取商品属性失败！");
+			return	new EditDto(false,"获取商品属性失败！");
+		}
+		else {
+			logger.debug("获取商品属性成功！");
+			return	new EditDto<List>(true,commodityAttr,"获取商品属性成功！");
+		}
 	}
 	
 	/**

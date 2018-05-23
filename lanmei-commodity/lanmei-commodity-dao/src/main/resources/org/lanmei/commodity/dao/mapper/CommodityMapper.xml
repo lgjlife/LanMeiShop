@@ -103,7 +103,7 @@
  
    <!--自定义　 -->
   <!-- 通过商品id设置商品描述description -->
-  <update id="updateDescByPrimaryKey" >
+  <update id="updateDescByPrimaryKey">
     update commodity
     set 
       description = #{description,jdbcType=LONGVARCHAR}

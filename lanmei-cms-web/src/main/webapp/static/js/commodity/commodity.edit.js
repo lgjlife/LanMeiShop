@@ -685,7 +685,7 @@ $(function(){
  * @returns
  */
 $(function(){
-	
+	var attrHandleState;//newAttrState:新建属性　editAttrState:编辑属性
 	var attrData = [{"attrId":"1","category":"包装清单","attName":"包装清单","attVal":"手机x1、快速指南x1"},
 			{"attrId":"2","category":"主体","attName":"品牌","attVal":"华为(HUAWEI)"},
 			{"attrId":"3","category":"系统","attName":"手机操作系统","attVal":"Android"},
@@ -705,8 +705,8 @@ $(function(){
         	//var commodityId = 
         	//getＡttrInfo(commodityId);
     		//$("#attrInfoEditDispalyCtrl").show();
+    		getAttribution(currentEditCommodityData.commodityId);
     		
-    		displayAttr(attrData);
     	}
     	//　展开状态－－－＞收起状态
     	else if($("#attrInfoEditDispalyCtrlBtn").text() == "收起"){
@@ -736,9 +736,9 @@ $(function(){
     		
     		var text = '<tr class="attrDisplayList"><td id="attrId" style="display:none">'+data[i].attrId +'</td>'
     				+ '<td id="category">' + data[i].category + '</td>'
-    				+ '<td id="attName">' + data[i].attName + '</td>'
-    				+ '<td id="attVal">' + data[i].attVal + '</td>'
-    				+ '<td>' + '<button type="button" class="attrInfoEditBtn">编辑</button>'
+    				+ '<td id="attName">' + data[i].attrName + '</td>'
+    				+ '<td id="attVal">' + data[i].attrVal + '</td>'
+    				+ '<td>' + '<button type="button" class="attrInfoEditBtn" data-toggle="modal" data-target="#attrInfoEditModal">编辑</button>'
     				+ '<button type="button" class="attrInfoDeleteBtn">删除</button>' + '</td>'
     				+ '</tr>';
     	//	console.log("text = " + text);
@@ -752,41 +752,52 @@ $(function(){
      * 绑定动态元素 编辑按钮
      */
      $(document).on('click','.attrInfoEditBtn',function(){
+        //设置为更新状态
+        attrHandleState = "editAttrState";
+		console.log("attrHandleState = " + attrHandleState);
     	 //获取父及元素
     	var $attrDisplayList = $(this).parent().parent();
     	console.log("$attrDisplayList = " + $attrDisplayList);
     	 //获取值
-    	var attrData = {"attrId":"","category":"","attName":"","attVal":""};
-    	attrData.attrId = $attrDisplayList.find('#attrId').text();
+    	var attrData = {"attrId":"","category":"","attrName":"","attrVal":""};
+    	attrData.attrId = Number( $attrDisplayList.find('#attrId').text());
     	attrData.category = $attrDisplayList.find('#category').text();
-    	attrData.attName = $attrDisplayList.find('#attName').text();
-   	 	attrData.attVal = $attrDisplayList.find('#attVal').text();
-   	    console.log("attrData = " + JSON.stringify(attrData));
+    	attrData.attrName = $attrDisplayList.find('#attName').text();
+   	 	attrData.attrVal = $attrDisplayList.find('#attVal').text();
+   	    console.log("attrData = " + JSON.stringify(attrData));    	
+   	    //设置值
+   	    $("#editAttrInfoInput-attrId").val(attrData.attrId);
+   	    $("#editAttrInfoInput-category").val(attrData.category);
+   	    $("#editAttrInfoInput-attrName").val(attrData.attrName);
+   	    $("#editAttrInfoInput-attrVal").val(attrData.attrVal);
    	    
-   	   //显示
-   	    $("#attrInfoDisplayMode").hide();
-		$("#attrInfoEditMode").show();
-		$("#attrInfoBtn").text("返回");
-		//填充
-		$("#attrInfo-attrId").val(attrData.attrId);
-		$("#attrInfo-category").val(attrData.category);
-		$("#attrInfo-attName").val(attrData.attName);
-		$("#attrInfo-attVal").val(attrData.attVal);
-		
-    	
      })
      /**
-      * 提交按钮,提交更新请求
+      * 提交按钮,提交更新/新增请求
       */
-     $("#attrInfoSubmitBtn").click(function(){
+     $("#editAttrInfoInput-submitBtn").click(function(){
     	 
-    	 var attrData = {"attrId":"","category":"","attName":"","attVal":""};
-         attrData.attrId = $("#attrInfo-attrId").val();
-         attrData.category = $("#attrInfo-category").val();
-         attrData.attName = $("#attrInfo-attName").val();
-         attrData.attVal = $("#attrInfo-attVal").val();
+    	 var attrData = {"attrId":"","commodityId":"","category":"","attrName":"","attrVal":""};
+        
+         attrData.commodityId = currentEditCommodityData.commodityId;
+         attrData.category = $("#editAttrInfoInput-category").val();
+         attrData.attrName = $("#editAttrInfoInput-attrName").val();
+         attrData.attrVal = $("#editAttrInfoInput-attrVal").val();
+         
+         if( attrHandleState == "editAttrState"){
+        	 console.log("编辑属性");
+        	 //编辑属性
+        	 attrData.attrId = $("#editAttrInfoInput-attrId").val();
+        	 console.log("attrData = " + JSON.stringify(attrData));
+        	 editAttribution(attrData);
+         }
+         else if( attrHandleState == "newAttrState"){
+        	 console.log("新建属性");
+        	 //新建属性
+        	 newAttribution(attrData);
+         }
     	 	
-    	 editAttribution(attrData);
+    	
     })
      /**
      * 绑定动态元素 删除按钮
@@ -796,7 +807,7 @@ $(function(){
     	var $attrDisplayList = $(this).parent().parent();
     	console.log("$attrDisplayList = " + $attrDisplayList);
     	 //获取值
-    	var attrData = {"attrId":"","category":"","attName":"","attVal":""};
+    	var attrData = {"attrId":"","category":"","attrName":"","attrVal":""};
     	attrData.attrId = $attrDisplayList.find('#attrId').text();
     	attrData.category = $attrDisplayList.find('#category').text();
     	attrData.attName = $attrDisplayList.find('#attName').text();
@@ -804,7 +815,7 @@ $(function(){
    	    var result = confirm("是否确认删除" + "属性名称为[" + attrData.attName + "]的条目?" );
    	    console.log("result = " + result);
    	    //发送删除请求
-   	    deleteAttribution(attrData.attrId);
+   	    deleteAttribution(Number(attrData.attrId));
      })
     
     /*－－－－－－－－－－－－－－－－－Ajax　请求－－－－－－－－－－－－－－－－－－*/
@@ -817,14 +828,15 @@ $(function(){
     function getAttribution(commodityId){
     	var jsonData = {"commodityId":""};
 		jsonData.commodityId = commodityId;
+		var sendData = "commodityId="+commodityId;
 		$.ajax({
-	        type : "post",
+	        type : "get",
 	        url : "/lanmei-cms/commodity/get/attribution",
 	        contentType : "application/json;charset=utf-8",
-	        data : JSON.stringify(jsonData),
+	        data : sendData,//JSON.stringify(jsonData),
 	        dataType: "json",
 	        success:function(data){
-	        	
+	        	displayAttr(data.data.data);
 	        }
 		 });
     }
@@ -839,7 +851,41 @@ $(function(){
 	        data : JSON.stringify(attrData),
 	        dataType: "json",
 	        success:function(data){
-	        	
+	        	if(data.success == true){
+	        		$("#editAttrInfoInputWarn").text(data.data.msg);
+	        		//请求属性数据，刷新列表
+	        		if(data.data.success == true){
+	        			getAttribution(currentEditCommodityData.commodityId);
+	        		}
+	        	}
+	        	else{
+	        		$("#editAttrInfoInputWarn").text("更新请求失败，请刷新重新提交");
+	        	}
+	        }
+		 });
+    }
+    /**
+     * 通过属性id向服务端发送商品属性(新建)
+     */
+    function newAttribution(attrData){
+		$.ajax({
+	        type : "post",
+	        url : "/lanmei-cms/commodity/new/attribution",
+	        contentType : "application/json;charset=utf-8",
+	        data : JSON.stringify(attrData),
+	        dataType: "json",
+	        success:function(data){
+	        	if(data.success == true){
+	        		$("#editAttrInfoInputWarn").text(data.data.msg);
+	        		//请求属性数据，刷新列表
+	        		if(data.data.success == true){
+	        			getAttribution(currentEditCommodityData.commodityId);
+	        		}
+	        		
+	        	}
+	        	else{
+	        		$("#editAttrInfoInputWarn").text("新建请求失败，请刷新重新提交");
+	        	}
 	        }
 		 });
     }
@@ -847,24 +893,38 @@ $(function(){
      * 通过属性id删除商品属性(编辑现有的属性)
      */
     function deleteAttribution(attrId){
+    	var jsonData = {"attrId":""};
+    	jsonData.attrId = attrId;
 		$.ajax({
-	        type : "post",
+	        type : "delete",
 	        url : "/lanmei-cms/commodity/delete/attribution",
 	        contentType : "application/json;charset=utf-8",
 	        data : JSON.stringify(jsonData),
 	        dataType: "json",
 	        success:function(data){
-	        	
+	        	if(data.success == true){
+	        		//请求属性数据，刷新列表
+	        		if(data.data.success == true){
+	        			getAttribution(currentEditCommodityData.commodityId);
+	        		}
+	        		
+	        	}
+	        	else{
+	        		$("#editAttrInfoInputWarn").text("删除请求失败，请刷新重新提交");
+	        	}
 	        }
 		 });
     }
-    
+    /*－－－－－－－－－－－－－－－－－Ajax　请求 结束－－－－－－－－－－－－－－－－－－*/
     
 	/**
 	 * 商品属性编辑显示切换
 	 */
 	$("#attrInfoBtn").click(function(){
-		if($("#attrInfoBtn").text() == "添加属性"){
+		attrHandleState = "newAttrState";
+		console.log("attrHandleState = " + attrHandleState);
+		
+		/*if($("#attrInfoBtn").text() == "添加属性"){
 			$("#attrInfoDisplayMode").hide();
 			$("#attrInfoEditMode").show();
 			$("#attrInfoBtn").text("返回");
@@ -873,7 +933,7 @@ $(function(){
 			$("#attrInfoDisplayMode").show();
 			$("#attrInfoEditMode").hide();
 			$("#attrInfoBtn").text("添加属性");
-		}		
+		}*/		
 	})
 })
  /*
