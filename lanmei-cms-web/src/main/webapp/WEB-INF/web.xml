@@ -70,6 +70,31 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>	
 	
+	<filter>
+	  	<filter-name>DruidWebStatFilter</filter-name>
+	  	<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+	  	<init-param>
+	  		<param-name>exclusions</param-name>
+	  		<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>	  		
+	  	</init-param>
+	  	<init-param>
+	  		<param-name>sessionStatEnable</param-name>
+	  		<param-value>true</param-value>
+	  	</init-param>
+	  	<init-param>
+	  		<param-name>sessionStatMaxCount</param-name>
+	  		<param-value>1000</param-value>
+	  	</init-param>
+	  	<init-param>
+		    <param-name>profileEnable</param-name>
+		    <param-value>true</param-value>
+		</init-param>
+	  </filter>
+	  <filter-mapping>
+	  	<filter-name>DruidWebStatFilter</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	  </filter-mapping>
+  
     <servlet>
     	<servlet-name>lanmei</servlet-name>
     	<!-- DispatcherServlet 处理所有的请求 -->
@@ -90,7 +115,38 @@
     	<url-pattern>/</url-pattern>
     </servlet-mapping>
    
-    
+    <!-- <servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping> -->
+	<!-- 配置 Druid 监控信息显示页面 -->  
+	<servlet>  
+	    <servlet-name>DruidStatView</servlet-name>  
+	    <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>  
+	    <init-param>  
+		<!-- 允许清空统计数据 -->  
+		<param-name>resetEnable</param-name>  
+		<param-value>true</param-value>  
+	    </init-param>  
+	    <init-param>  
+		<!-- 用户名 -->  
+		<param-name>loginUsername</param-name>  
+		<param-value>druid</param-value>  
+	    </init-param>  
+	    <init-param>  
+		<!-- 密码 -->  
+		<param-name>loginPassword</param-name>  
+		<param-value>/druid</param-value>  
+	    </init-param>  
+	</servlet>  
+	<servlet-mapping>  
+	    <servlet-name>DruidStatView</servlet-name>  
+	    <url-pattern>/druid/*</url-pattern>  
+	</servlet-mapping>  
     
     <!-- 配置404与500错误处理 -->   
 	<error-page>

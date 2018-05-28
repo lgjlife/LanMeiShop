@@ -30,6 +30,7 @@
 		<setting name="defaultStatementTimeout" value="25000" />
 		<setting name="logImpl" value="LOG4J2"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="cacheEnabled" value="true"/>
 	</settings>
 	
 	<typeAliases>

@@ -145,4 +145,26 @@
 	<!-- aop配置-->
 	 <import resource="classpath:springmvc/applicationContext-aop.xml" />  
     
+    
+     <bean id="druid-stat-interceptor"
+  	class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+  </bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass" value="true" />
+		<property name="beanNames">
+			<list>
+				<!-- 这里配置需要拦截的bean id列表 -->
+				<value>commodityController</value>
+				<value>homePageController</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>druid-stat-interceptor</value>
+			</list>
+		</property>
+	</bean>
+
 </beans>
