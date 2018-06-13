@@ -26,13 +26,19 @@
         <setting name="lazyLoadingEnabled" value="true" />
 		<setting name="multipleResultSetsEnabled" value="true" />
 		<setting name="useColumnLabel" value="true" />
+		<!-- 配置默认的执行器
+		SIMPLE没什么特别之处，
+		REUSE重用预处理语句，
+		BATCH重用语句和批量更新 -->
 		<setting name="defaultExecutorType" value="REUSE" />
+		<!-- 设置超时时间，超时时间到对数据库的操作失败 -->
 		<setting name="defaultStatementTimeout" value="25000" />
+		<!--配置日志框架-->
 		<setting name="logImpl" value="LOG4J2"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
-		<setting name="cacheEnabled" value="true"/>
 	</settings>
 	
+	<!-- 配置别名 -->
 	<typeAliases>
         <package name="org.lanmei.*.dao.model"/>
     </typeAliases>

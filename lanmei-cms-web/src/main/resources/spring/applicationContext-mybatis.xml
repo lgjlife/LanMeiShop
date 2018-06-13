@@ -49,10 +49,20 @@
 			expression="execution(* org.pussinboots.morning.*.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="txPointcut" />
 	</aop:config>  -->
+	<bean id="convertPwdPropertyConfigurer" class="org.lanmei.cms.common.jdbc.encrypt.ConvertPwdPropertyConfigurer"
+		p:locations="classpath:mysqljdbc.properties"
+		p:fileEncoding="utf-8"		
+	/>
 	
+     <bean id="convertPwdPropertyConfigurer1" class="org.lanmei.cms.common.jdbc.encrypt.ConvertPwdPropertyConfigurer1"
+		p:locations="classpath:mysqljdbc.properties"
+		p:fileEncoding="utf-8"
+		depends-on="convertPwdPropertyConfigurer"  
+	/>
 	<!-- 数据源配置,使用Druid数据库连接池 -->
  	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		init-method="init" destroy-method="close">
+		init-method="init" destroy-method="close"
+		depends-on="convertPwdPropertyConfigurer">
 		<!-- 数据源驱动类可不写,Druid默认会自动根据URL识别DriverClass -->
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 
@@ -85,10 +95,11 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
 
 		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="stat" />
+		<property name="filters" value="config,stat" />
+    	 <property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${jdbc.publicKey}" />
 	</bean> 
 	
-
+    
 	 <bean id="dataSource1"
 		  class="org.apache.ibatis.datasource.pooled.PooledDataSource">		  
 		  <property name="url" value="${jdbc.url}"/>
