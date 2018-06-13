@@ -1,4 +1,4 @@
-package org.MySQL;
+package org.lanmei.backup;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,28 +13,40 @@ import java.util.Date;
 import java.util.Properties;
 
 import org.apache.ibatis.io.Resources;
-import org.slf4j.Logger;  
-  
-/** 
- * MySQL数据库备份 
- *  
- * @author GaoHuanjie 
- */  
-public class MySQLDatabaseBackup {  
-  
-    /** 
-     * Java代码实现MySQL数据库导出 
-     *  
-     * @author GaoHuanjie 
-     * @param hostIP MySQL数据库所在服务器地址IP 
-     * @param userName 进入数据库所需要的用户名 
-     * @param password 进入数据库所需要的密码 
-     * @param savePath 数据库导出文件保存路径 
-     * @param fileName 数据库导出文件文件名 
-     * @param databaseName 要导出的数据库名 
-     * @return 返回true表示导出成功，否则返回false。 
-     */  
-    public static boolean exportDatabaseTool(String hostIP, String userName, String password, String savePath, String fileName, String databaseName) throws InterruptedException {  
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * 数据库备份实现
+ * @author lgj
+ *
+ */
+public class DatabaseBackup {
+	
+	private final static Logger logger = LoggerFactory.getLogger("DatabaseBackup.class");	
+	{
+		logger.debug("DatabaseBackup Created Bean............. ");
+	}
+	
+	//MySQL数据库所在服务器地址IP 
+	private  String hostIP;
+	//进入数据库所需要的用户名 
+	private String userName;
+	//进入数据库所需要的密码 
+	private String password;
+	//数据库导出文件保存路径
+	private String savePath;
+	//数据库导出文件文件名 
+	private String fileName;
+	//要导出的数据库名 
+	private String databaseName;
+
+	/**
+	 * 执行备份指令
+	 * @return
+	 * @throws InterruptedException
+	 */
+    public  boolean exportDatabaseTool() throws InterruptedException {  
+    	
         File saveFile = new File(savePath);  
         if (!saveFile.exists()) {// 如果目录不存在  
             saveFile.mkdirs();// 创建文件夹  
@@ -45,6 +57,7 @@ public class MySQLDatabaseBackup {
           
         PrintWriter printWriter = null;  
         BufferedReader bufferedReader = null;  
+        fileName =  getFileName(); 
         try {  
             printWriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(savePath + fileName), "utf8"));  
             Process process = Runtime.getRuntime().exec(" mysqldump -h" + hostIP + " -u" + userName + " -p" + password + " --set-charset=UTF8 " + databaseName);  
@@ -74,12 +87,15 @@ public class MySQLDatabaseBackup {
         }  
         return false;  
     }  
-      
-    public static void main(String[] args){  
+    /**
+     *读取属性文件的配置
+     */
+    public void readConf() {
     	
+    	logger.debug("readConf");
     	Properties properties = new Properties();
     	Reader proreader = null;
-    	Date  date = new Date();
+    	
     	/*读取配置文件的配置信息*/
     	try {
 			InputStream in = Resources.getResourceAsStream("mysqlBackup.properties");
@@ -88,28 +104,49 @@ public class MySQLDatabaseBackup {
     	} catch (Exception e) {
 			// TODO: handle exception
 		}
-    
+    	hostIP = properties.getProperty("hostIP");
+    	userName = properties.getProperty("userName");
+    	password = properties.getProperty("password");
+    	savePath =  properties.getProperty("savePath");
+    	databaseName = properties.getProperty("databaseName");
     	
-		String fileName = String.valueOf(date.getYear() + 1900) 
-    					  + "-" + String.valueOf(date.getMonth()+1) 
-    			          + "-" +  String.valueOf(date.getDate()) 
-    			          + "-" +  String.valueOf(date.getHours()) 
-    			          + ":" +  String.valueOf(date.getMinutes()) 
-    			          + ".sql";
-		//fileName  = date.toString() + ".sql";
-        try {  
-            if (exportDatabaseTool((String)properties.get("hostIP"),
-            						(String)properties.get("userName"),
-            						(String)properties.get("password"),
-            						(String)properties.get("savePath"),
-            		                fileName,
-            		                (String)properties.get("databaseName"))){  
-                System.out.println("数据库成功备份！！！");  
-            } else {  
-                System.out.println("数据库备份失败！！！");  
-            }  
-        } catch (InterruptedException e) {  
-            e.printStackTrace();  
-        }  
-    }  
-}  
+    	logger.debug(" hostIP = " + hostIP
+    	+ "  userName = " + userName
+    	+ " password = " + password
+    	+ "  savePath = " + savePath
+    	+ "  databaseName = " + databaseName);
+    }
+    /**
+     * 执行备份
+     */
+    public void backup() {
+    	readConf();
+    	try {
+			if(exportDatabaseTool())
+			{
+				logger.debug("数据库备份成功");
+			}
+			else {
+				logger.debug("数据库备份失败");
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			logger.debug("数据库备份失败");
+			e.printStackTrace();
+		}
+    }
+    /**
+     * 根据当前时间获取备份文件
+     * @return
+     */
+    public String getFileName() {
+		
+		Date  date = new Date();
+		String fileName = date.getYear()+1900
+				+"-"+date.getMonth()
+				+"-"+date.getDate()
+				+"-"+date.getHours()
+				+":"+date.getMinutes();
+		return fileName;
+	}
+}

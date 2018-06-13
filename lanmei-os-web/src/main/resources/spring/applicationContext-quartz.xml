@@ -54,6 +54,7 @@
         </property>
         <property name="autoStartup" value="true" /> 
     </bean> -->
+    <bean id="databaseBackup" class="org.lanmei.backup.DatabaseBackup" scope="singleton"/>
     <bean id="myJob" class="org.lanmei.backup.MysqlBackup"></bean>
     <!-- 配置JobDetail -->
     <bean id="springQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -70,7 +71,7 @@
         <property name="jobDetail" ref="springQtzJobMethod"></property>
 
         <!-- cron表达式，执行时间  每5秒执行一次 -->
-        <property name="cronExpression" value="0/5 * * * * ?"></property>
+        <property name="cronExpression" value="0 0 0 * * ?"></property>
     </bean>
 
     <!-- 配置调度工厂 -->

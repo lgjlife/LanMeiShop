@@ -213,7 +213,7 @@
 		系统Ａop处理</a>
 	<li>lanmei-task-scheduling</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-task-%20scheduling">
-		任务管理模块，使用quartz，还存在bug</a>
+		任务管理模块，使用quart，定时备份mysqls数据库</a>
 	<li>mysql</li>
 		--<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
 		数据库脚本文件，创建数据表相关</a>
@@ -277,7 +277,7 @@
 			<li>为防止软件提前刷，造成服务器压力，秒杀开始后服务端才暴露秒杀地址</li>
 			<li>秒杀地址动态部分由seckillId和随机生成的数字组合，再经过MD5加密而成</li>
 			<li>生成的MD5保存在Session中，执行秒杀操作时再进行比对</li>
-			<li>使用spring的事物管理，执行秒杀过程出现异常则进行数据库回滚</li>
+			<li>使用spring的事务管理，执行秒杀过程出现异常则进行数据库回滚</li>
 			<li>首次使用spring test 进行web层测试，提高效率。数据曾和服务曾未单独进行测试</li>
 			<li>首次使用DTO进行层间数据传送</li>
 		</ul>
@@ -299,7 +299,32 @@
 			<li>使用＠Order注解控制两个AOP执行顺序.＠Order的值越低，优先级越高，越先执行</li>
 			<li>后续会增加后台实时查看和删除功能</li>
 		</ul>
+	</li>	
+	<li>数据库配置文件密码加密
+		</br>
+		<a href="https://github.com/alibaba/druid/wiki/%E4%BD%BF%E7%94%A8ConfigFilter">使用druid的ConfigFilter功能对数据库配置文件密码加密</a>
 	</li>
+	<li>
+		后台商品管理模块
+		<ul type="disc">
+			<li>商品类别管理：使用树形结构．新增，删除，修改</li>
+			<li>商品管理．添加，删除，列表展示</li>
+			<li>根据SKU概念设计商品库存表</li>
+			<li>商品属性管理</li>
+			<li>商品描述管理，使用富文本编辑器进行编辑</li>
+		</ul>
+	</li>
+	<li>
+		数据库定时备份
+		<ul>
+			<li>使用quartz实现定时任务</li>
+			<li>使用Runtime模块执行备份指令</li>
+			<li><a href="">quartz配置</a></li>
+			<li><a href="">备份实现</a></li>
+		</ul>
+	</li>
+
+	
 </ol>
 <h1>个人博客相关文章</h1>
 <ol>
