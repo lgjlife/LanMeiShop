@@ -316,10 +316,10 @@
 	</li>
 	<li>
 		数据库定时备份
-		<ul　type="disc">
+		<ul type="disc">
 			<li>使用quartz实现定时任务</li>
 			<li>使用Runtime模块执行备份指令</li>
-			<li><a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/spring/applicationContext-quartz.xml">quartz配置</a></li>
+			<li><a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/spring/applicationContext-quartz.xml">quartz bean配置</a></li>
 			<li><a href="https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-task-%20scheduling/src/main/java/org/lanmei/backup/DatabaseBackup.java">备份实现</a></li>
 		</ul>
 	</li>
