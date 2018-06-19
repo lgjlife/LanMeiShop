@@ -33,6 +33,7 @@
 	<li>后台管理项目帐号：201801，密码：zxcvbnm123</li>
 	<li>前台项目需先进行注册后再登录</li>
 	<li>由于没有使用延迟加载，所以启动时时间可能会过长，如果Ｔomcat出现启动超时，请适当增加超时时间后再重新启动</li>
+	<li>注意：由于已经对数据库配置文件的密码进行加密处理，因此需要根据自己的mysql数据库用户名和密码进行加密处理，否则运行将会因为连接不上数据库而报错，参考这篇文章进行操作<a href="https://blog.csdn.net/u011676300/article/details/80740530">properties文件加密处理</a></li>
 	<li>有任何问题可以到本博客下进行讨论，欢迎交流！
 	<a href="https://blog.csdn.net/u011676300/article/details/80276014">蓝莓商城项目交流</a>
 	</li>
@@ -304,7 +305,7 @@
 	<li>数据库配置文件密码加密
 		<ul type="disc">
 			<li>
-				cms.web使用的是druid方式进行加密处理
+				cms.web使用的是druid配置方式进行加密处理
 			</li>
 			<li>
 				os.web使用的是Java编码方式进行加密处理
