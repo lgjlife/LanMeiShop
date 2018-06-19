@@ -13,7 +13,7 @@
 	
 	<description>mybatis Configuration</description>
 	
-	 <context:component-scan base-package="org.lanmei.*.*"></context:component-scan> 
+	<context:component-scan base-package="org.lanmei"></context:component-scan>
 	<!-- 引入数据库配置文件 -->
 	<context:property-placeholder location="classpath:mysqljdbc.properties" />
     <!-- 事务管理器:基于jdbc,ibatis,mybaits的spring事务管理 -->
@@ -49,16 +49,7 @@
 			expression="execution(* org.pussinboots.morning.*.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="txPointcut" />
 	</aop:config>  -->
-	<bean id="convertPwdPropertyConfigurer" class="org.lanmei.cms.common.jdbc.encrypt.ConvertPwdPropertyConfigurer"
-		p:locations="classpath:mysqljdbc.properties"
-		p:fileEncoding="utf-8"		
-	/>
 	
-     <bean id="convertPwdPropertyConfigurer1" class="org.lanmei.cms.common.jdbc.encrypt.ConvertPwdPropertyConfigurer1"
-		p:locations="classpath:mysqljdbc.properties"
-		p:fileEncoding="utf-8"
-		depends-on="convertPwdPropertyConfigurer"  
-	/>
 	<!-- 数据源配置,使用Druid数据库连接池 -->
  	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
@@ -94,11 +85,10 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
 
 		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="config,stat" />
-    	 <property name="connectionProperties" value="config.decrypt=true;config.decrypt.key=${jdbc.publicKey}" />
+		<property name="filters" value="stat" />
 	</bean> 
 	
-    
+
 	 <bean id="dataSource1"
 		  class="org.apache.ibatis.datasource.pooled.PooledDataSource">		  
 		  <property name="url" value="${jdbc.url}"/>
@@ -106,16 +96,6 @@
 		  <property name="username" value="${jdbc.username}"/>
 		  <property name="password" value="${jdbc.password}"/>
 	</bean>
-	<!-- 
-	    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
-	    properties?, settings?, 
-	    typeAliases?, typeHandlers?, 
-	    objectFactory?,objectWrapperFactory?, 
-	    plugins?, 
-	    environments?, databaseIdProvider?, mappers?
-	-->
-	
-
 	<!-- MyBatis SqlSessionFactoryBean 配置 -->
 	<bean id="sqlSessionFactory" 
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -127,22 +107,19 @@
 	      		<value>classpath:org/lanmei/*/dao/mapper/*.xml</value>
 	      	</array>
 	      </property>
-	 	      
-	      <property name="typeAliasesPackage" value="org.lanmei.*.dao.model">
+	      
+	      <property name="typeAliasesPackage" value="org.lanmei.user.dao.model">
 	      
 	      </property>
-	   
 		
 	</bean>
 
-	
 	<!-- MyBatis 动态实现:DAO接口所在包名,Spring会自动查找其下的类 -->
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 对Dao 接口动态实现,需要知道接口在哪 -->
-		<property name="basePackage" value="org.lanmei.**.mapper,org.lanmei.sysaop.dao.syslog.mapper"/>
+	    <property name="basePackage" value="org.lanmei.**.mapper,org.lanmei.sysaop.dao.syslog.mapper"/>
+		
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-
-
 
 </beans>

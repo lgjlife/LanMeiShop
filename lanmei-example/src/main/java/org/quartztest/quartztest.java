@@ -47,7 +47,7 @@ public class quartztest {
         Trigger trigger3 = TriggerBuilder.newTrigger()  
                 .withIdentity("trigger3", "group1")  
                 .withSchedule(cronSchedule("0 41 * * * ?"))
-                .build();  
+                .build();   
         // 告诉quartz使用某个trigger执行某个job  
         scheduler.scheduleJob(job, trigger);  
         scheduler.scheduleJob(job1, trigger2);

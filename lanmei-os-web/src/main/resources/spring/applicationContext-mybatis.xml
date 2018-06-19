@@ -15,13 +15,16 @@
 	
 	<context:component-scan base-package="org.lanmei"></context:component-scan>
 	<!-- 引入数据库配置文件 -->
-	<context:property-placeholder location="classpath:mysqljdbc.properties" />
+	<!-- <context:property-placeholder location="classpath:mysqljdbc.properties" /> -->
     <!-- 事务管理器:基于jdbc,ibatis,mybaits的spring事务管理 -->
     <bean id="transactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
     </bean>
     
+    <bean class="org.lanmei.os.utils.property.EnctryptPropertyPlaceholderConfigurer"
+   		 p:location="classpath:mysqljdbc.properties"    
+   		 p:fileEncoding="utf-8"/>
     <!-- 开启注解事务管理器 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	

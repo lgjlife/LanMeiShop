@@ -14,7 +14,8 @@
 	<li>安装MySQL数据库</li>
 	<li>由于缓存使用Ｒedis进行持久化，所以需要安装Ｒedis,否则运行时会报错（代码500），网上安装教程很多，这里不进行说明</li>
 	<li>Eclipse导入项目工程，没用过其他编译器，不知道其他编译器会不会导入有问题</li>
-	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目,只能一个一个地导入，按道理应该可以一次性导入的，不知道还需要配置什么地方</li>
+	<li>选择File -- Import -- Maven --Existing Maven Projects导入所有项目,只能一个一个地导入，按道理应该可以一次性导入的，不确定哪里配置的问题</li>
+	<li>如果导入后报错，请先执行一遍Maven - Update Project</li>　
 	<li>创建lanmei数据库，并执行数据库脚本文件．
 		<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/mysql">
 		数据库脚本文件位置</a>,也可以执行<a href="https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-example/mysqlBackup">
@@ -301,8 +302,14 @@
 		</ul>
 	</li>	
 	<li>数据库配置文件密码加密
-		</br>
-		<a href="https://github.com/alibaba/druid/wiki/%E4%BD%BF%E7%94%A8ConfigFilter">使用druid的ConfigFilter功能对数据库配置文件密码加密</a>
+		<ul type="disc">
+			<li>
+				cms.web使用的是druid方式进行加密处理
+			</li>
+			<li>
+				os.web使用的是Java编码方式进行加密处理
+			</li>
+		</ul>
 	</li>
 	<li>
 		后台商品管理模块
@@ -345,6 +352,9 @@
 	</li>
 	<li>
 		<a  href="https://blog.csdn.net/u011676300/article/details/80345152">使用wangEditor实现富文本编辑（后端为Java）</a>
+	</li>
+	<li>
+		<a href="https://blog.csdn.net/u011676300/article/details/80740530">properties文件加密处理</a>
 	</li>
 	
 	

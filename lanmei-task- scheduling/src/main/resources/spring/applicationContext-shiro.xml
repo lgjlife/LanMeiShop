@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd "
+	default-lazy-init="true">
+	
+	<!-- shiro -Echache -->
+	<description>Shiro Configuration</description>
+
+	<!--安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- 设置自定义Realm -->
+		 <property name="realm" ref="SystemAuthorizingRealm" /> 
+		<!-- 将缓存管理器，交给安全管理器:ehcahe缓存shiro自带 -->
+		<!-- 使用redis缓存管理器 -->
+		<property name="cacheManager" ref="cacheManager" />
+        <!-- 记住密码管理 -->
+    	<property name="rememberMeManager" ref="rememberMeManager"/>
+		<!-- 配置session管理器 -->
+		<property name="sessionManager" ref="sessionManager" />
+		
+	</bean>
+	
+	 <!-- rememberMe管理器  -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cipherKey"
+                  value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+    
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="2592000"/><!-- 30 days -->
+    </bean>
+
+	<!-- 项目自定义的Realm：继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroAuthorizingRealm.java -->
+	 <bean id="SystemAuthorizingRealm" class="org.lanmei.os.common.security.SystemAuthorizingRealm" >
+	   		<property name="credentialsMatcher">
+	   			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+	   				<property name="hashAlgorithmName" value="MD5"></property>
+	   				<property name="hashIterations" value="3"></property>
+	   			</bean>
+	   		</property>
+	</bean>
+
+	<!-- 定义缓存管理器 --> 
+   	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
+	
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+       <!-- session的失效时长，单位毫秒 -->
+     	<property name="globalSessionTimeout" value="1800000"/>
+      <!-- 删除失效的session -->
+    	<property name="deleteInvalidSessions" value="true"/>
+     	<property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <!-- 定期检查失效的session  -->
+        <property name="sessionValidationSchedulerEnabled" value="true" />  
+        <!-- session存储的实现 -->  
+       <property name="sessionDAO" ref="redisSessionDao" />
+    </bean>
+    
+   <bean id="redisSessionDao" class="org.lanmei.os.common.shiro.RedisSessionDao">
+    	
+    </bean>
+    <!-- 必须，否则会报错 -->
+    <!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
+        当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg name="name" value="ycyintang.session.id"/>
+    </bean>
+    
+    <!-- Shiro主过滤器本身功能十分强大,其强大之处就在于它支持任何基于URL路径表达式的、自定义的过滤器的执行 -->  
+    <!-- Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->  
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
+        <!-- Shiro的核心安全接口,这个属性是必须的 -->  
+        <property name="securityManager" ref="securityManager"/>  
+        <!-- 要求登录时的链接(可根据项目的URL进行替换),非必须的属性,默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->  
+        <property name="loginUrl" value="/user-login"/>  
+        <!-- 登录成功后要跳转的连接(本例中此属性用不到,因为登录成功后的处理逻辑在LoginController里硬编码为main.jsp了) -->  
+        <property name="successUrl" value="/"/> 
+        <!-- 用户访问未对其授权的资源时,所显示的连接 -->  
+        <!-- 若想更明显的测试此属性可以修改它的值,如unauthor.jsp,然后用[玄玉]登录后访问/admin/listUser.jsp就看见浏览器会显示unauthor.jsp -->  
+        <property name="unauthorizedUrl" value="/"/>  
+        <!-- Shiro连接约束配置,即过滤链的定义 -->  
+        <!-- 此处可配合这篇文章来理解各个过滤连的作用http://blog.csdn.net/jadyer/article/details/12172839 -->  
+        <!-- 下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的 -->  
+        <!-- anon：它对应的过滤器里面是空的,什么都没做,这里.do和.jsp后面的*表示参数,比方说login.jsp?main这种 -->  
+        <!-- authc：该过滤器下的页面必须验证后才能访问,它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter -->  
+       <!-- 
+       anon:例子/admins/**=anon 没有参数，表示可以匿名使用
+	   authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数		
+	   roles(角色)：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，当有多个参数时，例如admins/user/**=roles["admin,guest"],每个参数通过才算通过，相当于hasAllRoles()方法。
+       perms（权限）：例子/admins/user/**=perms[user:add:*],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，例如/admins/user/**=perms["user:add:*,user:modify:*"]，当有多个参数时必须每个参数都通过才通过，想当于isPermitedAll()方法。
+       rest：例子/admins/user/**=rest[user],根据请求的方法，相当于/admins/user/**=perms[user:method] ,其中method为post，get，delete等。
+       port：例子/admins/user/**=port[8081],当请求的url的端口不是8081是跳转到schemal://serverName:8081?queryString,其中schmal是协议http或https等，serverName是你访问的host,8081是url配置里port的端口，queryString
+       是你访问的url里的？后面的参数。
+       authcBasic：例如/admins/user/**=authcBasic没有参数表示httpBasic认证		
+       ssl:例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https		
+	   user:例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查        -->
+        <property name="filterChainDefinitions">  
+            <value>  
+                /user-info = authc
+                /seckill/*/detail = authc
+            </value>  
+        </property>  
+    </bean>
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->  
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>  
+  
+	<!-- 用户缓存 -->
+	<bean id="customShiroCacheManager" class="org.lanmei.core.shiro.cache.impl.CustomShiroCacheManager">
+	    <property name="shiroCacheManager" ref="jedisShiroCacheManager"/>
+	</bean>
+	<!-- shiro 缓存实现，对ShiroCacheManager，我是采用redis的实现 -->
+	<bean id="jedisShiroCacheManager" class="org.lanmei.core.shiro.cache.impl.JedisShiroCacheManager">
+	    <property name="jedisManager" ref="jedisManager"/>
+	</bean>
+	<!-- redis 的缓存 -->
+	<bean id="jedisManager" class="org.lanmei.core.shiro.cache.JedisManager">
+	    <property name="jedisPool" ref="jedisPool"/>
+	</bean>
+</beans>

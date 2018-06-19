@@ -10,6 +10,10 @@
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="org.lanmei"><!-- base-package 如果多个，用“,”分隔 -->
+		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> --><!-- 过滤其中这四个注解中的一个 -->
+	</context:component-scan>
 	<!-- 
 	  Spring 整合quartz步骤
 	  1.定义工作任务Job,用户编写，需继承org.quartz.Job类
@@ -44,15 +48,17 @@
         逗号：列表值　　1，２，3
         
          -->
-        <property name="cronExpression" value="0/5 * * * * ?"></property>
+        <property name="cronExpression" value="0 0 0 * * ?"></property>
     </bean>
 
     <!-- 配置调度工厂 -->
-    <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <bean id="SchedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
                 <ref bean="cronTriggerFactoryBean"></ref>
             </list>
         </property>
-    </bean>	
+
+    </bean>
+	
 </beans>
