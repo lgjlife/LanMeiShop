@@ -1,7 +1,6 @@
 <h1>蓝莓商城</h1>
 基于Spring + Spring MVC + Mybatis 的商城系统
-
-<br>
+JSP版本
 	<a href="http://blog.csdn.net/u011676300/">
 			CSDN博客
 	</a>
