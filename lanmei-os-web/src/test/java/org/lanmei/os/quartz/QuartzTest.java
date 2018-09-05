@@ -1,4 +1,4 @@
-package org.lanmei.os.quartz;
+package com.lanmei.os.quartz;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

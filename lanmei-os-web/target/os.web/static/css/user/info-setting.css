@@ -1,0 +1,19 @@
+.securityTitle{
+	height:70px;
+	color:#FF6347;
+}
+.desc{
+	display:inline;
+	font-size:12px;
+	color:#8B795E;
+}
+
+.securityBtn{
+	backgroung-color:#E0FFFF;
+	color:#838B83;
+	position:absolute;
+	right:5%;
+}
+.securityState{
+	color:#0000EE;
+}

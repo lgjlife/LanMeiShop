@@ -19,7 +19,7 @@
 		</property>
 	</bean>
 	
-	<bean id="userMailSender" class="org.lanmei.cms.email.UserMailSender">
+	<bean id="userMailSender" class="com.lanmei.cms.email.UserMailSender">
 		 <property name="mailSender" ref="mailSender" /> 
 	</bean>
 </beans>

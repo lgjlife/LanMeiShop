@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	
+
+    
+    <display-name>taotao-manager</display-name>  
+    <!--首页显示-->
+   <!--  <welcome-file-list>  
+        <welcome-file>HomePage.jsp</welcome-file>  
+    </welcome-file-list>   -->
+    
+   <!-- 
+   1.context-param全局配置文件，表示应用范围内
+   2.(servlet- - init-param) servlet 内的配置文件
+   3.指定Spring 的配置文件
+    -->
+   <context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<!-- 配置文件放置在 src/main/resource/spring-->
+    	<!-- classpath: 加载单个文件 classpath*:加载多个文件  -->
+    	<param-value>classpath:spring/spring-context.xml</param-value>
+    </context-param>
+      <!-- 
+    	1、此监听器主要用于解决java.beans.Introspector导致的内存泄漏的问题
+        2、此监听器应该配置在web.xml中与Spring相关监听器中的第一个位置(也要在ContextLoaderListener的前面)
+        3、JDK中的java.beans.Introspector类的用途是发现Java类是否符合JavaBean规范如果有的框架或程序用到了Introspector类,那么就会启用一个系统级别的缓存,此缓存会
+　          存放一些曾加载并分析过的JavaBean的引用。当Web服务器关闭时,由于此缓存中存放着这些JavaBean的引用,所以垃圾回收器无法回收Web容器中的JavaBean对象,最后导致
+           内存变大。
+           而org.springframework.web.util.IntrospectorCleanupListener就是专门用来处理Introspector内存泄漏问题的辅助类。IntrospectorCleanupListener会在
+           Web服务器停止时清理Introspector缓存,使那些Javabean能被垃圾回收器正确回收。
+           Spring自身不会出现这种问题，因为Spring在加载并分析完一个类之后会马上刷新
+           JavaBeans Introspector缓存,这就保证Spring中不会出现这种内存泄漏的问题。
+           但有些程序和框架在使用了JavaBeans Introspector之后,没有进行清理工作(如Quartz,Struts),最后导致内存泄漏
+     -->
+    <listener>
+        <listener-class>
+       		 org.springframework.web.util.IntrospectorCleanupListener
+        </listener-class>
+	</listener>
+    <!-- 实例化Spring  容器
+    	应用启动时，该监听器会执行，读取上述配置的Spring配置文件
+    	ContextLoaderListener：Spring 监听器
+    	启动Web容器时，会自动装配配置文件中装配的bean
+     -->
+    <listener>
+    	<listener-class>
+    		org.springframework.web.context.ContextLoaderListener
+    	</listener-class>
+    </listener>
+   
+    <!-- 4.配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->  
+	<!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->  
+	<!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->  
+	<!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->  
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->  
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>	
+	
+    <servlet>
+    	<servlet-name>lanmei</servlet-name>
+    	<!-- DispatcherServlet 处理所有的请求 -->
+    	<servlet-class>
+    		org.springframework.web.servlet.DispatcherServlet
+    	</servlet-class>
+    	<init-param>
+    		<param-name>contextConfigLocation</param-name>
+    		<param-value>classpath:springmvc/spring-mvc.xml</param-value>
+    	</init-param>
+    	<!--设置启动顺序  -->
+    	<load-on-startup>1</load-on-startup>
+    </servlet>
+    <!-- 拦截映射请求 -->
+    <!-- 拦截所有 -->
+    <servlet-mapping>
+    	<servlet-name>lanmei</servlet-name>    	
+    	<url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+    
+    
+    <!-- 配置404与500错误处理 -->   
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/views/errorpage/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/views/errorpage/400.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/views/errorpage/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/errorpage/404.jsp</location>
+	</error-page>
+	
+	<!-- Session超时10分钟(零或负数表示会话永不超时) --> 
+	<!-- Tomcat web.xml 默认设置为30分钟 --> 
+	<session-config> 
+		<session-timeout>10</session-timeout> 
+		<!-- 设 定HttpSession的生命周期。这里以分钟计算。下面的设定指明Session在最长不活动时间为10分钟。过了这个时间，Servlet容器将它 作为无效处理。注意这里和程序里指定的计数单位不同，程序里是以秒为单位。<session-config>只有<session- timeout>这个元素–>  -->
+	</session-config>
+	
+</web-app>  

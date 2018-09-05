@@ -1,0 +1,16 @@
+.index-link{
+	color: #fff;
+}
+/*主页前部图片自动切换*/
+#ImgWrapper{
+	width: 100%;
+	height: 100%;	
+}
+#ImgWrapper li{
+
+}
+
+#list-group-img li{
+/* 	border:0;
+	list-style-type: square; */
+}

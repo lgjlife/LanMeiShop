@@ -1,4 +1,4 @@
-package org.lanmei.os.scheduling;
+package com.lanmei.os.scheduling;
 
 import static org.junit.Assert.*;
 

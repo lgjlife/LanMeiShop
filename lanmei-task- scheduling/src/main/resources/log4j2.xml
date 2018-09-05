@@ -149,7 +149,7 @@
    		 	<appender-ref ref="console_out_appender" />
             <appender-ref ref="console_err_appender" />
    	    </logger>
-   	    <logger name="org.lanmei.os.common.shiro" level="error" >
+   	    <logger name="com.lanmei.os.common.shiro" level="error" >
    		 	<appender-ref ref="console_out_appender" />
             <appender-ref ref="console_err_appender" />
    	    </logger>
@@ -173,7 +173,7 @@
         <logger name="org.springframework.web" level="info" />
         <logger name="org.jboss.netty" level="warn" />
         <logger name="org.apache.http" level="warn" />
-		<logger name="org.lanmei.os.common.shiro.RedisSessionDao" level="info" />
+		<logger name="com.lanmei.os.common.shiro.RedisSessionDao" level="info" />
     </Loggers>
 
 </Configuration>

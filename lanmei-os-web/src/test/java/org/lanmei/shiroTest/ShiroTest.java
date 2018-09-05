@@ -1,4 +1,4 @@
-package org.lanmei.shiroTest;
+package com.lanmei.shiroTest;
 
 
 

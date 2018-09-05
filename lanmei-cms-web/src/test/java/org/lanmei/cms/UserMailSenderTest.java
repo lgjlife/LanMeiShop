@@ -1,8 +1,8 @@
-package org.lanmei.cms;
+package com.lanmei.cms;
 
-import org.junit.Test;
-import org.lanmei.admin.dao.model.CmsAdmin;
-import org.lanmei.cms.email.UserMailSender;
+
+import com.lanmei.admin.dao.model.CmsAdmin;
+import com.lanmei.cms.email.UserMailSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ public class UserMailSenderTest {
 	public void emailTest() {
 		
 		logger.debug("创键admin......");
-		CmsAdmin  admin = new CmsAdmin();
+		CmsAdmin admin = new CmsAdmin();
 		logger.debug("创键admin成功");
 		
 		

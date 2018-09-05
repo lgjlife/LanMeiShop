@@ -1,0 +1,40 @@
+/*安全设置选项*/
+$(function(){
+	$("#securitySettingbSelect").click(function(){
+		console.log("securitySettingbSelect");
+		$(".infoDiv").hide();
+		$(".list-group-item").removeClass("active");
+		$("#securitySettingbSelect").addClass("active");
+		$("#securitySettingDiv").show();
+	});
+});
+/*个人资料选项*/
+$(function(){
+	$("#userInfoSelect").click(function(){
+		console.log("userInfoSelect");
+		$(".infoDiv").hide();
+		$(".list-group-item").removeClass("active");
+		$("#userInfoSelect").addClass("active");
+		$("#userInfoDiv").show();
+	});
+});
+/*收货地址选项*/
+$(function(){
+	$("#AddressSelect").click(function(){
+		console.log("AddressSelect");
+		$(".list-group-item").removeClass("active");
+		$("#AddressSelect").addClass("active");
+		$(".infoDiv").hide();
+		$("#AddressDiv").show();
+	});
+});
+/*个人交易信息选项*/
+$(function(){
+	$("#transactionInformationSelect").click(function(){
+		console.log("transactionInformationSelect");
+		$(".list-group-item").removeClass("active");
+		$("#transactionInformationSelect").addClass("active");
+		$(".infoDiv").hide();
+		$("#transactionInformationDiv").show();
+	});
+});

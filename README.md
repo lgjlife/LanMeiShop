@@ -1,4 +1,13 @@
 <h1>蓝莓商城</h1>
+注意：
+
+1.Project-JSP分支前端使用Jsp,
+
+2.本项目的Master分支正在更改为IDEA开发环境,前端将更改为thmeleaf模板。
+
+
+
+
 基于Spring + Spring MVC + Mybatis 的商城系统
 
 <br>

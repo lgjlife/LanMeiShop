@@ -1,4 +1,4 @@
-package org.lanmei.cms;
+package com.lanmei.cms;
 
 import java.io.*;
 

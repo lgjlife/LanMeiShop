@@ -1,4 +1,4 @@
-package org.lanmei.os.utils.property;
+package com.lanmei.os.utils.property;
 
  
 

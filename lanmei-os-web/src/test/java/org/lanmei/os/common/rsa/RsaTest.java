@@ -1,4 +1,7 @@
-package org.lanmei.os.common.rsa;
+package com.lanmei.os.common.rsa;
+
+import com.lanmei.os.common.rsa.RsaUtils;
+import org.junit.Test;
 
 import java.math.BigInteger;
 import java.security.KeyPair;
@@ -8,8 +11,6 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 import java.util.HashMap;
-
-import org.junit.Test;
 
 public class RsaTest {
 	

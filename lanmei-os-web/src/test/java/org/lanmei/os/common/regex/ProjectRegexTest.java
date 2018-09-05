@@ -1,5 +1,6 @@
-package org.lanmei.os.common.regex;
+package com.lanmei.os.common.regex;
 
+import com.lanmei.os.common.regex.ProjectRegex;
 import org.junit.Test;
 
 public class ProjectRegexTest {

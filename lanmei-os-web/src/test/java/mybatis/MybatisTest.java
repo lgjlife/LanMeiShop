@@ -1,11 +1,9 @@
 package mybatis;
 
-import java.util.List;
-
+import com.lanmei.user.dao.mapper.OsUserMapper;
+import com.lanmei.user.dao.model.OsUser;
 import org.apache.ibatis.session.SqlSession;
-import org.junit.Test;
-import org.lanmei.user.dao.mapper.OsUserMapper;
-import org.lanmei.user.dao.model.OsUser;
+
 
 public class MybatisTest extends GetSqlSession{
 

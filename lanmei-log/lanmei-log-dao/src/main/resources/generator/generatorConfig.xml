@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- <classPathEntry location="F:\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/> -->
+    <classPathEntry location="/home/lgj/.m2/repository/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <context id="MySqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- 设置数据库关键字分隔符 -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 设置生成Java文件的编码 GBK或者UTF-8 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!--配置生成注释信息，最多配置一个 -->
+        <commentGenerator>
+            <!-- 阻止生成注释包含时间戳 默认为false -->
+            <property name="suppressDate" value="true"/>
+            <!-- 注释是否添加数据库表的备注信息 默认为false -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!-- 配置数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/lanmei"
+                        userId="root"
+                        password="563739007">
+        </jdbcConnection>
+        <!-- 用来控制生成的实体类 -->
+        <javaModelGenerator targetPackage="com.dao.model"
+                            targetProject="src/main/java/">
+            <!-- 判断是否对数据库查询结果进行trim操作 -->
+            <!-- = true则 this.userName = userName == null ? null : userName.trim(); -->
+            <property name="trimStrings" value="false" />
+            <!-- 设置实体类的基类 -->
+            <!--
+            <property name="rootClass" value="tk.mybatis.simple.model" />
+            -->
+        </javaModelGenerator>
+        <!-- 设置生成Mapper.xml文件的属性 位置 可选-->
+        <sqlMapGenerator targetPackage="com.dao.mapper"
+                         targetProject="src/main/resources"/>
+        <!-- 用于设置 接口类的属性-->
+        <!--
+            targetRuntime=MyBatis3:
+                1.ANNOTATEDMAPPER 基于注解的MAPPER接口，不会有对应的XML文件
+                2.MIXEDMAPPER xml和mapper混合形式
+                3.XMLMAPPER 所有的方法都在XML中，接口调用依赖XML文件
+            targetRuntime=MyBatis3Simple:
+                1.ANNOTATEDMAPPER 基于注解的MAPPER接口，不会有对应的XML文件
+                2.XMLMAPPER 所有的方法都在XML中，接口调用依赖XML文件
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dao.mapper"
+                             targetProject="src/main/java"/>
+        <!-- os_favorites  os_receipt_address  os_receipt_address os_user_login   -->
+        <!-- 可以配置多个table,每个表单独配置-->
+        <!-- type="post" identity="true" :	ORDER = AFTER -->
+        <!-- type="pre" identity="false"(only  the value) :	ORDER = BEFORE -->
+        <table tableName="os_user">
+            <generatedKey column="user_id" sqlStatement="MySql" type="post" identity="true"/>
+        </table>
+        <table tableName="os_user_login">
+            <generatedKey column="login_id" sqlStatement="MySql"/>
+        </table>
+        <table tableName="os_favorites">
+            <generatedKey column="favorites_id" sqlStatement="MySql"/>
+        </table>
+        <table tableName="os_receipt_address">
+            <generatedKey column="receipt_address_id" sqlStatement="MySql"/>
+        </table>
+    </context>
+</generatorConfiguration>

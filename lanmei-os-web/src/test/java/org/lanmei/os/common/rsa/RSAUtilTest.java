@@ -1,10 +1,12 @@
-package org.lanmei.os.common.rsa;
+package com.lanmei.os.common.rsa;
+
+import com.lanmei.os.common.rsa.RSAKeyFactory;
+import com.lanmei.os.common.rsa.RSAUtilNew;
+import org.junit.Test;
 
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-
-import org.junit.Test;
 
 public class RSAUtilTest{
 	

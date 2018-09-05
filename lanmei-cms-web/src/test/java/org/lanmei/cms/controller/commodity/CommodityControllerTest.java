@@ -1,19 +1,7 @@
-package org.lanmei.cms.controller.commodity;
+package com.lanmei.cms.controller.commodity;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
+import com.lanmei.cms.controller.commodity.CommodityController;
+import net.sf.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.junit.Before;
@@ -30,7 +18,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import net.sf.json.JSONObject;
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)  //此处调用Spring单元测试类  
 @WebAppConfiguration    //调用javaWEB的组件，比如自动注入ServletContext Bean等等  
@@ -38,8 +35,8 @@ import net.sf.json.JSONObject;
 		                           "classpath*:spring/spring-context.xml"})//加载Spring-mvc配置文件 
 public class CommodityControllerTest {
 
-	@Autowired  
-	CommodityController commodityController;  
+	@Autowired
+	CommodityController commodityController;
 	 
 	
 	

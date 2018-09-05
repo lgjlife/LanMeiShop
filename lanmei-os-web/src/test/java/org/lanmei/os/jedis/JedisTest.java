@@ -1,4 +1,4 @@
-package org.lanmei.os.jedis;
+package com.lanmei.os.jedis;
 
 import java.util.HashSet;
 import java.util.Iterator;

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+         
+    <!-- 磁盘（DiskStore）: 磁盘存储可以存储内存中驱除过来的元素，也可以在系统重启的时候将内存中的缓存信息保存起来，供系统重新启动后使用。
+    	如果我们没有定义diskStore元素时，DiskStore会使用默认的目录作为其存储目录，该目录就是java.io.tmpdir，即Java的临时目录。
+    	当然我们也可以指定一个绝对路径。
+    	当我们指定diskStore元素的path为以下值时会被替换为实际对应的目录：
+    	l  user.home：用户的家目录。
+    	l  user.dir：用户的当前工作目录。
+    	l  java.io.tmpdir：Java临时目录。
+    	l  在命令行指定的属性，如“java -Dehcache.disk.store.dir=D:\\abc …..”。
+    	 -->
+    <diskStore path="user.dir/morning-ehcache"/>
+    
+    <!-- 系统默认缓存 -->
+    <defaultCache
+    	   maxElementsInMemory="50000"
+    	   clearOnFlush="false"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="3600"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="1024"
+           maxElementsOnDisk="100000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+    </defaultCache>
+    
+     <!-- 登录记录缓存 锁定1小时--> 
+     <cache name="passwordRetryCache"
+    	   maxElementsInMemory="50000"
+    	   clearOnFlush="false"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="1024"
+           maxElementsOnDisk="100000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+     </cache>
+
+</ehcache>
+
+    <!--
+	    maxElementsInMemory="10000" 	//Cache中最多允许保存的数据对象的数量
+		external="false" 				//缓存中对象是否为永久的，如果是，超时设置将被忽略，对象从不过期 	
+		timeToLiveSeconds="3600"  		//缓存的存活时间，从开始创建的时间算起
+		timeToIdleSeconds="3600"  		//多长时间不访问该缓存，那么ehcache 就会清除该缓存  
+		
+		这两个参数很容易误解，看文档根本没用，我仔细分析了ehcache的代码。结论如下：
+		1、timeToLiveSeconds的定义是：以创建时间为基准开始计算的超时时长；
+		2、timeToIdleSeconds的定义是：在创建时间和最近访问时间中取出离现在最近的时间作为基准计算的超时时长；
+		3、如果仅设置了timeToLiveSeconds，则该对象的超时时间=创建时间+timeToLiveSeconds，假设为A；
+		4、如果没设置timeToLiveSeconds，则该对象的超时时间=min(创建时间，最近访问时间)+timeToIdleSeconds，假设为B；
+		5、如果两者都设置了，则取出A、B最少的值，即min(A,B)，表示只要有一个超时成立即算超时。
+		
+		overflowToDisk="true"    		//内存不足时，是否启用磁盘缓存  	
+		diskSpoolBufferSizeMB	//设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区
+		maxElementsOnDisk		//硬盘最大缓存个数
+		diskPersistent			//是否缓存虚拟机重启期数据The default value is false	
+		diskExpiryThreadIntervalSeconds	//磁盘失效线程运行时间间隔，默认是120秒。
+		memoryStoreEvictionPolicy="LRU" //当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+        clearOnFlush	//内存数量最大时是否清除
+        maxEntriesLocalHeap="0"
+        maxEntriesLocalDisk="1000"
+    -->

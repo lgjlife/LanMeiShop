@@ -35,7 +35,7 @@
         <!-- <constructor-arg index="3" value="2000" type="int" /> -->
     </bean>
     <!-- Jedis客户端实现类，用于操作redis存取数据 -->
-    <bean id="jedisClientSingle" class="org.lanmei.cms.cache.JedisClientSingle"/>
+    <bean id="jedisClientSingle" class="com.lanmei.cms.cache.JedisClientSingle"/>
 
 	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
 		<property name="hostName" value="127.0.0.1"  /> 
@@ -60,5 +60,5 @@
         </property> 
      </bean> 
      
-     <bean id="redisTemplateUtils" class="org.lanmei.cms.cache.RedisTemplateUtils"></bean>
+     <bean id="redisTemplateUtils" class="com.lanmei.cms.cache.RedisTemplateUtils"></bean>
 </beans>

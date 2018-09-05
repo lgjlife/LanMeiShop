@@ -1,80 +1,80 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.lanmei.shop</groupId>
-  <artifactId>org.lanmei.parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>org.lanmei.parent</name>
-  <description>蓝莓商城父工程</description>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  
-  <profiles>
-    <profile>
-	   <modules>
-			<module>org.lanmei.os.web</module>
-			<module>org.lanmei.cms.web</module>
-			<module>org.lanmei.user</module>
-			<module>org.lanmei.admin</module>
-			<module>org.lanmei.common</module>
-			<module>org.lanmei.seckill</module>
-			<module>org.lanmei.commodity</module>
-			<module>org.lanmei.aop</module>
-	   </modules>
-  	</profile>
-  </profiles>
-  
-   <properties>
-   
-  	    <lanmei.version>0.0.1-SNAPSHOT</lanmei.version>
-  	    <aliyun-core.version>3.7.1</aliyun-core.version>
-  	    <aliyun-dysmsapi.version>1.1.0</aliyun-dysmsapi.version>
-  	    <aliyun-sms.version>3.0.0-rc1</aliyun-sms.version>
-  	    <aspectj.version>1.8.13</aspectj.version>
-  	    <cglib.version>3.2.6</cglib.version>
-  	    <commons-lang.version>2.5</commons-lang.version>
-  	    <commons-httpclient.version>3.0.1</commons-httpclient.version>
-  	    <commons-codec.version>1.9</commons-codec.version>
-  	    <commons-collections4.version>4.1</commons-collections4.version>
-  	    <commons.version>1.2</commons.version>
-  	    <commons-logging.version>1.1.3</commons-logging.version>
-	 	<commons-dbcp.version>1.4</commons-dbcp.version>
-	 	<commons-io.version>2.6</commons-io.version>
-	    <commons-fileupload.version>1.3.3</commons-fileupload.version>
-	    <commons-beanutils.version>1.8.0</commons-beanutils.version>
-		<commons-collections.version>4.1</commons-collections.version>
-		<druid.version>1.0.29</druid.version>
-		<ezmorph.version>1.0.6</ezmorph.version>		
-	 	<file.encoding>UTF-8</file.encoding>
-	 	<jsr250-api.version>1.0</jsr250-api.version>
-	 	<jcaptcha.version>1.0-RC6</jcaptcha.version>
-	 	<jackson.version>2.9.5</jackson.version>
-	 	<jedis.version>2.9.0</jedis.version>
-	 	<json-lib.version>2.4</json-lib.version>
-	 	<jetty.version>8.1.8.v20121106</jetty.version>
-	 	<jstl.version>1.2</jstl.version>
-	 	<junit.version>4.12</junit.version>
-	 	<log4j2.version>2.11.0</log4j2.version> 
-	 	<mail.version>1.4.7</mail.version>
-	 	<mysql.version>5.1.29</mysql.version>
-	 	<mybatis-spring.version>1.3.1</mybatis-spring.version>
-	 	<mybatis.version>3.4.6</mybatis.version>
-	 	<PageHelper.version>5.1.2</PageHelper.version>	 
-		<quartz.version>2.2.1</quartz.version>
-	 	<servlet.version>3.0-alpha-1</servlet.version>
-	 	<shiro.version>1.2.2</shiro.version>
-	 	<solr.version>7.3.0</solr.version>
-	 	<slf4j.version>1.7.5</slf4j.version> 
-	    <spring.version>5.0.4.RELEASE</spring.version> 
-	    <swagger.version>1.0.2</swagger.version>
-		<testng.version>6.8.7</testng.version> 	 
-		<joda-time.version>2.9.9</joda-time.version>
-		<filters.version>2.0.235</filters.version>
-		<jcaptcha-api.version>1.0</jcaptcha-api.version>
-		<unitils.version>3.4.2</unitils.version>
-   </properties>
-   <dependencies>  
-   		<!-- Unitils -dbunit、Spring -->
-   		<dependency>
+    <groupId>com.lanmei.shop</groupId>
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+
+        <module>lanmei-admin</module>
+        <module>lanmei-aop</module>
+        <module>lanmei-aop/lanmei-aop-dao</module>
+        <module>lanmei-cms-web</module>
+        <module>lanmei-commodity</module>
+        <module>lanmei-common</module>
+        <module>lanmei-log</module>
+        <module>lanmei-user</module>
+        <module>lanmei-os-web</module>
+        <module>lanmei-seckill</module>
+        <module>lanmei-task- scheduling</module>
+    </modules>
+    <properties>
+        <lanmei.version>0.0.1-SNAPSHOT</lanmei.version>
+        <aliyun-core.version>3.7.1</aliyun-core.version>
+        <aliyun-dysmsapi.version>1.1.0</aliyun-dysmsapi.version>
+        <aliyun-sms.version>3.0.0-rc1</aliyun-sms.version>
+        <aspectj.version>1.8.13</aspectj.version>
+        <cglib.version>3.2.6</cglib.version>
+        <commons-lang.version>2.5</commons-lang.version>
+        <commons-httpclient.version>3.0.1</commons-httpclient.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <commons.version>1.2</commons.version>
+        <commons-logging.version>1.1.3</commons-logging.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
+        <commons-beanutils.version>1.8.0</commons-beanutils.version>
+        <commons-collections.version>4.1</commons-collections.version>
+        <druid.version>1.0.29</druid.version>
+        <ezmorph.version>1.0.6</ezmorph.version>
+        <file.encoding>UTF-8</file.encoding>
+        <jsr250-api.version>1.0</jsr250-api.version>
+        <jcaptcha.version>1.0-RC6</jcaptcha.version>
+        <jackson.version>2.9.5</jackson.version>
+        <jedis.version>2.9.0</jedis.version>
+        <json-lib.version>2.4</json-lib.version>
+        <jetty.version>8.1.8.v20121106</jetty.version>
+        <jstl.version>1.2</jstl.version>
+        <junit.version>4.12</junit.version>
+        <log4j2.version>2.11.0</log4j2.version>
+        <mail.version>1.4.7</mail.version>
+        <mysql.version>5.1.29</mysql.version>
+        <mybatis-spring.version>1.3.1</mybatis-spring.version>
+        <mybatis.version>3.4.6</mybatis.version>
+        <PageHelper.version>5.1.2</PageHelper.version>
+        <quartz.version>2.2.1</quartz.version>
+        <servlet.version>3.0-alpha-1</servlet.version>
+        <shiro.version>1.2.2</shiro.version>
+        <solr.version>7.3.0</solr.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <spring.version>5.0.4.RELEASE</spring.version>
+        <swagger.version>1.0.2</swagger.version>
+        <testng.version>6.8.7</testng.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <filters.version>2.0.235</filters.version>
+        <jcaptcha-api.version>1.0</jcaptcha-api.version>
+        <unitils.version>3.4.2</unitils.version>
+    </properties>
+
+    <dependencies>
+        <!-- Unitils -dbunit、Spring -->
+        <dependency>
             <groupId>org.unitils</groupId>
             <artifactId>unitils-core</artifactId>
             <version>${unitils.version}</version>
@@ -95,29 +95,29 @@
             <version>${unitils.version}</version>
         </dependency>
         <dependency>
-		    <groupId>org.dbunit</groupId>
-		    <artifactId>dbunit</artifactId>
-		    <version>2.5.3</version>
-	    </dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.3</version>
+        </dependency>
         <dependency>
             <groupId>org.unitils</groupId>
             <artifactId>unitils-spring</artifactId>
             <version>${unitils.version}</version>
         </dependency>
         <dependency>
-		    <groupId>org.unitils</groupId>
-		    <artifactId>unitils</artifactId>
-		    <version>3.4.6</version>
-		    <type>pom</type>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.unitils</groupId>
-		    <artifactId>unitils-testng</artifactId>
-		    <version>3.4.6</version>
-		</dependency>
-        
-		<dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils</artifactId>
+            <version>3.4.6</version>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.unitils</groupId>
+            <artifactId>unitils-testng</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
             <version>${aliyun-dysmsapi.version}</version>
@@ -132,13 +132,13 @@
             <artifactId>aliyun-java-sdk-core</artifactId>
             <version>${aliyun-core.version}</version>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
             <version>${commons-httpclient.version}</version>
         </dependency>
-		<!--  -->
-		<dependency>
+        <!--  -->
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
@@ -158,8 +158,8 @@
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
-        
-		<dependency>
+
+        <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>${commons-dbcp.version}</version>
@@ -181,108 +181,108 @@
             <version>1.11</version>
         </dependency>
         <!-- 百度　ｕeditor -->
-       <!--  <dependency>
-            <groupId>cn.songxinqiang</groupId>
-            <artifactId>com.baidu.ueditor</artifactId>
-            <version>1.1.2-edit-1.0</version>
-        </dependency> -->
-         
-		<dependency>
+        <!--  <dependency>
+             <groupId>cn.songxinqiang</groupId>
+             <artifactId>com.baidu.ueditor</artifactId>
+             <version>1.1.2-edit-1.0</version>
+         </dependency> -->
+
+        <dependency>
             <groupId>com.fasterxml</groupId>
             <artifactId>classmate</artifactId>
             <version>1.1.0</version>
         </dependency>
-         <!--druid 数据库连接池  -->
-        <dependency>  
-	        <groupId>com.alibaba</groupId>  
-	        <artifactId>druid</artifactId>  
-	        <version>${druid.version}</version>  
-  	    </dependency> 
-		<dependency>
+        <!--druid 数据库连接池  -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>15.0</version>
         </dependency>
         <dependency>
-			  <groupId>joda-time</groupId>
-			  <artifactId>joda-time</artifactId>
-			  <version>${joda-time.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>javax.annotation</groupId>
-		    <artifactId>javax.annotation-api</artifactId>
-		    <version>1.3.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>javax.xml.bind</groupId>
-		    <artifactId>jaxb-api</artifactId>
-		    <version>2.3.0</version>
-		</dependency>
-		<dependency>
-		<!--redis 依赖  -->
-		<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>${jedis.version}</version>
-		</dependency>
-		<!-- redis Spring 基于注解配置 -->     
-		<dependency>      
-		  <groupId>org.springframework.data</groupId>      
-		  <artifactId>spring-data-redis</artifactId>      
-		  <version>2.0.6.RELEASE</version>      
-		</dependency>  
-		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>${junit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
-		</dependency>
-	  
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>${json-lib.version}</version>
-			<!-- 不加会报错 -->
-			<classifier>jdk15</classifier>
-		</dependency>
-		<!-- 邮箱 -->
-		 <dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>${mail.version}</version>
-		</dependency> 
-		 <!--mybatis 依赖  -->
-        <dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		    <version>${mybatis-spring.version}</version>
-		</dependency> 
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		    <version>${mybatis.version}</version>
-		</dependency>
-		<!-- Mybatis 分页插件 pagehelper -->
-		<dependency>
-  	   		 <groupId>com.github.pagehelper</groupId>
-    		 <artifactId>pagehelper</artifactId>
-             <version>${PageHelper.version}</version>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
         </dependency>
-		<!-- quartz任务调度 -->
-		<dependency>
-		    <groupId>org.quartz-scheduler</groupId>
-		    <artifactId>quartz</artifactId>
-		    <version>${quartz.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz-jobs</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<!-- Mysql 连接 -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <!--redis 依赖  -->
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
+        </dependency>
+        <!-- redis Spring 基于注解配置 -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.0.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>${json-lib.version}</version>
+            <!-- 不加会报错 -->
+            <classifier>jdk15</classifier>
+        </dependency>
+        <!-- 邮箱 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
+        <!--mybatis 依赖  -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <!-- Mybatis 分页插件 pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${PageHelper.version}</version>
+        </dependency>
+        <!-- quartz任务调度 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <!-- Mysql 连接 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -299,7 +299,7 @@
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
-         <!-- spring core 依赖-->
+        <!-- spring core 依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -311,8 +311,8 @@
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
         </dependency>
-         <!-- Solr 搜索服务 -->
-         <dependency>
+        <!-- Solr 搜索服务 -->
+        <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>${solr.version}</version>
@@ -322,7 +322,7 @@
             <groupId>com.wordnik</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.3.11</version>
-        </dependency>         
+        </dependency>
         <!-- Spring 上下文 核心依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -334,14 +334,14 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
-     
-         <!-- spring jdbc 依赖-->
+
+        <!-- spring jdbc 依赖-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-         <!-- spring web 核心-->
+        <!-- spring web 核心-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -381,192 +381,193 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        
+
         <!--swagger  -->
         <dependency>
-		    <groupId>com.mangofactory</groupId>
-		    <artifactId>swagger-springmvc</artifactId>
-		    <version>${swagger.version}</version>
-		</dependency>
-		<!-- servlet 依赖 -->
+            <groupId>com.mangofactory</groupId>
+            <artifactId>swagger-springmvc</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <!-- servlet 依赖 -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
-        </dependency>		
-		<!-- shiro相关依赖  安全管理-->
-		<!-- freemarker begin -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-			<version>2.3.20</version>
-		</dependency>
-		<!-- freemarker begin -->
-		<!-- freemarker + shiro（标签） begin -->
-		<dependency>
-			<groupId>net.mingsoft</groupId>
-			<artifactId>shiro-freemarker-tags</artifactId>
-			<version>0.1</version>
-		</dependency>
-		<!-- freemarker + shiro（标签） begin -->
-		<dependency>
-			<artifactId>quartz</artifactId>
-			<groupId>org.opensymphony.quartz</groupId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-all</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.shiro</groupId>
-		    <artifactId>shiro-core</artifactId>
-		    <version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.shiro</groupId>
-		    <artifactId>shiro-web</artifactId>
-		    <version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.shiro</groupId>
-		    <artifactId>shiro-spring</artifactId>
-		    <version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.shiro</groupId>
-		    <artifactId>shiro-ehcache</artifactId>
-		    <version>${shiro.version}</version>
-		</dependency>
-		<dependency>
-		<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-quartz</artifactId>
-			<version>${shiro.version}</version>
-		</dependency>
-        
+        </dependency>
+        <!-- shiro相关依赖  安全管理-->
+        <!-- freemarker begin -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+        <!-- freemarker begin -->
+        <!-- freemarker + shiro（标签） begin -->
+        <dependency>
+            <groupId>net.mingsoft</groupId>
+            <artifactId>shiro-freemarker-tags</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <!-- freemarker + shiro（标签） begin -->
+        <dependency>
+            <artifactId>quartz</artifactId>
+            <groupId>org.opensymphony.quartz</groupId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-all</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- 切面相关依赖 -->
         <dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>${aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjtools</artifactId>
-			<version>${aspectj.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>${cglib.version}</version>
-		</dependency>
-		
-         <!-- java.util.logging 实际调用slf4j -->  
-      
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
         <dependency>
-	        <groupId>org.slf4j</groupId>
-	        <artifactId>slf4j-api</artifactId>
-	        <version>1.8.0-alpha2</version>
-   		 </dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
 
-	    <dependency> <!-- 桥接：告诉Slf4j使用Log4j2 -->
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-slf4j-impl</artifactId>
-	        <version>2.11.0</version>
-	    </dependency>
-	    <dependency> <!-- 桥接：告诉commons logging使用Log4j2 -->
-	        <groupId>org.apache.logging.log4j</groupId>
-	        <artifactId>log4j-jcl</artifactId>
-	        <version>2.11.0</version>
-	    </dependency>
-       <!-- Log4j2 -->
-		<dependency>
-		   <groupId>org.apache.logging.log4j</groupId>
-		   <artifactId>log4j-api</artifactId>
-		   <version>${log4j2.version}</version>
-	    </dependency>
-		<dependency>
-		   <groupId>org.apache.logging.log4j</groupId>
-		   <artifactId>log4j-core</artifactId>
-		   <version>${log4j2.version}</version>
-		</dependency>
-      
-        
-        
-        <dependency>  
-            <groupId>commons-logging</groupId>  
-            <artifactId>commons-logging</artifactId>  
-            <version>${commons.version}</version>  
-        </dependency> 
+        <!-- java.util.logging 实际调用slf4j -->
 
         <dependency>
-		<groupId>taglibs</groupId>
-		<artifactId>standard</artifactId>
-		<version>1.1.2</version>
-		</dependency>	
-		<!-- 防止与Tomcat 中的jstl/servlet发生冲突 -->
-		<dependency>
-	        <groupId>javax.servlet.jsp.jstl</groupId>
-	        <artifactId>jstl-api</artifactId>
-	        <version>1.2</version>
-	        <exclusions>
-	            <exclusion>
-	                <groupId>javax.servlet</groupId>
-	                <artifactId>servlet-api</artifactId>
-	            </exclusion>
-	            <exclusion>
-	                <groupId>javax.servlet.jsp</groupId>
-	                <artifactId>jsp-api</artifactId>
-	            </exclusion>
-	        </exclusions>
-	    </dependency>  
-	    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.8.0-alpha2</version>
+        </dependency>
+
+        <dependency> <!-- 桥接：告诉Slf4j使用Log4j2 -->
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency> <!-- 桥接：告诉commons logging使用Log4j2 -->
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <!-- Log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <!-- 防止与Tomcat 中的jstl/servlet发生冲突 -->
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>1.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.servlet.jsp</groupId>
+                    <artifactId>jsp-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
             <scope>provided</scope>
-        </dependency>       
-  </dependencies>
- 
-  <build>
- 
-  	 
-  	<plugins>  
-  		  <!-- 资源文件拷贝插件 -->
-        <plugin>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+
+        <plugins>
+            <!-- 资源文件拷贝插件 -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-        </plugin>
-	    <plugin>  
-	    <!-- Java 编译插件 -->
-	    <!-- 不加每次执行maven update 时会将java version 更改为 1.5 -->
-	        <groupId>org.apache.maven.plugins</groupId>  
-	        <artifactId>maven-compiler-plugin</artifactId>  
-	        <version>3.2</version>  
-	        <configuration>  
-	            <source>9</source>  
-	            <target>9</target>
-	            <debug>true</debug>  
-	        </configuration>  
-	    </plugin>  
-	</plugins> 
-  </build>
+            </plugin>
+            <plugin>
+                <!-- Java 编译插件 -->
+                <!-- 不加每次执行maven update 时会将java version 更改为 1.5 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

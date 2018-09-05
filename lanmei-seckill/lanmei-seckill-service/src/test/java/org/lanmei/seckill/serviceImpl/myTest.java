@@ -1,4 +1,4 @@
-package org.lanmei.seckill.serviceImpl;
+package com.lanmei.seckill.serviceImpl;
 
 import org.junit.Test;
 

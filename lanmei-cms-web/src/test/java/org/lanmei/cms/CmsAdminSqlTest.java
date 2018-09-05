@@ -1,19 +1,17 @@
-package org.lanmei.cms;
+package com.lanmei.cms;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import com.lanmei.admin.dao.mapper.CmsAdminMapper;
+import com.lanmei.admin.dao.model.CmsAdmin;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
-import org.lanmei.admin.dao.mapper.CmsAdminMapper;
-import org.lanmei.admin.dao.model.CmsAdmin;
-import org.lanmei.common.BaseService;
-import org.mybatis.spring.SqlSessionFactoryBean;
+import com.lanmei.cms.BaseMapperTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.alibaba.druid.pool.DruidDataSource;
 
 
 @Transactional

@@ -1,16 +1,9 @@
-package org.lanmei.cms.controller.seckill;
+package com.lanmei.cms.controller.seckill;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.lanmei.cms.controller.seckill.SeckillController;
+import net.sf.json.JSONObject;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +15,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import javax.servlet.ServletContext;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-import net.sf.json.JSONObject;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @RunWith(SpringJUnit4ClassRunner.class)  //此处调用Spring单元测试类  
 @WebAppConfiguration    //调用javaWEB的组件，比如自动注入ServletContext Bean等等  
 @ContextConfiguration(locations = {"classpath*:springmvc/spring-mvc.xml","classpath*:spring/spring-context.xml"})//加载Spring配置文件  
 public class SeckillControllerTest  {
 	
-	@Autowired  
-	SeckillController seckillController;  
+	@Autowired
+    SeckillController seckillController;
 	  
 	@Autowired  
 	ServletContext context;  
