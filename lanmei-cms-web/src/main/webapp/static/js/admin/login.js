@@ -8,8 +8,8 @@ $(function(){
 	$("#loginSubmit").click(function(){
 		console.log("提交登录");
 		 
-		var publicKey_modulus = $("#loginForm").attr("publicKey-modulus");
-		var publicKey_exponent = $("#loginForm").attr("publicKey-exponent");
+		var publicKey_modulus = $("#login-form").attr("publicKey-modulus");
+		var publicKey_exponent = $("#login-form").attr("publicKey-exponent");
 		
 		var loginJobNum = $("#loginJobNum").val();
 		var loginInvitationCode = $("#loginInvitationCode").val();

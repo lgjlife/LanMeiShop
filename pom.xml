@@ -249,6 +249,15 @@
             <!-- 不加会报错 -->
             <classifier>jdk15</classifier>
         </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- 邮箱 -->
         <dependency>
             <groupId>javax.mail</groupId>

@@ -1,6 +1,6 @@
 $(function(){
-	$("#loginName").blur(function(){
-		var loginName = $("#loginName").val(); 
+	$("#login-loginName").blur(function(){
+		var loginName = $("#login-loginName").val();
 		console.log("loginName = " + loginName);
 		
 		if( loginName.length != 0){
@@ -97,8 +97,8 @@ $(function(){
 	$("#loginSubmit").click(function(){
 		console.log("提交登录");
 		 
-		var publicKey_modulus = $("#loginForm").attr("publicKey-modulus");
-		var publicKey_exponent = $("#loginForm").attr("publicKey-exponent");
+		var publicKey_modulus = $("#login-form").attr("publicKey-modulus");
+		var publicKey_exponent = $("#login-form").attr("publicKey-exponent");
 		
 		var loginName = $("#loginName").val();
 		var loginPassword = $("#loginPassword").val();
@@ -144,7 +144,7 @@ $(function(){
 		            	$("#loginValidateCodeWarn").text("验证码有误");
 		            }
 		            else if(data.loginStatus == "LOGIN_SUCCESS"){
-		            	$("#loginForm").hide();
+		            	$("#login-form").hide();
 		        		$("#loginSuccessDisplay").show();
 		            }
 		            else if(data.loginStatus == "LOGIN_FAIL"){

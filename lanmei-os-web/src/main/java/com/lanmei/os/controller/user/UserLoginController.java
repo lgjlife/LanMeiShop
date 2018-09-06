@@ -2,11 +2,17 @@ package com.lanmei.os.controller.user;
 
 
 import com.lanmei.common.UserStatus;
+import com.lanmei.common.code.UserReturnCode;
+import com.lanmei.common.result.BaseResult;
+import com.lanmei.common.result.WebResult;
 import com.lanmei.common.session.SessionUtils;
+import com.lanmei.common.utils.session.SessionKeyUtil;
+import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.os.common.ServletUtils.ServletUtils;
 import com.lanmei.os.common.regex.ProjectRegex;
 import com.lanmei.os.common.rsa.RSAKeyFactory;
 import com.lanmei.os.common.rsa.RSAUtilNew;
+import com.lanmei.sysaop.syslog.anno.PrintUrlAnno;
 import com.lanmei.user.dao.model.OsUser;
 import com.lanmei.user.dao.model.OsUserLogin;
 import com.lanmei.user.impl.UserServiceImpl;
@@ -22,10 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,9 +45,9 @@ import java.util.Map;
  * @author lgj
  * @date:2018/05/17
  */
-@Api(value="/user-login",description="处理用户登录Controller")
+@Api(value="/user/login",description="处理用户登录Controller")
 @Controller
-@RequestMapping("/user-login")
+@RequestMapping(path="/user/login")
 public class UserLoginController {
 
 	
@@ -61,6 +64,58 @@ public class UserLoginController {
 	@Autowired
 	private  HttpServletRequest request;
 
+	/** 
+	 * @description:  进入登录页面
+	 * @param:  
+	 * @return:  
+	 * @author: Mr.lgj 
+	 * @date: 9/7/18 
+	*/
+	@PrintUrlAnno(description = "os-web 进入登陆页面")
+	@ApiOperation(value="/user/login",httpMethod="GET",notes = "进入登陆页面")
+	@GetMapping
+	public String  loginPage() {
+
+		logger.info("into /user/login");
+		return "/user/login";
+	}
+
+	/** 
+	 * @description:  获取人撒加密密钥公钥的modulus和exponent
+	 * @param:
+
+	 * @return: BaseResult：1. UserReturnCode.LOGIN_GET_KEYPAIR_SUCCESS or  UserReturnCode.LOGIN_GET_KEYPAIR_FAIL
+	                        2. keyMap(modulus , exponent)
+	 * 	 @see com.lanmei.common.result
+	 * @author: Mr.lgj 
+	 * @date: 9/7/18 
+	*/ 
+	@ApiOperation(value="/user/login/key",httpMethod="GET",notes = "os-web 登陆页面获取RSAKey的 modulus 和 exponent")
+	@GetMapping(path="/key")
+	@ResponseBody
+	@PrintUrlAnno(description = "os-web 登陆页面获取RSAKey的 modulus 和 exponent")
+	public BaseResult requestKeyModAndExp(){
+
+		logger.info("into /user/login/key");
+
+		KeyPair key = RSAKeyFactory.getInstance().getKeyPair();
+		RSAPublicKey pkey = (RSAPublicKey) key.getPublic();
+		String modulus = pkey.getModulus().toString(16);
+		String exponent = pkey.getPublicExponent().toString(16);
+
+		logger.info("登录请求：" + " modulus =" + modulus
+				+ "  exponent = " + exponent );
+
+		SessionUtil.setSession(SessionKeyUtil.RSAkeyPair,key,30);
+
+		Map  keyMap = new HashMap();
+		keyMap.put("modulus",modulus);
+		keyMap.put("exponent",exponent);
+
+
+		return  new WebResult(UserReturnCode.LOGIN_GET_KEYPAIR_SUCCESS,keyMap);
+	}
+	
 	    
 	@ApiOperation(value="/user-login",httpMethod="GET")
 	@RequestMapping(path="/find-password")
@@ -69,6 +124,7 @@ public class UserLoginController {
 		logger.debug("into user-login/find-password");
 		return "/user/find-password"; 
 	}
+
 	
 	@ApiOperation(value="/user-login",httpMethod="GET")
 	@RequestMapping(path="/test")
@@ -77,38 +133,7 @@ public class UserLoginController {
 		logger.debug("into user-login/user-test");
 		return "/user/login"; 
 	}
-	/**
-	 * 进入登录界面
-	 * @return
-	 */
-	@ApiOperation(value="/user-login",httpMethod="GET")
-	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView  loginPage() {
-		
-		logger.debug("into /user-login");
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
-		if(user != null) {
-			logger.debug("当前登录的用户号码为 = " + user.getUserId() );
-		}
-		
-		/*将私钥的Modulus和Exponent 保存在session中*/
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		
-		/*将公钥的Modulus和Exponent 发送给客户端*/
-		
-		KeyPair key = RSAKeyFactory.getInstance().getKeyPair();
-		session.setAttribute("KeyPair",key);
-		
-		RSAPublicKey pkey = (RSAPublicKey) key.getPublic();
-		String modulus = pkey.getModulus().toString(16);
-		String exponent = pkey.getPublicExponent().toString(16);		
-		ModelAndView mv = new ModelAndView("/user/login");
-		mv.addObject("modulus", modulus);
-		mv.addObject("exponent", exponent);	
-		
-		return mv;
-	}
+
 	@RequestMapping(value="/redistest",method=RequestMethod.GET)
 	public ModelAndView redis() {
 		logger.debug("\r\n-------/redistest");
