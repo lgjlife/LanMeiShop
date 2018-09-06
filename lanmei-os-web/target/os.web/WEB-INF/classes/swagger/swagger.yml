@@ -1,0 +1,13 @@
+#swagger.basePackage = com.lanmei.os.controller
+#swagger.title = lanmei
+#swagger.description = lanmei
+#swagger.version = V1.0
+#swagger.contactName = lgj
+#swagger.contactUrl = https://blog.csdn.net/u011676300
+
+
+swagger:
+      basePackage: com.lanmei.os.controller
+      title: 猿医生のAPI
+      description: 一生猿，一世猿。
+      version: V1.0

@@ -103,19 +103,19 @@
     <!-- 配置404与500错误处理 -->   
 	<error-page>
 		<error-code>500</error-code>
-		<location>/WEB-INF/views/errorpage/500.jsp</location>
+		<location>/WEB-INF/views/errorpage/500.html</location>
 	</error-page>
 	<error-page>
 		<error-code>400</error-code>
-		<location>/WEB-INF/views/errorpage/400.jsp</location>
+		<location>/WEB-INF/views/errorpage/400.html</location>
 	</error-page>
 	<error-page>
 		<error-code>403</error-code>
-		<location>/WEB-INF/views/errorpage/403.jsp</location>
+		<location>/WEB-INF/views/errorpage/403.html</location>
 	</error-page>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/views/errorpage/404.jsp</location>
+		<location>/WEB-INF/views/errorpage/404.html</location>
 	</error-page>
 	
 	<!-- Session超时10分钟(零或负数表示会话永不超时) --> 

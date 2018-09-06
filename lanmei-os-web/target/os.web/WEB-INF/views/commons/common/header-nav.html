@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+<html>
+<html>
+	<head th:fragment="header-nav-head">
+ 	    <script th:src="@{static/js/homepage/header.js}"></script>
+
+	</head>
+	
+	<body>
+		<div th:fragment="header-nav">
+			<!-- 创建顶部导航栏 -->
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-2">
+					</div>
+					<div class="col-4" >
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/}">商城首页</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/">商家入驻</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/">客户服务</a>
+							</li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									深圳
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<abbr ><a id="local_province" href="#">广东</a></abbr>
+										<span>|</span>
+										<abbr ><a id="local_city" href="#">广州</a></abbr>
+									</li>
+
+								</ul>
+							</li>
+
+						</ul>
+
+					</div>
+
+					<div class="col-4">
+						<ul class="nav">
+							<li class="nav-item">
+								<a id="loginTag" class="nav-link" th:href="@{/user-login}" target="_blank">登录</a>
+
+								<a class="nav-link" th:href="@{/user-info}" target="_blank"
+								   id="LoginedTag" style="display:none;">
+									用户(${user.userId})
+								</a>
+
+
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/user-register/register}" target="_blank">注册</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="color: #6c757d;" id="infoLink" >个人中心</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/">我的订单</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/">购物车</a>
+							</li>
+						</ul>
+						<div class="col-2">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+</body>
+</html>

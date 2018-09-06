@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+
+<html>
+	<head>
+		<title>蓝莓商城</title>
+		<meta charset="UTF-8">
+		<!-- jquery  bootstrap-->
+		<script th:src="@{static/jquery/jquery-3.3.1.js}"></script>
+		<link rel="stylesheet" type="text/css"  th:href="@{/static/bootstrap/bootstrap.css}">
+		<script th:src="@{static/bootstrap/bootstrap.js}"></script>
+
+		<footer-head th:include="/commons/common/footer :: footer-head"/>
+		<index-head th:include="/homepage/index :: index-head"/>
+		<style>
+			html,body{
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+				background-color: #b8daff;
+			}
+		</style>
+	</head>
+	
+	<body>
+
+		<div th:replace="/commons/common/header-nav :: header-nav"></div>
+		<div th:replace="/commons/common/search :: search"></div>
+		<div th:replace="/homepage/index :: index-body"></div>
+		<div th:replace="/commons/common/footer :: footer-body"></div>
+
+	assdsdss
+	 </body>
+</html>
