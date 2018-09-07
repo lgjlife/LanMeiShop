@@ -2,6 +2,8 @@ package com.lanmei.os.controller.kaptcha;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+import com.lanmei.sysaop.syslog.anno.PrintUrlAnno;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -9,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,9 +36,11 @@ public class KaptchaImageCreate {
     @Autowired  
     public void setCaptchaProducer(Producer kaptchaProducer) {  
         this.kaptchaProducer = kaptchaProducer;  
-    }  
-  
-    @RequestMapping("/kaptcha")
+    }
+
+    @ApiOperation(value="/kaptcha",httpMethod="GET",notes = "os-web 获取验证码")
+    @PrintUrlAnno(description = "os-web 获取验证码")
+    @GetMapping("/kaptcha")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{  
     	
     	logger.debug("into kaptcha/image/create");

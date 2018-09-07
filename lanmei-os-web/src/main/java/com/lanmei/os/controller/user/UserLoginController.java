@@ -1,11 +1,12 @@
 package com.lanmei.os.controller.user;
 
 
-import com.lanmei.common.UserStatus;
+import com.lanmei.common.code.NullPointerCode;
 import com.lanmei.common.code.UserReturnCode;
 import com.lanmei.common.result.BaseResult;
 import com.lanmei.common.result.WebResult;
 import com.lanmei.common.session.SessionUtils;
+import com.lanmei.common.utils.CheckNullUtil;
 import com.lanmei.common.utils.session.SessionKeyUtil;
 import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.os.common.ServletUtils.ServletUtils;
@@ -19,17 +20,14 @@ import com.lanmei.user.impl.UserServiceImpl;
 import com.lanmei.user.service.OsUserLoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
@@ -75,13 +73,11 @@ public class UserLoginController {
 	@ApiOperation(value="/user/login",httpMethod="GET",notes = "进入登陆页面")
 	@GetMapping
 	public String  loginPage() {
-
-		logger.info("into /user/login");
 		return "/user/login";
 	}
 
 	/** 
-	 * @description:  获取人撒加密密钥公钥的modulus和exponent
+	 * @description:  获取加密密钥公钥的modulus和exponent
 	 * @param:
 
 	 * @return: BaseResult：1. UserReturnCode.LOGIN_GET_KEYPAIR_SUCCESS or  UserReturnCode.LOGIN_GET_KEYPAIR_FAIL
@@ -95,8 +91,6 @@ public class UserLoginController {
 	@ResponseBody
 	@PrintUrlAnno(description = "os-web 登陆页面获取RSAKey的 modulus 和 exponent")
 	public BaseResult requestKeyModAndExp(){
-
-		logger.info("into /user/login/key");
 
 		KeyPair key = RSAKeyFactory.getInstance().getKeyPair();
 		RSAPublicKey pkey = (RSAPublicKey) key.getPublic();
@@ -115,99 +109,64 @@ public class UserLoginController {
 
 		return  new WebResult(UserReturnCode.LOGIN_GET_KEYPAIR_SUCCESS,keyMap);
 	}
-	
-	    
-	@ApiOperation(value="/user-login",httpMethod="GET")
-	@RequestMapping(path="/find-password")
-	public String  findPassword() {
-		
-		logger.debug("into user-login/find-password");
-		return "/user/find-password"; 
-	}
 
-	
-	@ApiOperation(value="/user-login",httpMethod="GET")
-	@RequestMapping(path="/test")
-	public String  loginTest() {
-		
-		logger.debug("into user-login/user-test");
-		return "/user/login"; 
-	}
 
-	@RequestMapping(value="/redistest",method=RequestMethod.GET)
-	public ModelAndView redis() {
-		logger.debug("\r\n-------/redistest");
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		session.setAttribute("testredis","testvalue");
-		logger.debug("\r\n-------获取的session value "+session.getAttribute("testredis"));
-		
-		/*OsUser user = new OsUser();
-		user.setUserId(12);
-		session.setAttribute("testUser",user);
-		
-		OsUser user1 = (OsUser)session.getAttribute("testUser");
-		
-		logger.debug("\r\n-------获取的user1 id value :"+user1.getUserId());*/
-		
-		ModelAndView mv = new ModelAndView("/user/login");
-
-		
-		return mv;
-	}
-	/**
-	 * 客户端提交注册按钮
-	 * 1.校验验证码是否正确
-	 * 2.对加密的密码进行解密。获取原始密码
-	 * 3.对原始密码使用MD5进行加密
-	 * 3.将手机号码和加密的密码写入到数据库中，用户创建成功
-	 * @return JSONObject 注册成功：UserStatus.REGISTER_SUCCESS
-	 * 					  注册失败：UserStatus.REGISTER_FAIL
-	 *                    验证码有误：UserStatus.VALIDATE_CODE_ERR
-	 */
+	/** 
+	 * @description:  客户端提交注册按钮
+	 * @param:    map: 1.loginName  登录名称
+	 *                 2.loginPassword  登录密码
+	 *                 3. logginVerificationCode 登录验证码
+	 * @return:  
+	 * @author: Mr.lgj 
+	 * @date: 9/7/18 
+	*/ 
+	@ApiOperation(value="/user/login/submit",httpMethod="POST",notes = "os-web 登陆页面请求")
+	@PrintUrlAnno(description = "os-web 登陆页面请求")
+	@PostMapping(path="/submit")
 	@ResponseBody
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public JSONObject login(@RequestBody Map<String, Object> models) {		
-		logger.debug("INTO /user-login/login");
-		
-		UserStatus loginStatus  = null ;
-		Map<String,Object> map = new HashMap<String,Object>();	
-		
-		//OsUser user= JSON.toJSONString(OsUser,OsUser.class);
+	public BaseResult  login(@RequestBody Map<String, Object> requestMap) {
+
+		if(requestMap.isEmpty()){
+			logger.info("请求参数为空");
+			return  new WebResult(NullPointerCode.NULL_POINT);
+		}
+
 		/*接受客户端发来的数据*/
-		/*获取电话号码和密码(使用RSA进行加密)*/
-		String loginName = (String)models.get("loginName") ;
-		String loginPassword = (String)models.get("loginPassword");
-		String logginVerificationCode = (String)models.get("logginVerificationCode");
-		
-		
-		
-		/*获取Modulus和Exponent 保存在session中*/
-		Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
+		String loginName = (String)requestMap.get("loginName") ;
+		String loginPassword = (String)requestMap.get("loginPassword");
+		String logginVerificationCode = (String)requestMap.get("logginVerificationCode");
+
+		if( (CheckNullUtil.isNullString(loginName))
+			|| (CheckNullUtil.isNullString(loginPassword))
+			|| (CheckNullUtil.isNullString(logginVerificationCode))){
+			return  new WebResult(NullPointerCode.NULL_POINT);
+		}
+
+
+
 		/*获取RSA 的keyPair */
-		KeyPair key = (KeyPair)session.getAttribute("KeyPair");
+		KeyPair key = (KeyPair)SessionUtil.getSession(SessionKeyUtil.RSAkeyPair);
 		RSAPrivateKey privateKey = (RSAPrivateKey) key.getPrivate();
 		/*从session获取验证码*/
-		String verificationCodeSave = (String)session.getAttribute("verificationCode");
-		logger.debug("之前保存的验证码 = " + verificationCodeSave);
-		logger.debug("用户提交的验证码 = " + logginVerificationCode);
+		String verificationCodeSave = (String)SessionUtil.getSession(SessionKeyUtil.loginVerificationCode);
+		logger.info("之前保存的验证码 = " + verificationCodeSave);
+		logger.info("用户提交的验证码 = " + logginVerificationCode);
 		/*if(verificationCodeSave.equals(logginVerificationCode) == false) {
 			//验证码有误
 			map.put("loginStatus", UserStatus.VALIDATE_CODE_ERR);
 			JSONObject json = JSONObject.fromObject(map);
-			
+
 			return json;
 		} */
-	    /*解密，获取原始密码*/
-		logger.debug("通过 privateKeyModulus  和 privateKeyExponent 获取私钥");
-		logger.debug(" 获取私钥为 = " + privateKey );
-	    logger.debug(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
-		logger.debug(" 私钥  privateKeyExponent = " + privateKey.getPrivateExponent());
+		/*解密，获取原始密码*/
+		logger.info("通过 privateKeyModulus  和 privateKeyExponent 获取私钥");
+		logger.info(" 获取私钥为 = " + privateKey );
+		logger.info(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
+		logger.info(" 私钥  privateKeyExponent = " + privateKey.getPrivateExponent());
 		byte[] en_result = new BigInteger(loginPassword, 16).toByteArray();
 		byte[] pass = null;
-		try {			
-			 pass =RSAUtilNew.decrypt(privateKey,en_result);
+		try {
+			pass =RSAUtilNew.decrypt(privateKey,en_result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -218,18 +177,20 @@ public class UserLoginController {
 		String passWord = StrBuf.reverse().toString();
 		logger.debug("解密的密码为 = " + passWord);
 
+
+		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(loginName,passWord);
-		System.out.println("认证状态 = " + currentUser.isAuthenticated());
+		System.out.println("认证状态 = " + subject.isAuthenticated());
 		try {
-			
+
 			token.setRememberMe(true);
 			/*登录验证*/
-			currentUser.login(token);
+			subject.login(token);
 			logger.debug("用户登录成功");
 			/*登录成功 ，获取当前的用户并保存到session中*/
 			OsUser user;
 			if(ProjectRegex.isTelNum(loginName)) {
-				 user = userServiceImpl.getUser(null, loginName, null);
+				user = userServiceImpl.getUser(null, loginName, null);
 			}
 			else if(ProjectRegex.isEmail(loginName)) {
 				user = userServiceImpl.getUser(null, null, loginName);;
@@ -238,7 +199,7 @@ public class UserLoginController {
 				user = userServiceImpl.getUser(loginName, null, null);;
 			}
 			logger.debug("当前用户 = " + user.getUserId());
-			SessionUtils.setSession("currenLogintUser", user);
+			SessionUtil.setSession(SessionKeyUtil.currentLoginUser, user,30);
 			OsUser user1=(OsUser) SessionUtils.getSession("currenLogintUser");
 			if(user1 != null) {
 				logger.debug("当前登录的用户号码为 = " + user1.getUserId());
@@ -252,39 +213,38 @@ public class UserLoginController {
 			userLogin.setLoginTime(new Date());
 			userLogin.setExplorer(ServletUtils.getAggent(request));
 			userLoginService.addLoginLog(user.getUserId(), userLogin);
-			
-			loginStatus = UserStatus.LOGIN_SUCCESS;
-			
-		}catch(UnknownAccountException uae){  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");  
-            loginStatus = UserStatus.LOGIN_FAIL;
-         
-        }catch(IncorrectCredentialsException ice){  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误的凭证");  
-            loginStatus = UserStatus.LOGIN_FAIL;
-          
-        }catch(LockedAccountException lae){  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,账户已锁定");  
-            loginStatus = UserStatus.LOGIN_FAIL;
-             
-        }catch(ExcessiveAttemptsException eae){  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,错误次数过多"); 
-            loginStatus = UserStatus.LOGIN_FAIL;
-             
-        }catch(AuthenticationException ae){  
-            //通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景  
-            System.out.println("对用户[" + loginName + "]进行登录验证..验证未通过,堆栈轨迹如下");  
-            ae.printStackTrace();  
-            loginStatus = UserStatus.LOGIN_FAIL;
-           
-        } 
-		System.out.println("认证状态 = " + currentUser.isAuthenticated());
-		if(currentUser.isAuthenticated()) {
-			System.out.println("用户[" + loginName + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)"); 
-		}			
-		map.put("loginStatus", loginStatus);
-		JSONObject json = JSONObject.fromObject(map);
-		
-		return json;
+
+
+
+			if(subject.isAuthenticated()) {
+				logger.info("用户[" + loginName + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)");
+			}
+
+			return  new WebResult(UserReturnCode.LOGIN_SUCCESS);
+
+		}catch(UnknownAccountException uae){
+			logger.error("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");
+			return  new WebResult(UserReturnCode.LOGIN_UNKNOW_ACCOUT);
+
+		}catch(IncorrectCredentialsException ice){
+			logger.error("对用户[" + loginName + "]进行登录验证..验证未通过,错误的凭证");
+			return  new WebResult(UserReturnCode.LOGIN_PASSWORD_ERR);
+
+		}catch(LockedAccountException lae){
+			logger.error("对用户[" + loginName + "]进行登录验证..验证未通过,账户已锁定");
+			return  new WebResult(UserReturnCode.LOGIN_LOCK_ACCOUNT);
+
+		}catch(ExcessiveAttemptsException eae){
+			logger.error("对用户[" + loginName + "]进行登录验证..验证未通过,错误次数过多");
+			return  new WebResult(UserReturnCode.LOGIN_PASSWORD_ERR_MORE);
+
+		}catch(AuthenticationException ae){
+			//通过处理Shiro的运行时AuthenticationException就可以控制用户登录失败或密码错误时的情景
+			logger.error("对用户[" + loginName + "]进行登录验证..验证未通过,堆栈轨迹如下");
+			ae.printStackTrace();
+			return  new WebResult(UserReturnCode.LOGIN_FAIL);
+		}
+
 	}
+
 }

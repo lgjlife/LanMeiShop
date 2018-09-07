@@ -29,4 +29,8 @@ public class SessionKeyUtil {
     public static final String RSAkeyPair = "RSAkeyPair";
 
 
+    /**
+     * @description: 登录验证码
+     */
+    public static  final String loginVerificationCode = "loginVerificationCode";
 }

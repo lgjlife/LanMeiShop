@@ -18,7 +18,8 @@ public enum UserReturnCode implements  ReturnCode{
     LOGIN_LOCK_ACCOUNT(1003,"用户登录失败，账户被锁定"),
     LOGIN_PASSWORD_ERR_MORE(1004,"用户登录失败，密码错误过多"),
     LOGIN_GET_KEYPAIR_FAIL(1005,"登陆时获取keypair失败"),
-    LOGIN_GET_KEYPAIR_SUCCESS(1005,"登陆时获取keypair成功"),
+    LOGIN_GET_KEYPAIR_SUCCESS(1006,"登陆时获取keypair成功"),
+    LOGIN_UNKNOW_ACCOUT(1007,"帐号不存在"),
 
     //注册相关　1030-1059
     ACCOUNT_EXIST(1030,"帐号注册失败,帐号已经存在"),

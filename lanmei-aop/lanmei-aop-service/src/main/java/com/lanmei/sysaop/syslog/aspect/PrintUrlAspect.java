@@ -63,7 +63,14 @@ public class PrintUrlAspect {
 			String targetName = joinPoint.getTarget().getClass().getName();  			 
             String methodName = joinPoint.getSignature().getName();
             Class targetClass = Class.forName(targetName);
-            Method method = targetClass.getMethod(methodName);
+
+            Method[] methods = targetClass.getMethods();
+            Method method = null;
+            for(Method m:methods){
+            	if(methodName == m.getName()){
+					method  = m;
+				}
+			}
             //获取SyslogAnno注解值
             String description  = method.getAnnotation(PrintUrlAnno.class).description();
 

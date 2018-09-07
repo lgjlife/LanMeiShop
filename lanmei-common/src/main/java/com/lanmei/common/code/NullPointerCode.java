@@ -2,7 +2,7 @@ package com.lanmei.common.code;
 
 /**
  * @program: shiro
- * @description: 用户相关枚举类
+ * @description: 空指针
  * @author: Mr.lgj
  * @version:
  * @See:
@@ -10,11 +10,7 @@ package com.lanmei.common.code;
  **/
 public enum NullPointerCode implements  ReturnCode{
 
-
-    //登录相关　1000-1029
-
-    //注册相关　1030-1059
-    Null_Pointer(100,"请求参数为空"),
+    NULL_POINT(100,"请求参数为空"),
 
 
     ;

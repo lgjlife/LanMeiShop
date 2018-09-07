@@ -59,7 +59,11 @@
         <property name="hashValueSerializer">   
            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>     
         </property> 
-     </bean> 
-     
+     </bean>
+    <!-- list  工具类 -->
+    <bean id="redisListUtil" class="com.lanmei.common.redis.Utils.RedisListUtil">
+        <constructor-arg index="0" ref="redisTemplate"/>
+    </bean>
+
      <bean id="redisTemplateUtils" class="com.lanmei.os.cache.RedisTemplateUtils"></bean>
 </beans>

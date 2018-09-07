@@ -7,15 +7,21 @@
 	<head >
 		<title>蓝莓商城-用户登录</title>
 		<meta charset="utf-8">
- 	    <meta name="viewport" content="width=device-width, initial-scale=1">      
- 	    
- 	    <script th:src="@{static/js/security/Barrett.js}"></script>
- 	    <script th:src="@{static/js/security/BigInt.js}"></script>
- 	    <script th:src="@{static/js/security/RSA.js}"></script>
- 	    <script th:src="@{static/js/common/regex.js}"></script>
- 	    <script th:src="@{static/js/user/register.js}"></script>
-		<script th:src="@{static/js/user/login.js}"></script>
-		<link rel="stylesheet" type="text/css"  th:href="@{static/css/user/register.css}">
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- jquery  bootstrap-->
+		<script th:src="@{/static/jquery/jquery-3.3.1.js}"></script>
+		<link rel="stylesheet" type="text/css"  th:href="@{/static/bootstrap/bootstrap.css}">
+		<script th:src="@{/static/bootstrap/bootstrap.js}"></script>
+
+
+ 	    <script th:src="@{/static/js/security/Barrett.js}"></script>
+ 	    <script th:src="@{/static/js/security/BigInt.js}"></script>
+ 	    <script th:src="@{/static/js/security/RSA.js}"></script>
+ 	    <script th:src="@{/static/js/common/regex.js}"></script>
+ 	    <script th:src="@{/static/js/user/register.js}"></script>
+		<script th:src="@{/static/js/user/login.js}"></script>
+		<link rel="stylesheet" type="text/css"  th:href="@{/static/css/user/register.css}">
 		
  
 	</head>
@@ -48,28 +54,29 @@
 						<label  for="login-loginName" >登录帐号</label>
 						<input type="text" id="login-loginName"  class="form-control" style="width:60%"
 						placeholder="电话号码/邮箱/用户名"/>
-						<span id="login-loginName-warn" class="formWarn" ></span>
+						<span id="login-loginName-warn" class="formWarn" style="display: block" ></span>
 					</div>
 
 					<div class="form-group">
 						<label  for="login-loginPassword" >密码</label>
 						<br>
 						<input type="text" id="login-loginPassword"  class="form-control" style="width:60%;display:inline"  placeholder="请输入密码" value=""/>
+						<span id="login-loginPassword-warn" class="formWarn" style="display: block" ></span>
 					</div>
 					<div class="form-group">
 						<label  for="login-loginValidateCode" >验证码</label>
 						<br>
 						<input type="text" id="login-loginValidateCode"  class="form-control" style="width:60%;display:inline"  placeholder="验证码" value=""/>
-						<img id="vcode" title="点击更换" alt="验证图片" 
-						th:src="@{/kaptcha}" onclick="this.src='@{/kaptcha?d=+Math.random()}'"
+						<img id="login-kaptcha" title="点击更换" alt="验证图片"
+						th:src="@{/kaptcha}" onclick="this.src=this.src+'?d=100'"
 						style="vertical-align: middle;"  height="30" width="80">
-						<span id="login-loginValidateCode-warn" class="formWarn" ></span>
+						<span id="login-loginValidateCode-warn" class="formWarn"  style="display: block"></span>
 					</div>
 					<a>忘记密码？</a><a  th:href="@{/user/find/password}" target="_blank"
 					style="color:#EEB422">点击找回密码</a>
 					<br>
 					<button type="button" id="login-loginSubmit-btn">登录</button>
-					<span id="login-loginWarn" class="formWarn" ></span>
+					<span id="login-loginWarn" class="formWarn" style="display: block" ></span>
 				</form>
 				
 				<!-- 登陆成功现实 -->
