@@ -2,12 +2,11 @@ package com.lanmei.seckill.serviceImpl;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.lanmei.common.baseservice.BaseService;
-import com.lanmei.common.session.SessionUtils;
+import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.seckill.dao.mapper.SeckillMapper;
 import com.lanmei.seckill.dao.mapper.SeckillSuccessMapper;
 import com.lanmei.seckill.dao.model.Seckill;
 import com.lanmei.seckill.dao.model.SeckillSuccess;
-import org.apache.shiro.crypto.hash.Md5Hash;
 import com.lanmei.seckill.dto.ExecutionDto;
 import com.lanmei.seckill.dto.ExposerDto;
 import com.lanmei.seckill.exception.InnerException;
@@ -16,6 +15,7 @@ import com.lanmei.seckill.exception.SeckillCloseException;
 import com.lanmei.seckill.exception.SeckillException;
 import com.lanmei.seckill.service.SeckillService;
 import com.lanmei.seckill.state.SeckillState;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,7 +166,7 @@ public class SeckillServiceImpl extends BaseService implements SeckillService {
 		//动态生成MD5
 		String md5 = getMd5(seckillId);	
 		//将MD5 保存在Session中
-		SessionUtils.setSession("md5", md5);
+		SessionUtil.setSession("md5", md5,30);
 		return  (new ExposerDto(true,md5,seckillId));
 	}
 	/*事物管理，失败则回滚*/
@@ -175,7 +175,7 @@ public class SeckillServiceImpl extends BaseService implements SeckillService {
 	public ExecutionDto executeSeckill(Integer seckillId ,String md5,Integer currentUserId) 
 	       throws SeckillCloseException,RepeatkillException,SeckillException{
 		// TODO Auto-generated method stub
-		String innerMd5 = (String)SessionUtils.getSession("md5");
+		String innerMd5 = (String)SessionUtil.getSession("md5");
 		if((seckillId == null)|| (md5 == null) || (md5.equals(innerMd5) == false) ){
 			
 			throw  new  SeckillException("秒杀请求异常");

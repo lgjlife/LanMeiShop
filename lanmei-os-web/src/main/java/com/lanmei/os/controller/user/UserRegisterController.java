@@ -1,9 +1,9 @@
 package com.lanmei.os.controller.user;
 
 import com.alibaba.fastjson.JSON;
-import com.lanmei.common.UserStatus;
 import com.lanmei.os.common.rsa.RSAKeyFactory;
 import com.lanmei.os.common.rsa.RSAUtilNew;
+import com.lanmei.user.common.UserStatus;
 import com.lanmei.user.dao.model.OsUser;
 import com.lanmei.user.impl.UserServiceImpl;
 import io.swagger.annotations.Api;

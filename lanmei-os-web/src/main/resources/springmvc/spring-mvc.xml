@@ -123,14 +123,14 @@
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
 		<property name="proxyTargetClass" value="true" />
 	</bean>
-	<!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
 				<prop key="org.apache.shiro.authz.UnauthorizedException">/errorpage/403</prop>
 				<prop key="java.lang.Throwable">/errorpage/500</prop>
 			</props>
 			</property>
-	</bean>-->
+	</bean>
 	<!-- 支持Shiro对Controller的方法级AOP安全控制 end -->    
 	
 	<!-- 8.拦截器的配置 -->

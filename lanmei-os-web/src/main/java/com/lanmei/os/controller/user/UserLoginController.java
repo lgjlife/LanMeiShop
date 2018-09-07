@@ -5,7 +5,6 @@ import com.lanmei.common.code.NullPointerCode;
 import com.lanmei.common.code.UserReturnCode;
 import com.lanmei.common.result.BaseResult;
 import com.lanmei.common.result.WebResult;
-import com.lanmei.common.session.SessionUtils;
 import com.lanmei.common.utils.CheckNullUtil;
 import com.lanmei.common.utils.session.SessionKeyUtil;
 import com.lanmei.common.utils.session.SessionUtil;
@@ -73,6 +72,33 @@ public class UserLoginController {
 	@ApiOperation(value="/user/login",httpMethod="GET",notes = "进入登陆页面")
 	@GetMapping
 	public String  loginPage() {
+
+		SessionUtil.setSession("key","123456",30 );
+
+
+		/*Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		log.info("getSubject+++++");
+		if(null != currentUser){
+
+			if(null != session){
+
+				log.info("session id = " + session.getId());
+
+				session.setTimeout( minute);
+				session.setAttribute(key, value);
+
+			}
+			else{
+				log.info("The session of the Key {" + key + " } is null");
+			}
+		}
+		else{
+			log.info("currentUser  is null");
+		}*/
+
+		String value = 	(String) SessionUtil.getSession("key");
+		logger.info("value = " + value );
 		return "/user/login";
 	}
 
@@ -130,23 +156,28 @@ public class UserLoginController {
 			logger.info("请求参数为空");
 			return  new WebResult(NullPointerCode.NULL_POINT);
 		}
-
+		logger.info("login ... ");
 		/*接受客户端发来的数据*/
 		String loginName = (String)requestMap.get("loginName") ;
 		String loginPassword = (String)requestMap.get("loginPassword");
 		String logginVerificationCode = (String)requestMap.get("logginVerificationCode");
-
+		logger.info("loginName = " + loginName
+		+ "  loginPassword " + loginPassword
+		+ "  logginVerificationCode = "  + logginVerificationCode);
 		if( (CheckNullUtil.isNullString(loginName))
 			|| (CheckNullUtil.isNullString(loginPassword))
 			|| (CheckNullUtil.isNullString(logginVerificationCode))){
 			return  new WebResult(NullPointerCode.NULL_POINT);
 		}
+        logger.info("开始解密");
 
 
 
 		/*获取RSA 的keyPair */
 		KeyPair key = (KeyPair)SessionUtil.getSession(SessionKeyUtil.RSAkeyPair);
 		RSAPrivateKey privateKey = (RSAPrivateKey) key.getPrivate();
+
+		logger.info("privateKey =  " + privateKey.toString());
 		/*从session获取验证码*/
 		String verificationCodeSave = (String)SessionUtil.getSession(SessionKeyUtil.loginVerificationCode);
 		logger.info("之前保存的验证码 = " + verificationCodeSave);
@@ -200,7 +231,7 @@ public class UserLoginController {
 			}
 			logger.debug("当前用户 = " + user.getUserId());
 			SessionUtil.setSession(SessionKeyUtil.currentLoginUser, user,30);
-			OsUser user1=(OsUser) SessionUtils.getSession("currenLogintUser");
+			OsUser user1=(OsUser) SessionUtil.getSession("currenLogintUser");
 			if(user1 != null) {
 				logger.debug("当前登录的用户号码为 = " + user1.getUserId());
 			}

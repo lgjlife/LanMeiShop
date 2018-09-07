@@ -29,17 +29,26 @@ public class SessionUtil {
      * @date: 9/7/18 
     */ 
     public static void setSession(Object key, Object value,long minute){
+
         Subject currentUser = SecurityUtils.getSubject();
         if(null != currentUser){
             Session session = currentUser.getSession();
             if(null != session){
-                session.setTimeout( minute);
+
+                log.info("session id = " + session.getId());
+
+                session.setTimeout( minute * 60 * 1000);
                 session.setAttribute(key, value);
+
             }
             else{
                 log.info("The session of the Key {" + key + " } is null");
             }
         }
+        else{
+            log.info("currentUser  is null");
+        }
+
     }
 
     /** 

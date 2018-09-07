@@ -1,6 +1,5 @@
 package com.lanmei.os.common.exception;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @create: 2018-09-07 08:43
  **/
 
-@Component
+//@Component
 public class ExceptionHandle implements HandlerExceptionResolver {
 
     @Override

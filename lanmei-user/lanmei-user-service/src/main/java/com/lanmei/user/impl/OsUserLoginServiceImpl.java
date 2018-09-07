@@ -1,7 +1,7 @@
 package com.lanmei.user.impl;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.lanmei.common.BaseService;
+import com.lanmei.common.baseservice.BaseService;
 import com.lanmei.user.dao.mapper.OsUserLoginMapper;
 import com.lanmei.user.dao.model.OsUserLogin;
 import com.lanmei.user.service.OsUserLoginService;

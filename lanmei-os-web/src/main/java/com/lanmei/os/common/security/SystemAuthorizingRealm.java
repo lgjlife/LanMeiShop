@@ -1,5 +1,6 @@
 package com.lanmei.os.common.security;
 
+import com.lanmei.common.utils.UserRegexUtil;
 import com.lanmei.os.common.regex.ProjectRegex;
 import com.lanmei.user.dao.model.OsUser;
 import com.lanmei.user.impl.UserServiceImpl;
@@ -61,16 +62,15 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 		logger.debug("into doGetAuthenticationInfo....");
 		
 		String userName = token.getPrincipal().toString();
+
+		if(userName  == null){
+			throw new UnknownAccountException();
+		}
+
 		OsUser user = null;
-		if(ProjectRegex.isTelNum(userName)) {
-			 user = userServiceImpl.getUserByTelNum(userName);
-		}
-		else if(ProjectRegex.isEmail(userName)) {
-			 user = userServiceImpl.getUserByEmail(userName);
-		}
-		else {
-			 user = userServiceImpl.getUserByNickName(userName);
-		}
+		user = userServiceImpl.queryUser(userName);
+
+
 		
 		if(user != null) {
 			logger.debug("查询到用户");

@@ -1,7 +1,6 @@
 package com.lanmei.os.controller.user;
 
-
-import com.lanmei.common.session.SessionUtils;
+import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.user.dao.model.OsUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +33,7 @@ public class UserInfoController {
 	public ModelAndView  loginPage() {
 		
 		logger.debug("into /user-info");
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		OsUser user=(OsUser) SessionUtil.getSession("currenLogintUser");
 		
 
 		ModelAndView mv = new ModelAndView("/user/info");
@@ -47,7 +46,7 @@ public class UserInfoController {
 		
 		logger.debug("into /user-info/setting");
 		
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		OsUser user=(OsUser) SessionUtil.getSession("currenLogintUser");
 		
 		ModelAndView mv = new ModelAndView("/user/info-setting");
 		mv.addObject("user", user);

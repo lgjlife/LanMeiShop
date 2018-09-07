@@ -1,7 +1,4 @@
-package com.lanmei.sms;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package com.lanmei.user.sms;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -11,8 +8,9 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.aliyuncs.sms.model.v20160927.SingleSendSmsRequest;
 import com.aliyuncs.sms.model.v20160927.SingleSendSmsResponse;
-
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class alisms {
 

@@ -1,6 +1,6 @@
 package com.lanmei.user.service;
 
-import com.lanmei.common.UserStatus;
+import com.lanmei.user.common.UserStatus;
 import com.lanmei.user.dao.model.OsUser;
 
 /**
@@ -18,7 +18,6 @@ public interface UserService {
      OsUser getUser(String nickName,String phoneNum,String email);
      UserStatus register(OsUser osuser ) ;
      void sendMsg(String phoneNum,String code ) ;
-     OsUser getUserByTelNum(String phoneNum) ;
-     OsUser getUserByEmail(String email) ;
-     OsUser getUserByNickName(String nickName );
+     OsUser queryUser(String name);
+
 }

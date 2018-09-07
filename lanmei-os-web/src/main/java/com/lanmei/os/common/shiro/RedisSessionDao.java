@@ -53,6 +53,10 @@ public class RedisSessionDao extends AbstractSessionDAO {
 
 	@Override
 	protected Serializable doCreate(Session session) {
+
+		logger.debug("doCreate ...\r\n "
+				+ " session id = " + session.getId()
+				+ " timeout  = " +  session.getTimeout());
 		// TODO Auto-generated method stub
 		Serializable sessionId = generateSessionId(session);
 		assignSessionId(session, sessionId);  

@@ -1,12 +1,13 @@
 package com.lanmei.user.impl;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.lanmei.common.BaseService;
-import com.lanmei.common.UserStatus;
-import com.lanmei.sms.SmsDemo;
+import com.lanmei.common.utils.UserRegexUtil;
+import com.lanmei.user.common.BaseService;
+import com.lanmei.user.common.UserStatus;
 import com.lanmei.user.dao.mapper.OsUserMapper;
 import com.lanmei.user.dao.model.OsUser;
 import com.lanmei.user.service.UserService;
+import com.lanmei.user.sms.SmsDemo;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,21 +106,34 @@ public class UserServiceImpl extends BaseService implements UserService {
 			// TODO: handle exception
 		}
 		logger.debug("PhoneNum = " + phoneNum  + "  phoneValidateCode = " + code); 
-		
+
 	}
-	public OsUser getUserByTelNum(String phoneNum) {
-		OsUser osuser = userMapper.selectByTelNum(phoneNum);
-		return osuser;
+
+	/** 
+	 * @description:  获取用户信息
+	 * @param:   name ： nickName , phone ,email
+	 * @return:  
+	 * @author: Mr.lgj 
+	 * @date: 9/8/18 
+	*/ 
+	@Override
+	public OsUser queryUser(String name) {
+
+
+		if(UserRegexUtil.isMobile(name)) {
+			OsUser osuser = userMapper.selectByTelNum(name);
+			return osuser;
+
+		}
+		else if(UserRegexUtil.isEmail(name)) {
+			OsUser osuser = userMapper.selectByEmail(name);
+			return osuser;
+		}
+		else {
+			OsUser osuser = userMapper.selectByNickName(name);
+			return osuser;
+		}
+
 	}
-	public OsUser getUserByEmail(String email) {
-		OsUser osuser = userMapper.selectByEmail(email);
-		return osuser;
-	}
-	public OsUser getUserByNickName(String nickName ) {
-		OsUser osuser = userMapper.selectByNickName(nickName);
-		return osuser;
-	}
-	
-	
 }
 

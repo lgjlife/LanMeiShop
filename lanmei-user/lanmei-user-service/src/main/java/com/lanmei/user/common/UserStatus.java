@@ -1,4 +1,4 @@
-package com.lanmei.common;
+package com.lanmei.user.common;
 
 /**
  * 用户相关的状态码

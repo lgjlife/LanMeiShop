@@ -4,6 +4,7 @@
 /**
  * 登录操作js
  */
+
 var baseUrl = "/lanmei-os";
 var login={
 
@@ -90,6 +91,7 @@ var login={
 	 *           false ; 失败
      */
     "requestKey":function() {
+        console.log("requestKey url = " + login.requestUrl.getKeyModAndExpUrl)
 		$.get(login.requestUrl.getKeyModAndExpUrl,function(data,status){
 
             console.log("status = " + status);
@@ -145,10 +147,10 @@ var login={
        console.log("经过加密后 loginPassword   = " + loginPassword);
 
 
-	   var jsonData={"loginName":"","loginPassword":"","loginValidateCode":"",};
+	   var jsonData={"loginName":"","loginPassword":"","logginVerificationCode":"",};
 	   jsonData.loginName = loginName;
 	   jsonData.loginPassword = loginPassword;
-	   jsonData.loginValidateCode = loginValidateCode;
+	   jsonData.logginVerificationCode = loginValidateCode;
 
 	   $.ajax({
 		   type : "post",
@@ -159,8 +161,20 @@ var login={
 		   dataType: "json",
 		   success:function(data,status){
 			   console.log("status = " + status);
-			   console.log("data modulus = " + data.code);
+			   console.log("data code = " + data.code);
 			   console.log("data message = " + data.message);
+			   if(status == "success"){
+			   	    if(data.code != login.returnCode.LOGIN_SUCCESS){
+			   	    	//登录失败
+			   	    	$("#login-loginSubmit-Warn").text(data.message);
+					}
+					else{
+			   	    	//登录成功
+						$("#login-form").hide();
+						$("#login-successDisplay").show();
+
+					}
+			   }
 		   }
 	   });
 	},
@@ -179,71 +193,15 @@ $(function(){
 		console.log("login-loginName blur ");
         login.requestKey();
     })
+
     $("#login-loginSubmit-btn").click(function(){
         console.log("提交登录");
+        //检查输入是否为空
         if(login.checkInput()){
-        //	return;
+        	return;
 		}
-
-        console.log("login-loginSubmit-btn  login.keyModulus = " +  login.keyModulus);
-        console.log("login-loginSubmit-btn  login.keyExponent = " +  login.keyExponent);
-
+		//提交登录请求
 		login.loginSubmit();
-        /*var publicKey_modulus = $("#login-form").attr("publicKey-modulus");
-        var publicKey_exponent = $("#login-form").attr("publicKey-exponent");
 
-        var loginName = $("#loginName").val();
-        var loginPassword = $("#loginPassword").val();
-        var logginVerificationCode = $("#logginVerificationCode").val();
-        console.log("publicKey_modulus = " + publicKey_modulus);
-        console.log("publicKey_exponent = " + publicKey_exponent);
-        console.log("loginPassword = " + loginPassword);
-
-        /!*需要设置*!/
-        console.log("获取 publicKey--- ");
-        setMaxDigits(130);
-        var publicKey = new RSAKeyPair(publicKey_exponent,"",publicKey_modulus);
-        if(publicKey == null){
-            console.log("publicKey--- null");
-        }
-        console.log("publicKey--- " + publicKey);
-        console.log("开始进行加密......");
-        var loginPassword = encryptedString(publicKey, encodeURIComponent(loginPassword));
-        console.log("经过加密后 loginPassword   = " + loginPassword);
-
-        //if(checkAllInput() == true)
-        {
-            var jsonData={"loginName":"","loginPassword":"","logginVerificationCode":"",};
-            jsonData.loginName = loginName;
-            jsonData.loginPassword = loginPassword;
-            jsonData.logginVerificationCode = logginVerificationCode;
-
-            /!*jsonData.phoneNum = "phoneNum";
-            jsonData.phoneNumValidate = "phoneNumValidate";
-            jsonData.password = "loginPassword";*!/
-
-            $.ajax({
-                type : "post",
-                url : "user-login/login",
-                contentType : "application/json;charset=utf-8",
-                //数据格式是json串,传进一个person
-                /!*data :'{"phoneNum" : ${phoneNum},"loginPassword": "password","phoneNumValidate":"phoneNumValidate"}',*!/
-                data : JSON.stringify(jsonData),
-                dataType: "json",
-                success:function(data){
-                    console.log("手机验证码d:" + data.loginStatus);
-                    if(data.loginStatus == "VALIDATE_CODE_ERR"){
-                        $("#loginValidateCodeWarn").text("验证码有误");
-                    }
-                    else if(data.loginStatus == "LOGIN_SUCCESS"){
-                        $("#login-form").hide();
-                        $("#loginSuccessDisplay").show();
-                    }
-                    else if(data.loginStatus == "LOGIN_FAIL"){
-                        $("#loginWarn").text("用户验证失败，请输入正确的登陆名称或者密码！");
-                    }
-                }
-            });
-        }*/
     });
 });

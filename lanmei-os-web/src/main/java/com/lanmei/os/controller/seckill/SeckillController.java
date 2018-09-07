@@ -1,6 +1,6 @@
 package com.lanmei.os.controller.seckill;
 
-import com.lanmei.common.session.SessionUtils;
+import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.os.controller.seckill.dto.SeckillResult;
 import com.lanmei.os.controller.user.UserLoginController;
 import com.lanmei.seckill.dao.model.Seckill;
@@ -138,7 +138,7 @@ public class SeckillController {
 		
 		Map<String, Object> map = new HashMap<String ,Object>();
 		//获取当前的用户
-		OsUser user=(OsUser) SessionUtils.getSession("currenLogintUser");
+		OsUser user=(OsUser) SessionUtil.getSession("currenLogintUser");
 		if(user == null) {
 			return new SeckillResult<ExecutionDto>(false,"请先登录！");
 		}
