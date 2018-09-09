@@ -61,7 +61,7 @@
         </property> 
      </bean>
     <!-- list  工具类 -->
-    <bean id="redisListUtil" class="com.lanmei.common.redis.Utils.RedisListUtil">
+    <bean id="redisStringUtil" class="com.lanmei.common.redis.Utils.RedisStringsUtil">
         <constructor-arg index="0" ref="redisTemplate"/>
     </bean>
 

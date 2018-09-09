@@ -67,6 +67,7 @@ public class SessionUtil {
 
                 Object object = null;
                 try {
+                    log.info("读取session..............");
                     object = session.getAttribute(key);
                 } catch (InvalidSessionException e) {
                     // TODO Auto-generated catch block
@@ -77,9 +78,11 @@ public class SessionUtil {
 
                 return  object;
             }
+            log.info("session is null");
             return null;
         }
         else {
+            log.info("currentUser is null");
             return null;
         }
     }

@@ -1,4 +1,4 @@
-package com.lanmei.os.common.rsa;
+package com.lanmei.common.rsa;
 
 import java.security.KeyPair;
 import java.util.LinkedList;

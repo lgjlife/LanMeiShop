@@ -15,7 +15,11 @@ public class SessionKeyUtil {
      * @see  org.lanmei.user.dao.model.OsUser
     */
     public static final String currentLoginUser = "currentLoginUser";
-
+    /**
+     * @description: 当前登陆的OsUser 对象
+     * @see  org.lanmei.user.dao.model.OsUser
+     */
+    public static final String currentRegisterUser = "currentRegisterUser";
     /**
      * @description: 当前登陆的CmsAdmin 对象
      * @see   com.lanmei.admin.dao.model.CmsAdmin

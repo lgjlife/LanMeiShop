@@ -1,15 +1,15 @@
 package com.lanmei.os.cache;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.shiro.session.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class RedisTemplateUtils<K, V>  {
 	
@@ -28,6 +28,17 @@ public class RedisTemplateUtils<K, V>  {
 			logger.error("redis set fail : " + e.getMessage());
 		}
 	}
+
+	public void set(K key, V value,long minute) {
+
+		try {
+			redisTemplate.opsForValue().set(key, value,minute,TimeUnit.MINUTES);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("redis set fail : " + e.getMessage());
+		}
+	}
+
 	
 	public void delete(K key) {
 		try {

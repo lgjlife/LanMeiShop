@@ -1,6 +1,6 @@
 package com.lanmei.os.common.rsa;
 
-import com.lanmei.os.common.rsa.RsaUtils;
+import com.lanmei.common.rsa.RsaUtils;
 import org.junit.Test;
 
 import java.math.BigInteger;

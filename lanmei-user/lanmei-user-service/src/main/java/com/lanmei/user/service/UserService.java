@@ -1,7 +1,9 @@
 package com.lanmei.user.service;
 
-import com.lanmei.user.common.UserStatus;
+import com.lanmei.common.code.UserReturnCode;
 import com.lanmei.user.dao.model.OsUser;
+
+import java.util.Map;
 
 /**
  * @program: com-lanmei-parent
@@ -14,9 +16,13 @@ import com.lanmei.user.dao.model.OsUser;
 public interface UserService {
      OsUser getById(Long userId);
 
-     UserStatus checkPhoneNum(String phoneNum);
+     boolean isRegisterOfPhoneNum(String phoneNum);
+     UserReturnCode register(Map<String, Object> inputMap);
+     Map<String,String> getKeyModAndExp();
+
+     String getPhoneValidateCode( String phoneNum);
+
      OsUser getUser(String nickName,String phoneNum,String email);
-     UserStatus register(OsUser osuser ) ;
      void sendMsg(String phoneNum,String code ) ;
      OsUser queryUser(String name);
 

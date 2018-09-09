@@ -11,6 +11,8 @@ package com.lanmei.common.code;
 public enum UserReturnCode implements  ReturnCode{
 
 
+    //空参数
+    NULL_POINTER(0,"输入参数无效"),
     //登录相关　1000-1029
     LOGIN_SUCCESS(1000,"用户登录成功"),
     LOGIN_FAIL(1001,"用户登录失败"),
@@ -29,8 +31,12 @@ public enum UserReturnCode implements  ReturnCode{
     CAN_REGISTER(1034,"帐号未注册，可以进行注册"),
 
     REGISTER_SUCCESS(1035,"帐号注册成功"),
-    REGISTER_FAIL(1036,"帐号注册失败")
+    REGISTER_FAIL(1036,"帐号注册失败"),
+    REGISTER_GET_VALIDATE_CODE_SUCCESS(1037,"获取注册验证码成功"),
 
+    //格式校验 1060 -- 1080
+    FORMAT_PHONE_NUM_ERR (1060,"手机号格式有误"),
+    FORMAT_EMAIL_ERR (1060,"邮箱地址格式有误"),
     ;
     //代码
     private Integer code;

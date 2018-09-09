@@ -1,94 +1,391 @@
-/*输入框状态 true: 正确 ，false : 未输入或者输入不规范*/
-var isRegisterPhoneNumValid = false ;
-var isRegisterPhoneNumValidateValid = false;
-var isRegisterPasswordValid = false;
-var isRegisterPasswordAgainValid = false;
-var isRegisterCheckboxValid = false;//
-var endTime = 0;//倒计时截止时间
-var getPhoneNumValidateFlag = false;//获取验证码标志
-var COUNTDOWN_TIME_S=20;  //倒计时时间 单位：S
-var registerPhoneNumValidateLength = 6; //手机验证码长度
-var phoneValidateCode = null;//手机验证码
-
-$(function(){
-	$("#keytest").click(function(){
-		var publicKey_modulus = $("#registerForm").attr("publicKey-modulus");
-		var publicKey_exponent = $("#registerForm").attr("publicKey-exponent");
-		var registerPassword = $("#registerPassword").val();
-		console.log("publicKey_modulus = " + publicKey_modulus);
-		console.log("publicKey_exponent = " + publicKey_exponent);
-		console.log("registerPassword = " + registerPassword);
-		
-		/*需要设置*/
-		RSAUtils.setMaxDigits(160);
-		var publicKey = new RSAUtils.getKeyPair(publicKey_exponent, '', publicKey_modulus);
-		console.log("获取 publicKey--- ");
-		var loginPassword = RSAUtils.encryptedString(publicKey, registerPassword);
-		console.log("经过加密后 loginPassword   = " + loginPassword);
-	});
-});
-/**
- * 电话输入框失去焦点时校验
- * 1.电话号码最长度为11位
- * 2.只能为纯数字
- * 
- * */
-$(function(){
-	$("#registerPhoneNum").blur(function(){
-		
-		var phoneNum = $("#registerPhoneNum").val();
-		var phoneNumLen = phoneNum.toString().length;
-		console.log("phonenum = " + phoneNum + "  isNaN(y) = " + isNaN(phoneNum)  + "  lenth = " + (phoneNum.toString().length));
-		console.log("isTelCode = " + isTelCode(phoneNum));
-		if(!isTelCode(phoneNum) ){
-			//不是电话号码
-			$("#registerPhoneNumWarn").text("请输入有效的手机号码sadsa");
-			isRegisterPhoneNumValid = false ;
-		}
-		else{
-			//是电话号码
-			$("#registerPhoneNumWarn").text("");
-			sendCheckPhoneJson();
-			isRegisterPhoneNumValid = true ;
-		}
-		
-	});
-	
-});
-/**
- * 向服务端发送手机号，验证该手机号是否已经注册
- * 如果未注册则可以点击获取验证码
- * @returns
+/**注册流程
+ * 输入电话号码，移除光标时，检查格式有没有问题，
+ * 没问题检查该手机号是否注册，有问题显示提示，并使能获取验证码按键
+ * 点击获取验证码，倒计时，请求验证码
+ * 输入验证码
+ * 设置密码，输入完移除光标后检查格式
+ * 输入确认密码，检查格式
+ * 点击同意注册协议
+ * 点击注册提交按钮
+ * 检查各个输入框
+ * 提交请求
  */
-function sendCheckPhoneJson(){
-	var jsonPhoneNum={"phoneNum":"sda"};
 
-	jsonPhoneNum.phoneNum = $("#registerPhoneNum").val();
+var baseUrl = "/lanmei-os";
+
+var register={
+    "COUNTDOWN_TIME_S":20,  //倒计时时间 单位：S
+    "keyModulus":"",
+    "keyExponent":"",
+    //服务端返回的code
+    "returnCode":{
+        "ACCOUNT_EXIST":1030,//帐号注册失败,帐号已经存在"
+		"NAME_EXIST":1031,//该用户名已经存在"
+    	"PHONE_NUM_EXIST":1032,//该手机号已经注册"
+        "EMAIL_EXIST":1033,//该邮箱已经注册"
+    	"CAN_REGISTER":1034,//帐号未注册，可以进行注册"
+
+    	"REGISTER_SUCCESS":1035,//帐号注册成功"
+    	"REGISTER_FAIL":1036,//帐号注册失败"
+    	"REGISTER_GET_VALIDATE_CODE_SUCCESS":1037,//获取注册验证码成功"
+
+    	"FORMAT_PHONE_NUM_ERR ":1060,//手机号格式有误"
+    },
+    //请求的url
+    "requestUrl":{
+        //进入注册页面
+        "intoRegisterPage": this.baseUrl + "/user/register",
+        //检查手机号是否被注册
+        "checkPhoneUrl":this.baseUrl  + "/user/register/check/phone",
+        //获取RSAKey的 modulus 和 exponent
+        "getKeyModAndExpUrl": this.baseUrl + "/user/register/key",
+		//发送手机验证码
+		"sendValidateCodeUrl":this.baseUrl + "/user/register/phone/validate/code",
+		//提交登录请求
+		"registerSubmitUrl":this.baseUrl + "/user/register/submit",
+		//获取图片验证码
+        "kaptchaUrl":this.baseUrl + "/kaptcha",
+    },
+
+    /**
+	 * 发送请求  检查手机号是否被注册
+     * @param registerPhoneNum 注册号码
+     */
+	"requestIsRegistered":function ( registerPhoneNum) {
+
+        console.log("校验手机号是否已经被注册....  ");
+        var sendData={"registerPhoneNum":""};
+
+        sendData.registerPhoneNum = registerPhoneNum;
+        $.ajax({
+            type : "post",
+            url : register.requestUrl.checkPhoneUrl,
+           // contentType : "application/json;charset=utf-8",
+            //数据格式是json串,传进一个person
+            data :sendData,// JSON.stringify(sendData),
+         //   dataType: "json",
+            success:function(data,status){
+
+            	if(status == "success"){
+            		if(data.code != register.returnCode.CAN_REGISTER){
+            			//出现问题
+                        console.log("校验手机号时出现问题");
+            			$("#register-registerPhoneNum-warn").text(data.message);
+                        $("#register-getPhoneValidateCode-Btn").attr("disabled",true);
+					}else{
+            			//该手机帐号还没有注册
+                        console.log("该手机帐号还没有注册");
+                        $("#register-getPhoneValidateCode-Btn").attr("disabled",false);
+					}
+				}
+            }
+
+        });
+        console.log("校验手机号是否已经被注册 执行结束....");
+    },
+
+    /**
+     * 发送请求  发送手机校验码
+     * @param registerPhoneNum 注册号码
+     */
+    "requestSendPhoneValidateCode":function ( registerPhoneNum) {
+
+        console.log("发送手机验证码请求....  ");
+        var sendData={"registerPhoneNum":""};
+
+        sendData.registerPhoneNum = registerPhoneNum;
+        $.ajax({
+            type : "post",
+            url : register.requestUrl.sendValidateCodeUrl,
+            // contentType : "application/json;charset=utf-8",
+            //数据格式是json串,传进一个person
+            data :sendData,// JSON.stringify(sendData),
+            //   dataType: "json",
+            success:function(data,status){
+
+                if(status == "success"){
+                    if(data.code != register.returnCode.REGISTER_GET_VALIDATE_CODE_SUCCESS){
+						console.log("发送电话验证码状态：" + data.message);
+                    }else{
+
+                    }
+                }
+            }
+
+        });
+        console.log("发送手机验证码请求 执行结束....");
+    },
+
+    /**
+     *  获取key  modulus  exponent 请求
+     *  return:  true :成功
+     *           false ; 失败
+     */"requestKey":function() {
+        console.log("requestKey url = " + register.requestUrl.getKeyModAndExpUrl)
+        $.get(register.requestUrl.getKeyModAndExpUrl,function(data,status){
+
+            console.log("status = " + status);
+
+            console.log("data modulus = " + data.code);
+            console.log("data message = " + data.message);
+            console.log("data object modulus = " +  data.object.modulus);
+            console.log("data object exponent = " +  data.object.exponent);
+
+            if(status == "success"){
+                register.keyModulus = data.object.modulus;
+                register.keyExponent = data.object.exponent;
+
+                console.log("login.keyModulus = " +  register.keyModulus);
+                console.log("login.keyExponent = " +  register.keyExponent);
+
+                return true;
+            }
+            return false;
+
+        });
+    },
+	"requestRegisterSubmit":function () {
+
+     	var registerPhoneNum = $("#register-registerPhoneNum-input").val();
+        var registerPassword = $("#register-registerPassword-input").val();
+        var registerPhoneValidateCode = $("#register-registerPhoneValidateCode-input").val();
+
+
+		if((register.keyExponent == null)
+			|| (register.keyModulus == null)){
+				register.requestKey();
+				return;
+		}
+
+		console.log("register.keyExponent = " + register.keyExponent  );
+        console.log("register.keyModulus = " + register.keyModulus );
+        /*需要设置*/
+        console.log("获取 publicKey--- ");
+        setMaxDigits(130);
+        var publicKey = new RSAKeyPair(register.keyExponent,"",register.keyModulus);
+        if(publicKey == null){
+            console.log("publicKey--- null");
+        }
+        console.log("publicKey--- " + publicKey);
+        console.log("开始进行加密......");
+        var password = encryptedString(publicKey, encodeURIComponent(registerPassword));
+
+
+
+		var jsonData={"registerPhoneNum":"","registerPassword":"","registerPhoneValidateCode":"",};
+		jsonData.registerPhoneNum = registerPhoneNum;
+		jsonData.registerPassword = password;
+		jsonData.registerPhoneValidateCode = registerPhoneValidateCode;
+
+		$.ajax({
+			type : "post",
+			url : register.requestUrl.registerSubmitUrl,
+			contentType : "application/json;charset=utf-8",
+			//数据格式是json串,传进一个person
+			/*data :'{"phoneNum" : ${phoneNum},"loginPassword": "password","phoneNumValidate":"phoneNumValidate"}',*/
+			data : JSON.stringify(jsonData),
+			dataType: "json",
+			success:function(data,status){
+
+				if(status == "success"){
+
+					if(data.code == register.returnCode.REGISTER_SUCCESS ){
+						//注册成功
+						console.log("注册状态 = " + data.message);
+						$("#register-form").hide();
+						$("#register-successDisplay").show();
+
+					}
+					else{
+						//注册失败
+						$("#register-submit-btn-warn").text(data.message);
+					}
+				}
+
+			}
+		});
+
+    },
+
+
+
+    /**
+	 * 校验手机号输入是否有问题
+     * @param registerPhoneNum
+     * @returns {boolean}  false: 有问题 true: 正常
+     */
+    "checkPhoneNumFormat":function (registerPhoneNum) {
+
+
+        if((registerPhoneNum == null )
+            || (registerPhoneNum == "")){
+            console.log("手机号为空");
+            return false;
+        }
+
+        if(!isTelCode(registerPhoneNum) ){
+            //不是电话号码
+            $("#register-registerPhoneNum-warn").text("请输入有效的手机号码");
+            isRegisterPhoneNumValid = false ;
+            return false;
+        }
+        else{
+            //是电话号码
+
+            register.requestIsRegistered(registerPhoneNum);
+            isRegisterPhoneNumValid = true ;
+            return true;
+        }
+    },
+	"checkPasswordFormatAndStrength":function () {
+        var registerPassword = $("#register-registerPassword-input").val();
+        /*校验密码是否符合要求 */
+        if(isAllNum(registerPassword) ){
+
+            $("#register-registerPassword-warn").text("密码不能为纯数字");
+            isRegisterPasswordValid = false;
+            return false;
+        }
+        else if(!isLenMaxThan8(registerPassword) ){
+
+            $("#register-registerPassword-warn").text("密码长度小于8位");
+            isRegisterPasswordValid = false;
+            return false;
+        }
+        else{
+            $("#register-registerPassword-warn").text("");
+            isRegisterPasswordValid = true;
+        }
+        /*校验密码强度*/
+        var strength = checkPasswordStrength(registerPassword);
+
+        switch(strength){
+            case 0:$("#register-passwordStrength").text("密码强度：较弱");
+                break;
+            case 1:$("#register-passwordStrength").text("密码强度：中等");
+                break;
+            case 2:$("#register-passwordStrength").text("密码强度：强");
+                break;
+            default:$("#register-passwordStrength").text("");
+
+
+        }
+        return true;
+    },
+    /**
+	 *  检测两次输入的密码是否一致
+     * @returns {boolean} true : 输入一致  ， false: 输入不一致
+	 *
+     */
+	"checkPasswordAgain":function () {
+        var registerPasswordAgain = $("#register-registerPassword-again").val();
+        var registerPassword = $("#register-registerPassword-input").val();
+
+        console.log("registerPasswordAgain = " + registerPasswordAgain);
+        console.log("registerPasswordAgain len = " + registerPasswordAgain.length);
+        console.log("registerPassword = " + registerPassword);
+        console.log("registerPassword len = " + registerPassword.length);
+
+        if((registerPassword.length != 0) && (registerPasswordAgain != registerPassword)){
+            $("#register-registerPassword-again-warn").text("两次输入的密码不一致");
+            return false;
+        }
+        else{
+            $("#register-registerPassword-again-warn").text("");
+			return true;
+        }
+    },
+    /**
+	 * 检查 同意注册选项是否已经选择
+     * @returns {boolean}  true: 已经选择 ， false : 还未选择
+     */
+	"checkAgreeSelect":function () {
+        console.log("registerCheckbox = " + $("#register-checkbox").prop("checked"));
+        if($("#register-agreeBox").prop("checked") == true){
+            //选择
+            isRegisterCheckboxValid = true;
+            $("#register-agreeBox-warn").text("");
+            return true;
+        }
+        else{
+            //未选择
+            isRegisterCheckboxValid = false;
+            return false;
+        }
+    },
+    /**
+	 * 检查所有的输入是否有效
+     */
+	"checkAllInputValid":function () {
+        var registerPhoneNum = $("#register-registerPhoneNum-input").val();
+        //电话号码
+		if(register.checkPhoneNumFormat(registerPhoneNum) == false){
+			console.log("1.电话号码校验失败。。。。。。。。。。");
+			return false;
+		}
+        console.log("1.电话号码校验成功");
+		//检查验证码
+		var registerPhoneValidateCode = $("#register-registerPhoneValidateCode-input").val();
+		if((registerPhoneValidateCode == null)||(registerPhoneValidateCode.length == 0)){
+            console.log("2.验证码校验失败。。。。。。。。。。");
+			return false;
+		}
+        console.log("2.验证码校验成功");
+		//校验密码
+		if(register.checkPasswordFormatAndStrength() == false){
+            console.log("3.校验密码失败。。。。。。。。。。");
+			return false;
+		}
+        console.log("3.校验密码成功");
+		if(register.checkPasswordAgain() == false){
+            console.log("3.再次校验密码失败。。。。。。");
+			return false;
+		}
+        console.log("3.再次校验密码成功");
+		if(register.checkAgreeSelect() == false){
+            console.log("4.没有选择同意用户协议。。。。。。。。。。");
+			return false;
+		}
+        console.log("所有校验成功");
+		return true;
+    },
 	
-	console.log("sendCheckPhoneJson  执行开始....  ");
-	console.log("PhoneNum = " + jsonPhoneNum.phoneNum);
-	  $.ajax({
-	        type : "post",
-	        url : "checkphonenum",
-	        contentType : "application/json;charset=utf-8",
-	        //数据格式是json串,传进一个person
-	        data : JSON.stringify(jsonPhoneNum),
-	        dataType: "json",
-	        success:function(data){
-	            console.log("UserStatus:" + data.phoneCheckStatus);
-	            if(data.phoneCheckStatus == "PHONE_NUM_REGISTER"){
-	            	$("#registerPhoneNumWarn").text("该手机号码已经注册，请重新输入");
-	            	$("#getPhoneNumValidateBtn").attr("disabled",true);
-	            }
-	            else if(data.phoneCheckStatus == "PHONE_NUM_NOT_REGISTER"){
-	            	$("#registerPhoneNumWarn").text("该手机号码未注册，可以注册，请获取验证码");
-	            	$("#getPhoneNumValidateBtn").attr("disabled",false);
-	            }
-	        }
+	"showCountdownTime":function () {
+        var startTime = new Date().getTime();
 
-	    });
-	  console.log("sendCheckPhoneJson 执行结束....");
+        var timeDiff =  endTime - startTime;//ms
+        var countDownTime =  Math.floor(timeDiff/1000 + 0.5 );
+       // console.log("" + countDownTime + "秒后重新获取验证码");
+
+        if(countDownTime >  0){
+            $("#register-getPhoneValidateCode-Btn").text("" + countDownTime + "秒后重新获取验证码");
+            setTimeout("register.showCountdownTime()",1000);
+            getPhoneNumValidateFlag = true;
+            //$("#getPhoneNumValidateBtn").attr("disabled",true);
+            $("#register-getPhoneValidateCode-Btn").attr("disabled",true);
+        }
+        else{
+            $("#register-getPhoneValidateCode-Btn").text("获取验证码");
+            getPhoneNumValidateFlag = false;
+            $("#register-getPhoneValidateCode-Btn").attr("disabled",false);
+        }
+    }
 }
+
+/**
+ *  电话输入框失去焦点时校验
+ */
+$(function(){
+    $("#register-registerPhoneNum-input").blur(function(){
+
+        var registerPhoneNum = $("#register-registerPhoneNum-input").val();
+		if(register.checkPhoneNumFormat(registerPhoneNum)){
+            $("#register-registerPhoneNum-warn").text("");
+            register.requestIsRegistered(registerPhoneNum);
+		}
+    });
+
+});
 
 /**
  * 获取验证码按键按下处理
@@ -96,88 +393,18 @@ function sendCheckPhoneJson(){
  * @returns
  */
 $(function(){
-	$("#getPhoneNumValidateBtn").click(function(){
-		console.log("time display" );
-		endTime =  new Date().getTime() + COUNTDOWN_TIME_S * 1000;
-		showCountdownTime();
-		getPhoneValidateCode();//向服务端获取验证码
-		return false;
-	});	
+    $("#register-getPhoneValidateCode-Btn").click(function(){
+        console.log("time display" );
+        endTime =  new Date().getTime() + register.COUNTDOWN_TIME_S * 1000;
+        register.showCountdownTime();
+        var registerPhoneNum = $("#register-registerPhoneNum-input").val();
+        //向服务端获取验证码
+		register.requestSendPhoneValidateCode(registerPhoneNum);
+
+    });
 });
 
-function showCountdownTime(){
-	var startTime = new Date().getTime();
-	
-	var timeDiff =  endTime - startTime;//ms
-	var countDownTime =  Math.floor(timeDiff/1000 + 0.5 );
-	console.log("" + countDownTime + "秒后重新获取验证码");
-	
-	if(countDownTime >  0){
-		$("#getPhoneNumValidateBtn").text("" + countDownTime + "秒后重新获取验证码");
-		setTimeout("showCountdownTime()",1000);
-		getPhoneNumValidateFlag = true;
-		//$("#getPhoneNumValidateBtn").attr("disabled",true);
-		$("#registerPhoneNumValidate").attr("disabled",false);
-	}
-	else{
-		$("#getPhoneNumValidateBtn").text("获取验证码");
-		getPhoneNumValidateFlag = false;
-		$("#getPhoneNumValidateBtn").attr("disabled",false);
-		$("#registerPhoneNumValidate").attr("disabled",true);
-	}
-	
-}
-/**
- * 向服务端发送请求获取验证码
- * @returns
- */
-function getPhoneValidateCode(){
-	var jsonPhonValidateCode={"phoneNum":""};
 
-	jsonPhonValidateCode.phoneNum = $("#registerPhoneNum").val();
-	
-	console.log("getPhoneValidateCode  执行开始....  ");
-	console.log("PhoneNum = " + jsonPhonValidateCode.phoneNum);
-	  $.ajax({
-	        type : "post",
-	        url : "get-phone-validate-code",
-	        contentType : "application/json;charset=utf-8",
-	        //数据格式是json串,传进一个person
-	        data : JSON.stringify(jsonPhonValidateCode),
-	        dataType: "json",
-	        success:function(data){
-	            console.log("手机验证码:" + data.phoneValidateCode);
-	            phoneValidateCode = data.phoneValidateCode;
-	        }
-
-	    });
-	  console.log("getPhoneValidateCode 执行结束....");
-}
-/**
- * 输入验证码框处理
- * 
- * @returns
- */
-$(function(){
-	$("#registerPhoneNumValidate").blur(function(){
-		if(getPhoneNumValidateFlag == true){
-			console.log("registerPhoneNumValidate = " + $("#registerPhoneNumValidate").val());
-			console.log("registerPhoneNumValidate len = " + $("#registerPhoneNumValidate").val().length);
-			//说明已经点击获取验证码按钮
-			if($("#registerPhoneNumValidate").val().length != registerPhoneNumValidateLength){
-				//未输入验证码
-				$("#registerPhoneNumValidateWarn").text("请输入正确的验证码");
-				isRegisterPhoneNumValidateValid = false;
-			}
-			else{
-				$("#registerPhoneNumValidateWarn").text("");
-				isRegisterPhoneNumValidateValid = true;
-				
-			}
-		}
-	});
-	
-});
 /***
  * 密码设置校验
  * 1.长度不能低于八位
@@ -186,78 +413,33 @@ $(function(){
  * @returns
  */
 $(function(){
-	$("#registerPassword").blur(function(){
-		var registerPassword = $("#registerPassword").val();
-		/*校验密码是否符合要求 */
-		if(isAllNum(registerPassword) ){
-		
-			$("#registerPasswordWarn").text("密码不能为纯数字");
-			isRegisterPasswordValid = false;
-			return;
-		}
-		else if(!isLenMaxThan8(registerPassword) ){
-			
-			$("#registerPasswordWarn").text("密码长度小于8位");
-			isRegisterPasswordValid = false;
-			return;
-		}
-		else{
-			$("#registerPasswordWarn").text("");
-			isRegisterPasswordValid = true;
-		}
-		/*校验密码强度*/
-		var strength = checkPasswordStrength(registerPassword);
-		
-		switch(strength){
-			case 0:$("#PasswordStrength").text("密码强度：较弱");
-				break;
-			case 1:$("#PasswordStrength").text("密码强度：中等");
-				break;
-			case 2:$("#PasswordStrength").text("密码强度：强");
-				break;
-			default:$("#PasswordStrength").text("");
-		
-		
-		}
-		
-	});//end of $("#registerPassword").blur(function(){
+    $("#register-registerPassword-input").blur(function(){
+		register.checkPasswordFormatAndStrength();
+
+    });//end of $("#registerPassword").blur(function(){
 });
 /***
  * 密码重复校验
  * @returns
  */
 $(function(){
-	$("#registerPasswordAgain").blur(function(){
-		var registerPasswordAgain = $("#registerPasswordAgain").val();
-		var registerPassword = $("#registerPassword").val();
-		
-		console.log("registerPasswordAgain = " + registerPasswordAgain);
-		console.log("registerPasswordAgain len = " + registerPasswordAgain.length);
-		if((registerPassword.length != 0) && (registerPasswordAgain != registerPassword)){
-			$("#registerPasswordAgainWarn").text("两次输入的密码不一致");
-			isRegisterPasswordAgainValid = false;
-		}
-		else{
-			$("#registerPasswordAgainWarn").text("");
-			isRegisterPasswordAgainValid = true;
-		}
-		
-	});//end of $("#registerPassword").blur(function(){
+    $("#register-registerPassword-again").blur(function(){
+		register.checkPasswordAgain();
+
+    });//end of $("#registerPassword").blur(function(){
 });
+/**
+ * 同意协议选择框 点击
+ */
 $(function(){
-	$("#registerCheckbox").click(function(){
-		console.log("registerCheckbox = " + $("#registerCheckbox").prop("checked"));
-		if($("#registerCheckbox").prop("checked") == true){
-			//选择
-			isRegisterCheckboxValid = true;
-			$("#registerCheckboxWarn").text("");
-		}
-		else{
-			//未选择
-			isRegisterCheckboxValid = false;
-		}
-	});
+    $("#register-agreeBox").click(function(){
+		register.checkAgreeSelect();
+
+        //获取key  modulus  exponent 请求
+		register.requestKey();
+    });
 });
+
 /***
  * 提交按钮操作
  * 1.先校验各个输入框是否正确
@@ -265,112 +447,11 @@ $(function(){
  * @returns
  */
 $(function(){	
-	$("#registerSubmit").click(function(){
+	$("#register-submit-btn").click(function(){
 		console.log("提交注册");
-		 
-		var publicKey_modulus = $("#registerForm").attr("publicKey-modulus");
-		var publicKey_exponent = $("#registerForm").attr("publicKey-exponent");
-		var registerPassword = $("#registerPassword").val();
-		console.log("publicKey_modulus = " + publicKey_modulus);
-		console.log("publicKey_exponent = " + publicKey_exponent);
-		console.log("registerPassword = " + registerPassword);
-		
-		/*需要设置*/
-		console.log("获取 publicKey--- ");
-		setMaxDigits(130);
-		var publicKey = new RSAKeyPair(publicKey_exponent,"",publicKey_modulus); 		
-		if(publicKey == null){
-			console.log("publicKey--- null");
+		if(register.checkAllInputValid() == true){
+			register.requestRegisterSubmit();
 		}
-		console.log("publicKey--- " + publicKey);
-		console.log("开始进行加密......");
-		var loginPassword = encryptedString(publicKey, encodeURIComponent(registerPassword));
-		console.log("经过加密后 loginPassword   = " + loginPassword);
-			
-		if(checkAllInput() == true)
-		{
-			var jsonData={"phoneNum":"","phoneNumValidate":"","loginPassword":"",};
-			jsonData.phoneNum = $("#registerPhoneNum").val();
-			jsonData.phoneNumValidate = $("#registerPhoneNumValidate").val();
-			jsonData.loginPassword = loginPassword;
-			
-			/*jsonData.phoneNum = "phoneNum";
-			jsonData.phoneNumValidate = "phoneNumValidate";
-			jsonData.password = "loginPassword";*/
-			
-			$.ajax({
-		        type : "post",
-		        url : "register-submit",
-		        contentType : "application/json;charset=utf-8",
-		        //数据格式是json串,传进一个person
-				/*data :'{"phoneNum" : ${phoneNum},"loginPassword": "password","phoneNumValidate":"phoneNumValidate"}',*/
-		        data : JSON.stringify(jsonData),
-		        dataType: "json",
-		        success:function(data){
-		            console.log("注册状态:" + data.registerStatus);
-		            if(data.registerStatus == "REGISTER_SUCCESS"){
-		            	$("#registerForm").hide();
-		        		$("#registerSuccessDisplay").show();
-		            }
-		        }
-			 });
-		}
+
 	});
 });
-/**
- * 点击提交时校验是否存在表单输入有误的情况
- * 
- * @returns true:正常
- * 		    false:异常
- */
-
-function checkAllInput(){
-    var  error = 0;	
-	/*校验手机号码是否未填写或填写有误*/
-	if( ($("registerPhoneNum").val() != "")
-		&& (isRegisterPhoneNumValid == false)){
-		$("#registerPhoneNumWarn").text("请输入有效的手机号码");
-		error++;
-	}
-	else{
-		$("#registerPhoneNumWarn").text("");
-	}
-	/*校验验证码*/
-	if( ($("registerPhoneNumValidate").val() != "")
-			&& (isRegisterPhoneNumValidateValid == false)){
-			$("#registerPhoneNumValidateWarn").text("请输入验证码");
-			error++;
-	}
-	else{
-		$("#registerPhoneNumValidateWarn").text("");
-	}
-	/*校验输入密码*/
-	if( ($("registerPassword").val() != "")
-			&& (isRegisterPasswordValid == false)){
-			$("#registerPasswordWarn").text("请输入密码");
-			error++;
-	}
-	else{
-		$("#registerPasswordWarn").text("");
-	}
-	/*校验重复输入密码*/
-	if((isRegisterPasswordAgainValid == false)){
-			$("#registerPasswordAgainWarn").text("请输入正确的密码");
-			error++;
-	}
-	else{
-		$("#registerPasswordAgainWarn").text("");
-	}
-	
-	
-	/*校验同意注册协议复选框*/
-	if((isRegisterCheckboxValid == false)){
-			$("#registerCheckboxWarn").text("请选择注册协议同意复选框===");
-			error++;
-	}
-	else{
-		$("#registerCheckboxWarn").text("");
-
-	}
-	return (error == 0);
-}

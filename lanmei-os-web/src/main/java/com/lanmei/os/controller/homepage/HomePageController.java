@@ -43,11 +43,12 @@ public class HomePageController {
 	//@SyslogAnno(description = "os-web 主界面请求")
 	@PrintUrlAnno(description = "os-web 主界面请求")
 	public ModelAndView HomePage() {
-		logger.info("into 主界面 /");
-		
+
 		OsUser user=(OsUser) SessionUtil.getSession(SessionKeyUtil.currentLoginUser);
+
+
 		if(user != null) {
-			logger.info("当前登录的用户号码为 = " + user.getUserId());
+			logger.info("当前登录的用户号码为 = " + user.getPhoneNum());
 		}
 		else {
 			logger.info("HomePageController 当前无用户登录 ..............................");

@@ -1,19 +1,14 @@
-package com.lanmei.os.common.rsa;
+package com.lanmei.common.rsa;
 
+import javax.crypto.Cipher;
 import java.math.BigInteger;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.crypto.Cipher;
 
 public class RsaUtils {
 

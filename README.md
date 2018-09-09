@@ -1,17 +1,15 @@
-
-
-#蓝莓商城
+# 蓝莓商城
 基于Spring + Spring MVC + Mybatis 的商城系统
 
-#版本说明
+# 版本说明
 * Project-JSP分支:前端使用JSP,编译器使用Eclipse;
 * master分支:前端使用thmeleaf模板，编译器使用IDEA;
 
-#我的博客
+# 我的博客
 
 [CSDN博客](http://blog.csdn.net/u011676300/)
 
-#如何运行项目
+# 如何运行项目
 * 下载项目工程,默认为master分支
 * 安装Java和Tomcat,并配置好环境
 * 安装MySQL数据库
@@ -35,9 +33,9 @@
 * 有任何问题可以到本博客下进行讨论，欢迎交流！[蓝莓商城项目交流](https://blog.csdn.net/u011676300/article/details/80276014)
 
 
-#技术选型
+# 技术选型
 
-##一.开发环境
+## 一.开发环境
 * 开发环境：linux
 * 编译器：[IDEA-Community-2018.2.3](https://www.jetbrains.com/idea/download/#section=linux)
 * 项目构建工具：[Maven](https://maven.apache.org)
@@ -47,7 +45,7 @@
 
 
 
-##二.后端技术
+## 二.后端技术
 * JAVA版本：9.0.1	
 * 核心框架：[Spring Framework 5.0.4.RELEASE](https://projects.spring.io/spring-framework/)
 * 持久层框架：[Mybatis 3.3.0](http://www.mybatis.org/mybatis-3/)
@@ -62,7 +60,7 @@
 * 安全管理框架：[shiro](http://shiro.apache.org/)
 * 图片验证码：kaptcha	
 
-#三.前端技术
+# 三.前端技术
 * html
 * thmeleaf模板
 * JS框架：Jquery
@@ -71,17 +69,17 @@
 * 富文本编辑器:[wangEditor](http://www.wangeditor.com/)
 	
 
-#四.前后端交互
+# 四.前后端交互
 主要使用AJAX传输数据！
 
-#五.推荐学习书籍</h4>
+# 五.推荐学习书籍</h4>
 * 跟我学Shiro教程
 * 深入浅出MyBatis技术原理与实战
 * MyBatis从入门到精通
 * 精通Spring+4.x++企业应用开发实战
 
 
-#目录介绍
+# 目录介绍
 * [lanmei-admin](https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-admin)
 后台管理 管理员相关模块(新增/登陆/权限管理等，权限未做好) 秒杀活动管理，商品管理等
 * [lanmei-cms-web](https://github.com/Mrlgj/LanMeiShop/tree/master/lanmei-cms-web)后台管理web项目
@@ -95,7 +93,7 @@
 * [mysql脚本](https://github.com/Mrlgj/LanMeiShop/tree/master/mysql)	数据库脚本文件，创建数据表相关
 
 
-#完成模块
+# 完成模块
 #### 用户注册模块
 * 注册界面。
 * 密码强度校验：正则表达式。
@@ -169,7 +167,7 @@
 * os.web使用的是Java编码方式进行加密处理
 
 	
-###后台商品管理模块
+### 后台商品管理模块
 * 商品类别管理：使用树形结构．新增，删除，修改
 * 商品管理．添加，删除，列表展示
 * 根据SKU概念设计商品库存表
@@ -182,7 +180,7 @@
 * [quartz bean配置](https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/spring/applicationContext-quartz.xml)
 * [备份实现](https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-task-%20scheduling/src/main/java/org/lanmei/backup/DatabaseBackup.java)
 
-#个人博客相关文章
+# 个人博客相关文章
 * [Js中使用正则表达式判断密码强度](https://blog.csdn.net/u011676300/article/details/79946220)
 * [slf4j + Log4j2 日志记录框架配置和使用详解](https://blog.csdn.net/u011676300/article/details/79855398)
 * [js中倒计时实现](https://blog.csdn.net/u011676300/article/details/79950339)

@@ -5,13 +5,13 @@ import com.lanmei.common.code.NullPointerCode;
 import com.lanmei.common.code.UserReturnCode;
 import com.lanmei.common.result.BaseResult;
 import com.lanmei.common.result.WebResult;
+import com.lanmei.common.rsa.RSAKeyFactory;
+import com.lanmei.common.rsa.RSAUtilNew;
 import com.lanmei.common.utils.CheckNullUtil;
 import com.lanmei.common.utils.session.SessionKeyUtil;
 import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.os.common.ServletUtils.ServletUtils;
 import com.lanmei.os.common.regex.ProjectRegex;
-import com.lanmei.os.common.rsa.RSAKeyFactory;
-import com.lanmei.os.common.rsa.RSAUtilNew;
 import com.lanmei.sysaop.syslog.anno.PrintUrlAnno;
 import com.lanmei.user.dao.model.OsUser;
 import com.lanmei.user.dao.model.OsUserLogin;
@@ -72,33 +72,6 @@ public class UserLoginController {
 	@ApiOperation(value="/user/login",httpMethod="GET",notes = "进入登陆页面")
 	@GetMapping
 	public String  loginPage() {
-
-		SessionUtil.setSession("key","123456",30 );
-
-
-		/*Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		log.info("getSubject+++++");
-		if(null != currentUser){
-
-			if(null != session){
-
-				log.info("session id = " + session.getId());
-
-				session.setTimeout( minute);
-				session.setAttribute(key, value);
-
-			}
-			else{
-				log.info("The session of the Key {" + key + " } is null");
-			}
-		}
-		else{
-			log.info("currentUser  is null");
-		}*/
-
-		String value = 	(String) SessionUtil.getSession("key");
-		logger.info("value = " + value );
 		return "/user/login";
 	}
 
@@ -231,7 +204,7 @@ public class UserLoginController {
 			}
 			logger.debug("当前用户 = " + user.getUserId());
 			SessionUtil.setSession(SessionKeyUtil.currentLoginUser, user,30);
-			OsUser user1=(OsUser) SessionUtil.getSession("currenLogintUser");
+			OsUser user1=(OsUser) SessionUtil.getSession(SessionKeyUtil.currentLoginUser);
 			if(user1 != null) {
 				logger.debug("当前登录的用户号码为 = " + user1.getUserId());
 			}

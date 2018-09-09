@@ -1,4 +1,5 @@
-package com.lanmei.os.common.rsa;
+package com.lanmei.common.rsa;
+
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
@@ -26,7 +27,7 @@ public class RSAUtilNew {
 	 * * 生成密钥对 *
 	 * 
 	 * @return KeyPair *
-	 * @throws EncryptException
+	 * @throws
 	 */
 	public static KeyPair generateKeyPair() throws Exception {
 		try {
@@ -117,8 +118,8 @@ public class RSAUtilNew {
 	/**
 	 * * 加密 *
 	 * 
-	 * @param key
-	 *            加密的密钥 *
+	 * @param
+	 *
 	 * @param data
 	 *            待加密的明文数据 *
 	 * @return 加密后的数据 *
@@ -161,8 +162,8 @@ public class RSAUtilNew {
 	/**
 	 * * 解密 *
 	 * 
-	 * @param key
-	 *            解密的密钥 *
+	 * @param
+	 *
 	 * @param raw
 	 *            已经加密的数据 *
 	 * @return 解密后的明文 *
@@ -204,6 +205,40 @@ public class RSAUtilNew {
 		privateEM1.put("privateKeyModulus", privateKeyModulus.toString());
 		privateEM1.put("privateKeyExponent", privateKeyExponent.toString());
     }
+
+	public static byte[] hexStringToBytes(String hexString) {
+
+		        if (hexString == null || hexString.equals("")) {
+
+		            return null;
+
+		        }
+
+		        hexString = hexString.toUpperCase();
+
+		        int length = hexString.length() / 2;
+
+		        char[] hexChars = hexString.toCharArray();
+
+		        byte[] d = new byte[length];
+
+		        for (int i = 0; i < length; i++) {
+
+		           int pos = i * 2;
+
+		            d[i] = (byte) (charToByte(hexChars[pos]) << 4 | charToByte(hexChars[pos + 1]));
+
+		        }
+
+		        return d;
+
+		    }
+	      private static byte charToByte(char c) {
+
+		         return (byte) "0123456789ABCDEF".indexOf(c);
+
+		     }
+
 
 
 }

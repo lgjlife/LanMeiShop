@@ -1,23 +1,18 @@
 package com.lanmei.os.common.security;
 
-import com.lanmei.common.utils.UserRegexUtil;
-import com.lanmei.os.common.regex.ProjectRegex;
+import com.lanmei.common.utils.session.SessionKeyUtil;
+import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.user.dao.model.OsUser;
-import com.lanmei.user.impl.UserServiceImpl;
 import com.lanmei.user.service.UserService;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * 自定义shiro 的realm 
@@ -83,24 +78,10 @@ public class SystemAuthorizingRealm extends AuthorizingRealm  {
 		SimpleAuthenticationInfo authenticationInfo 
 			= new SimpleAuthenticationInfo(user,user.getLoginPassword(),
 					ByteSource.Util.bytes(user.getSalt()),user.getPhoneNum());
-		
-		this.setSession("currentUser", user.getUserId());
-		
+
+
+
 		return authenticationInfo;
 	}	
-	
-	/** 
-     * 将一些数据放到ShiroSession中,以便于其它地方使用 
-     * @see 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到 
-     */  
-    private void setSession(Object key, Object value){  
-        Subject currentUser = SecurityUtils.getSubject();  
-        if(null != currentUser){  
-            Session session = currentUser.getSession();  
-            System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");  
-            if(null != session){  
-                session.setAttribute(key, value);  
-            }  
-        }  
-    }  
+
 }
