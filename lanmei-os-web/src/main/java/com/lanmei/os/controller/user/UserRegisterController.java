@@ -30,9 +30,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user/register")
 public class UserRegisterController {
-	
-
-
 	 
 	private final static Logger logger = LoggerFactory.getLogger("UserRegisterController.class");	
 	{
@@ -88,10 +85,10 @@ public class UserRegisterController {
 	 * @author: Mr.lgj 
 	 * @date: 9/8/18 
 	*/ 
-	@ApiOperation(value="/user/register/check/phone",notes="注册时校验手机号是否已经注册")
+	@ApiOperation(value="/user/info/find/password/check/name",notes="注册时校验手机号是否已经注册")
 	@PrintUrlAnno(description = "os-web 注册时校验手机号是否已经注册")
 	@ResponseBody
-	@PostMapping(path="/check/phone")
+	@PostMapping(path="find/password/check/name")
 	public BaseResult checkPhoneNum(@RequestParam("registerPhoneNum")  String registerPhoneNum) {
 
 		if(CheckNullUtil.isNullString(registerPhoneNum)){

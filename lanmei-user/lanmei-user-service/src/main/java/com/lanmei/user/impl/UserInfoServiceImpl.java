@@ -4,7 +4,6 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.lanmei.common.code.UserReturnCode;
 import com.lanmei.common.rsa.RSAKeyFactory;
 import com.lanmei.common.rsa.RSAUtilNew;
-import com.lanmei.common.sms.SmsUtil;
 import com.lanmei.common.utils.CheckNullUtil;
 import com.lanmei.common.utils.UserRegexUtil;
 import com.lanmei.common.utils.session.SessionKeyUtil;
@@ -12,13 +11,15 @@ import com.lanmei.common.utils.session.SessionUtil;
 import com.lanmei.user.common.BaseService;
 import com.lanmei.user.dao.mapper.OsUserMapper;
 import com.lanmei.user.dao.model.OsUser;
-import com.lanmei.user.service.UserService;
+import com.lanmei.user.service.UserInfoService;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,17 +27,16 @@ import java.math.BigInteger;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @Transactional
 @Service
-public class UserServiceImpl extends BaseService implements UserService {
+public class UserInfoServiceImpl extends BaseService implements UserInfoService {
 
 	private final static  int  PHONE_VALIDATE_CODE_LENGTH = 6;
 	
-	private final static Logger logger = LoggerFactory.getLogger("UserServiceImpl.class");
+	private final static Logger logger = LoggerFactory.getLogger("UserServiceImpl.class");	
 	{
 		logger.debug("UserServiceImpl create bean ......");
 	}
@@ -47,92 +47,12 @@ public class UserServiceImpl extends BaseService implements UserService {
 	private DruidDataSource dataSource; 
 	@Autowired
 	private SqlSessionFactoryBean sqlSessionFactory;
-	
-	public OsUser getById(Long userId) {
-		
-		logger.debug("getByIding ...... userMapper = " +  userMapper + " userId = " + userId);
-	
-		System.out.println(dataSource.getUrl());
-		System.out.println(dataSource.getDriverClassName());
-		System.out.println(dataSource.getUsername());
-		System.out.println(dataSource.getPassword());
-		OsUser osuser = userMapper.selectById(userId);
-		logger.debug("phone : " + osuser.getPhoneNum());
-		return osuser;
-	}
 
-	/** 
-	 * @description:  检测手机号是否已经注册
-	 * @param:    phoneNum ： 手机号码
-	 * @return:   true : 已经注册
-	 *            false : 还未注册
-	 * @author: Mr.lgj 
-	 * @date: 9/8/18 
-	*/ 
-	public boolean isRegisterOfPhoneNum(String phoneNum) {
-		
-		OsUser osuser = userMapper.selectByPhoneNum(phoneNum);
-		
-		if(osuser == null ) {
-			logger.debug("您查找的手机号码" + phoneNum +"不存在");
-			return false;
-		}
-		else {
-			logger.debug("您查找的手机号码" + phoneNum +"已经注册");
-			return true;
-		}		
-	}
-	public OsUser getUser(String nickName,String phoneNum,String email){
-		
-		OsUser osuser = userMapper.selectByUser(nickName,phoneNum,email);
-		
-		if(osuser == null ) {
-			logger.debug("您查找的用户不存在");
-			
-		}
-		else {
-			logger.debug("您查找的用户" + osuser.getUserId() +"存在");
-		}		
-		return osuser;
-	}
-	
-	/** 
-	 * @description:  获取 0 - 999999的随机数
-	 * @param:  
-	 * @return:  
-	 * @author: Mr.lgj 
-	 * @date: 9/8/18 
-	*/ 
-	public static int getRandom() {
-		
-		return (int) (Math.random() * 999999);
-	}
+	@Autowired
+	UserInfoService userInfoServiceImpl;
 
-
-
-	/** 
-	 * @description:  获取用户信息
-	 * @param:   name ： nickName , phone ,email
-	 * @return:  
-	 * @author: Mr.lgj 
-	 * @date: 9/8/18 
-	*/ 
-	@Override
-	public OsUser queryUser(String name) {
-		if(UserRegexUtil.isMobile(name)) {
-			OsUser osuser = userMapper.selectByTelNum(name);
-			return osuser;
-
-		}
-		else if(UserRegexUtil.isEmail(name)) {
-			OsUser osuser = userMapper.selectByEmail(name);
-			return osuser;
-		}
-		else {
-			OsUser osuser = userMapper.selectByNickName(name);
-			return osuser;
-		}
-	}
+	@Autowired
+	JavaMailSenderImpl mailSender;
 
 	/** 
 	 * @description:  检查帐号是被注册
@@ -148,6 +68,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 		if(UserRegexUtil.isMobile(name)) {
 			OsUser osuser = userMapper.selectByTelNum(name);
 			if(osuser == null){
+				logger.info("selectByTelNum is null");
 				return  false;
 			}
 			return  true;
@@ -156,6 +77,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 		else if(UserRegexUtil.isEmail(name)) {
 			OsUser osuser = userMapper.selectByEmail(name);
 			if(osuser == null){
+				logger.info("selectByEmail is null");
 				return  false;
 			}
 			return  true;
@@ -163,6 +85,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 		else {
 			OsUser osuser = userMapper.selectByNickName(name);
 			if(osuser == null){
+				logger.info("selectByNickName is null");
 				return  false;
 			}
 			return  true;
@@ -199,32 +122,75 @@ public class UserServiceImpl extends BaseService implements UserService {
 	}
 
 	/**
-	 * @description: 帐号注册
-	 * @param:    map :   registerName /  registerPassword / registerPhoneValidateCode
+	 * @description:  获取 0 - 999999的随机数
+	 * @param:
 	 * @return:
+	 * @author: Mr.lgj
+	 * @date: 9/8/18
+	 */
+	public static int getRandom() {
+
+		return (int) (Math.random() * 999999);
+	}
+
+
+	/** 
+	 * @description:  获取手机验证码
+	 * @param:  
+	 * @return:    6位的手机验证码
 	 * @author: Mr.lgj 
 	 * @date: 9/8/18 
 	*/ 
 	@Override
-	public UserReturnCode register(Map<String, Object> inputMap) {
+	public String sendValidateCode(String name) {
 
-		if(inputMap == null){
+		String  validateCode =String.valueOf(getRandom());
+		logger.info("注册验证码 = " + validateCode);
+
+		SessionUtil.setSession(SessionKeyUtil.currentRegisterUser+name,
+				validateCode,
+				30);
+
+
+		if(UserRegexUtil.isEmail(name)) {
+
+			logger.info("发送邮件验证码.....");
+			SimpleMailMessage mail = new SimpleMailMessage();
+
+			mail.setTo(name);//收件人邮箱地址
+			mail.setFrom("lanmeishop1@sina.com");//发件人
+			mail.setSubject("lanmei商城验证邮件");//主题
+			mail.setText("您还，您的验证码是：" +  validateCode + ".");//正文
+			//mailSender.send(mail);
+			logger.info("发送邮件验证码{}成功",validateCode);
+
+		}
+		else if(UserRegexUtil.isMobile(name)) {
+			logger.info("发送短信验证码....................");
+		//	SmsUtil.sendMsg(name,validateCode);
+			logger.info("发送短信验证码{}成功",validateCode);
+		}
+		return validateCode;
+	}
+
+	@Override
+	public UserReturnCode resetPassword(Map<String, String> map) {
+
+		if(map == null){
 			return UserReturnCode.NULL_POINTER;
 		}
 
-		String registerPhoneNum = (String) inputMap.get("registerPhoneNum");
-		String registerPassword = (String) inputMap.get("registerPassword");
-		String registerPhoneValidateCode = (String) inputMap.get("registerPhoneValidateCode");
+		String resetName = (String) map.get("resetName");
+		String resetPassword = (String) map.get("resetPassword");
 
-		if((CheckNullUtil.isNullString(registerPhoneNum))
-		||  (CheckNullUtil.isNullString(registerPassword))
-		|| (CheckNullUtil.isNullString(registerPhoneValidateCode))){
+
+		if((CheckNullUtil.isNullString(resetName))
+				||  (CheckNullUtil.isNullString(resetPassword))){
 			logger.error("输入参数为空");
 			return UserReturnCode.NULL_POINTER;
 		}
-		logger.debug("registerPhoneNum = " + registerPhoneNum
-				+ "\r\n  registerPassword = " + registerPassword
-				+ "\r\n  registerPhoneValidateCode  = " + registerPhoneValidateCode) ;
+		logger.debug("resetName = " + resetName
+				+ "\r\n  resetPassword = " + resetPassword) ;
 
 
 		KeyPair key = (KeyPair)SessionUtil.getSession(SessionKeyUtil.RSAkeyPair);
@@ -235,7 +201,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 		logger.debug(" 获取私钥为 = " + privateKey );
 		logger.debug(" 私钥  privateKeyModulus = " + privateKey.getModulus() );
 		logger.debug(" 私钥  privateKeyExponent = " + privateKey.getPrivateExponent());
-		byte[] en_result = new BigInteger(registerPassword, 16).toByteArray();
+		byte[] en_result = new BigInteger(resetPassword, 16).toByteArray();
 		byte[] pass = null;
 		try {
 
@@ -258,36 +224,28 @@ public class UserServiceImpl extends BaseService implements UserService {
 		String resultPassword = new Md5Hash(passWord,random,3).toString();
 		logger.debug("进行MD5加密的密码 = " + resultPassword);
 
-		OsUser user = new OsUser();
-		/*将手机/盐/密码/注册时间保存到数据库中*/
-		user.setPhoneNum(registerPhoneNum);
-		user.setLoginPassword(resultPassword);
-		user.setSalt(random);
-		user.setRegisterTime(new Date());
-		Integer  retCode = userMapper.insert(user);
-		if(retCode == 1){
-			return  UserReturnCode.REGISTER_SUCCESS;
+
+		if(UserRegexUtil.isEmail(resetName)) {
+
+			Integer  retCode = userMapper.updatePasswordByEmail(resetName,resultPassword,random);
+			if(retCode == 1){
+				logger.debug("{resetName}设置密码-{passWord}-成功",resetName,passWord);
+				return  UserReturnCode.INFO_RESET_PASSWORD_SUCCESS;
+			}
+
+		}
+		else if(UserRegexUtil.isMobile(resetName)) {
+			Integer  retCode = userMapper.updatePasswordByTelNum(resetName,resultPassword,random);
+			if(retCode == 1){
+				logger.debug("{resetName}设置密码-{passWord}-成功",resetName,passWord);
+				return  UserReturnCode.INFO_RESET_PASSWORD_SUCCESS;
+			}
 		}
 
-		return UserReturnCode.REGISTER_FAIL;
-	}
 
-	/** 
-	 * @description:  获取手机验证码
-	 * @param:  
-	 * @return:    6位的手机验证码
-	 * @author: Mr.lgj 
-	 * @date: 9/8/18 
-	*/ 
-	@Override
-	public String getPhoneValidateCode(String phoneNum) {
-		String  phoneValidateCode =String.valueOf(getRandom());
-		logger.info("注册验证码 = " + phoneValidateCode);
-		SessionUtil.setSession(SessionKeyUtil.currentRegisterUser+phoneNum,
-				phoneValidateCode,
-				30);
-        SmsUtil.sendMsg(phoneNum,phoneValidateCode);
-		return phoneNum;
+		logger.debug("{resetName}设置密码-{passWord}-失败",resetName,passWord);
+		return UserReturnCode.REGISTER_FAIL;
+
 	}
 }
 

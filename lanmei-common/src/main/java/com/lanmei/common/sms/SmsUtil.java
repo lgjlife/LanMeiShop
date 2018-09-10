@@ -1,4 +1,4 @@
-package com.lanmei.user.sms;
+package com.lanmei.common.sms;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -26,7 +26,7 @@ import java.util.Date;
  * 备注:Demo工程编码采用UTF-8
  * 国际短信发送请勿参照此DEMO
  */
-public class SmsDemo {
+public class SmsUtil {
 
 	private final static Logger logger = LoggerFactory.getLogger("SmsDemo.class");	
     //产品名称:云通信短信API产品,开发者无需替换
@@ -146,4 +146,15 @@ public class SmsDemo {
     {
     	
     }
+
+    public static  void sendMsg(String phoneNum,String code ) {
+        try {
+            sendSms(phoneNum,code);
+            logger.debug("发送短信{}-{}成功",phoneNum,code);
+
+        } catch (Exception e) {
+            logger.debug("发送短信{}-{}失败",phoneNum,code);
+        }
+    }
+
 }

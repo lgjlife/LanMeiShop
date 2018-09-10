@@ -5,7 +5,9 @@
  * 登录操作js
  */
 
-var baseUrl = "/lanmei-os";
+var baseUrl = BaseProjectName;
+
+
 var login={
 
 	"keyModulus":"",
@@ -24,7 +26,7 @@ var login={
 	//请求的url
 	"requestUrl":{
 		//项目基础路径
-		"baseUrl": "/lanmei-os",
+
 		//获取RSAKey的 modulus 和 exponent
 		"getKeyModAndExpUrl": this.baseUrl + "/user/login/key",
 		//t提交登录请求
@@ -205,3 +207,8 @@ $(function(){
 
     });
 });
+
+$(function () {
+    console.log("baseUrl = " + baseUrl);
+    console.log("loginSubmitUrl = " + login.requestUrl.loginSubmitUrl);
+})

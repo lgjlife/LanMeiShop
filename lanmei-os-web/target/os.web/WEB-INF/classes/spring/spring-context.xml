@@ -35,5 +35,9 @@
  	 <import resource="classpath:spring/applicationContext-quartz.xml" />
  	-->
  	<!-- Aop 配置文件 -->
-	 <import resource="classpath:spring/applicationContext-aop.xml" /> 
+	 <import resource="classpath:spring/applicationContext-aop.xml" />
+
+	<!-- Aop 配置文件 -->
+	<import resource="classpath:spring/applicationContext-email.xml" />
+
 </beans>

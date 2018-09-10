@@ -70,4 +70,19 @@ public interface OsUserMapper {
     OsUser selectByNickName(String nickName);
 
     OsUser selectByUser(@Param("nickName") String nickName,@Param("phoneNum") String phoneNum,@Param("email")String email);
+
+
+
+    int updatePasswordByTelNum(@Param("phoneNum") String phoneNum,
+                               @Param("loginPassword") String loginPassword,
+                               @Param("salt") String salt );
+
+    int updatePasswordByEmail(@Param("email")String email,
+                              @Param("loginPassword") String loginPassword,
+                              @Param("salt") String salt );
+
+    int updatePasswordByNickName(@Param("nickName")String nickName,
+                                 @Param("loginPassword") String loginPassword,
+                                 @Param("salt") String salt );
+
 }

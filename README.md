@@ -94,6 +94,8 @@
 
 
 # 完成模块
+#### 集成swagger   
+* 访问路径：http://localhost:8080/lanmei-os/swagger-ui.html
 #### 用户注册模块
 * 注册界面。
 * 密码强度校验：正则表达式。
@@ -103,8 +105,8 @@
 	
 #### 用户登录模块
 * 登录界面
-* 登录方式选择：手机/邮箱/用户名
-* 动态验证码:kaptcha			
+* 登录方式：手机/邮箱/用户名
+* 动态图片验证码:kaptcha实现			
 * 密码加密传输：RSA算法加密。客户端使用公钥加密，服务端使用私钥解密
 * shiro登录验证
 * 帐号登录日志管理
@@ -179,6 +181,101 @@
 * 使用Runtime模块执行备份指令
 * [quartz bean配置](https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-os-web/src/main/resources/spring/applicationContext-quartz.xml)
 * [备份实现](https://github.com/Mrlgj/LanMeiShop/blob/master/lanmei-task-%20scheduling/src/main/java/org/lanmei/backup/DatabaseBackup.java)
+
+
+# js文件结构说明
+使用该结构对于前端需求变化有良好的适用性。
+* 在base中定义项目主路径，需和tomcat中配置一致,这里设置为：lanmei-os。（base.js）
+```java
+//项目名称,注意不要缺少反斜杠
+var BaseProjectName="/lanmei-os";
+```
+* 在html文件中引入引入该js文件
+```html
+<!-- 使用thmeleaf 模板-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+
+<html>
+	<head >
+		<title>蓝莓商城-用户登录</title>
+		<meta charset="utf-8">
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- jquery  bootstrap-->
+		<script th:src="@{/static/jquery/jquery-3.3.1.js}"></script>
+		<link rel="stylesheet" type="text/css"  th:href="@{/static/bootstrap/bootstrap.css}">
+		<script th:src="@{/static/bootstrap/bootstrap.js}"></script>
+
+        <!--thmeleaf方式引入base.js文件 -->
+		<script th:src="@{/static/js/base/base.js}"></script>
+		 <!--thmeleaf方式引入login.js文件 -->
+        <script th:src="@{/static/js/user/login.js}"></script>
+ 	  
+ 
+	</head>
+	<!--th:fragment="login-head"-->
+<body>
+   
+</body>
+</html>
+
+```
+* js文件结构（login.js）
+```javascript
+
+//设置baseUrl为BaseProjectName（“/lanmei-os”）
+var baseUrl = BaseProjectName;
+
+//模块名称定义为login
+var login={
+    //定义变量
+	"keyModulus":"",
+	"keyExponent":"",
+	//定义常量
+	//服务端返回的code
+	"returnCode":{
+        "LOGIN_SUCCESS":1000,//,"用户登录成功"),
+		"LOGIN_FAIL":1001,//"用户登录失败"),
+		"LOGIN_PASSWORD_ERR":1002,//"用户登录失败,密码错误"),
+    	"LOGIN_LOCK_ACCOUNT":1003,//"用户登录失败，账户被锁定"),
+    	"LOGIN_PASSWORD_ERR_MORE":1004,//"用户登录失败，密码错误过多"),
+    	"LOGIN_GET_KEYPAIR_FAIL":1005,//"登陆时获取keypair失败"),
+    	"LOGIN_GET_KEYPAIR_SUCCESS":1006,//"登陆时获取keypair成功"),
+    	"LOGIN_UNKNOW_ACCOUT":1007,//"帐号不存在"),
+	},
+	//统一定义本模块要用到的url
+	//请求的url
+	"requestUrl":{
+		//项目基础路径
+
+		//获取RSAKey的 modulus 和 exponent
+		"getKeyModAndExpUrl": this.baseUrl + "/user/login/key",
+		//t提交登录请求
+		"loginSubmitUrl":this.baseUrl + "/user/login/submit",
+		"kaptchaUrl":this.baseUrl + "/kaptcha",
+	},
+	//定义方法
+	"requestKeySuccess":function () {
+    		console.log("requestKeySuccess");
+            console.log("data = " + data);
+            },
+ }
+ 
+ //定义处理
+ $(function(){
+ 
+     $("#login-loginSubmit-btn").click(function(){
+      
+ 		//调用login方法
+ 		login.requestKeySuccess();
+ 
+     });
+ });
+	
+```
 
 # 个人博客相关文章
 * [Js中使用正则表达式判断密码强度](https://blog.csdn.net/u011676300/article/details/79946220)

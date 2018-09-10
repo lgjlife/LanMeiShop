@@ -23,7 +23,9 @@ public interface UserService {
      String getPhoneValidateCode( String phoneNum);
 
      OsUser getUser(String nickName,String phoneNum,String email);
-     void sendMsg(String phoneNum,String code ) ;
+
      OsUser queryUser(String name);
+
+     public boolean isRegistered(String name);
 
 }

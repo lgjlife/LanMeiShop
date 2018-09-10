@@ -299,6 +299,15 @@
             <version>${mysql.version}</version>
         </dependency>
 
+        <!-- solar -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-solr</artifactId>
+            <version>3.0.9.RELEASE</version>
+        </dependency>
+
+
+
         <!-- spring beans 依赖-->
         <dependency>
             <groupId>org.springframework</groupId>

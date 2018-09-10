@@ -15,6 +15,8 @@
 		<script th:src="@{/static/bootstrap/bootstrap.js}"></script>
 
 
+		<script th:src="@{/static/js/base/base.js}"></script>
+
  	    <script th:src="@{/static/js/security/Barrett.js}"></script>
  	    <script th:src="@{/static/js/security/BigInt.js}"></script>
  	    <script th:src="@{/static/js/security/RSA.js}"></script>
@@ -72,7 +74,7 @@
 						style="vertical-align: middle;"  height="30" width="80">
 						<span id="login-loginValidateCode-warn" class="formWarn"  style="display: block"></span>
 					</div>
-					<a>忘记密码？</a><a  th:href="@{/user/find/password}" target="_blank"
+					<a>忘记密码？</a><a  th:href="@{/user/info/find/password}" target="_blank"
 					style="color:#EEB422">点击找回密码</a>
 					<br>
 					<button type="button" id="login-loginSubmit-btn">登录</button>

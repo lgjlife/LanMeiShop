@@ -158,4 +158,29 @@
     where nickName = #{nickName,jdbcType=VARCHAR}
   </select>
 
+  <!-- 通过邮箱修改密码-->
+  <update id="updatePasswordByEmail" parameterType="java.lang.String">
+    update os_user
+    set
+    login_password = #{loginPassword,jdbcType=VARCHAR},
+    salt = #{salt,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <!-- 通过昵称修改密码-->
+  <update id="updatePasswordByNickName" parameterType="java.lang.String">
+    update os_user
+    set
+    login_password = #{loginPassword,jdbcType=VARCHAR},
+    salt = #{salt,jdbcType=VARCHAR}
+    where nick_name = #{nickName,jdbcType=VARCHAR}
+  </update>
+  <!-- 通过电话修改密码-->
+  <update id="updatePasswordByTelNum" parameterType="java.lang.String">
+
+    update os_user
+    set
+    login_password = #{loginPassword,jdbcType=VARCHAR},
+    salt = #{salt,jdbcType=VARCHAR}
+    where phone_num = #{phoneNum,jdbcType=VARCHAR}
+  </update>
 </mapper>
